@@ -3,7 +3,7 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-
+/*
 using ClassLibrary;
 using NUnit.Framework;
 
@@ -52,4 +52,4 @@ namespace Tests
             Assert.False(this.train.IsEngineStarted);
         }
     }
-}
+} */
