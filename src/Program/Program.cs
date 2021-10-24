@@ -19,9 +19,16 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
-            var train = new Train();
+           /* var train = new Train();
             train.StartEngines();
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello World!"); */
+
+           AreaOfWork.AddAreaOfWork("carpinteria");
+           AreaOfWork.AddAreaOfWork("construccion");
+        
+           AreaOfWork.GetTextToPrint();
+
+
         }
     }
 }

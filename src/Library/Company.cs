@@ -5,8 +5,9 @@ namespace ClassLibrary
     {
         public Company(string name) : base (name)
         {
-            
+
         }
+        
     }
 
 }
