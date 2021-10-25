@@ -22,12 +22,12 @@ namespace ClassLibrary
 
         public static void GetTextToPrint()
         {
+            int contador=1;
             foreach (string item in areaofwork)
             {
-               Console.WriteLine($"{item}");
+               Console.WriteLine($"{contador}- {item}");
+               contador+=1;
             }
-
-            
         }
     
         public static bool CheckAreaOfWork(int indice)
@@ -44,6 +44,7 @@ namespace ClassLibrary
 
         public static string GetAreaOfWorkByIndex(int indice)
         {
+            indice-=1;
             return areaofwork[indice];
         }
 

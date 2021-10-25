@@ -2,7 +2,7 @@ using System;
 
 namespace ClassLibrary
 {
-    class MaterialType
+    public class MaterialType
     {
         string Nombre{get;set;}
         string Description{get;set;}

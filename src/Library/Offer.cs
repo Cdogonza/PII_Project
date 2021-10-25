@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 namespace ClassLibrary
 {
-    class Offer
+    public class Offer
     {
         public string Material{get;set;}
         public double Cost{get;set;}

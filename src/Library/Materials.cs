@@ -4,7 +4,7 @@ using System;
 
 namespace ClassLibrary
 {
-    class Materials
+    public class Materials
     {
         public string Name{get; set;}
         public string Category{get;set;}
@@ -20,10 +20,5 @@ namespace ClassLibrary
             this.Cost = cost;
             this.Location = location;
         }
-
-
-
     }
-
-
 }

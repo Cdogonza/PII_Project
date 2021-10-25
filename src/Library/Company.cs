@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 
 namespace ClassLibrary
 {
@@ -7,7 +8,11 @@ namespace ClassLibrary
         {
 
         }
-        
+
+        public void PublishOffer()
+        {
+
+        }
     }
 
 }
