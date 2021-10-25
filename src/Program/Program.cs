@@ -26,13 +26,14 @@ namespace ConsoleApplication
             AreaOfWork.AddAreaOfWork("carpinteria");
             AreaOfWork.AddAreaOfWork("construccion");
             AreaOfWork.AddAreaOfWork("herreria");
-            AreaOfWork.AddAreaOfWork("quimica");
+            AreaOfWork.AddAreaOfWork("quimica");    
 
             AreaOfWork.GetTextToPrint();
 
             Company Compania1 = new Company("compania1");
             Console.WriteLine("Ingrese Rubro: ");
             string rubro=Console.ReadLine();
+            
             if (AreaOfWork.CheckAreaOfWork(Convert.ToInt16(rubro)))
             {
                 Compania1.AddAreaOfWork(AreaOfWork.GetAreaOfWorkByIndex(Convert.ToInt16(rubro)));    
