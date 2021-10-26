@@ -19,16 +19,17 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
-           /* var train = new Train();
-            train.StartEngines();
-            Console.WriteLine("Hello World!"); */
+            DataManager almacenar = new DataManager();
+            AreaOfWork construccion = new AreaOfWork("construccion");
+            AreaOfWork carpinteria = new AreaOfWork("carpinteria");
+            AreaOfWork herreria = new AreaOfWork("herreria");
+            almacenar.AddAreaOfWork(construccion);
+            almacenar.AddAreaOfWork(construccion);
+            almacenar.AddAreaOfWork(herreria);
+            
+       
 
-            AreaOfWork.AddAreaOfWork("carpinteria");
-            AreaOfWork.AddAreaOfWork("construccion");
-            AreaOfWork.AddAreaOfWork("herreria");
-            AreaOfWork.AddAreaOfWork("quimica");    
-
-            AreaOfWork.GetTextToPrint();
+         
 
             Company Compania1 = new Company("compania1");
             Console.WriteLine("Ingrese Rubro: ");
