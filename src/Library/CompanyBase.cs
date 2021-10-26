@@ -8,7 +8,7 @@ namespace ClassLibrary
         public string Location { get; set;}     
         public string AreaOfWork {get; set;}
 
-        private List<IPermissions> permissions = new List<IPermissions>();
+        private List<Permission> permissions = new List<Permission>();
 
         protected CompanyBase(string name)
         {
@@ -22,7 +22,7 @@ namespace ClassLibrary
              this.AreaOfWork = area;            
         }
 
-        public void AddPermission(IPermissions permission)
+        public void AddPermission(Permission permission)
         {
             permissions.Add(permission);
         }
@@ -35,7 +35,7 @@ namespace ClassLibrary
             }
         }
  */
-        public Boolean SearchP(IPermissions permissions)
+        public Boolean SearchP(Permission permissions)
         {
             return this.permissions.Contains(permissions);
         }

@@ -3,10 +3,10 @@ using System.Collections;
 using System;
 namespace ClassLibrary
 {
-    public class Permissions 
+    public class Permission
     {
 
-        public Permissions(string name)
+        public Permission(string name)
         {
             this.Name = name;
         }
