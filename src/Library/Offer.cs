@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 namespace ClassLibrary
 {
-    class Offer
+    public class Offer
     {
         public string Material{get;set;}
         public double Cost{get;set;}
@@ -12,9 +12,9 @@ namespace ClassLibrary
         public ArrayList Tags{get;set;}
         public DateTime DeliveryDate{get;set;}
         public DateTime PublicationDate{get;set;}
-    
-
-        public Offer(string material,double cost,bool availability, string regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate)
+        public Company Company ;
+        public Entrepreneur Entrepreneur;
+        public Offer(string material,double cost,bool availability, string regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
         {
             this.Material = material;
             this.Cost = cost;
@@ -22,7 +22,21 @@ namespace ClassLibrary
             this.Tags = tags;
             this.DeliveryDate = deliverydate;
             this.PublicationDate = publicationdate;
+            this.Company =  offer;
         }
-    
+        
+        public void getOffert(Entrepreneur entrepreneur){
+            if (this.Availability){
+                this.Entrepreneur = entrepreneur;
+                this.Availability = false;
+            }
+        }
+
+        public Company getCompanyData(){
+            return this.Company;
+        }
+
+        
+        
     }
 }
