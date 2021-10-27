@@ -6,7 +6,7 @@ namespace ClassLibrary
     { 
         public string Name { get;  set; }
         public string Location { get; set;}     
-        public string AreaOfWork {get; set;}
+        
 
         private List<Permission> permissions = new List<Permission>();
 
@@ -16,15 +16,11 @@ namespace ClassLibrary
             this.Location = Location;
         }
 
-        // en el program tenemos que hacer el chequeo si existe el areaofwork y lo agregamos.
-        public void AddAreaOfWork(string area)
-        {
-             this.AreaOfWork = area;            
-        }
 
-        public void AddPermission(Permission permission)
+        public void AddPermission(string permission)
         {
-            permissions.Add(permission);
+            // Permission newPermission = new Permission(permission);
+            // permissions.Add(newPermission);
         }
 /* 
         public void GetPermissions()
