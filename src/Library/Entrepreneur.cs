@@ -8,9 +8,10 @@ namespace ClassLibrary
         {
 
         }
-        public void PublishOffer()
+        
+        public void ViewOfferts()
         {
-
+            
         }
     }
 
