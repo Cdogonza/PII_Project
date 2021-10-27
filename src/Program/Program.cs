@@ -26,8 +26,7 @@ namespace ConsoleApplication
                    
             // AreaOfWork carpinteria = new AreaOfWork("carpinteria");
             // AreaOfWork herreria = new AreaOfWork("herreria");
-            
-                            
+                                        
             Company Compania1 = new Company("compania1","Construccíon");
 
             Console.WriteLine("1 -  Ingresar una oferta  2-Ver Informacion de la empres ");
@@ -78,7 +77,7 @@ namespace ConsoleApplication
             
             
             // string rubro=Console.ReadLine();
-            
+
             // if (AreaOfWork.CheckAreaOfWork(Convert.ToInt16(rubro)))
             // {
             // }
