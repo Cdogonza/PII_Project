@@ -12,17 +12,36 @@ namespace ClassLibrary
         {
         }
         
-        public void PublishOffer(string material,double cost,bool availability,string regularoffers,ArrayList tags,DateTime deliverydate,DateTime publicationdate,Company company)
+        //public void SaveOffer(string name,string materialdescription,string materialname,double cost,bool availability,string regularoffers,ArrayList tags,DateTime deliverydate,DateTime publicationdate,Company company)
+       // {
+         //   Offer oferta =  new Offer(name,materialdescription,materialname,cost,availability,regularoffers,tags,deliverydate,publicationdate,company);
+          //  this.history.Add(oferta);
+       //}
+       public void SaveOffer(Offer offer)
+        {   
+            this.history.Add(offer);
+        }
+        public void PublishOffer(int id)
         {
-            Offer oferta =  new Offer(material,cost,availability,regularoffers,tags,deliverydate,publicationdate,company);
-            this.history.Add(oferta);
+           Offer offer = this.history[id];
+            offer.Availability = true;
         }
     
-        public void PrintOfferts(){
+        public void PrintmyOfferts(Company company)
+        {
+
             foreach (Offer offer in this.history)
             {
-                Console.WriteLine($"{offer.Material}  {offer.Cost} {offer.PublicationDate}");
+                if(offer.Company == company)
+                {
+                    Console.WriteLine($"{offer.id}{offer.Name} {offer.Material}  {offer.Cost} {offer.PublicationDate}");
+                }
+                
             }
+        }
+        public void PrintOffertsAvilitiy()
+        {
+
         }
     }
 
