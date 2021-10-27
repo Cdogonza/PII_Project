@@ -27,13 +27,19 @@ namespace ConsoleApplication
             almacenar.AddAreaOfWork(construccion);
             almacenar.AddAreaOfWork(herreria);
             
-       
-
-         
-
             Company Compania1 = new Company("compania1");
-            Console.WriteLine("Ingrese Rubro: ");
-            string rubro=Console.ReadLine();
+
+            Permission materialesInflamables = new Permission("Materiales Inflamables");
+            almacenar.AddPermission(materialesInflamables);
+            Compania1.AddPermission(materialesInflamables);
+            Console.WriteLine("Ingrese habilitación: ");
+            string permiso = Console.ReadLine();
+            Permission permiso1 = new Permission(permiso);
+            Compania1.AddPermission(permiso1);
+            Compania1.GetPermissions();
+
+           /* Console.WriteLine("Ingrese Rubro: ");
+            string rubro=Console.ReadLine();*/
             // @TODO 
             // CREAR FLUJO SIMULANDO LA LOGICA DEL PROGRAMA
             
