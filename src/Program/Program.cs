@@ -6,7 +6,7 @@
 
 using System;
 using ClassLibrary;
-
+using System.Collections;
 namespace ConsoleApplication
 {
     /// <summary>
@@ -19,27 +19,46 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
-            DataManager almacenar = new DataManager();
-            AreaOfWork construccion = new AreaOfWork("construccion");
-            AreaOfWork carpinteria = new AreaOfWork("carpinteria");
-            AreaOfWork herreria = new AreaOfWork("herreria");
-            almacenar.AddAreaOfWork(construccion);
-            almacenar.AddAreaOfWork(construccion);
-            almacenar.AddAreaOfWork(herreria);
+
+            OfferManager catalogo = new OfferManager();
+            // almacenar.AddAreaOfWork("construccion");
+            // almacenar.AddAreaOfWork("carpinteria");
             
-       
-
-         
-
-            Company Compania1 = new Company("compania1");
+            
+            // AreaOfWork carpinteria = new AreaOfWork("carpinteria");
+            // AreaOfWork herreria = new AreaOfWork("herreria");
+            
+                            
+            Company Compania1 = new Company("compania1","Construccíon");
             Console.WriteLine("Ingrese Rubro: ");
             string rubro=Console.ReadLine();
-            // @TODO 
-            // CREAR FLUJO SIMULANDO LA LOGICA DEL PROGRAMA
+
+            Console.WriteLine("1 -  Ingresar una oferta  2-Ver Informacion de la empres ");
+            string opcion=Console.ReadLine();
+            if (opcion == "1"){
+                Console.WriteLine("Ingrese nombre del producto");
+                string productName=Console.ReadLine();
+                
+                ArrayList tags  = new ArrayList();
+                tags.Add("tag1");
+                tags.Add("tag");
+                
+                DateTime publicationDate = new DateTime(2008, 3, 1, 7, 0, 0);
+
+                DateTime deliverydate = new DateTime();
+                catalogo.PublishOffer(productName,120.5,true,"L-V",tags,deliverydate,publicationDate,Compania1);
+                
+                catalogo.PublishOffer("Recortes de barilla",120.5,true,"L-V",tags,deliverydate,publicationDate,Compania1);
+                
+                catalogo.PrintOfferts();
+                
+            }
+            
+            
+            // string rubro=Console.ReadLine();
             
             // if (AreaOfWork.CheckAreaOfWork(Convert.ToInt16(rubro)))
             // {
-            //     Compania1.AddAreaOfWork(AreaOfWork.GetAreaOfWorkByIndex(Convert.ToInt16(rubro)));    
             // }
             // else
             // {
