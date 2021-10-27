@@ -18,7 +18,7 @@ namespace ClassLibrary
         public MaterialType Material{get;set;}
         public int id {get;}
         
-        public Offer(string name,string materialname,string materialdescription,double cost,bool availability, string regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
+        public Offer(string name,string materialname,string materialdescription,double cost,bool availability, /*string regularoffers*/ ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
         {
             this.id +=id; 
             this.Name = name;

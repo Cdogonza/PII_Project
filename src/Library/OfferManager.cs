@@ -34,14 +34,24 @@ namespace ClassLibrary
             {
                 if(offer.Company == company)
                 {
-                    Console.WriteLine($"{offer.id}{offer.Name} {offer.Material}  {offer.Cost} {offer.PublicationDate}");
+                    Console.WriteLine($"{offer.id} {offer.Name} Costo {offer.Cost} Fecha y hora de publicacion {offer.PublicationDate}");
                 }
                 
             }
         }
-        public void PrintOffertsAvilitiy()
+        public void PrintOffertsAvilitiy(Company company)
         {
-
+            foreach (Offer offer in this.history)
+            {
+                if(offer.Company == company)
+                {
+                    if(offer.Availability)
+                    {
+                    Console.WriteLine($"{offer.id} {offer.Name} Costo {offer.Cost} Fecha y hora de publicacion {offer.PublicationDate}");
+                    }else Console.WriteLine("No tienes Ofertas habilitadas para mostrar");
+                }
+                
+            }
         }
     }
 
