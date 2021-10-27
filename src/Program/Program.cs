@@ -23,34 +23,56 @@ namespace ConsoleApplication
             OfferManager catalogo = new OfferManager();
             // almacenar.AddAreaOfWork("construccion");
             // almacenar.AddAreaOfWork("carpinteria");
-            
-            
+                   
             // AreaOfWork carpinteria = new AreaOfWork("carpinteria");
             // AreaOfWork herreria = new AreaOfWork("herreria");
             
                             
             Company Compania1 = new Company("compania1","Construccíon");
-            Console.WriteLine("Ingrese Rubro: ");
-            string rubro=Console.ReadLine();
 
             Console.WriteLine("1 -  Ingresar una oferta  2-Ver Informacion de la empres ");
             string opcion=Console.ReadLine();
             if (opcion == "1"){
-                Console.WriteLine("Ingrese nombre del producto");
-                string productName=Console.ReadLine();
-                
+                Console.WriteLine("Ingrese nombre de al Oferta");
+                string OfferName=Console.ReadLine();
+                Console.WriteLine("Ingrese nombre del los materiales que desea publicar en la oferta");
+                string materialname=Console.ReadLine();
+                Console.WriteLine("Ingrese la descripcion de los materiales");
+                string materialdescription=Console.ReadLine();
+                Console.WriteLine("Ingrese el costo");
+                int cost=Int32.Parse(Console.ReadLine());
                 ArrayList tags  = new ArrayList();
                 tags.Add("tag1");
-                tags.Add("tag");
-                
+                tags.Add("tag");              
                 DateTime publicationDate = new DateTime(2008, 3, 1, 7, 0, 0);
-
                 DateTime deliverydate = new DateTime();
-                catalogo.PublishOffer(productName,120.5,true,"L-V",tags,deliverydate,publicationDate,Compania1);
+                Console.WriteLine("Desea que la oferta se quede publicada?");
+                Console.WriteLine("1-Si/2-No");
+                string answer=Console.ReadLine();
+                bool availability;
+                if (answer == "1")
+                { 
+                    availability=true;                  
+                    Offer myoffer = new Offer(OfferName,materialname,materialdescription,cost,availability,tags,deliverydate,publicationDate,Compania1);
+                    catalogo.SaveOffer(myoffer);
+                    catalogo.PrintOffertsAvilitiy(Compania1);
+                    Console.WriteLine("Ingrese el numero de la Oferta que quiere publicar");
+                    int answerr=Int32.Parse(Console.ReadLine());
+                    catalogo.PublishOffer(answerr);
+                    catalogo.PrintmyOfferts(Compania1);
+                }else
+                {
+                    availability = false;
+                    Offer myoffer = new Offer(OfferName,materialname,materialdescription,cost,availability,tags,deliverydate,publicationDate,Compania1);  
+                    catalogo.SaveOffer(myoffer);  
+                }             
                 
-                catalogo.PublishOffer("Recortes de barilla",120.5,true,"L-V",tags,deliverydate,publicationDate,Compania1);
+
+                //catalogo.PublishOffer(productName,120.5,true,"L-V",tags,deliverydate,publicationDate,Compania1);
                 
-                catalogo.PrintOfferts();
+                //catalogo.PublishOffer("Recortes de barilla",120.5,true,"L-V",tags,deliverydate,publicationDate,Compania1);
+                
+                //catalogo.PrintOfferts();
                 
             }
             
