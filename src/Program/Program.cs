@@ -25,6 +25,7 @@ namespace ConsoleApplication
             // almacenar.AddAreaOfWork("carpinteria");
                    
             // AreaOfWork carpinteria = new AreaOfWork("carpinteria");
+
             // AreaOfWork herreria = new AreaOfWork("herreria");       
                             
             Company Compania1 = new Company("compania1","Las Piedras",0910101011,"Construccíon");
@@ -73,7 +74,7 @@ namespace ConsoleApplication
             
             
             // string rubro=Console.ReadLine();
-            
+
             // if (AreaOfWork.CheckAreaOfWork(Convert.ToInt16(rubro)))
             // {
             // }
