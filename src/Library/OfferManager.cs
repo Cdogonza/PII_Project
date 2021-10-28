@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using System;
-using System.Collections;
-
 namespace ClassLibrary
 {   
     
@@ -12,11 +10,7 @@ namespace ClassLibrary
         {
         }
         
-        //public void SaveOffer(string name,string materialdescription,string materialname,double cost,bool availability,string regularoffers,ArrayList tags,DateTime deliverydate,DateTime publicationdate,Company company)
-       // {
-         //   Offer oferta =  new Offer(name,materialdescription,materialname,cost,availability,regularoffers,tags,deliverydate,publicationdate,company);
-          //  this.history.Add(oferta);
-       //}
+       
        public void SaveOffer(Offer offer)
         {   
             this.history.Add(offer);
@@ -25,6 +19,11 @@ namespace ClassLibrary
         {
            Offer offer = this.history[id];
             offer.Availability = true;
+        }
+        public void DiseableOffer(int id)
+        {
+           Offer offer = this.history[id];
+            offer.Availability = false;
         }
     
         public void PrintmyOfferts(Company company)
@@ -52,6 +51,11 @@ namespace ClassLibrary
                 }
                 
             }
+        }
+        public void buyoffer(Entrepreneur buyer,int index)
+        {
+            this.history[index].getOffert(buyer);
+
         }
     }
 
