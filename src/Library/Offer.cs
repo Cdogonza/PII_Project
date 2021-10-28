@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Collections;
 using System;
 namespace ClassLibrary
@@ -20,7 +19,7 @@ namespace ClassLibrary
         
         public Offer(string name,string materialname,string materialdescription,double cost,bool availability, /*string regularoffers*/ ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
         {
-            this.id +=id; 
+            this.id = id +1; 
             this.Name = name;
             this.Material = new MaterialType(materialname,materialdescription);
             this.Cost = cost;
@@ -35,14 +34,10 @@ namespace ClassLibrary
             if (this.Availability){
                 this.Entrepreneur = entrepreneur;
                 this.Availability = false;
+                this.Company.DataCompany();
             }
         }
-
-        public Company getCompanyData(){
-            return this.Company;
-        }
-
-        
+      
         
     }
 }

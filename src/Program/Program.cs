@@ -25,9 +25,10 @@ namespace ConsoleApplication
             // almacenar.AddAreaOfWork("carpinteria");
                    
             // AreaOfWork carpinteria = new AreaOfWork("carpinteria");
-            // AreaOfWork herreria = new AreaOfWork("herreria");
-                                        
-            Company Compania1 = new Company("compania1","Construccíon");
+
+            // AreaOfWork herreria = new AreaOfWork("herreria");       
+                            
+            Company Compania1 = new Company("compania1","Las Piedras",0910101011,"Construccíon");
 
             Console.WriteLine("1 -  Ingresar una oferta  2-Ver Informacion de la empres ");
             string opcion=Console.ReadLine();
@@ -54,25 +55,21 @@ namespace ConsoleApplication
                     availability=true;                  
                     Offer myoffer = new Offer(OfferName,materialname,materialdescription,cost,availability,tags,deliverydate,publicationDate,Compania1);
                     catalogo.SaveOffer(myoffer);
-                    catalogo.PrintOffertsAvilitiy(Compania1);
-                    Console.WriteLine("Ingrese el numero de la Oferta que quiere publicar");
-                    int answerr=Int32.Parse(Console.ReadLine());
-                    catalogo.PublishOffer(answerr);
-                    catalogo.PrintmyOfferts(Compania1);
+                    
                 }else
                 {
                     availability = false;
                     Offer myoffer = new Offer(OfferName,materialname,materialdescription,cost,availability,tags,deliverydate,publicationDate,Compania1);  
                     catalogo.SaveOffer(myoffer);  
-                }             
+                    
+                }   
+                    catalogo.PrintOffertsAvilitiy(Compania1);
+                    Console.WriteLine("Ingrese el numero de la Oferta que quiere publicar");
+                    int answerr=Int32.Parse(Console.ReadLine());
+                    catalogo.PublishOffer(answerr);
+                    catalogo.PrintmyOfferts(Compania1);          
                 
-
-                //catalogo.PublishOffer(productName,120.5,true,"L-V",tags,deliverydate,publicationDate,Compania1);
-                
-                //catalogo.PublishOffer("Recortes de barilla",120.5,true,"L-V",tags,deliverydate,publicationDate,Compania1);
-                
-                //catalogo.PrintOfferts();
-                
+                       
             }
             
             
