@@ -4,7 +4,7 @@ namespace ClassLibrary
 {
     public class Entrepreneur : CompanyBase
     {
-        public Entrepreneur(string name,int telefono) : base (name,telefono)
+        public Entrepreneur(string name,int phone) : base (name,phone)
         {
 
         }
