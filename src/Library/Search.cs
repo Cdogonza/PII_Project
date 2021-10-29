@@ -9,26 +9,40 @@ namespace ClassLibrary
         public List<Offer> byWord = new List<Offer>();
 
         public List<Offer> byCategory = new List<Offer>();
-        public List GetOfferByLocation(List<Offer> catalogo, string location)
+        public List<Offer> GetOfferByLocation(List<Offer> catalogo, string location)
         {
             foreach (Offer offer in catalogo)
             {
-                if (offer )
+                if (offer.Location == location)
                 {
                     byLocation.Add(offer);
                 }
             }
-            return 
+            return byLocation;
         }
 
-        public List GetOfferByWord(string word)
+        public List<Offer> GetOfferByWord(List<Offer> catalogo, string word)
         {
-
+            foreach (Offer offer in catalogo)
+            {
+                if (offer.Tags.Contains(word))
+                {
+                    byWord.Add(offer);
+                }
+            }
+            return byWord;
         }
 
-        public List GetOfferByCategory(ztring category)
+        public List<Offer> GetOfferByCategory(List<Offer> catalogo, string category)
         {
-
+            foreach (Offer offer in catalogo)
+            {
+                if (offer.Company.AreaOfWork.Name == category)
+                {
+                    byCategory.Add(offer);
+                }
+            }
+            return byCategory;
         }
     }
 }

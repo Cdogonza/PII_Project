@@ -53,13 +53,13 @@ namespace ConsoleApplication
                 if (answer == "1")
                 { 
                     availability=true;                  
-                    Offer myoffer = new Offer(OfferName,materialname,materialdescription,cost,availability,tags,deliverydate,publicationDate,Compania1);
+                    Offer myoffer = new Offer(OfferName,materialname,"Av Italia 2212",materialdescription,cost,availability,tags,deliverydate,publicationDate,Compania1);
                     catalogo.SaveOffer(myoffer);
                     
                 }else
                 {
                     availability = false;
-                    Offer myoffer = new Offer(OfferName,materialname,materialdescription,cost,availability,tags,deliverydate,publicationDate,Compania1);  
+                    Offer myoffer = new Offer(OfferName,materialname,"Berro 1231",materialdescription,cost,availability,tags,deliverydate,publicationDate,Compania1);  
                     catalogo.SaveOffer(myoffer);  
                     
                 }   
