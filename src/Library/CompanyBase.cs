@@ -5,15 +5,17 @@ namespace ClassLibrary
     public abstract class CompanyBase
     { 
         public string Name { get;  set; }
-        public string Location { get; set;}     
+        public string Location { get; set;}   
+        public int Telefono { get; set;}   
         
 
         private List<Permission> permissions = new List<Permission>();
 
-        protected CompanyBase(string name)
+        protected CompanyBase(string name, int telefono)
         {
             this.Name = name;
-            this.Location = Location;
+            
+            this.Telefono = telefono;
         }
 
 

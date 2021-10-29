@@ -13,8 +13,12 @@ namespace ClassLibrary
         {
             foreach (Offer offer in catalogo)
             {
-                if (offer.location )
+                if (offer )
+                {
+                    byLocation.Add(offer);
+                }
             }
+            return 
         }
 
         public List GetOfferByWord(string word)
