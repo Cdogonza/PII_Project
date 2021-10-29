@@ -6,16 +6,16 @@ namespace ClassLibrary
     { 
         public string Name { get;  set; }
         public string Location { get; set;}   
-        public int Telefono { get; set;}   
+        public int Phone { get; set;}   
         
 
         private List<Permission> permissions = new List<Permission>();
 
-        protected CompanyBase(string name, int telefono)
+        protected CompanyBase(string name, int phone)
         {
             this.Name = name;
             
-            this.Telefono = telefono;
+            this.Phone = phone;
         }
 
 
