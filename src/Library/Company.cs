@@ -8,20 +8,20 @@ namespace ClassLibrary
     public class Company : CompanyBase
     {
         public AreaOfWork AreaOfWork {get; set;}
-        public string Locacion{get; set;}
-        public Company(string name,string location,int telefono,string area) : base (name,telefono)
+        public string Location{get; set;}
+        public Company(string name,string location,int phone,string area) : base (name,phone)
         {
             this.AreaOfWork = new AreaOfWork(area);   
-            this.Locacion = location;
+            this.Location = location;
         }
 
         public List<string> DataCompany()
         {
-            List <string> datos = new List<string>();  
-            datos.Add(this.Name);
-            datos.Add(Convert.ToString(this.Telefono));
-            datos.Add(this.Locacion);
-            return datos;
+            List <string> data = new List<string>();  
+            data.Add(this.Name);
+            data.Add(Convert.ToString(this.Phone));
+            data.Add(this.Location);
+            return data;
         }
     
 
