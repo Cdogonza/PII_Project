@@ -5,7 +5,6 @@ namespace ClassLibrary
 {
     public class Permission
     {
-
         public Permission(string name)
         {
             this.Name = name;

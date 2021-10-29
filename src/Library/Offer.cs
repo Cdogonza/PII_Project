@@ -7,6 +7,8 @@ namespace ClassLibrary
         //public string Material{get;set;}
         public string Name {get;set;}
         public double Cost{get;set;}
+
+        public string Location{get;set;}
         public bool Availability{get;set;}
         public string RegularOffers{get;set;}
         public ArrayList Tags{get;set;}
@@ -17,11 +19,12 @@ namespace ClassLibrary
         public MaterialType Material{get;set;}
         public int id {get;}
         
-        public Offer(string name,string materialname,string materialdescription,double cost,bool availability, /*string regularoffers*/ ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
+        public Offer(string name,string materialname,string location,string materialdescription,double cost,bool availability, /*string regularoffers*/ ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
         {
             this.id = id +1; 
             this.Name = name;
             this.Material = new MaterialType(materialname,materialdescription);
+            this.Location = location;
             this.Cost = cost;
             this.Availability = availability;
             this.Tags = tags;

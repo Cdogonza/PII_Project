@@ -5,31 +5,32 @@ namespace ClassLibrary
     
     public class OfferManager 
     {
-        public List<Offer> history = new List<Offer>();
+        public List<Offer> catalog = new List<Offer>();
          public OfferManager()
         {
+            
         }
         
        
        public void SaveOffer(Offer offer)
         {   
-            this.history.Add(offer);
+            this.catalog.Add(offer);
         }
         public void PublishOffer(int id)
         {
-           Offer offer = this.history[id];
+           Offer offer = this.catalog[id];
             offer.Availability = true;
         }
         public void DiseableOffer(int id)
         {
-           Offer offer = this.history[id];
+           Offer offer = this.catalog[id];
             offer.Availability = false;
         }
     
         public void PrintmyOfferts(Company company)
         {
 
-            foreach (Offer offer in this.history)
+            foreach (Offer offer in this.catalog)
             {
                 if(offer.Company == company)
                 {
@@ -40,7 +41,7 @@ namespace ClassLibrary
         }
         public void PrintOffertsAvilitiy(Company company)
         {
-            foreach (Offer offer in this.history)
+            foreach (Offer offer in this.catalog)
             {
                 if(offer.Company == company)
                 {
@@ -54,7 +55,7 @@ namespace ClassLibrary
         }
         public void buyoffer(Entrepreneur buyer,int index)
         {
-            this.history[index].getOffert(buyer);
+            this.catalog[index].getOffert(buyer);
 
         }
     }
