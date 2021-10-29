@@ -38,20 +38,44 @@ namespace ClassLibrary
                 
             }
         }
-        public void PrintOffertsAvilitiy(Company company)
+        public string PrintMyOffertsAvailability(Company company)
         {
+            string data = $"Las ofertas habilitadas son: \n";
             foreach (Offer offer in this.history)
             {
                 if(offer.Company == company)
                 {
                     if(offer.Availability)
                     {
-                    Console.WriteLine($"{offer.id} {offer.Name} Costo {offer.Cost} Fecha y hora de publicacion {offer.PublicationDate}");
-                    }else Console.WriteLine("No tienes Ofertas habilitadas para mostrar");
+                        data = data + $"{offer.id} {offer.Name} Costo {offer.Cost} Fecha y hora de publicacion {offer.PublicationDate}";
+                    }
+                    else
+                    {
+                        data = "No tienes Ofertas habilitadas para mostrar";
+                    }
+                }
+            }
+            return data;
+        }
+
+       public string PrintOffertsAvailability()
+        {
+            string data = $"Las ofertas habilitadas son: \n";
+            foreach (Offer offer in this.history)
+            {
+                if(offer.Availability)
+                {
+                    data = data + $"{offer.id} {offer.Name} Costo {offer.Cost} Fecha y hora de publicacion {offer.PublicationDate}";
+                }
+                else
+                {
+                    data = "No tienes Ofertas habilitadas para mostrar";
                 }
                 
             }
+            return data;
         }
+
         public void buyoffer(Entrepreneur buyer,int index)
         {
             this.history[index].getOffert(buyer);

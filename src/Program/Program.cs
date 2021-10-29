@@ -63,13 +63,16 @@ namespace ConsoleApplication
                     catalogo.SaveOffer(myoffer);  
                     
                 }   
-                    catalogo.PrintOffertsAvilitiy(Compania1);
+                   // catalogo.PrintOffertsAvailability(Compania1);
                     Console.WriteLine("Ingrese el numero de la Oferta que quiere publicar");
                     int answerr=Int32.Parse(Console.ReadLine());
                     catalogo.PublishOffer(answerr);
                     catalogo.PrintmyOfferts(Compania1);          
                 
-                       
+                    IPrinter printer1 = new ConsolePrinter();
+                    printer1.PrintOffertsAvailability(catalogo);
+                    IPrinter printer2 = new ConsolePrinter();
+                    printer2.PrintMyOffertsAvailability(catalogo); 
             }
             
             
