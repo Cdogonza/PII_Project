@@ -7,30 +7,31 @@ namespace ClassLibrary
     
     public class OfferManager 
     {
-        public List<Offer> history = new List<Offer>();
+        public List<Offer> catalog = new List<Offer>();
          public OfferManager()
         {
+            
         }
         
         //public void SaveOffer(string name,string materialdescription,string materialname,double cost,bool availability,string regularoffers,ArrayList tags,DateTime deliverydate,DateTime publicationdate,Company company)
        // {
          //   Offer oferta =  new Offer(name,materialdescription,materialname,cost,availability,regularoffers,tags,deliverydate,publicationdate,company);
-          //  this.history.Add(oferta);
+          //  this.catalog.Add(oferta);
        //}
        public void SaveOffer(Offer offer)
         {   
-            this.history.Add(offer);
+            this.catalog.Add(offer);
         }
         public void PublishOffer(int id)
         {
-           Offer offer = this.history[id];
+           Offer offer = this.catalog[id];
             offer.Availability = true;
         }
     
         public void PrintmyOfferts(Company company)
         {
 
-            foreach (Offer offer in this.history)
+            foreach (Offer offer in this.catalog)
             {
                 if(offer.Company == company)
                 {
@@ -41,7 +42,7 @@ namespace ClassLibrary
         }
         public void PrintOffertsAvilitiy(Company company)
         {
-            foreach (Offer offer in this.history)
+            foreach (Offer offer in this.catalog)
             {
                 if(offer.Company == company)
                 {
