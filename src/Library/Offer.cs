@@ -37,7 +37,8 @@ namespace ClassLibrary
             Permission newPermission = new Permission(permission);
             permissions.Add(newPermission);
         }
-        public void getOffert(Entrepreneur entrepreneur){
+        public void getOffert(Entrepreneur entrepreneur)
+        {
             if (this.Availability){
                 this.Entrepreneur = entrepreneur;
                 this.Availability = false;

@@ -5,7 +5,7 @@ namespace ClassLibrary
     
     public class OfferManager 
     {
-        public List<Offer> history = new List<Offer>();
+        public List<Offer> catalog = new List<Offer>();
          public OfferManager()
         {
         }
@@ -13,23 +13,23 @@ namespace ClassLibrary
        
        public void SaveOffer(Offer offer)
         {   
-            this.history.Add(offer);
+            this.catalog.Add(offer);
         }
         public void PublishOffer(int id)
         {
-           Offer offer = this.history[id];
+           Offer offer = this.catalog[id];
             offer.Availability = true;
         }
         public void DiseableOffer(int id)
         {
-           Offer offer = this.history[id];
+           Offer offer = this.catalog[id];
             offer.Availability = false;
         }
     
         public string PrintMyOfferts(Company company)
         {
             string data = $"Las ofertas de la compania son: \n";
-            foreach (Offer offer in this.history)
+            foreach (Offer offer in this.catalog)
             {
                 if(offer.Company == company)
                 {
@@ -41,7 +41,7 @@ namespace ClassLibrary
         public string PrintMyOffertsAvailability(Company company)
         {
             string data = $"Las ofertas habilitadas Para la compania son: \n";
-            foreach (Offer offer in this.history)
+            foreach (Offer offer in this.catalog)
             {
                 if(offer.Company == company)
                 {
@@ -61,7 +61,7 @@ namespace ClassLibrary
        public string PrintOffertsAvailability()
         {
             string data = $"Las ofertas habilitadas son: \n";
-            foreach (Offer offer in this.history)
+            foreach (Offer offer in this.catalog)
             {
                 if(offer.Availability)
                 {
@@ -78,7 +78,7 @@ namespace ClassLibrary
 
         public void buyoffer(Entrepreneur buyer,int index)
         {
-            this.history[index].getOffert(buyer);
+            this.catalog[index].getOffert(buyer);
 
         }
     }
