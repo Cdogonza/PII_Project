@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Collections;
 using System;
 namespace ClassLibrary
@@ -15,6 +16,7 @@ namespace ClassLibrary
         public Company Company {get;set;}
         public Entrepreneur Entrepreneur {get;set;}
         public MaterialType Material{get;set;}
+        public List<Permission> permissions = new List<Permission>();
         public int id {get;}
         
         public Offer(string name,string materialname,string materialdescription,double cost,bool availability, /*string regularoffers*/ ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
@@ -30,6 +32,11 @@ namespace ClassLibrary
             this.Company =  offer;
         }
         
+        public void AddPermission(string permission)
+        {
+            Permission newPermission = new Permission(permission);
+            permissions.Add(newPermission);
+        }
         public void getOffert(Entrepreneur entrepreneur){
             if (this.Availability){
                 this.Entrepreneur = entrepreneur;
