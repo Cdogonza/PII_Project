@@ -17,9 +17,9 @@ namespace ClassLibrary
             this.permissions.Add(item);           
         }
 
-        public bool CheckPermission(int indice)
+        public bool CheckPermission(int index)
         {
-            if (indice <= this.permissions.Count ){
+            if (index <= this.permissions.Count ){
                 return true;
             }
             else
@@ -28,19 +28,19 @@ namespace ClassLibrary
             } 
 
         }        
-     
-        public  Permission GetPermissionByIndex(int indice)
+        
+        public  Permission GetPermissionByIndex(int index)
         {
-            indice-=1;
-            return this.permissions[indice];
+            index-=1;
+            return this.permissions[index];
         }
         public  void GetTextToPrintPermission()
         {
-            int contador=1;
+            int counter=1;
             foreach (Permission item in this.permissions)
             {
-               Console.WriteLine($"{contador}- {item}");
-               contador+=1;
+               Console.WriteLine($"{counter}- {item}");
+               counter+=1;
             }
         }
 
@@ -54,9 +54,9 @@ namespace ClassLibrary
             this.areaofwork.Add(item);           
         }
         
-        public bool CheckAreaOfWork(int indice)
+        public bool CheckAreaOfWork(int index)
         {
-            if (indice <= this.areaofwork.Count ){
+            if (index <= this.areaofwork.Count ){
                 return true;
             }
             else
@@ -66,19 +66,19 @@ namespace ClassLibrary
 
         }        
 
-        public  string GetAreaOfWorkByIndex(int indice)
+        public  string GetAreaOfWorkByIndex(int index)
         {
-            indice-=1;
-            return this.areaofwork[indice];
+            index-=1;
+            return this.areaofwork[index];
         }
 
         public  void GetTextToPrintAreaOfWork()
         {
-            int contador=1;
+            int counter=1;
             foreach (string item in this.areaofwork)
             {
-               Console.WriteLine($"{contador}- {item}");
-               contador+=1;
+               Console.WriteLine($"{counter}- {item}");
+               counter+=1;
             }
         }
 
@@ -92,9 +92,9 @@ namespace ClassLibrary
             this.materialsType.Add(item);           
         }
 
-        public bool CheckMaterialType(int indice)
+        public bool CheckMaterialType(int index)
         {
-            if (indice <= this.materialsType.Count ){
+            if (index <= this.materialsType.Count ){
                 return true;
             }
             else
@@ -103,19 +103,19 @@ namespace ClassLibrary
             } 
 
         }        
-        public  MaterialType GetMaterialTypeByIndex(int indice)
+        public  MaterialType GetMaterialTypeByIndex(int index)
         {
-            indice-=1;
-            return this.materialsType[indice];
+            index-=1;
+            return this.materialsType[index];
         }
 
         public  void GetTextToPrintMaterialType()
         {
-            int contador=1;
+            int counter=1;
             foreach (MaterialType item in this.materialsType)
             {
-               Console.WriteLine($"{contador}- {item}");
-               contador+=1;
+               Console.WriteLine($"{counter}- {item}");
+               counter+=1;
             }
         }
 

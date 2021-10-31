@@ -8,6 +8,7 @@ namespace ClassLibrary
         public List<Offer> catalog = new List<Offer>();
          public OfferManager()
         {
+            
         }
         
        
@@ -28,7 +29,9 @@ namespace ClassLibrary
     
         public string PrintMyOfferts(Company company)
         {
+
             string data = $"Las ofertas de la compania son: \n";
+
             foreach (Offer offer in this.catalog)
             {
                 if(offer.Company == company)
@@ -40,7 +43,9 @@ namespace ClassLibrary
         }
         public string PrintMyOffertsAvailability(Company company)
         {
+
             string data = $"Las ofertas habilitadas Para la compania son: \n";
+
             foreach (Offer offer in this.catalog)
             {
                 if(offer.Company == company)
