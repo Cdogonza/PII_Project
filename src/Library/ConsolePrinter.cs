@@ -12,9 +12,9 @@ namespace ClassLibrary
         {
             Console.WriteLine(texttoprint.PrintOffertsAvailability());
         }
-        public void PrintMyOffertsAvailability(OfferManager texttoprint)
+        public void PrintMyOffertsAvailability(OfferManager texttoprint, Company company)
         {
-            Console.WriteLine(texttoprint.PrintMyOffertsAvailability(Company));
+            Console.WriteLine(texttoprint.PrintMyOffertsAvailability(company));
         }
     
 
