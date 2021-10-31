@@ -4,5 +4,7 @@ namespace ClassLibrary
     {
         void PrintOffertsAvailability(OfferManager texttoprint);
         void PrintMyOffertsAvailability(OfferManager texttoprint, Company company);
+        void PrintMyOfferts(OfferManager texttoprint, Company company);
+
     }
 }

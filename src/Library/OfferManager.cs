@@ -26,17 +26,17 @@ namespace ClassLibrary
             offer.Availability = false;
         }
     
-        public void PrintmyOfferts(Company company)
+        public string PrintMyOfferts(Company company)
         {
-
+            string data = $"Las ofertas de la compania son: \n";
             foreach (Offer offer in this.history)
             {
                 if(offer.Company == company)
                 {
-                    Console.WriteLine($"{offer.id} {offer.Name} Costo {offer.Cost} Fecha y hora de publicacion {offer.PublicationDate} \n");
+                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
                 }
-                
             }
+            return data;
         }
         public string PrintMyOffertsAvailability(Company company)
         {
@@ -47,7 +47,7 @@ namespace ClassLibrary
                 {
                     if(offer.Availability)
                     {
-                        data = data + $"{offer.id} {offer.Name} Costo {offer.Cost} Fecha y hora de publicacion {offer.PublicationDate} \n";
+                        data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
                     }
                     else
                     {
