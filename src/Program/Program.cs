@@ -177,6 +177,30 @@ namespace ConsoleApplication
                     Console.WriteLine(off.Name);
                 }
 
+                //seba
+                
+                OfferManager catalogo = new OfferManager();
+                Company Compania1 = new Company("compania1","Las Piedras",0910101011,"Construccíon");
+
+                ArrayList Tags = new ArrayList ();
+                Tags.Add("promociones");
+                Tags.Add("Descuentos");
+                DateTime publicationDate = new DateTime(2008, 3, 1, 7, 0, 0);
+                DateTime deliverydate = new DateTime();
+
+
+                Offer myoffer = new Offer("Papas","demo","Berro 1231","demo", 12.12 , true , Tags , deliverydate ,publicationDate,Compania1);
+                catalogo.SaveOffer(myoffer); 
+                Entrepreneur Entrepeneur1 = new Entrepreneur("Belen", 09917293);
+
+                foreach(Offer offer in catalogo.catalog)
+                {
+                    Console.WriteLine(catalogo.catalog.IndexOf(offer) + " " + offer.Name);
+                }
+                Console.WriteLine("Seleccione una oferta");
+                string index = Console.ReadLine();
+                catalogo.buyoffer(Entrepeneur1,Int32.Parse(index));
+
             }
 
             
