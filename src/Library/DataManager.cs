@@ -34,7 +34,6 @@ namespace ClassLibrary
             index-=1;
             return this.permissions[index];
         }
-
         public  void GetTextToPrintPermission()
         {
             int counter=1;
@@ -49,7 +48,6 @@ namespace ClassLibrary
         {
             return this.permissions;
         }
-        
         
         // AREAS OF WORK 
         public void AddAreaOfWork(string item){

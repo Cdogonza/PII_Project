@@ -27,32 +27,60 @@ namespace ClassLibrary
             offer.Availability = false;
         }
     
-        public void PrintmyOfferts(Company company)
+        public string PrintMyOfferts(Company company)
         {
+
+            string data = $"Las ofertas de la compania son: \n";
 
             foreach (Offer offer in this.catalog)
             {
                 if(offer.Company == company)
                 {
-                    Console.WriteLine($"{offer.id} {offer.Name} Costo {offer.Cost} Fecha y hora de publicacion {offer.PublicationDate}");
+                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
                 }
-                
             }
+            return data;
         }
-        public void PrintOffertsAvilitiy(Company company)
+        public string PrintMyOffertsAvailability(Company company)
         {
+
+            string data = $"Las ofertas habilitadas Para la compania son: \n";
+
             foreach (Offer offer in this.catalog)
             {
                 if(offer.Company == company)
                 {
                     if(offer.Availability)
                     {
-                    Console.WriteLine($"{offer.id} {offer.Name} Costo {offer.Cost} Fecha y hora de publicacion {offer.PublicationDate}");
-                    }else Console.WriteLine("No tienes Ofertas habilitadas para mostrar");
+                        data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                    }
+                    else
+                    {
+                        data = "No tienes Ofertas habilitadas para mostrar";
+                    }
+                }
+            }
+            return data;
+        }
+
+       public string PrintOffertsAvailability()
+        {
+            string data = $"Las ofertas habilitadas son: \n";
+            foreach (Offer offer in this.catalog)
+            {
+                if(offer.Availability)
+                {
+                    data = data + $"{offer.id} {offer.Name} Costo {offer.Cost} Fecha y hora de publicacion {offer.PublicationDate} \n";
+                }
+                else
+                {
+                    data = "No tienes Ofertas habilitadas para mostrar";
                 }
                 
             }
+            return data;
         }
+
         public void buyoffer(Entrepreneur buyer,int index)
         {
             this.catalog[index].getOffert(buyer);
