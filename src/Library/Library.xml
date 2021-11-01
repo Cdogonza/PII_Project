@@ -590,5 +590,16 @@
             <param name="permissions"></param>
             <returns></returns>
         </member>
+        <member name="T:ConsoleApplication.LogicApp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ConsoleApplication.LogicApp.StartAppi">
+            <summary>
+            
+            
+            </summary>
+        </member>
     </members>
 </doc>
