@@ -4,10 +4,10 @@ namespace ClassLibrary
 {
     public class Search
     {
-        public List<Offer> GetOfferByLocation(List<Offer> catalogo, string location)
+        public List<Offer> GetOfferByLocation(List<Offer> catalog, string location)
         {
             List<Offer> byLocation = new List<Offer>();
-            foreach (Offer offer in catalogo)
+            foreach (Offer offer in catalog)
             {
                 if (offer.Location == location)
                 {
@@ -17,10 +17,10 @@ namespace ClassLibrary
             return byLocation;
         }
 
-        public List<Offer> GetOfferByWord(List<Offer> catalogo, string word)
+        public List<Offer> GetOfferByWord(List<Offer> catalog, string word)
         {
             List<Offer> byWord = new List<Offer>();
-            foreach (Offer offer in catalogo)
+            foreach (Offer offer in catalog)
             {
                 if (offer.Tags.Contains(word))
                 {
@@ -34,10 +34,10 @@ namespace ClassLibrary
             return byWord;
         }
 
-        public List<Offer> GetOfferByCategory(List<Offer> catalogo, string category)
+        public List<Offer> GetOfferByCategory(List<Offer> catalog, string category)
         {
             List<Offer> byCategory = new List<Offer>();
-            foreach (Offer offer in catalogo)
+            foreach (Offer offer in catalog)
             {
                 if (offer.Company.AreaOfWork.Name == category)
                 {

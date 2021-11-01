@@ -5,7 +5,7 @@ using System.Collections;
 namespace ClassLibrary
 {   
     
-    public class Company : CompanyBase
+    public class Company : UserBase
     {
         public AreaOfWork AreaOfWork {get; set;}
         public string Location{get; set;}
