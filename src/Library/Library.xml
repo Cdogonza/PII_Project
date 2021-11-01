@@ -4,5 +4,591 @@
         <name>Library</name>
     </assembly>
     <members>
+        <member name="T:ClassLibrary.AreaOfWork">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.AreaOfWork.Name">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:ClassLibrary.AreaOfWork.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="T:ClassLibrary.Company">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Company.AreaOfWork">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Company.Location">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:ClassLibrary.Company.#ctor(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="location"></param>
+            <param name="phone"></param>
+            <param name="area"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.Company.DataCompany">
+            <summary>
+            
+            </summary>
+            <returns></returns>  
+        </member>
+        <member name="T:ClassLibrary.ConsolePrinter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.ConsolePrinter.PrintOffertsAvailability(ClassLibrary.OfferManager)">
+            <summary>
+            
+            </summary>
+            <param name="texttoprint"></param>
+        </member>
+        <member name="M:ClassLibrary.ConsolePrinter.PrintMyOffertsAvailability(ClassLibrary.OfferManager,ClassLibrary.Company)">
+            <summary>
+            
+            </summary>
+            <param name="texttoprint"></param>
+            <param name="company"></param>
+        </member>
+        <member name="M:ClassLibrary.ConsolePrinter.PrintMyOfferts(ClassLibrary.OfferManager,ClassLibrary.Company)">
+            <summary>
+            
+            </summary>
+            <param name="texttoprint"></param>
+            <param name="company"></param>
+        </member>
+        <member name="T:ClassLibrary.DataManager">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.DataManager.areaofwork">
+            <summary>
+            
+            </summary>
+            <typeparam List="string"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="F:ClassLibrary.DataManager.materialsType">
+            <summary>
+            
+            </summary>
+            <typeparam List="MaterialType"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="F:ClassLibrary.DataManager.permissions">
+            <summary>
+            
+            </summary>
+            <typeparam List="Permission"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.DataManager.AddPermission(ClassLibrary.Permission)">
+            <summary>
+            
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:ClassLibrary.DataManager.CheckPermission(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.DataManager.GetPermissionByIndex(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.DataManager.GetTextToPrintPermission">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.DataManager.GetPermissions">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.DataManager.AddAreaOfWork(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:ClassLibrary.DataManager.CheckAreaOfWork(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.DataManager.GetAreaOfWorkByIndex(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.DataManager.GetTextToPrintAreaOfWork">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.DataManager.GetAreasOfWork">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.DataManager.AddMaterialType(ClassLibrary.MaterialType)">
+            
+             
+        </member>
+        <member name="M:ClassLibrary.DataManager.CheckMaterialType(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.DataManager.GetMaterialTypeByIndex(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.DataManager.GetTextToPrintMaterialType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.DataManager.GetMaterialsType">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ClassLibrary.Entrepreneur">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.Entrepreneur.search">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.Entrepreneur.mylist">
+            <summary>
+            
+            </summary>
+            <typeparam List="Offer"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.Entrepreneur.#ctor(System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="phone"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.Entrepreneur.SearchByCategory(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="category"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.Entrepreneur.SearchByLocation(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="location"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.Entrepreneur.SearchByWord(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="word"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ClassLibrary.IPrinter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.IPrinter.PrintOffertsAvailability(ClassLibrary.OfferManager)">
+            <summary>
+            
+            </summary>
+            <param name="texttoprint"></param>
+        </member>
+        <member name="M:ClassLibrary.IPrinter.PrintMyOffertsAvailability(ClassLibrary.OfferManager,ClassLibrary.Company)">
+            <summary>
+            
+            </summary>
+            <param name="texttoprint"></param>
+            <param name="company"></param>
+        </member>
+        <member name="M:ClassLibrary.IPrinter.PrintMyOfferts(ClassLibrary.OfferManager,ClassLibrary.Company)">
+            <summary>
+            
+            </summary>
+            <param name="texttoprint"></param>
+            <param name="company"></param>
+        </member>
+        <member name="T:ClassLibrary.Materials">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Materials.Name">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Materials.Category">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Materials.Quantity">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Materials.Cost">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Materials.Location">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:ClassLibrary.Materials.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:ClassLibrary.MaterialType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.MaterialType.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="description"></param>
+        </member>
+        <member name="T:ClassLibrary.Offer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Offer.Name">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Offer.Cost">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Offer.Location">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Offer.Availability">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Offer.RegularOffers">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Offer.Tags">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Offer.DeliveryDate">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Offer.PublicationDate">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Offer.Company">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Offer.Entrepreneur">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Offer.Material">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="F:ClassLibrary.Offer.permissions">
+            <summary>
+            
+            </summary>
+            <typeparam List="Permission"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="P:ClassLibrary.Offer.id">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:ClassLibrary.Offer.#ctor(System.String,System.String,System.String,System.String,System.Double,System.Boolean,System.Collections.ArrayList,System.DateTime,System.DateTime,ClassLibrary.Company)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="materialname"></param>
+            <param name="location"></param>
+            <param name="materialdescription"></param>
+            <param name="cost"></param>
+            <param name="availability"></param>
+            <param name="tags"></param>
+            <param name="deliverydate"></param>
+            <param name="publicationdate"></param>
+            <param name="offer"></param>
+        </member>
+        <member name="M:ClassLibrary.Offer.AddPermission(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="permission"></param>
+        </member>
+        <member name="M:ClassLibrary.Offer.getOffert(ClassLibrary.Entrepreneur)">
+            <summary>
+            
+            </summary>
+            <param name="entrepreneur"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ClassLibrary.OfferManager">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.OfferManager.catalog">
+            <summary>
+            Lista de las ofertas de la aplicacion
+            </summary>
+            <typeparam List="catalog">Lista de ofertas de la app</typeparam>
+            <returns>efrrw</returns>
+        </member>
+        <member name="M:ClassLibrary.OfferManager.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.OfferManager.SaveOffer(ClassLibrary.Offer)">
+            <summary>
+            
+            </summary>
+            <param name="offer"></param>
+        </member>
+        <member name="M:ClassLibrary.OfferManager.PublishOffer(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:ClassLibrary.OfferManager.DiseableOffer(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:ClassLibrary.OfferManager.PrintMyOfferts(ClassLibrary.Company)">
+            <summary>
+            
+            </summary>
+            <param name="company"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.OfferManager.PrintMyOffertsAvailability(ClassLibrary.Company)">
+            <summary>
+            
+            </summary>
+            <param name="company"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.OfferManager.PrintOffertsAvailability">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.OfferManager.buyoffer(ClassLibrary.Entrepreneur,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buyer"></param>
+            <param name="index"></param>
+        </member>
+        <member name="T:ClassLibrary.Permission">
+            <summary>
+            Estructura de los permisos de las emprendedores y empresas
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Permission.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="P:ClassLibrary.Permission.Name">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:ClassLibrary.Search">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Search.#ctor">
+            <summary>
+            
+            </summary> <summary>
+            
+            </summary> <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Search.GetOfferByLocation(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="location"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.Search.GetOfferByWord(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="word"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.Search.GetOfferByCategory(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="category"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ClassLibrary.UserBase">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.UserBase.Name">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.UserBase.Phone">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:ClassLibrary.UserBase.#ctor(System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="phone"></param>
+        </member>
+        <member name="M:ClassLibrary.UserBase.AddPermission(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="permission"></param>
+        </member>
+        <member name="M:ClassLibrary.UserBase.RemovePermission(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="index"></param>
+        </member>
+        <member name="M:ClassLibrary.UserBase.SearchP(ClassLibrary.Permission)">
+            <summary>
+            
+            </summary>
+            <param name="permissions"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

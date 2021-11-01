@@ -2,30 +2,56 @@ using System.Collections.Generic;
 using System;
 namespace ClassLibrary
 {   
-    
+    /// <summary>
+    /// 
+    /// </summary>
     public class OfferManager 
     {
+        /// <summary>
+        /// Lista de las ofertas de la aplicacion
+        /// </summary>
+        /// <typeparam List="catalog">Lista de ofertas de la app</typeparam>
+        /// <returns>efrrw</returns>
+
         public static List<Offer> catalog = new List<Offer>();
+        /// <summary>
+        /// 
+        /// </summary>
          public OfferManager()
         {
             
         }
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="offer"></param>
        public void SaveOffer(Offer offer)
         {   
             catalog.Add(offer);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
         public void PublishOffer(int id)
         {
            Offer offer = catalog[id];
             offer.Availability = true;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
         public void DiseableOffer(int id)
         {
            Offer offer = catalog[id];
             offer.Availability = false;
         }
-    
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="company"></param>
+        /// <returns></returns>
         public string PrintMyOfferts(Company company)
         {
 
@@ -40,6 +66,11 @@ namespace ClassLibrary
             }
             return data;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="company"></param>
+        /// <returns></returns>
         public string PrintMyOffertsAvailability(Company company)
         {
 
@@ -62,6 +93,11 @@ namespace ClassLibrary
             return data;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+
        public string PrintOffertsAvailability()
         {
             string data = $"Las ofertas habilitadas son: \n";
@@ -79,7 +115,11 @@ namespace ClassLibrary
             }
             return data;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="buyer"></param>
+        /// <param name="index"></param>
         public void buyoffer(Entrepreneur buyer,int index)
         {
             catalog[index].getOffert(buyer);

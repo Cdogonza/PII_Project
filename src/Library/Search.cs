@@ -1,16 +1,32 @@
 using System;
 using System.Collections.Generic;
+
 namespace ClassLibrary
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Search
 
-    {
-        public List<Offer> catalog = new List<Offer>();
-
+   {
+        private List<Offer> catalog = new List<Offer>();
+        /// <summary>
+        /// 
+        /// </summary> <summary>
+        /// 
+        /// </summary> <summary>
+        /// 
+        /// </summary>
+        
         public Search()
         {
             this.catalog = OfferManager.catalog;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
         public List<Offer> GetOfferByLocation(string location)
         {
             List<Offer> byLocation = new List<Offer>();
@@ -23,7 +39,11 @@ namespace ClassLibrary
             }
             return byLocation;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="word"></param>
+        /// <returns></returns>
         public List<Offer> GetOfferByWord(string word)
         {
             List<Offer> byWord = new List<Offer>();
@@ -41,6 +61,11 @@ namespace ClassLibrary
             return byWord;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
         public List<Offer> GetOfferByCategory(string category)
         {
             List<Offer> byCategory = new List<Offer>();
