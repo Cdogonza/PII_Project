@@ -4,11 +4,16 @@ namespace ClassLibrary
 {
     public class Entrepreneur : UserBase
     {
-        public Search search;
+        /// <summary>
+        ///  Esta clase representa al emprendedor el cual hereda metodos y atributos de la clase UserBase
+        /// </summary>
         public Entrepreneur(string name,int phone) : base (name,phone)
         {
-            this.search = new Search();
-
+            /// <summary>
+            /// Constructor de la clase Entrepreneur
+            /// </summary>
+            /// <returns>Entrepreneur</returns>
+            
         }
         
        
