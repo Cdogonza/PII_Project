@@ -40,13 +40,14 @@ namespace ClassLibrary
             Permission newPermission = new Permission(permission);
             permissions.Add(newPermission);
         }
-        public void getOffert(Entrepreneur entrepreneur)
+        public List<string> getOffert(Entrepreneur entrepreneur)
         {
-            if (this.Availability){
+            if (this.Availability)
+            {
                 this.Entrepreneur = entrepreneur;
-                this.Availability = false;
-                this.Company.DataCompany();
+                this.Availability = false;          
             }
+            return this.Company.DataCompany();
         }
       
         

@@ -3,8 +3,15 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     public class Search
+
     {
-        public List<Offer> GetOfferByLocation(List<Offer> catalog, string location)
+        public List<Offer> catalog = new List<Offer>();
+
+        public Search()
+        {
+            this.catalog = OfferManager.catalog;
+        }
+        public List<Offer> GetOfferByLocation(string location)
         {
             List<Offer> byLocation = new List<Offer>();
             foreach (Offer offer in catalog)
@@ -17,7 +24,7 @@ namespace ClassLibrary
             return byLocation;
         }
 
-        public List<Offer> GetOfferByWord(List<Offer> catalog, string word)
+        public List<Offer> GetOfferByWord(string word)
         {
             List<Offer> byWord = new List<Offer>();
             foreach (Offer offer in catalog)
@@ -34,7 +41,7 @@ namespace ClassLibrary
             return byWord;
         }
 
-        public List<Offer> GetOfferByCategory(List<Offer> catalog, string category)
+        public List<Offer> GetOfferByCategory(string category)
         {
             List<Offer> byCategory = new List<Offer>();
             foreach (Offer offer in catalog)
