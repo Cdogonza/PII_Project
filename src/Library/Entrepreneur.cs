@@ -8,12 +8,22 @@ namespace ClassLibrary
     public class Entrepreneur : UserBase
     {
         /// <summary>
+        /// String de la especializacion
+        /// </summary>
+        /// <value></value>
+        public string Specialization {get; set;}
+        
+        /// <summary>
         /// Constructor de la clase Entrepreneur
         /// </summary>
-        /// <returns>Entrepreneur</returns>
-        public Entrepreneur(string name,int phone) : base (name,phone)
+        /// <param name="name"></param>
+        /// <param name="phone"></param>
+        /// <param name="location"></param>
+        /// <param name="specialization"></param>
+        /// <returns></returns>
+        public Entrepreneur(string name,string phone,string location,string specialization) : base (name,phone,location)
         {
-            
+            this.Specialization = specialization;
         }
     }
 

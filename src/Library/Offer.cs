@@ -60,12 +60,12 @@ namespace ClassLibrary
         /// <value></value>
         public Entrepreneur Entrepreneur {get;set;}
         /// <summary>
-        ///CORRESPONDE AL MATERIAL DE LA OFERTA
-        /// /// </summary>
+        /// 
+        /// </summary>
         /// <value></value>
-        public Materials Material{get;set;}
+        public Material Material{get;set;}
         /// <summary>
-        /// LOS PERMISOS NECESARIOS QUE DEBE DE TENER EL EMPRENDEDOR PARA PODER ADQUIRIR ESTA OFERTA
+        /// 
         /// </summary>
         /// <typeparam List="Permission"></typeparam>
         /// <returns></returns>
@@ -83,14 +83,14 @@ namespace ClassLibrary
         /// <param name="location"></param>
         /// <param name="cost"></param>
         /// <param name="availability"></param>
+        /// <param name="regularoffers"></param>
         /// <param name="tags"></param>
         /// <param name="deliverydate"></param>
         /// <param name="publicationdate"></param>
         /// <param name="offer"></param>
-        /// <param name="regularoffers"></param>
-        public Offer(string name, Materials material, string location, double cost,bool availability, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
+        public Offer(string name, Material material, string location, double cost,bool availability, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
         {
-            this.id = id +1; 
+            this.id = id +1;
             this.Name = name;
             this.Material = material;
             this.Location = location;
@@ -118,7 +118,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="entrepreneur"></param>
         /// <returns></returns>
-        public List<string> getOffert(Entrepreneur entrepreneur)
+        public List<string> getOffer(Entrepreneur entrepreneur)
         {
             if (this.Availability)
             {

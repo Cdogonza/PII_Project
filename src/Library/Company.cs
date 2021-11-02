@@ -5,37 +5,29 @@ using System.Collections;
 namespace ClassLibrary
 {   
     /// <summary>
-    /// 
+    /// Clase que representa a un usuario del tipo compania dentro del programa
     /// </summary>
     public class Company : UserBase
     {
         /// <summary>
-        /// 
+        /// Instancia de clase AreaOfWork que representa una categoria de la empresa
         /// </summary>
-        /// <value></value>
         public AreaOfWork AreaOfWork {get; set;}
         /// <summary>
-        /// 
+        /// Propiedad que almacena la ubicación de la empresa
         /// </summary>
-        /// <value></value>
         public string Location{get; set;}
         /// <summary>
-        /// 
+        /// Permite crear instancias de usuarios del tipo Company
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="location"></param>
-        /// <param name="phone"></param>
-        /// <param name="area"></param>
-        /// <returns></returns>
-        public Company(string name,string location,int phone,string area) : base (name,phone)
+        public Company(string name,string location,string phone,string area) : base (name,phone,location)
         {
-            this.AreaOfWork = new AreaOfWork(area);   
-            this.Location = location;
+            this.AreaOfWork = new AreaOfWork(area);
         }
+
         /// <summary>
-        /// 
+        /// Devuelve una lista con la información de una compania
         /// </summary>
-        /// <returns></returns>  
         public List<string> DataCompany()
         {
             List <string> data = new List<string>();  

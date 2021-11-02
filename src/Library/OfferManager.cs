@@ -7,15 +7,7 @@ namespace ClassLibrary
     /// </summary>
     public class OfferManager 
     {
-        /// <summary>
-        /// CATALOGO DE DE OFERTAS 
-        /// </summary>
-        /// <typeparam List="Offer"></typeparam>
-        /// <returns></returns>
         public List<Offer> catalog = new List<Offer>();
-        /// <summary>
-        /// 
-        /// </summary>
          public OfferManager()
         {
             
@@ -52,7 +44,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="company"></param>
         /// <returns></returns>
-        public string GetMyOffertsAvailability(Company company)
+        public string GetMyOffersAvailability(Company company)
         {
 
             string data = $"Las ofertas habilitadas Para la compania son: \n";
@@ -77,7 +69,7 @@ namespace ClassLibrary
         /// 
         /// </summary>
         /// <returns></returns>
-       public string GetOffertsAvailability()
+       public string GetOffersAvailability()
         {
             string data = $"Las ofertas habilitadas son: \n";
             foreach (Offer offer in catalog)
@@ -101,7 +93,7 @@ namespace ClassLibrary
         /// <param name="index"></param>
         public void buyoffer(Entrepreneur buyer,int index)
         {
-            catalog[index].getOffert(buyer);
+            catalog[index].getOffer(buyer);
 
         }
     }

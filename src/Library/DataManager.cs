@@ -198,7 +198,7 @@ namespace ClassLibrary
         /// Metodo utilizado para obtener todos los rubros de la lista y retornarlos como texto,
         /// Para que ConsolePrinter pueda obtener ese texto e 
         /// </summary>
-        public void GetTextToPrintMaterialType()
+        public string GetTextToPrintMaterialType()
         {
             string data = $"La lista de Materiales existentes son: \n";
             int contador=1;
@@ -207,6 +207,7 @@ namespace ClassLibrary
                 data = data + $"{contador} - {item}";
                 contador+=1;
             }
+            return data;
         }
 
         /// <summary>
