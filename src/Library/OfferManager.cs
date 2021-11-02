@@ -7,7 +7,15 @@ namespace ClassLibrary
     /// </summary>
     public class OfferManager 
     {
+        /// <summary>
+        /// CATALOGO DE OFERTAS DEL PROGRAMA
+        /// </summary>
+        /// <typeparam List="Offer"></typeparam>
+        /// <returns></returns>
         public List<Offer> catalog = new List<Offer>();
+        /// <summary>
+        /// 
+        /// </summary>
          public OfferManager()
         {
             
