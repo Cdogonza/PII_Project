@@ -40,7 +40,7 @@ namespace Tests
         public void Setup()
         {
             this.oferAdmin =  new OfferManager();
-            this.searcher =  new Search(oferAdmin);
+            this.searcher =  new Search();
             this.company = new Company("compania1","Las Piedras","098239334","Construcción");
              ArrayList tags  = new ArrayList();
             tags.Add("tag1");
@@ -49,7 +49,7 @@ namespace Tests
             DateTime deliverydate = new DateTime();
             MaterialType materialType  =  new MaterialType("Tela", "Recortes de tela de 1x1");
             Material material = new Material("Tela",materialType,"200","100","Berro 1231");
-            this.myOffer = new Offer("Promocion de verano",material,"Berro1231",200.00,true,tags,deliverydate,publicationDate,this.company);
+            this.myOffer = new Offer("Promocion de verano",material,"Berro1231",200.00,true,false,tags,deliverydate,publicationDate,this.company);
         }
 
         /// <summary>

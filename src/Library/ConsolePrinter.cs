@@ -14,7 +14,7 @@ namespace ClassLibrary
         /// <param name="offermanager"></param>
         public void PrintOffertsAvailability(OfferManager offermanager)
         {
-            Console.WriteLine(offermanager.GetOffertsAvailability());
+            Console.WriteLine(offermanager.GetOffersAvailability());
         }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace ClassLibrary
         /// <param name="company"></param>
         public void PrintMyOffertsAvailability(OfferManager offermanager, Company company)
         {
-            Console.WriteLine(offermanager.GetMyOffertsAvailability(company));
+            Console.WriteLine(offermanager.GetMyOffersAvailability(company));
         }
 
         /// <summary>

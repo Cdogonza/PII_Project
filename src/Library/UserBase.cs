@@ -48,6 +48,10 @@ namespace ClassLibrary
             Permission newPermission = new Permission(permission);
             permissions.Add(newPermission);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
 
         /// <summary>
         /// Permite eliminar un permiso de un usuario
