@@ -7,16 +7,18 @@ namespace ClassLibrary
     /// </summary>
     public class MaterialType
     {
+
         /// <summary>
         /// String del nombre del tipo de material
         /// </summary>
         /// <value></value>
-        private string Name{get;set;}
+        public string Name{get;set;}
 
         /// <summary>
         /// String de la descripcion sobre el tipo de material
         /// </summary>
         /// <value></value>
+
         private string Description{get;set;}
 
         /// <summary>

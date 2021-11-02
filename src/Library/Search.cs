@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase filtra el catálogo según diferentes términos
+    /// Filtra el catálogo según diferentes términos
     /// </summary>
     public class Search
     {
@@ -12,14 +12,14 @@ namespace ClassLibrary
         /// </summary>
         private List<Offer> catalog = new List<Offer>();
         /// <summary>
-        /// Constructor - carga una copia del catalogo de ofertas a la lista
+        /// Carga una copia del catalogo de ofertas a la lista
         /// </summary>
         public Search()
         {
-            this.catalog = OfferManager.catalog;
+            this.catalog = Singleton<OfferManager>.Instance.catalog;
         }
         /// <summary>
-        /// Filtra el catálogo de ofertas según su ubicación
+        /// Filtra el catálogo de búsquedas según su ubicación
         /// </summary>
         /// <param name="location"></param>
         /// <returns>Retorna un string con una lista de ofertas</returns>
@@ -40,7 +40,7 @@ namespace ClassLibrary
             return data;
         }
         /// <summary>
-        /// Filtra el catálogo de ofertas según palabras clave
+        /// Filtra el catálogo de búsquedas según palabras clave
         /// </summary>
         /// <param name="word"></param>
         /// <returns>Retorna un string con una lista de ofertas</returns>
@@ -62,6 +62,7 @@ namespace ClassLibrary
 
         }
         /// <summary>
+
         /// Filtra el catálogo de ofertas según su categoria (tipo de material)
         /// </summary>
         /// <param name="category"></param>
@@ -83,7 +84,7 @@ namespace ClassLibrary
             return data;
         }
         /// <summary>
-        /// Filtra el catálogo de ofertas y agrupa las que compró un emprendedor
+        /// Filtra el catálogo de búsquedas que compró un emprendedor
         /// </summary>
         /// <param name="entrepreneur"></param>
         /// <returns>Retorna un string con una lista de ofertas</returns>
@@ -100,9 +101,8 @@ namespace ClassLibrary
             }
             return data;
         }
-
         /// <summary>
-        /// Filtra el catálogo de ofertas y agrupa las que publicó una empresa
+        /// Filtra el catálogo de búsquedas que publicó una empresa
         /// </summary>
         /// <param name="company"></param>
         /// <returns>Retorna un string con una lista de ofertas</returns>
@@ -120,6 +120,7 @@ namespace ClassLibrary
             }
             return data;
         }
+
 
         /// <summary>
         /// Filtra el catálogo de ofertas y agrupa las que están disponibles 
@@ -148,6 +149,5 @@ namespace ClassLibrary
             }
             return data;
         }
-
     }
 }
