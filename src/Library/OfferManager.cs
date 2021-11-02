@@ -7,7 +7,11 @@ namespace ClassLibrary
     
     public class OfferManager 
     {
+<<<<<<< Updated upstream
         public List<Offer> history = new List<Offer>();
+=======
+        public List<Offer> catalog = new List<Offer>();
+>>>>>>> Stashed changes
          public OfferManager()
         {
         }

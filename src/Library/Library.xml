@@ -4,5 +4,152 @@
         <name>Library</name>
     </assembly>
     <members>
+        <member name="T:ClassLibrary.AreaOfWork">
+            <summary>
+            Punto de entrada al programa principal.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.AreaOfWork.Name">
+            <summary>    
+            Propiedad que almacena el valor del nombre del rubro
+            </summary>
+        </member>
+        <member name="T:ClassLibrary.Company">
+            <summary>
+            Esta clase representa una compania e hereda comportamiento de la clase base UserBase
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Company.AreaOfWork">
+            <summary>
+            Propiedad que resprensenta el rubro en el que trabaja la comapania
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Company.Location">
+            <summary>
+            Propiedad que almacena la ubicación de la compania
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Company.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Metodo constructor de la clase
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Company.DataCompany">
+            <summary>
+            Permite obtener la información de la compania
+            </summary>
+        </member>
+        <member name="T:ClassLibrary.Entrepreneur">
+            <summary>
+             Esta clase representa al emprendedor el cual hereda metodos y atributos de la clase UserBase
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Entrepreneur.#ctor(System.String,System.String)">
+            <summary>
+            Constructor de la clase Entrepreneur
+            </summary>
+            <returns>Entrepreneur</returns>
+        </member>
+        <member name="T:ClassLibrary.Search">
+            <summary>
+            Filtra el catálogo según diferentes términos
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.Search.catalog">
+            <summary>
+            Crea una lista de ofertas vacía
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Search.#ctor">
+            <summary>
+            Carga una copia del catalogo de ofertas a la lista
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Search.GetOfferByLocation(System.String)">
+            <summary>
+            Filtra el catálogo de búsquedas según su ubicación
+            </summary>
+            <param name="location"></param>
+            <returns>Retorna un string con una lista de ofertas</returns>
+        </member>
+        <member name="M:ClassLibrary.Search.GetOfferByWord(System.String)">
+            <summary>
+            Filtra el catálogo de búsquedas según palabras clave
+            </summary>
+            <param name="word"></param>
+            <returns>Retorna un string con una lista de ofertas</returns>
+        </member>
+        <member name="M:ClassLibrary.Search.GetOfferByCategory(System.String)">
+            <summary>
+            Filtra el catálogo de búsquedas según su categoria
+            </summary>
+            <param name="category"></param>
+            <returns>Retorna un string con una lista de ofertas</returns>
+        </member>
+        <member name="M:ClassLibrary.Search.GetMyEntrepreneur(ClassLibrary.Entrepreneur)">
+            <summary>
+            Filtra el catálogo de búsquedas que compró un emprendedor
+            </summary>
+            <param name="entrepreneur"></param>
+            <returns>Retorna un string con una lista de ofertas</returns>
+        </member>
+        <member name="M:ClassLibrary.Search.GetByCompany(ClassLibrary.Company)">
+            <summary>
+            Filtra el catálogo de búsquedas que publicó una empresa
+            </summary>
+            <param name="company"></param>
+            <returns>Retorna un string con una lista de ofertas</returns>
+        </member>
+        <member name="T:ClassLibrary.UserBase">
+            <summary>
+            Esta clase representa las caractiricas que comparten los diferentes tipos de usuarios de la empresa (EMPRESA/ENTRENEUR)
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.UserBase.Name">
+            <summary>
+            Popriedad nombre de la empresa
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.UserBase.Location">
+            <summary>
+            Propiedad ubicacion de la empresa
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.UserBase.Phone">
+            <summary>
+            Popriedad telefono de la empresa
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.UserBase.permissions">
+            <summary>
+            Al macena la lista de permision que posee la empresa
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.UserBase.AddPermission(System.String)">
+            <summary>
+            Permite agregar una permiso a la empresa
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.UserBase.RemovePermission(System.Int32)">
+            <summary>
+            Permite remover un permiso a la empresa
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.UserBase.GetPermissions">
+            <summary>
+            Permite obtener la lsita de permisos de la empresa
+            </summary>
+        </member>
+        <member name="T:ConsoleApplication.LogicApp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ConsoleApplication.LogicApp.StartAppi">
+            <summary>
+            
+            
+            </summary>
+        </member>
     </members>
 </doc>

@@ -4,5 +4,31 @@
         <name>LibraryTests</name>
     </assembly>
     <members>
+        <member name="T:Tests.TrainTests">
+            <summary>
+            Prueba de la clase <see cref="T:ClassLibrary.OfferManager"/>.
+            </summary>
+        </member>
+        <member name="F:Tests.TrainTests.oferAdmin">
+            <summary>
+            Catalogo para pruebas.
+            </summary>
+        </member>
+        <member name="F:Tests.TrainTests.company">
+            <summary>
+            Compania para la empresa
+            </summary>
+        </member>
+        <member name="F:Tests.TrainTests.searcher">
+            <summary>
+            Buscador para pruebas
+            </summary>
+        </member>
+        <member name="M:Tests.TrainTests.Setup">
+            <summary>
+            Crea las intancias utiilzadas en los test
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Tests.TrainTests.CompaniTest" -->
     </members>
 </doc>
