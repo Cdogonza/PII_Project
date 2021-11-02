@@ -17,9 +17,14 @@ namespace ClassLibrary
 >>>>>>> Stashed changes
     {
         /// <summary>
+<<<<<<< Updated upstream
         /// Propiedad que resprensenta el rubro en el que trabaja la comapania
         /// </summary>
 
+=======
+        /// Categoria de la empresa
+        /// </summary>
+>>>>>>> Stashed changes
         public AreaOfWork AreaOfWork {get; set;}
 <<<<<<< Updated upstream
         public Company(string name,string area) : base (name)
@@ -29,6 +34,7 @@ namespace ClassLibrary
         /// </summary>
         public string Location{get; set;}
         /// <summary>
+<<<<<<< Updated upstream
         /// Metodo constructor de la clase
         /// </summary>
         public Company(string name,string location,string phone,string area) : base (name,phone)
@@ -40,6 +46,17 @@ namespace ClassLibrary
 =======
         /// <summary>
         /// Permite obtener la información de la compania
+=======
+        /// Crea una instancia de una instancia de esta clase
+        /// </summary>
+        public Company(string name,string location,string phone,string area) : base (name,phone)
+        {
+            this.AreaOfWork = new AreaOfWork(area);   
+            this.Location = location;
+        }
+        /// <summary>
+        /// Obtiene la informacion de una compania
+>>>>>>> Stashed changes
         /// </summary>
         public List<string> DataCompany()
         {

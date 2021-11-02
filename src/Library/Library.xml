@@ -4,6 +4,7 @@
         <name>Library</name>
     </assembly>
     <members>
+<<<<<<< Updated upstream
         <member name="T:ClassLibrary.AreaOfWork">
             <summary>
             Punto de entrada al programa principal.
@@ -38,18 +39,148 @@
             <summary>
             Permite obtener la información de la compania
             </summary>
+=======
+        <member name="T:ClassLibrary.DataManager">
+            <summary>
+            Esta clase es la encargada de manejar los datos de AreaOfWork(Rubros) MaterialsTypes y Permissions(Habilitaciones)
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.DataManager.areaofwork">
+            <summary>
+            Lista de String donde se almacenan los rubros
+            </summary>
+            <typeparam name="string"></typeparam>
+            <returns></returns>        
+        </member>
+        <member name="F:ClassLibrary.DataManager.materialsType">
+            <summary>
+            Lista de MaterialType donde se almacenan los tipos de materiales 
+            </summary>
+            <typeparam name="MaterialType"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="F:ClassLibrary.DataManager.permissions">
+            <summary>
+            Lista de Permisos donde se alamacenan los permisos a ser usados por las empresas y las ofertas
+            </summary>
+            <typeparam name="Permission"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.DataManager.AddPermission(ClassLibrary.Permission)">
+            <summary>
+            Metodo para agregar permisos al listado de permisos
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:ClassLibrary.DataManager.CheckPermission(System.Int32)">
+            <summary>
+            Metodo que chequea si el permiso ingresado por el usuario existe en la lista de Permisos del sistema. 
+            </summary>
+            <param name="indice"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.DataManager.GetPermissionByIndex(System.Int32)">
+            <summary>
+             Metodo que retorna el permiso segun el lugar de la lista ingresado
+            </summary>
+            <param name="indice"></param>
+            <returns></returns>//  
+        </member>
+        <member name="M:ClassLibrary.DataManager.GetTextToPrintPermission">
+            <summary>
+             Metodo utilizado para obtener todos los permisos de la lista y restornarlos como texto,
+             Para que ConsolePrinter pueda obtener ese texto e imprimirlo en pantalla.
+            </summary>
+            <returns>data</returns> Texto que obtiene ConsolePrinter para imprimir
+        </member>
+        <member name="M:ClassLibrary.DataManager.GetPermissions">
+            <summary>
+             Retorna la lista de Permisos almacenados en el sistema
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.DataManager.AddAreaOfWork(System.String)">
+            <summary>
+            Metodo para agregar Rubros a la lista de Rubros
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:ClassLibrary.DataManager.CheckAreaOfWork(System.Int32)">
+            <summary>
+            Metodo que corrobora si el numero ingresado por el usuario para agregar el rubro en su listado, existe en el listado de rubros.
+            </summary>
+            <param name="indice"></param>
+            <returns>Retorna True si existe, sino retorna False</returns>        
+        </member>
+        <member name="M:ClassLibrary.DataManager.GetAreaOfWorkByIndex(System.Int32)">
+            <summary>
+            Metodo que retorna el Rubro segun el lugar ingresado de la lista
+            </summary>
+            <param name="indice"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.DataManager.GetTextToPrintAreaOfWork">
+            <summary>
+             Metodo utilizado para obtener todos los rubros de la lista y retornarlos como texto,
+             Para que ConsolePrinter pueda obtener ese texto e imprimirlo en pantalla. 
+            </summary>
+            <returns>data</returns> Texto que obtiene ConsolePrinter para imprimir
+        </member>
+        <member name="M:ClassLibrary.DataManager.GetAreasOfWork">
+            <summary>
+            Retorna la lista de Rubros almacenados en el sistema
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.DataManager.AddMaterialType(ClassLibrary.MaterialType)">
+            <summary>
+            Agrega un tipo de Material a la lista de MaterialTypes
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:ClassLibrary.DataManager.CheckMaterialType(System.Int32)">
+            <summary>
+            Verifica si el material ingresado por el usuario existe en la lista de Materiales.
+            </summary>
+            <param name="indice"></param>
+            <returns>Retorna True si el Tipo de Material existe en la lista, sino existe devuelve False</returns>
+        </member>
+        <member name="M:ClassLibrary.DataManager.GetMaterialTypeByIndex(System.Int32)">
+            <summary>
+            Metodo que retorna el Tipo de Material segun el lugar ingresado de la lista
+            </summary>
+            <param name="indice"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.DataManager.GetTextToPrintMaterialType">
+            <summary>
+            Metodo utilizado para obtener todos los rubros de la lista y retornarlos como texto,
+            Para que ConsolePrinter pueda obtener ese texto e 
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.DataManager.GetMaterialsType">
+            <summary>
+            Retorna la lista de Materiales almacenados en el sistema
+            </summary>
+            <returns></returns>
+>>>>>>> Stashed changes
         </member>
         <member name="T:ClassLibrary.Entrepreneur">
             <summary>
              Esta clase representa al emprendedor el cual hereda metodos y atributos de la clase UserBase
             </summary>
         </member>
+<<<<<<< Updated upstream
         <member name="M:ClassLibrary.Entrepreneur.#ctor(System.String,System.String)">
+=======
+        <member name="M:ClassLibrary.Entrepreneur.#ctor(System.String,System.Int32)">
+>>>>>>> Stashed changes
             <summary>
             Constructor de la clase Entrepreneur
             </summary>
             <returns>Entrepreneur</returns>
         </member>
+<<<<<<< Updated upstream
         <member name="T:ClassLibrary.Search">
             <summary>
             Filtra el catálogo según diferentes términos
@@ -150,6 +281,127 @@
             
             
             </summary>
+=======
+        <member name="T:ClassLibrary.Material">
+            <summary>
+            Esta clase es la encargada de crear instancias de materiales
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Material.Name">
+            <summary>
+            String del nombre del material
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Material.Type">
+            <summary>
+            Instancia de MaterialType que representa el tipo del material
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Material.Quantity">
+            <summary>
+            String de la cantidad del material 
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Material.Cost">
+            <summary>
+            String del costo del material
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Material.Location">
+            <summary>
+            String de la ubicación del material
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:ClassLibrary.Material.#ctor(System.String,ClassLibrary.MaterialType,System.String,System.String,System.String)">
+            <summary>
+            Constructor de la clase
+            </summary>
+            <param name="name"></param>
+            <param name="type"></param>
+            <param name="quantity"></param>
+            <param name="cost"></param>
+            <param name="location"></param>
+        </member>
+        <member name="T:ClassLibrary.Permission">
+            <summary>
+            Esta clase representa los permisos de las empresas y emprendedores
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Permission.#ctor(System.String)">
+            <summary>
+            Constructor de la clase
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="P:ClassLibrary.Permission.Name">
+            <summary>
+            String con el nombre del permiso
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:ClassLibrary.Search">
+            <summary>
+            Esta clase filtra el catálogo según diferentes términos
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.Search.catalog">
+            <summary>
+            Crea una lista de ofertas vacía
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Search.#ctor">
+            <summary>
+            Constructor - carga una copia del catalogo de ofertas a la lista
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Search.GetOfferByLocation(System.String)">
+            <summary>
+            Filtra el catálogo de ofertas según su ubicación
+            </summary>
+            <param name="location"></param>
+            <returns>Retorna un string con una lista de ofertas</returns>
+        </member>
+        <member name="M:ClassLibrary.Search.GetOfferByWord(System.String)">
+            <summary>
+            Filtra el catálogo de ofertas según palabras clave
+            </summary>
+            <param name="word"></param>
+            <returns>Retorna un string con una lista de ofertas</returns>
+        </member>
+        <member name="M:ClassLibrary.Search.GetOfferByCategory(System.String)">
+            <summary>
+            Filtra el catálogo de ofertas según su categoria
+            </summary>
+            <param name="category"></param>
+            <returns>Retorna un string con una lista de ofertas</returns>
+        </member>
+        <member name="M:ClassLibrary.Search.GetMyEntrepreneur(ClassLibrary.Entrepreneur)">
+            <summary>
+            Filtra el catálogo de ofertas y agrupa las que compró un emprendedor
+            </summary>
+            <param name="entrepreneur"></param>
+            <returns>Retorna un string con una lista de ofertas</returns>
+        </member>
+        <member name="M:ClassLibrary.Search.GetByCompany(ClassLibrary.Company)">
+            <summary>
+            Filtra el catálogo de ofertas y agrupa las que publicó una empresa
+            </summary>
+            <param name="company"></param>
+            <returns>Retorna un string con una lista de ofertas</returns>
+        </member>
+        <member name="M:ClassLibrary.Search.GetAvailableOffersByCompany(ClassLibrary.Company)">
+            <summary>
+            Filtra el catálogo de ofertas y agrupa las que están disponibles 
+            y fueron publicadas por determinada compañia
+            </summary>
+            <param name="company"></param>
+            <returns>Retorna un string con una lista de ofertas</returns>
+>>>>>>> Stashed changes
         </member>
     </members>
 </doc>

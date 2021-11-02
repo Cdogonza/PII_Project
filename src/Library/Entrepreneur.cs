@@ -17,6 +17,9 @@ namespace ClassLibrary
         /// </summary>
         /// <returns>Entrepreneur</returns>
         public Entrepreneur(string name,string phone) : base (name,phone)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         {
             
