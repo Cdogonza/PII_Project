@@ -4,7 +4,7 @@ namespace ClassLibrary
 {
 
     // DIP
-    public class ConsolePrinter : IPrinter
+    public class ConsolePrinter //: IPrinter
     {
         //public Company Company {get;set;}
 
@@ -14,7 +14,7 @@ namespace ClassLibrary
         }
         public void PrintMyOffertsAvailability(Search texttoprint, Company company)
         {
-            Console.WriteLine(texttoprint.GetByAvailability(company));
+            Console.WriteLine(texttoprint.GetAvailableOffersByCompany(company));
         }
         public void PrintOffertsByCompany(Search texttoprint, Company company)
         {

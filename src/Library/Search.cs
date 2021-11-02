@@ -12,7 +12,7 @@ namespace ClassLibrary
         /// </summary>
         private List<Offer> catalog = new List<Offer>();
         /// <summary>
-        /// Carga una copia del catalogo de ofertas a la lista
+        /// Constructor - carga una copia del catalogo de ofertas a la lista
         /// </summary>
         public Search()
         {
@@ -127,7 +127,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="company"></param>
         /// <returns>Retorna un string con una lista de ofertas</returns>
-        public string GetByAvailability(Company company)
+        public string GetAvailableOffersByCompany(Company company)
         {
 
             string data = $"Las ofertas habilitadas para la compania son: \n";
