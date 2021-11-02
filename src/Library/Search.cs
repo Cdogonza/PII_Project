@@ -87,7 +87,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="entrepreneur"></param>
         /// <returns>Retorna un string con una lista de ofertas</returns>
-        public string GetMyEntrepreneur(Entrepreneur entrepreneur)
+        public string GetOfferByEntrepreneur(Entrepreneur entrepreneur)
         {
             string data = $"Las compras de este emprendedor son: \n";
 
@@ -106,7 +106,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="company"></param>
         /// <returns>Retorna un string con una lista de ofertas</returns>
-        public string GetByCompany(Company company)
+        public string GetOfferByCompany(Company company)
         {
 
             string data = $"Las ofertas de la empresa son: \n";
