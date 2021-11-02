@@ -4,7 +4,7 @@ namespace ClassLibrary
 {
     public class MaterialType
     {
-        private string Name{get;set;}
+        public string Name{get;set;}
         private string Description{get;set;}
         public MaterialType(string name, string description)
         {
