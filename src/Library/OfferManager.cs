@@ -28,7 +28,7 @@ namespace ClassLibrary
         }
     
         
-        public string PrintMyOffertsAvailability(Company company)
+        public string GetMyOffertsAvailability(Company company)
         {
 
             string data = $"Las ofertas habilitadas Para la compania son: \n";
@@ -50,7 +50,7 @@ namespace ClassLibrary
             return data;
         }
 
-       public string PrintOffertsAvailability()
+       public string GetOffertsAvailability()
         {
             string data = $"Las ofertas habilitadas son: \n";
             foreach (Offer offer in catalog)
