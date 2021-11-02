@@ -20,7 +20,7 @@ namespace ClassLibrary
         /// <summary>
         /// Permite crear instancias de usuarios del tipo Company
         /// </summary>
-        public Company(string name,string location,int phone,string area) : base (name,phone)
+        public Company(string name,string location,string phone,string area) : base (name,phone,location)
         {
             this.AreaOfWork = new AreaOfWork(area);
         }
