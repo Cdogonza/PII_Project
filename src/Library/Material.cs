@@ -10,37 +10,37 @@ namespace ClassLibrary
     public class Material
     {
         /// <summary>
-        /// 
+        /// String del nombre del material
         /// </summary>
         /// <value></value>
         public string Name{get; set;}
 
         /// <summary>
-        /// 
+        /// Instancia de MaterialType que representa el tipo del material
         /// </summary>
         /// <value></value>
         public MaterialType Type{get;set;}
 
         /// <summary>
-        /// 
+        /// String de la cantidad del material 
         /// </summary>
         /// <value></value>
         public string Quantity{get;set;}
 
         /// <summary>
-        /// 
+        /// String del costo del material
         /// </summary>
         /// <value></value>
         public string Cost{get;set;}
 
         /// <summary>
-        /// 
+        /// String de la ubicación del material
         /// </summary>
         /// <value></value>
         public string Location{get;set;}
 
         /// <summary>
-        /// Crea instancias de la clase Material
+        /// Constructor de la clase
         /// </summary>
         /// <param name="name"></param>
         /// <param name="type"></param>
