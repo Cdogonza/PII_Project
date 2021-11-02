@@ -62,7 +62,7 @@ namespace ClassLibrary
 
         }
         /// <summary>
-        /// Filtra el catálogo de ofertas según su categoria
+        /// Filtra el catálogo de ofertas según su categoria (tipo de material)
         /// </summary>
         /// <param name="category"></param>
         /// <returns>Retorna un string con una lista de ofertas</returns>
@@ -74,7 +74,7 @@ namespace ClassLibrary
 
             foreach (Offer offer in catalog)
             {
-                if (offer.Company.AreaOfWork.Name == category)
+                if (offer.Material.Type.Name == category)
                 {
                     data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
                     byCategory.Add(offer);
@@ -87,7 +87,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="entrepreneur"></param>
         /// <returns>Retorna un string con una lista de ofertas</returns>
-        public string GetMyEntrepreneur(Entrepreneur entrepreneur)
+        public string GetOfferByEntrepreneur(Entrepreneur entrepreneur)
         {
             string data = $"Las compras de este emprendedor son: \n";
 
@@ -106,7 +106,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="company"></param>
         /// <returns>Retorna un string con una lista de ofertas</returns>
-        public string GetByCompany(Company company)
+        public string GetOfferByCompany(Company company)
         {
 
             string data = $"Las ofertas de la empresa son: \n";
@@ -135,7 +135,7 @@ namespace ClassLibrary
             foreach (Offer offer in catalog)
             {
                 if(offer.Company == company)
-                {
+                { 
                     if(offer.Availability)
                     {
                         data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
