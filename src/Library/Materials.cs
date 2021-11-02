@@ -15,15 +15,7 @@ namespace ClassLibrary
         /// </summary>
         /// <value></value>
         public string Name{get; set;}
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <value></value>
-        public string Category{get;set;}
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <value></value>
+        public MaterialType Type{get;set;}
         public string Quantity{get;set;}
         /// <summary>
         /// 
@@ -35,14 +27,11 @@ namespace ClassLibrary
         /// </summary>
         /// <value></value>
         public string Location{get;set;}
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <value></value>
-        public Materials(string name, string category,string quantity, string cost, string location)
+
+        public Materials(string name, MaterialType type, string quantity, string cost, string location)
         {
             this.Name = name;
-            this.Category = category;
+            this.Type = type;
             this.Quantity = quantity;
             this.Cost = cost;
             this.Location = location;

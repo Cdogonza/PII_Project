@@ -59,40 +59,19 @@ namespace ClassLibrary
         /// </summary>
         /// <value></value>
         public Entrepreneur Entrepreneur {get;set;}
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <value></value>
-        public MaterialType Material{get;set;}
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam List="Permission"></typeparam>
-        /// <returns></returns>
+        public Materials Material{get;set;}
         public List<Permission> permissions = new List<Permission>();
         /// <summary>
         /// 
         /// </summary>
         /// <value></value>
         public int id {get;}
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="materialname"></param>
-        /// <param name="location"></param>
-        /// <param name="materialdescription"></param>
-        /// <param name="cost"></param>
-        /// <param name="availability"></param>
-        /// <param name="tags"></param>
-        /// <param name="deliverydate"></param>
-        /// <param name="publicationdate"></param>
-        /// <param name="offer"></param>
-        public Offer(string name,string materialname,string location,string materialdescription,double cost,bool availability, /*string regularoffers*/ ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
+        
+        public Offer(string name, Materials material, string location, double cost,bool availability, /*string regularoffers*/ ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
         {
             this.id = id +1; 
             this.Name = name;
-            this.Material = new MaterialType(materialname,materialdescription);
+            this.Material = material;
             this.Location = location;
             this.Cost = cost;
             this.Availability = availability;

@@ -7,16 +7,7 @@ namespace ClassLibrary
     /// </summary>
     public class OfferManager 
     {
-        /// <summary>
-        /// Lista de las ofertas de la aplicacion
-        /// </summary>
-        /// <typeparam List="catalog">Lista de ofertas de la app</typeparam>
-        /// <returns>efrrw</returns>
-
         public static List<Offer> catalog = new List<Offer>();
-        /// <summary>
-        /// 
-        /// </summary>
          public OfferManager()
         {
             
@@ -47,31 +38,9 @@ namespace ClassLibrary
            Offer offer = catalog[id];
             offer.Availability = false;
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="company"></param>
-        /// <returns></returns>
-        public string PrintMyOfferts(Company company)
-        {
-
-            string data = $"Las ofertas de la compania son: \n";
-
-            foreach (Offer offer in catalog)
-            {
-                if(offer.Company == company)
-                {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
-                }
-            }
-            return data;
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="company"></param>
-        /// <returns></returns>
-        public string PrintMyOffertsAvailability(Company company)
+    
+        
+        public string GetMyOffertsAvailability(Company company)
         {
 
             string data = $"Las ofertas habilitadas Para la compania son: \n";
@@ -93,12 +62,7 @@ namespace ClassLibrary
             return data;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-
-       public string PrintOffertsAvailability()
+       public string GetOffertsAvailability()
         {
             string data = $"Las ofertas habilitadas son: \n";
             foreach (Offer offer in catalog)
