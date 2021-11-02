@@ -8,11 +8,9 @@ namespace ClassLibrary
     public class Company : UserBase
     {
         public AreaOfWork AreaOfWork {get; set;}
-        public string Location{get; set;}
-        public Company(string name,string location,int phone,string area) : base (name,phone)
+        public Company(string name,string phone,string location,string area) : base (name,phone,location)
         {
-            this.AreaOfWork = new AreaOfWork(area);   
-            this.Location = location;
+            this.AreaOfWork = new AreaOfWork(area);
         }
 
         public List<string> DataCompany()

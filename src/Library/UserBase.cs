@@ -5,16 +5,19 @@ namespace ClassLibrary
     public abstract class UserBase
     { 
         public string Name { get;  set; }
-        public int Phone { get; set;}   
+        public string Phone { get; set;}  
+        public string Location{get; set;}
         
 
         private List<Permission> permissions = new List<Permission>();
 
-        protected UserBase(string name, int phone)
+        protected UserBase(string name, string phone, string location)
         {
             this.Name = name;
             
             this.Phone = phone;
+
+            this.Location = location;
         }
 
 
@@ -37,10 +40,5 @@ namespace ClassLibrary
             }
         }
  */
-        public Boolean SearchP(Permission permissions)
-        {
-            return this.permissions.Contains(permissions);
-        }
-
     }
 }
