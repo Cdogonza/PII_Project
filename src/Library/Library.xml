@@ -263,30 +263,30 @@
         </member>
         <member name="T:ClassLibrary.Offer">
             <summary>
-            
+            ESTA CLASE ESTEBLECE LOS PARAMETROS NECESARIOS PARA LA CREACION DE LA OFERTA
             </summary>
         </member>
         <member name="P:ClassLibrary.Offer.Name">
             <summary>
-            
+            NOMBRE DE LA OFERTA
             </summary>
             <value></value>
         </member>
         <member name="P:ClassLibrary.Offer.Cost">
             <summary>
-            
+            COSTO EN CASO DE QUE TENGA 
             </summary>
             <value></value>
         </member>
         <member name="P:ClassLibrary.Offer.Location">
             <summary>
-            
+            UBICACION DONDE LA COMPANY TIENE EL MATERIAL DE LA OFERTA
             </summary>
             <value></value>
         </member>
         <member name="P:ClassLibrary.Offer.Availability">
             <summary>
-            
+            ESTABLECE SI LA OFERTA ESTA DISPONIBLE PARA ALGUN EMPRENDEDOR O SIMPLEMENTE ESTA CREADA
             </summary>
             <value></value>
         </member>
@@ -298,54 +298,54 @@
         </member>
         <member name="P:ClassLibrary.Offer.Tags">
             <summary>
-            
+            PALABRAS CLAVES PARA DARLE FACILIDAD AL EMPRENDEDOR DE ENCONTRAR LA OFERTA
             </summary>
             <value></value>
         </member>
         <member name="P:ClassLibrary.Offer.DeliveryDate">
             <summary>
-            
+            FECHA DE COMPRA DE LA OFERTA
             </summary>
             <value></value>
         </member>
         <member name="P:ClassLibrary.Offer.PublicationDate">
             <summary>
-            
+            FECHA DE PUBLICACION DE LA OFERTA
             </summary>
             <value></value>
         </member>
         <member name="P:ClassLibrary.Offer.Company">
             <summary>
-            
+            COMPANY QUE CREO LA OFERTA
             </summary>
             <value></value>
         </member>
         <member name="P:ClassLibrary.Offer.Entrepreneur">
             <summary>
-            
+            ESTE PARAMETRO ESTA VACIO HASTA UN EMPRENDEDOR ADQUIERE LA OFERTA
             </summary>
             <value></value>
         </member>
         <member name="P:ClassLibrary.Offer.Material">
              <summary>
-            
+            CORRESPONDE AL MATERIAL DE LA OFERTA
              /// </summary>
              <value></value>
         </member>
         <member name="F:ClassLibrary.Offer.permissions">
             <summary>
-            
+            LOS PERMISOS NECESARIOS QUE DEBE DE TENER EL EMPRENDEDOR PARA PODER ADQUIRIR ESTA OFERTA
             </summary>
             <typeparam List="Permission"></typeparam>
             <returns></returns>
         </member>
         <member name="P:ClassLibrary.Offer.id">
             <summary>
-            
+            EL ID LO UTILIZAMOS PARA IDENTIFICAR CADA OFERTA EN EL CATALOGO
             </summary>
             <value></value>
         </member>
-        <member name="M:ClassLibrary.Offer.#ctor(System.String,ClassLibrary.Materials,System.String,System.Double,System.Boolean,System.Collections.ArrayList,System.DateTime,System.DateTime,ClassLibrary.Company)">
+        <member name="M:ClassLibrary.Offer.#ctor(System.String,ClassLibrary.Materials,System.String,System.Double,System.Boolean,System.Boolean,System.Collections.ArrayList,System.DateTime,System.DateTime,ClassLibrary.Company)">
             <summary>
             
             </summary>
@@ -358,28 +358,31 @@
             <param name="deliverydate"></param>
             <param name="publicationdate"></param>
             <param name="offer"></param>
+            <param name="regularoffers"></param>
         </member>
         <member name="M:ClassLibrary.Offer.AddPermission(System.String)">
             <summary>
-            
+            PERMITE AGREGAR PERMISOS A LA OFERTA 
             </summary>
             <param name="permission"></param>
         </member>
         <member name="M:ClassLibrary.Offer.getOffert(ClassLibrary.Entrepreneur)">
             <summary>
-            
+            METODO QUE RETORNA LOS DATOS DE LA EMPRERSA PARA SER ENVIADOS AL EMPRENDEDOR QUE COMPRO LA OFERTA
+            A SU VEZ DEJA COMO NO DISPONIBLE LA OFERTA EN EL CATALOGO
+            Y COLOCA EL NOMBRE DEL EMPRENDEDOR A LA OFERTA
             </summary>
             <param name="entrepreneur"></param>
             <returns></returns>
         </member>
         <member name="T:ClassLibrary.OfferManager">
             <summary>
-            
+            CLASE EXPERTA EN EL MANEJO DE LAS OFERAS
             </summary>
         </member>
         <member name="F:ClassLibrary.OfferManager.catalog">
             <summary>
-            
+            CATALOGO DE DE OFERTAS 
             </summary>
             <typeparam List="Offer"></typeparam>
             <returns></returns>
