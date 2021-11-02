@@ -88,14 +88,14 @@ namespace ClassLibrary
         /// <param name="deliverydate"></param>
         /// <param name="publicationdate"></param>
         /// <param name="offer"></param>
-        public Offer(string name, Material material, string location, double cost,bool availability, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
+        public Offer(string name, Material material, string location, double cost, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
         {
             this.id = id +1;
             this.Name = name;
             this.Material = material;
             this.Location = location;
             this.Cost = cost;
-            this.Availability = availability;
+            this.Availability = true;
             this.Tags = tags;
             this.DeliveryDate = deliverydate;
             this.PublicationDate = publicationdate;
