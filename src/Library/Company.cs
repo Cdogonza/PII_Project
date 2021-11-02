@@ -22,8 +22,7 @@ namespace ClassLibrary
         /// </summary>
         public Company(string name,string location,int phone,string area) : base (name,phone)
         {
-            this.AreaOfWork = new AreaOfWork(area);   
-            this.Location = location;
+            this.AreaOfWork = new AreaOfWork(area);
         }
 
         /// <summary>

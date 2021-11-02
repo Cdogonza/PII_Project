@@ -10,24 +10,34 @@ namespace ClassLibrary
         /// Propiedad Nombre del usuario
         /// </summary>
         public string Name { get;  set; }
+
+        /// <summary>
+        /// Propiedad ubicación de la empresa
+        /// </summary>
+        public string Location{get; set;}
+
         /// <summary>
         /// Propiedad telefono del usuario
         /// </summary>
-        public int Phone { get; set;}   
+        public string Phone { get; set;}  
         
         /// <summary>
         /// Lista de habilitaciones que posee un usario
         /// </summary>
         private List<Permission> permissions = new List<Permission>();
 
+
         /// <summary>
         /// Permite crear instancias de los usuarios del programa
         /// </summary>
-        protected UserBase(string name, int phone)
+
+        protected UserBase(string name, string phone, string location)
         {
             this.Name = name;
             
             this.Phone = phone;
+
+            this.Location = location;
         }
 
         /// <summary>
@@ -57,7 +67,5 @@ namespace ClassLibrary
                 Console.WriteLine(permission.Name);
             }
         }
-
-
     }
 }
