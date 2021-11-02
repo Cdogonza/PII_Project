@@ -4,7 +4,7 @@ namespace ClassLibrary
 {
 
     // DIP
-    public class ConsolePrinter //: IPrinter
+    public class ConsolePrinter : IPrinter
     {
         //public Company Company {get;set;}
 
