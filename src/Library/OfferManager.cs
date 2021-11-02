@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using System;
 namespace ClassLibrary
 {   
-    
+    /// <summary>
+    /// CLASE EXPERTA EN EL MANEJO DE LAS OFERAS
+    /// </summary>
     public class OfferManager 
     {
         public List<Offer> catalog = new List<Offer>();
@@ -10,25 +12,39 @@ namespace ClassLibrary
         {
             
         }
-        
-       
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="offer"></param>
        public void SaveOffer(Offer offer)
         {   
             catalog.Add(offer);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
         public void PublishOffer(int id)
         {
            Offer offer = catalog[id];
             offer.Availability = true;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
         public void DiseableOffer(int id)
         {
            Offer offer = catalog[id];
             offer.Availability = false;
         }
     
-        
-        public string GetMyOffertsAvailability(Company company)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="company"></param>
+        /// <returns></returns>
+        public string GetMyOffersAvailability(Company company)
         {
 
             string data = $"Las ofertas habilitadas Para la compania son: \n";
@@ -49,8 +65,11 @@ namespace ClassLibrary
             }
             return data;
         }
-
-       public string GetOffertsAvailability()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+       public string GetOffersAvailability()
         {
             string data = $"Las ofertas habilitadas son: \n";
             foreach (Offer offer in catalog)
@@ -67,10 +86,14 @@ namespace ClassLibrary
             }
             return data;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="buyer"></param>
+        /// <param name="index"></param>
         public void buyoffer(Entrepreneur buyer,int index)
         {
-            catalog[index].getOffert(buyer);
+            catalog[index].getOffer(buyer);
 
         }
     }

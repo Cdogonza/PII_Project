@@ -1,5 +1,8 @@
 namespace ClassLibrary
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IPrinter
     {
         void PrintOffertsAvailability(OfferManager offermanager);
