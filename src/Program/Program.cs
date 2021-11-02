@@ -21,7 +21,7 @@ namespace ConsoleApplication
         public static void Main()
         {
 
-            OfferManager catalogo = new OfferManager();
+           /* OfferManager catalogo = new OfferManager();
             // almacenar.AddAreaOfWork("construccion");
             // almacenar.AddAreaOfWork("carpinteria");
                    
@@ -148,7 +148,7 @@ namespace ConsoleApplication
                     int answerr=Int32.Parse(Console.ReadLine());
                     catalogo.PublishOffer(answerr);
                     catalogo.PrintmyOfferts(Compania1);          
-            */    
+               
 
                 catalogo.PrintOffertsAvilitiy(Compania1);
                 Console.WriteLine("Ingrese el numero de la Oferta que quiere publicar");
@@ -201,7 +201,7 @@ namespace ConsoleApplication
                 string index = Console.ReadLine();
                 catalogo.buyoffer(Entrepeneur1,Int32.Parse(index));
 
-            }
+            }*/
 
             
             
