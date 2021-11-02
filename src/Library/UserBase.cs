@@ -5,7 +5,6 @@ namespace ClassLibrary
     public abstract class UserBase
     { 
         public string Name { get;  set; }
-        public string Location { get; set;}   
         public int Phone { get; set;}   
         
 
