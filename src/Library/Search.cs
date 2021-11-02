@@ -17,7 +17,7 @@ namespace ClassLibrary
         /// </summary>
         public Search()
         {
-            this.catalog = OfferManager.catalog;
+           this.catalog = Singleton<OfferManager>.Instance.catalog;
         }
         /// <summary>
         /// Filtra el catálogo de búsquedas según su ubicación

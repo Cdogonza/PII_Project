@@ -3,11 +3,19 @@ using System;
 namespace ClassLibrary
 {   
     /// <summary>
-    /// 
+    /// CLASE EXPERTA EN EL MANEJO DE LAS OFERAS
     /// </summary>
     public class OfferManager 
     {
-        public static List<Offer> catalog = new List<Offer>();
+        /// <summary>
+        /// CATALOGO DE DE OFERTAS 
+        /// </summary>
+        /// <typeparam List="Offer"></typeparam>
+        /// <returns></returns>
+        public List<Offer> catalog = new List<Offer>();
+        /// <summary>
+        /// 
+        /// </summary>
          public OfferManager()
         {
             
@@ -39,7 +47,11 @@ namespace ClassLibrary
             offer.Availability = false;
         }
     
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="company"></param>
+        /// <returns></returns>
         public string GetMyOffertsAvailability(Company company)
         {
 
@@ -61,7 +73,10 @@ namespace ClassLibrary
             }
             return data;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
        public string GetOffertsAvailability()
         {
             string data = $"Las ofertas habilitadas son: \n";
