@@ -17,15 +17,15 @@ namespace ClassLibrary
         public DateTime PublicationDate{get;set;}
         public Company Company {get;set;}
         public Entrepreneur Entrepreneur {get;set;}
-        public MaterialType Material{get;set;}
+        public Material Material{get;set;}
         public List<Permission> permissions = new List<Permission>();
         public int id {get;}
         
-        public Offer(string name,string materialname,string location,string materialdescription,double cost,bool availability, /*string regularoffers*/ ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
+        public Offer(string name, Material material, string location, double cost,bool availability, /*string regularoffers*/ ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
         {
             this.id = id +1; 
             this.Name = name;
-            this.Material = new MaterialType(materialname,materialdescription);
+            this.Material = material;
             this.Location = location;
             this.Cost = cost;
             this.Availability = availability;

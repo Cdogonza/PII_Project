@@ -1,29 +1,31 @@
-﻿// //--------------------------------------------------------------------------------
-// // <copyright file="Program.cs" company="Universidad Católica del Uruguay">
-// //     Copyright (c) Programación II. Derechos reservados.
-// // </copyright>
-// //--------------------------------------------------------------------------------
 
-// using System;
-// using ClassLibrary;
-// using System.Collections;
-// using System.Collections.Generic;
-// namespace ConsoleApplication
-// {
-//     /// <summary>
-//     /// Programa de consola de demostración.
-//     /// </summary>
-//     public static class Program
-//     {
-//         /// <summary>
-//         /// Punto de entrada al programa principal.
-//         /// </summary>
-//         public static void Main()
-//         {
+﻿//--------------------------------------------------------------------------------
+// <copyright file="Program.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
 
-//            /* OfferManager catalogo = new OfferManager();
-//             // almacenar.AddAreaOfWork("construccion");
-//             // almacenar.AddAreaOfWork("carpinteria");
+using System;
+using ClassLibrary;
+using System.Collections;
+using System.Collections.Generic;
+namespace ConsoleApplication
+{
+    /// <summary>
+    /// Programa de consola de demostración.
+    /// </summary>
+    public static class Program
+    {
+        /// <summary>
+        /// Punto de entrada al programa principal.
+        /// </summary>
+        public static void Main()
+        {
+
+           /* OfferManager catalogo = new OfferManager();
+            // almacenar.AddAreaOfWork("construccion");
+            // almacenar.AddAreaOfWork("carpinteria");
+
                    
 //             // AreaOfWork carpinteria = new AreaOfWork("carpinteria");
 
@@ -142,6 +144,7 @@
 //             }
                 
           
+
 //           /*
 //                     catalogo.PrintOffertsAvailability(Compania1);
 //                     Console.WriteLine("Ingrese el numero de la Oferta que quiere publicar");
@@ -162,6 +165,7 @@
 //                 {
 //                     Console.WriteLine(off.Name);
 //                 }
+
     
 //                 Search busqueda2 = new Search();
 //                 List<Offer> locationList = busqueda2.GetOfferByLocation(catalogo.catalog, "Berro 1231");
@@ -201,7 +205,9 @@
 //                 string index = Console.ReadLine();
 //                 catalogo.buyoffer(Entrepeneur1,Int32.Parse(index));
 
+
 //             }*/
+
 
             
             
