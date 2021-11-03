@@ -81,7 +81,7 @@ namespace Tests
         [Test]
         public void Permission()
         {
-            Assert.That(this.company,Contains.Substring("Materiales inflamables"));
+            Assert.That(this.company.GetPermissions(),Contains.Substring("Materiales inflamables"));
             
         }
     }

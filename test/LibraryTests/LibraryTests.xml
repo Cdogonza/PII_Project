@@ -77,6 +77,42 @@
         </member>
         <!-- Badly formed XML comment ignored for member "M:Tests.SearchTest.FilterByLocation" -->
         <!-- Badly formed XML comment ignored for member "M:Tests.SearchTest.FilterByWord" -->
+        <member name="T:Tests.PerrmissionTest">
+            <summary>
+            Prueba de la clase <see cref="T:ClassLibrary.OfferManager"/>.
+            </summary>
+        </member>
+        <member name="F:Tests.PerrmissionTest.entrepreneur">
+            <summary>
+            emprededor para pruebas
+            </summary>
+        </member>
+        <member name="F:Tests.PerrmissionTest.offerAdmin">
+            <summary>
+            Catalogo para pruebas.
+            </summary>
+        </member>
+        <member name="F:Tests.PerrmissionTest.material">
+            <summary>
+            Material para pruebas
+            </summary>
+        </member>
+        <member name="F:Tests.PerrmissionTest.company">
+            <summary>
+            Compania para la empresa
+            </summary>
+        </member>
+        <member name="F:Tests.PerrmissionTest.searcher">
+            <summary>
+            Buscador para pruebas
+            </summary>
+        </member>
+        <member name="M:Tests.PerrmissionTest.Setup">
+            <summary>
+            Crea las intancias utiilzadas en los test
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Tests.PerrmissionTest.Permission" -->
         <member name="T:Tests.PublishOffer">
             <summary>
             Prueba de la clase <see cref="T:ClassLibrary.OfferManager"/>.

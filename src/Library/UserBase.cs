@@ -76,12 +76,16 @@ namespace ClassLibrary
         /// <summary>
         /// permite obtener la lista de permisos de un usuario
         /// </summary>
-        public void GetPermissions()
+        public string GetPermissions()
         {
+            string data = $"La lista de Rubros existentes son: \n";
+
             foreach (var permission in permissions)
             {
-                Console.WriteLine(permission.Name);
+                data = data + $"Name: {permission.Name} \n";
+                
             }
+            return data;
         }
     }
 }
