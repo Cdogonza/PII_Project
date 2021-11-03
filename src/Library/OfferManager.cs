@@ -46,33 +46,7 @@ namespace ClassLibrary
            Offer offer = catalog[id];
             offer.Availability = false;
         }
-    
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="company"></param>
-        /// <returns></returns>
-        public string GetMyOffersAvailability(Company company)
-        {
 
-            string data = $"Las ofertas habilitadas Para la compania son: \n";
-
-            foreach (Offer offer in catalog)
-            {
-                if(offer.Company == company)
-                {
-                    if(offer.Availability)
-                    {
-                        data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
-                    }
-                    else
-                    {
-                        data = "No tienes Ofertas habilitadas para mostrar";
-                    }
-                }
-            }
-            return data;
-        }
         /// <summary>
         /// 
         /// </summary>
