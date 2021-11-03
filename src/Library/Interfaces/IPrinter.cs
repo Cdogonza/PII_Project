@@ -16,6 +16,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="offermanager"></param>
         /// <param name="company"></param>
+
         void PrintMyOffersAvailability(OfferManager offermanager, Company company);
         
         /// <summary>
@@ -23,6 +24,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="search"></param>
         /// <param name="location"></param>
+
         void PrintOffersByLocation(Search search, string location);
         
         /// <summary>

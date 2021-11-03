@@ -22,9 +22,9 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="offermanager"></param>
         /// <param name="company"></param>
-        public void PrintMyOffersAvailability(OfferManager offermanager, Company company)
+        public void PrintMyOffersAvailability(Search search, Company company)
         {
-            Console.WriteLine(offermanager.GetMyOffersAvailability(company));
+            Console.WriteLine(search.GetAvailableOffersByCompany(company));
         }
 
         /// <summary>

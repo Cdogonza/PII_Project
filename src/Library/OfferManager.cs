@@ -7,7 +7,15 @@ namespace ClassLibrary
     /// </summary>
     public class OfferManager 
     {
+        /// <summary>
+        /// CATALOGO DE OFERTAS DEL PROGRAMA
+        /// </summary>
+        /// <typeparam List="Offer"></typeparam>
+        /// <returns></returns>
         public List<Offer> catalog = new List<Offer>();
+        /// <summary>
+        /// 
+        /// </summary>
          public OfferManager()
         {
             
@@ -38,33 +46,7 @@ namespace ClassLibrary
            Offer offer = catalog[id];
             offer.Availability = false;
         }
-    
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="company"></param>
-        /// <returns></returns>
-        public string GetMyOffersAvailability(Company company)
-        {
 
-            string data = $"Las ofertas habilitadas Para la compania son: \n";
-
-            foreach (Offer offer in catalog)
-            {
-                if(offer.Company == company)
-                {
-                    if(offer.Availability)
-                    {
-                        data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
-                    }
-                    else
-                    {
-                        data = "No tienes Ofertas habilitadas para mostrar";
-                    }
-                }
-            }
-            return data;
-        }
         /// <summary>
         /// 
         /// </summary>

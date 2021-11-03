@@ -62,11 +62,12 @@ namespace ClassLibrary
             return data;
 
         }
+       
         /// <summary>
         /// Filtra el catálogo de ofertas según su categoria (tipo de material)
         /// </summary>
         /// <param name="category"></param>
-        /// <returns>Retorna un string con una lista de ofertas</returns>
+        /// <returns></returns>
         public string GetOfferByCategory(string category)
         {
             List<Offer> byCategory = new List<Offer>();
@@ -131,7 +132,7 @@ namespace ClassLibrary
         public string GetAvailableOffersByCompany(Company company)
         {
 
-            string data = $"Las ofertas habilitadas para la compania son: \n";
+            string data = $"Las ofertas habilitadas para la empresa son: \n";
 
             foreach (Offer offer in catalog)
             {
