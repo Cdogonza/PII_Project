@@ -44,6 +44,24 @@ namespace ClassLibrary
 
         protected UserBase(string name, string phone, string location, string area)
         {
+            if (String.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException(name);
+            }
+
+            if (String.IsNullOrWhiteSpace(Phone))
+            {
+                throw new ArgumentNullException(Phone);
+            }
+            
+            if (String.IsNullOrWhiteSpace(location))
+            {
+                throw new ArgumentNullException(location);
+            }
+            if (String.IsNullOrWhiteSpace(area))
+            {
+                throw new ArgumentNullException(area);
+            }
             this.Name = name;
             
             this.Phone = phone;
