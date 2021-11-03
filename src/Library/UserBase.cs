@@ -20,24 +20,37 @@ namespace ClassLibrary
         /// Propiedad telefono del usuario
         /// </summary>
         public string Phone { get; set;}  
+
+        /// <summary>
+        /// Instancia de clase AreaOfWork que representa una categoria de la empresa
+        /// </summary>
+        public AreaOfWork AreaOfWork {get; set;}
         
         /// <summary>
         /// Lista de habilitaciones que posee un usario
         /// </summary>
+        /// <typeparam list="Permission"></typeparam>
+        /// <returns></returns>
         private List<Permission> permissions = new List<Permission>();
 
 
         /// <summary>
         /// Permite crear instancias de los usuarios del programa
         /// </summary>
+        /// <param name="name"></param>
+        /// <param name="phone"></param>
+        /// <param name="location"></param>
+        /// <param name="area"></param>
 
-        protected UserBase(string name, string phone, string location)
+        protected UserBase(string name, string phone, string location, string area)
         {
             this.Name = name;
             
             this.Phone = phone;
 
             this.Location = location;
+
+            this.AreaOfWork = new AreaOfWork(area);
         }
 
         /// <summary>

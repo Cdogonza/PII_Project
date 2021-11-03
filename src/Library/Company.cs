@@ -9,19 +9,19 @@ namespace ClassLibrary
     /// </summary>
     public class Company : UserBase
     {
-        /// <summary>
-        /// Instancia de clase AreaOfWork que representa una categoria de la empresa
-        /// </summary>
-        public AreaOfWork AreaOfWork {get; set;}
-
-        /// <summary>
-        /// Permite crear instancias de usuarios del tipo Company
-        /// </summary>
-        public Company(string name,string phone,string location,string area) : base (name,phone,location)
+    /// <summary>
+    /// Constructor de company
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="phone"></param>
+    /// <param name="location"></param>
+    /// <param name="area"></param>
+    /// <returns></returns>
+        public Company(string name,string phone,string location,string area) : base (name,phone,location,area)
         {
-            this.AreaOfWork = new AreaOfWork(area);
-        }
 
+        }
+        
         /// <summary>
         /// Devuelve una lista con la información de una compania
         /// </summary>
