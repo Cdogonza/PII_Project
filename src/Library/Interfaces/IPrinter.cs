@@ -14,10 +14,10 @@ namespace ClassLibrary
         /// <summary>
         /// Este metodo imprime las ofertas disponibles de la compania
         /// </summary>
-        /// <param name="offermanager"></param>
+        /// <param name="search"></param>
         /// <param name="company"></param>
 
-        void PrintMyOffersAvailability(OfferManager offermanager, Company company);
+        void PrintMyOffersAvailability(Search search, Company company);
         
         /// <summary>
         /// Este metodo imprime las ofertas filtradas por Ubicacion
@@ -72,6 +72,11 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="datamanager"></param>
         void PrintMaterialType(DataManager datamanager);
+        /// <summary>
+        /// Metodo que imprime todos los permisos del usuario
+        /// </summary>
+        /// <param name="userbase"></param>    
+        void PrintUserPermissions(UserBase userbase);
 
     }
 }
