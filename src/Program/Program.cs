@@ -5,7 +5,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-namespace ConsoleApplication
+namespace ClassLibrary
 {
     /// <summary>
     /// 
@@ -14,7 +14,7 @@ namespace ConsoleApplication
 
     static void Main(string[] args)
     {
-    
+        
     }
     }
  }

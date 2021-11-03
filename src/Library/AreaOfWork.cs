@@ -16,6 +16,10 @@ namespace ClassLibrary
         /// </summary>
         public AreaOfWork(string name)
         {
+            if (String.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException(name);
+            }
             this.Name = name;
         }
         
