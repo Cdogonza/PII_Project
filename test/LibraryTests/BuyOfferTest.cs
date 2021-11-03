@@ -15,8 +15,12 @@ namespace Tests
     /// Prueba de la clase <see cref="OfferManager"/>.
     /// </summary>
     [TestFixture]
-    public class PublishOffer
+    public class BuyOffer
     {
+        /// <summary>
+        /// emprededor para pruebas
+        /// </summary>
+        private Entrepreneur entrepreneur;
         /// <summary>
         /// Catalogo para pruebas.
         /// </summary>
@@ -53,55 +57,19 @@ namespace Tests
             MaterialType materialType  =  new MaterialType("Tela", "Recortes de tela de 1x1");
             this.material =  new Material("Tela",materialType,"200","100","Berro 1231");
             this.offer = new Offer("Promocion de verano",this.material,"Berro1231",200.00,true,tags,deliverydate,publicationDate,this.company);
+            this.offerAdmin.SaveOffer(this.offer);
+
+            this.entrepreneur = new Entrepreneur("Empre2","091234567","Galicia 1234","Construcción");
         }
 
         /// <summary>
         // /// Prueba de creacion de offerManager
         ///</summary>
         [Test]
-        public void CompanyTest()
+        public void Buy()
         {
-            Assert.AreEqual(this.company.Name,"compania1");
-            Assert.AreEqual(this.company.Location,"Las Piedras");
-            Assert.AreEqual(this.company.Phone,"098239334");
-            
-            Assert.AreEqual(this.company.AreaOfWork.Name,"Construcción");
+            this.offerAdmin.BuyOffer(this.entrepreneur,0);
+            Assert.AreEqual(this.offerAdmin.catalog[0].Entrepreneur,this.entrepreneur);
         }
-
-        [Test]
-        /// <summary>
-        // /// Prueba de creacion de oferta
-        ///</summary>
-        public void OfferTest()
-        {
-
-            Assert.AreEqual(this.offer.Location,"Berro1231");
-            Assert.AreEqual(this.offer.Cost,200.00);
-            Assert.AreEqual(this.offer.Availability,true);
-            Assert.AreEqual(this.offer.Name,"Promocion de verano");
-
-            
-            Assert.AreEqual(this.offer.Material,this.material);
-            ArrayList tags  = new ArrayList();
-            tags.Add("tag1");
-            tags.Add("tag");               
-            Assert.AreEqual(this.offer.Tags,tags);
-            Assert.AreEqual(this.offer.Company.Name,this.company.Name);
-
-        }
-
-
-
-        [Test]
-        /// <summary>
-        // /// Prueba de creacion de oferta
-        ///</summary>
-        public void PublishTest()
-        {
-
-            this.offerAdmin.SaveOffer(this.offer);
-            Assert.AreEqual(this.offerAdmin.catalog[0],this.offer);
-        }
-
     }
 } 
