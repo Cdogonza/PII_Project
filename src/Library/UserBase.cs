@@ -49,9 +49,9 @@ namespace ClassLibrary
                 throw new ArgumentNullException(name);
             }
 
-            if (String.IsNullOrWhiteSpace(Phone))
+            if (String.IsNullOrWhiteSpace(phone))
             {
-                throw new ArgumentNullException(Phone);
+                throw new ArgumentNullException(phone);
             }
             
             if (String.IsNullOrWhiteSpace(location))
