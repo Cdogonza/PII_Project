@@ -4,28 +4,28 @@ using System;
 namespace ClassLibrary
 {
     /// <summary>
-    /// ESTA CLASE ESTEBLECE LOS PARAMETROS NECESARIOS PARA LA CREACION DE LA OFERTA
+    /// Esta clase esteblece los parametros necesarios para la creacion de la oferta
     /// </summary>
     public class Offer
     {
         //public string Material{get;set;}
         /// <summary>
-        /// NOMBRE DE LA OFERTA
+        /// Nombre de la oferta
         /// </summary>
         /// <value></value>
         public string Name {get;set;}
         /// <summary>
-        /// COSTO EN CASO DE QUE TENGA 
+        /// Costo en caso de que tenga
         /// </summary>
         /// <value></value>
         public double Cost{get;set;}
         /// <summary>
-        /// UBICACION DONDE LA COMPANY TIENE EL MATERIAL DE LA OFERTA
+        /// Ubicacion donde la company tiene el material de la oferta
         /// </summary>
         /// <value></value>
         public string Location{get;set;}
         /// <summary>
-        /// ESTABLECE SI LA OFERTA ESTA DISPONIBLE PARA ALGUN EMPRENDEDOR O SIMPLEMENTE ESTA CREADA
+        /// Establece si la oferta esta disponible para algun emprendedor o simplemente esta creada pero no disponible
         /// </summary>
         /// <value></value>
         public bool Availability{get;set;}
@@ -35,54 +35,53 @@ namespace ClassLibrary
         /// <value></value>
         public bool RegularOffers{get;set;}
         /// <summary>
-        /// PALABRAS CLAVES PARA DARLE FACILIDAD AL EMPRENDEDOR DE ENCONTRAR LA OFERTA
+        /// Palabras claves para darle la facilidad al emprendedor de encontrar la oferta
         /// </summary>
         /// <value></value>
         public ArrayList Tags{get;set;}
         /// <summary>
-        /// FECHA DE COMPRA DE LA OFERTA
+        /// Fecha de compra de la oferta
         /// </summary>
         /// <value></value>
         public DateTime DeliveryDate{get;set;}
         /// <summary>
-        /// FECHA DE PUBLICACION DE LA OFERTA
+        /// Fecha de la publicacion de la oferta
         /// </summary>
         /// <value></value>
         public DateTime PublicationDate{get;set;}
         /// <summary>
-        /// COMPANY QUE CREO LA OFERTA
+        /// Company que creo la oferta
         /// </summary>
         /// <value></value>
         public Company Company {get;set;}
         /// <summary>
-        /// ESTE PARAMETRO ESTA VACIO HASTA UN EMPRENDEDOR ADQUIERE LA OFERTA
+        /// Este parametro esta vacio hasta un emprendedor adquiere la oferta
         /// </summary>
         /// <value></value>
         public Entrepreneur Entrepreneur {get;set;}
         /// <summary>
-        /// 
+        /// Establece el material de la oferta
         /// </summary>
         /// <value></value>
         public Material Material{get;set;}
         /// <summary>
-        /// 
+        /// La lista de permisos que tiene que tener el emprendedor para adquirir la la oferta
         /// </summary>
         /// <typeparam List="Permission"></typeparam>
         /// <returns></returns>
         public List<Permission> permissions = new List<Permission>();
         /// <summary>
-        /// EL ID LO UTILIZAMOS PARA IDENTIFICAR CADA OFERTA EN EL CATALOGO
+        /// El id lo utilizamos para identificar cada oferta en el catalogo
         /// </summary>
         /// <value></value>
         public int id {get;}
         /// <summary>
-        /// 
+        /// Este es el constructor de la oferta que recibe los parametros para crear la misma
         /// </summary>
         /// <param name="name"></param>
         /// <param name="material"></param>
         /// <param name="location"></param>
         /// <param name="cost"></param>
-        /// <param name="availability"></param>
         /// <param name="regularoffers"></param>
         /// <param name="tags"></param>
         /// <param name="deliverydate"></param>
@@ -103,7 +102,7 @@ namespace ClassLibrary
             this.RegularOffers = regularoffers;
         }
         /// <summary>
-        /// PERMITE AGREGAR PERMISOS A LA OFERTA 
+        /// Permite agregar permisos a la oferta
         /// </summary>
         /// <param name="permission"></param>
         public void AddPermission(string permission)
@@ -112,9 +111,9 @@ namespace ClassLibrary
             permissions.Add(newPermission);
         }
         /// <summary>
-        /// METODO QUE RETORNA LOS DATOS DE LA EMPRERSA PARA SER ENVIADOS AL EMPRENDEDOR QUE COMPRO LA OFERTA
-        /// A SU VEZ DEJA COMO NO DISPONIBLE LA OFERTA EN EL CATALOGO
-        /// Y COLOCA EL NOMBRE DEL EMPRENDEDOR A LA OFERTA
+        /// Metodo que retorna los datos de la empresa para ser enviados al emprendedor que compro la oferta
+        /// A su vez deja como no disponible la oferta en el catalogo
+        /// y coloca el nombre del emprendedor a la oferta
         /// </summary>
         /// <param name="entrepreneur"></param>
         /// <returns></returns>
