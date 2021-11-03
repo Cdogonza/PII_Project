@@ -76,7 +76,7 @@ namespace Tests
         }
 
         /// <summary>
-        /// Prueba de creacion de offerManager
+        /// Prueba de asignación de permisos con datamanager
         /// </summary>
         [Test]
         public void Permission()

@@ -81,12 +81,12 @@
         </member>
         <member name="M:Tests.SearchTest.FilterByLocation">
             <summary>
-            Prueba de creacion de offerManager
+            Prueba de filtrado por ubicación
             </summary>
         </member>
         <member name="M:Tests.SearchTest.FilterByWord">
             <summary>
-            Prueba de creacion de offerManager
+            Prueba de filtrado por palabra (tag)
             </summary>
         </member>
         <member name="T:Tests.PerrmissionTest">
@@ -126,7 +126,7 @@
         </member>
         <member name="M:Tests.PerrmissionTest.Permission">
             <summary>
-            Prueba de creacion de offerManager
+            Prueba de asignación de permisos con datamanager
             </summary>
         </member>
         <member name="T:Tests.PublishOffer">
@@ -166,7 +166,12 @@
         </member>
         <member name="M:Tests.PublishOffer.OfferTest">
              <summary>
-             Prueba de creacion de oferta
+             Prueba de creación de oferta
+            </summary>
+        </member>
+        <member name="M:Tests.PublishOffer.PublishTest">
+            <summary>
+            Prueba de publicación de oferta
             </summary>
         </member>
         <member name="M:Tests.PublishOffer.PublishTest">

@@ -69,7 +69,7 @@ namespace Tests
         }
 
         /// <summary>
-        /// Prueba de creacion de oferta
+        /// Prueba de creación de oferta
         ///</summary>
         [Test]
         public void OfferTest()
@@ -92,7 +92,7 @@ namespace Tests
 
 
         /// <summary>
-        /// Prueba de creacion de oferta
+        /// Prueba de publicación de oferta
         /// </summary>
         [Test]
         public void PublishTest()
