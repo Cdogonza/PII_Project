@@ -174,5 +174,10 @@
             Prueba de publicación de oferta
             </summary>
         </member>
+        <member name="M:Tests.PublishOffer.PublishTest">
+            <summary>
+            Prueba de creacion de oferta
+            </summary>
+        </member>
     </members>
 </doc>
