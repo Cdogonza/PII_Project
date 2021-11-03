@@ -4,7 +4,7 @@ using System;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase representa los permisos de las empresas y emprendedores
+    /// Esta clase representa los permisos de las empresas, ofertas y emprendedores
     /// </summary>
     public class Permission
     {

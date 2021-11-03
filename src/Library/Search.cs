@@ -4,8 +4,9 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Filtra el catálogo según diferentes términos
+    /// Esta clase es la responsable en las busquedas dentro del catalogo de ofertas de la aplicacion
     /// </summary>
+    
     public class Search
     {
         /// <summary>

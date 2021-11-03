@@ -3,7 +3,9 @@ using System;
 namespace ClassLibrary
 {   
     /// <summary>
-    /// Clase experta en el manejo de las ofertas
+    /// En esta clase se puede ver el uso del patron Expert, y aque es experto en el manejo
+    /// de las ofertas de la aplicacion, incluso cuando se instancia esta clase la instanciamos
+    /// a traves de singleton de modo de manejar una unica instancia.
     /// </summary>
     public class OfferManager 
     {
