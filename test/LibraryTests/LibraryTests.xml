@@ -39,7 +39,11 @@
             Crea las intancias utiilzadas en los test
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Tests.BuyOffer.Buy" -->
+        <member name="M:Tests.BuyOffer.Buy">
+            <summary>
+            Prueba de creacion de offerManager
+            </summary>
+        </member>
         <member name="T:Tests.SearchTest">
             <summary>
             Prueba de la clase <see cref="T:ClassLibrary.OfferManager"/>.
@@ -75,8 +79,16 @@
             Crea las intancias utiilzadas en los test
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Tests.SearchTest.FilterByLocation" -->
-        <!-- Badly formed XML comment ignored for member "M:Tests.SearchTest.FilterByWord" -->
+        <member name="M:Tests.SearchTest.FilterByLocation">
+            <summary>
+            Prueba de creacion de offerManager
+            </summary>
+        </member>
+        <member name="M:Tests.SearchTest.FilterByWord">
+            <summary>
+            Prueba de creacion de offerManager
+            </summary>
+        </member>
         <member name="T:Tests.PerrmissionTest">
             <summary>
             Prueba de la clase <see cref="T:ClassLibrary.OfferManager"/>.
@@ -112,7 +124,11 @@
             Crea las intancias utiilzadas en los test
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Tests.PerrmissionTest.Permission" -->
+        <member name="M:Tests.PerrmissionTest.Permission">
+            <summary>
+            Prueba de creacion de offerManager
+            </summary>
+        </member>
         <member name="T:Tests.PublishOffer">
             <summary>
             Prueba de la clase <see cref="T:ClassLibrary.OfferManager"/>.
@@ -151,6 +167,11 @@
         <member name="M:Tests.PublishOffer.OfferTest">
              <summary>
              Prueba de creacion de oferta
+            </summary>
+        </member>
+        <member name="M:Tests.PublishOffer.PublishTest">
+            <summary>
+            Prueba de creacion de oferta
             </summary>
         </member>
     </members>
