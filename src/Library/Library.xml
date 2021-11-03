@@ -50,11 +50,11 @@
             </summary>
             <param name="offermanager"></param>
         </member>
-        <member name="M:ClassLibrary.ConsolePrinter.PrintMyOffersAvailability(ClassLibrary.OfferManager,ClassLibrary.Company)">
+        <member name="M:ClassLibrary.ConsolePrinter.PrintMyOffersAvailability(ClassLibrary.Search,ClassLibrary.Company)">
             <summary>
              Este metodo se encarga de imprimir en pantalla lo que devuelve GetMyOffertsAvailability de OfferManager
             </summary>
-            <param name="offermanager"></param>
+            <param name="search"></param>
             <param name="company"></param>
         </member>
         <member name="M:ClassLibrary.ConsolePrinter.PrintOffersByLocation(ClassLibrary.Search,System.String)">
@@ -110,6 +110,12 @@
             </summary>
             <param name="datamanager"></param>
         </member>
+        <member name="M:ClassLibrary.ConsolePrinter.PrintUserPermissions(ClassLibrary.UserBase)">
+            <summary>
+            Metodo para imprimir por pantalla los permisos que posee el usuario
+            </summary>
+            <param name="userbase"></param>
+        </member>
         <member name="T:ClassLibrary.DataManager">
             <summary>
             Esta clase es la encargada de manejar los datos de AreaOfWork(Rubros) MaterialsTypes y Permissions(Habilitaciones)
@@ -119,21 +125,21 @@
             <summary>
             Lista de String donde se almacenan los rubros
             </summary>
-            <typeparam name="string"></typeparam>
+            <typeparam List="string"></typeparam>
             <returns></returns>        
         </member>
         <member name="F:ClassLibrary.DataManager.materialsType">
             <summary>
             Lista de MaterialType donde se almacenan los tipos de materiales 
             </summary>
-            <typeparam name="MaterialType"></typeparam>
+            <typeparam List="MaterialType"></typeparam>
             <returns></returns>
         </member>
         <member name="F:ClassLibrary.DataManager.permissions">
             <summary>
-            Lista de Permisos donde se alamacenan los permisos a ser usados por las empresas y las ofertas
+            Lista de Permisos donde se almacenan los permisos a ser usados por las empresas y las ofertas
             </summary>
-            <typeparam name="Permission"></typeparam>
+            <typeparam List="Permission"></typeparam>
             <returns></returns>
         </member>
         <member name="M:ClassLibrary.DataManager.AddPermission(ClassLibrary.Permission)">
@@ -154,7 +160,7 @@
              Metodo que retorna el permiso segun el lugar de la lista ingresado
             </summary>
             <param name="indice"></param>
-            <returns></returns>//  
+            <returns></returns> 
         </member>
         <member name="M:ClassLibrary.DataManager.GetTextToPrintPermission">
             <summary>
@@ -263,16 +269,75 @@
         </member>
         <member name="M:ClassLibrary.IPrinter.PrintOffersAvailability(ClassLibrary.OfferManager)">
             <summary>
-            Este metodo retorna las ofertas en estado disponible 
+            Este metodo imprime las ofertas en estado disponible 
             </summary>
             <param name="offermanager"></param>
         </member>
-        <member name="M:ClassLibrary.IPrinter.PrintMyOffersAvailability(ClassLibrary.OfferManager,ClassLibrary.Company)">
+        <member name="M:ClassLibrary.IPrinter.PrintMyOffersAvailability(ClassLibrary.Search,ClassLibrary.Company)">
             <summary>
-            Este metodo retorna 
+            Este metodo imprime las ofertas disponibles de la compania
             </summary>
-            <param name="offermanager"></param>
+            <param name="search"></param>
             <param name="company"></param>
+        </member>
+        <member name="M:ClassLibrary.IPrinter.PrintOffersByLocation(ClassLibrary.Search,System.String)">
+            <summary>
+            Este metodo imprime las ofertas filtradas por Ubicacion
+            </summary>
+            <param name="search"></param>
+            <param name="location"></param>
+        </member>
+        <member name="M:ClassLibrary.IPrinter.PrintOffersByWord(ClassLibrary.Search,System.String)">
+            <summary>
+            Este metodo imprime las ofertas filtradas por Palabra
+            </summary>
+            <param name="search"></param>
+            <param name="word"></param>
+        </member>
+        <member name="M:ClassLibrary.IPrinter.PrintOffersByCategory(ClassLibrary.Search,System.String)">
+            <summary>
+            Este metodo imprime las ofertas de una Catergoria
+            </summary>
+            <param name="search"></param>
+            <param name="category"></param>
+        </member>
+        <member name="M:ClassLibrary.IPrinter.PrintOffersByEntrepreneur(ClassLibrary.Search,ClassLibrary.Entrepreneur)">
+            <summary>
+            Este metodo imprime las ofertas de un emprendedor
+            </summary>
+            <param name="search"></param>
+            <param name="entrepreneur"></param>
+        </member>
+        <member name="M:ClassLibrary.IPrinter.PrintOffersByCompany(ClassLibrary.Search,ClassLibrary.Company)">
+            <summary>
+            Este metodo imprime todas las ofertas de una companía
+            </summary>
+            <param name="search"></param>
+            <param name="company"></param>
+        </member>
+        <member name="M:ClassLibrary.IPrinter.PrintPermissions(ClassLibrary.DataManager)">
+            <summary>
+            Metodo que imprime todos los permisos cargados en el sistema
+            </summary>
+            <param name="datamanager"></param>
+        </member>
+        <member name="M:ClassLibrary.IPrinter.PrintAreaOfWork(ClassLibrary.DataManager)">
+            <summary>
+            Metodo que imprime todos los Rubros cargados en el sistema
+            </summary>
+            <param name="datamanager"></param>
+        </member>
+        <member name="M:ClassLibrary.IPrinter.PrintMaterialType(ClassLibrary.DataManager)">
+            <summary>
+            Metodo que Imprime todos los materiales existentes en el sistema
+            </summary>
+            <param name="datamanager"></param>
+        </member>
+        <member name="M:ClassLibrary.IPrinter.PrintUserPermissions(ClassLibrary.UserBase)">
+            <summary>
+            Metodo que imprime todos los permisos del usuario
+            </summary>
+            <param name="userbase"></param>    
         </member>
         <member name="T:ClassLibrary.Material">
             <summary>
@@ -299,7 +364,7 @@
         </member>
         <member name="P:ClassLibrary.Material.Cost">
             <summary>
-            String del costo del material
+            El costo del material
             </summary>
             <value></value>
         </member>
@@ -309,7 +374,7 @@
             </summary>
             <value></value>
         </member>
-        <member name="M:ClassLibrary.Material.#ctor(System.String,ClassLibrary.MaterialType,System.String,System.String,System.String)">
+        <member name="M:ClassLibrary.Material.#ctor(System.String,ClassLibrary.MaterialType,System.String,System.Double,System.String)">
             <summary>
             Constructor de la clase
             </summary>
@@ -345,30 +410,30 @@
         </member>
         <member name="T:ClassLibrary.Offer">
             <summary>
-            ESTA CLASE ESTEBLECE LOS PARAMETROS NECESARIOS PARA LA CREACION DE LA OFERTA
+            Esta clase esteblece los parametros necesarios para la creacion de la oferta
             </summary>
         </member>
         <member name="P:ClassLibrary.Offer.Name">
             <summary>
-            NOMBRE DE LA OFERTA
+            Nombre de la oferta
             </summary>
             <value></value>
         </member>
         <member name="P:ClassLibrary.Offer.Cost">
             <summary>
-            COSTO EN CASO DE QUE TENGA 
+            Costo en caso de que tenga
             </summary>
             <value></value>
         </member>
         <member name="P:ClassLibrary.Offer.Location">
             <summary>
-            UBICACION DONDE LA COMPANY TIENE EL MATERIAL DE LA OFERTA
+            Ubicacion donde la company tiene el material de la oferta
             </summary>
             <value></value>
         </member>
         <member name="P:ClassLibrary.Offer.Availability">
             <summary>
-            ESTABLECE SI LA OFERTA ESTA DISPONIBLE PARA ALGUN EMPRENDEDOR O SIMPLEMENTE ESTA CREADA
+            Establece si la oferta esta disponible para algun emprendedor o simplemente esta creada pero no disponible
             </summary>
             <value></value>
         </member>
@@ -380,62 +445,61 @@
         </member>
         <member name="P:ClassLibrary.Offer.Tags">
             <summary>
-            PALABRAS CLAVES PARA DARLE FACILIDAD AL EMPRENDEDOR DE ENCONTRAR LA OFERTA
+            Palabras claves para darle la facilidad al emprendedor de encontrar la oferta
             </summary>
             <value></value>
         </member>
         <member name="P:ClassLibrary.Offer.DeliveryDate">
             <summary>
-            FECHA DE COMPRA DE LA OFERTA
+            Fecha de compra de la oferta
             </summary>
             <value></value>
         </member>
         <member name="P:ClassLibrary.Offer.PublicationDate">
             <summary>
-            FECHA DE PUBLICACION DE LA OFERTA
+            Fecha de la publicacion de la oferta
             </summary>
             <value></value>
         </member>
         <member name="P:ClassLibrary.Offer.Company">
             <summary>
-            COMPANY QUE CREO LA OFERTA
+            Company que creo la oferta
             </summary>
             <value></value>
         </member>
         <member name="P:ClassLibrary.Offer.Entrepreneur">
             <summary>
-            ESTE PARAMETRO ESTA VACIO HASTA UN EMPRENDEDOR ADQUIERE LA OFERTA
+            Este parametro esta vacio hasta un emprendedor adquiere la oferta
             </summary>
             <value></value>
         </member>
         <member name="P:ClassLibrary.Offer.Material">
             <summary>
-            
+            Establece el material de la oferta
             </summary>
             <value></value>
         </member>
         <member name="F:ClassLibrary.Offer.permissions">
             <summary>
-            
+            La lista de permisos que tiene que tener el emprendedor para adquirir la la oferta
             </summary>
             <typeparam List="Permission"></typeparam>
             <returns></returns>
         </member>
         <member name="P:ClassLibrary.Offer.id">
             <summary>
-            EL ID LO UTILIZAMOS PARA IDENTIFICAR CADA OFERTA EN EL CATALOGO
+            El id lo utilizamos para identificar cada oferta en el catalogo
             </summary>
             <value></value>
         </member>
         <member name="M:ClassLibrary.Offer.#ctor(System.String,ClassLibrary.Material,System.String,System.Double,System.Boolean,System.Collections.ArrayList,System.DateTime,System.DateTime,ClassLibrary.Company)">
             <summary>
-            
+            Este es el constructor de la oferta que recibe los parametros para crear la misma
             </summary>
             <param name="name"></param>
             <param name="material"></param>
             <param name="location"></param>
             <param name="cost"></param>
-            <param name="availability"></param>
             <param name="regularoffers"></param>
             <param name="tags"></param>
             <param name="deliverydate"></param>
@@ -444,70 +508,63 @@
         </member>
         <member name="M:ClassLibrary.Offer.AddPermission(System.String)">
             <summary>
-            PERMITE AGREGAR PERMISOS A LA OFERTA 
+            Permite agregar permisos a la oferta
             </summary>
             <param name="permission"></param>
         </member>
         <member name="M:ClassLibrary.Offer.getOffer(ClassLibrary.Entrepreneur)">
             <summary>
-            METODO QUE RETORNA LOS DATOS DE LA EMPRERSA PARA SER ENVIADOS AL EMPRENDEDOR QUE COMPRO LA OFERTA
-            A SU VEZ DEJA COMO NO DISPONIBLE LA OFERTA EN EL CATALOGO
-            Y COLOCA EL NOMBRE DEL EMPRENDEDOR A LA OFERTA
+            Metodo que retorna los datos de la empresa para ser enviados al emprendedor que compro la oferta
+            A su vez deja como no disponible la oferta en el catalogo
+            y coloca el nombre del emprendedor a la oferta
             </summary>
             <param name="entrepreneur"></param>
             <returns></returns>
         </member>
         <member name="T:ClassLibrary.OfferManager">
             <summary>
-            CLASE EXPERTA EN EL MANEJO DE LAS OFERAS
+            Clase experta en el manejo de las ofertas
             </summary>
         </member>
         <member name="F:ClassLibrary.OfferManager.catalog">
             <summary>
-            CATALOGO DE OFERTAS DEL PROGRAMA
+            Catalogo de ofertas de nuestra aplicacion
             </summary>
             <typeparam List="Offer"></typeparam>
             <returns></returns>
         </member>
         <member name="M:ClassLibrary.OfferManager.#ctor">
             <summary>
-            
+            Este es el constructor de la clase
             </summary>
         </member>
         <member name="M:ClassLibrary.OfferManager.SaveOffer(ClassLibrary.Offer)">
             <summary>
-            
+            Este metodo lo que hace es, una vez creada la oferta se guarda en el catalogo de la aplicacion
             </summary>
             <param name="offer"></param>
         </member>
         <member name="M:ClassLibrary.OfferManager.PublishOffer(System.Int32)">
             <summary>
-            
+            Este metodo se utiliza para re publicar ofertas que son priodicas 
             </summary>
             <param name="id"></param>
         </member>
         <member name="M:ClassLibrary.OfferManager.DiseableOffer(System.Int32)">
             <summary>
-            
+            Este metodo desabilita una oferta del catalogo
             </summary>
             <param name="id"></param>
         </member>
-        <member name="M:ClassLibrary.OfferManager.GetMyOffersAvailability(ClassLibrary.Company)">
-            <summary>
-            
-            </summary>
-            <param name="company"></param>
-            <returns></returns>
-        </member>
         <member name="M:ClassLibrary.OfferManager.GetOffersAvailability">
             <summary>
-            
+            Este metodo retorna las ofertas del catalogo que estan habilitadas
             </summary>
             <returns></returns>
         </member>
         <member name="M:ClassLibrary.OfferManager.BuyOffer(ClassLibrary.Entrepreneur,System.Int32)">
             <summary>
-            
+            El metodo siguiente permite comprar la oferta al emprendedor
             </summary>
             <param name="buyer"></param>
             <param name="index"></param>
@@ -558,7 +615,13 @@
             <param name="word"></param>
             <returns>Retorna un string con una lista de ofertas</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:ClassLibrary.Search.GetOfferByCategory(System.String)" -->
+        <member name="M:ClassLibrary.Search.GetOfferByCategory(System.String)">
+            <summary>
+            Filtra el catálogo de ofertas según su categoria (tipo de material)
+            </summary>
+            <param name="category"></param>
+            <returns></returns>
+        </member>
         <member name="M:ClassLibrary.Search.GetOfferByEntrepreneur(ClassLibrary.Entrepreneur)">
             <summary>
             Filtra el catálogo de búsquedas que compró un emprendedor
