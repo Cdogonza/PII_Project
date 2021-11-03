@@ -78,7 +78,7 @@ namespace ClassLibrary
         /// </summary>
         public string GetPermissions()
         {
-            string data = $"La lista de Rubros existentes son: \n";
+            string data = $"La lista de Permisos del usuario son: \n";
 
             foreach (var permission in permissions)
             {

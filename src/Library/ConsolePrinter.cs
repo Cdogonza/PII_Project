@@ -20,7 +20,7 @@ namespace ClassLibrary
         /// <summary>
         ///  Este metodo se encarga de imprimir en pantalla lo que devuelve GetMyOffertsAvailability de OfferManager
         /// </summary>
-        /// <param name="offermanager"></param>
+        /// <param name="search"></param>
         /// <param name="company"></param>
         public void PrintMyOffersAvailability(Search search, Company company)
         {
@@ -102,6 +102,15 @@ namespace ClassLibrary
         public void PrintMaterialType(DataManager datamanager)
         {
             Console.WriteLine(datamanager.GetTextToPrintMaterialType());
+        }
+
+        /// <summary>
+        /// Metodo para imprimir por pantalla los permisos que posee el usuario
+        /// </summary>
+        /// <param name="userbase"></param>
+        public void PrintUserPermissions(UserBase userbase)
+        {
+            Console.WriteLine(userbase.GetPermissions());
         }
     }
 }
