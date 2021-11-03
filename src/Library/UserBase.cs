@@ -56,10 +56,9 @@ namespace ClassLibrary
         /// <summary>
         ///Permite agregar permisios a un usuario
         /// </summary>
-        public void AddPermission(string permission)
+        public void AddPermission(Permission permission)
         {
-            Permission newPermission = new Permission(permission);
-            permissions.Add(newPermission);
+            permissions.Add(permission);
         }
         /// <summary>
         /// 

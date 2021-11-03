@@ -107,6 +107,15 @@
             Crea las intancias utiilzadas en los test
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Tests.PublishOffer.CompanyTest" -->
+        <member name="M:Tests.PublishOffer.CompanyTest">
+             <summary>
+             Prueba de creacion de offerManager
+            </summary>
+        </member>
+        <member name="M:Tests.PublishOffer.OfferTest">
+             <summary>
+             Prueba de creacion de oferta
+            </summary>
+        </member>
     </members>
 </doc>

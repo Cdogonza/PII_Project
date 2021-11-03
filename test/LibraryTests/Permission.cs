@@ -15,7 +15,7 @@ namespace Tests
     /// Prueba de la clase <see cref="OfferManager"/>.
     /// </summary>
     [TestFixture]
-    public class SearchTest
+    public class PerrmissionTest
     {
         /// <summary>
         /// emprededor para pruebas
@@ -38,6 +38,8 @@ namespace Tests
         /// Buscador para pruebas
         /// </summary>
         private Search searcher ;
+        private Permission permission ;
+        private DataManager dataManager;
         private Offer offer ;
 
         /// <summary>
@@ -49,17 +51,17 @@ namespace Tests
             this.offerAdmin =  new OfferManager();
             this.searcher =  new Search();
             this.company = new Company("compania1","098239334","Las Piedras","Construcción");
-            Permission permissionA = new Permission("Materiales inflamables");
-            Permission permissionB = new Permission("Residuos medicos");
-
+            
+            
+            this.permission  = new Permission("Materiales inflamables");
+            
+            // ABANICO DE PERMISSIONS
             DataManager dataManager  = new DataManager();
-            dataManager.AddPermission(permissionA);
-            dataManager.AddPermission(permissionB);
-            
-            this.company.AddPermission(dataManager.GetPermissions()[0]);
-            
-                
+            this.dataManager =  dataManager;
+            this.dataManager.AddPermission(this.permission);
 
+            //AGREGA A LA COMPANIA UN PERMISO
+            this.company.AddPermission(dataManager.GetPermissions()[0]);
             ArrayList tags  = new ArrayList();
             tags.Add("tag1");
             tags.Add("tag");              
@@ -67,36 +69,20 @@ namespace Tests
             DateTime deliverydate = new DateTime();
             MaterialType materialType  =  new MaterialType("Tela", "Recortes de tela de 1x1");
             this.material =  new Material("Tela",materialType,"200","100","Berro 1231");
-            this.offer = new Offer("Promoción de verano",this.material,"Berro1231",200.00,true,tags,deliverydate,publicationDate,this.company);
-            Singleton<OfferManager>.Instance.SaveOffer(this.offer);
+            this.offer = new Offer("Promocion de verano",this.material,"Berro1231",200.00,true,tags,deliverydate,publicationDate,this.company);
+            this.offerAdmin.SaveOffer(this.offer);
 
-            Permission permissionC = new Permission("Materiales inflamables");
             this.entrepreneur = new Entrepreneur("Empre2","091234567","Galicia 1234","Construcción","Trabajo en altura");
-            Singleton<OfferManager>.Instance.BuyOffer(this.entrepreneur,0);
         }
 
         /// <summary>
         // /// Prueba de creacion de offerManager
         ///</summary>
         [Test]
-        public void FilterByLocation()
+        public void Permission()
         {
-            Assert.That(this.searcher.GetOfferByLocation("Berro1231"),Contains.Substring("Berro1231"));
+            Assert.That(this.company,Contains.Substring("Materiales inflamables"));
             
-            // Assert.AreEqual(Singleton<OfferManager>.Instance.catalog[0].Entrepreneur,this.entrepreneur);
         }
-
-
-        /// <summary>
-        // /// Prueba de creacion de offerManager
-        ///</summary>
-        [Test]
-        public void FilterByWord()
-        {
-            Assert.That(this.searcher.GetOfferByWord("tag1"),Contains.Substring("Promoción de verano"));
-            
-            // Assert.AreEqual(Singleton<OfferManager>.Instance.catalog[0].Entrepreneur,this.entrepreneur);
-        }
-
     }
 } 

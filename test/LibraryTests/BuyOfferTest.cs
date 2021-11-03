@@ -59,7 +59,7 @@ namespace Tests
             this.offer = new Offer("Promocion de verano",this.material,"Berro1231",200.00,true,tags,deliverydate,publicationDate,this.company);
             this.offerAdmin.SaveOffer(this.offer);
 
-            this.entrepreneur = new Entrepreneur("Empre2","091234567","Galicia 1234","Construcción");
+            this.entrepreneur = new Entrepreneur("Empre2","091234567","Galicia 1234","Construcción","Trabajo en altura");
         }
 
         /// <summary>

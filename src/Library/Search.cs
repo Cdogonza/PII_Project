@@ -34,7 +34,7 @@ namespace ClassLibrary
             {
                 if (offer.Location == location)
                 {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} Ubicación: {offer.Location}\n ";
                     byLocation.Add(offer);
                 }
             }
