@@ -4,5 +4,154 @@
         <name>LibraryTests</name>
     </assembly>
     <members>
+        <member name="T:Tests.BuyOffer">
+            <summary>
+            Prueba de la clase <see cref="T:ClassLibrary.OfferManager"/>.
+            </summary>
+        </member>
+        <member name="F:Tests.BuyOffer.entrepreneur">
+            <summary>
+            emprededor para pruebas
+            </summary>
+        </member>
+        <member name="F:Tests.BuyOffer.offerAdmin">
+            <summary>
+            Catalogo para pruebas.
+            </summary>
+        </member>
+        <member name="F:Tests.BuyOffer.material">
+            <summary>
+            Material para pruebas
+            </summary>
+        </member>
+        <member name="F:Tests.BuyOffer.company">
+            <summary>
+            Compania para la empresa
+            </summary>
+        </member>
+        <member name="F:Tests.BuyOffer.searcher">
+            <summary>
+            Buscador para pruebas
+            </summary>
+        </member>
+        <member name="M:Tests.BuyOffer.Setup">
+            <summary>
+            Crea las intancias utiilzadas en los test
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Tests.BuyOffer.Buy" -->
+        <member name="T:Tests.SearchTest">
+            <summary>
+            Prueba de la clase <see cref="T:ClassLibrary.OfferManager"/>.
+            </summary>
+        </member>
+        <member name="F:Tests.SearchTest.entrepreneur">
+            <summary>
+            emprededor para pruebas
+            </summary>
+        </member>
+        <member name="F:Tests.SearchTest.offerAdmin">
+            <summary>
+            Catalogo para pruebas.
+            </summary>
+        </member>
+        <member name="F:Tests.SearchTest.material">
+            <summary>
+            Material para pruebas
+            </summary>
+        </member>
+        <member name="F:Tests.SearchTest.company">
+            <summary>
+            Compania para la empresa
+            </summary>
+        </member>
+        <member name="F:Tests.SearchTest.searcher">
+            <summary>
+            Buscador para pruebas
+            </summary>
+        </member>
+        <member name="M:Tests.SearchTest.Setup">
+            <summary>
+            Crea las intancias utiilzadas en los test
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Tests.SearchTest.FilterByLocation" -->
+        <!-- Badly formed XML comment ignored for member "M:Tests.SearchTest.FilterByWord" -->
+        <member name="T:Tests.PerrmissionTest">
+            <summary>
+            Prueba de la clase <see cref="T:ClassLibrary.OfferManager"/>.
+            </summary>
+        </member>
+        <member name="F:Tests.PerrmissionTest.entrepreneur">
+            <summary>
+            emprededor para pruebas
+            </summary>
+        </member>
+        <member name="F:Tests.PerrmissionTest.offerAdmin">
+            <summary>
+            Catalogo para pruebas.
+            </summary>
+        </member>
+        <member name="F:Tests.PerrmissionTest.material">
+            <summary>
+            Material para pruebas
+            </summary>
+        </member>
+        <member name="F:Tests.PerrmissionTest.company">
+            <summary>
+            Compania para la empresa
+            </summary>
+        </member>
+        <member name="F:Tests.PerrmissionTest.searcher">
+            <summary>
+            Buscador para pruebas
+            </summary>
+        </member>
+        <member name="M:Tests.PerrmissionTest.Setup">
+            <summary>
+            Crea las intancias utiilzadas en los test
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Tests.PerrmissionTest.Permission" -->
+        <member name="T:Tests.PublishOffer">
+            <summary>
+            Prueba de la clase <see cref="T:ClassLibrary.OfferManager"/>.
+            </summary>
+        </member>
+        <member name="F:Tests.PublishOffer.offerAdmin">
+            <summary>
+            Catalogo para pruebas.
+            </summary>
+        </member>
+        <member name="F:Tests.PublishOffer.material">
+            <summary>
+            Material para pruebas
+            </summary>
+        </member>
+        <member name="F:Tests.PublishOffer.company">
+            <summary>
+            Compania para la empresa
+            </summary>
+        </member>
+        <member name="F:Tests.PublishOffer.searcher">
+            <summary>
+            Buscador para pruebas
+            </summary>
+        </member>
+        <member name="M:Tests.PublishOffer.Setup">
+            <summary>
+            Crea las intancias utiilzadas en los test
+            </summary>
+        </member>
+        <member name="M:Tests.PublishOffer.CompanyTest">
+             <summary>
+             Prueba de creacion de offerManager
+            </summary>
+        </member>
+        <member name="M:Tests.PublishOffer.OfferTest">
+             <summary>
+             Prueba de creacion de oferta
+            </summary>
+        </member>
     </members>
 </doc>

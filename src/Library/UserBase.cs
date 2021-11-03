@@ -56,10 +56,9 @@ namespace ClassLibrary
         /// <summary>
         ///Permite agregar permisios a un usuario
         /// </summary>
-        public void AddPermission(string permission)
+        public void AddPermission(Permission permission)
         {
-            Permission newPermission = new Permission(permission);
-            permissions.Add(newPermission);
+            permissions.Add(permission);
         }
         /// <summary>
         /// 
@@ -77,12 +76,16 @@ namespace ClassLibrary
         /// <summary>
         /// permite obtener la lista de permisos de un usuario
         /// </summary>
-        public void GetPermissions()
+        public string GetPermissions()
         {
+            string data = $"La lista de Rubros existentes son: \n";
+
             foreach (var permission in permissions)
             {
-                Console.WriteLine(permission.Name);
+                data = data + $"Name: {permission.Name} \n";
+                
             }
+            return data;
         }
     }
 }

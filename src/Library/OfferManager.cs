@@ -73,7 +73,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="buyer"></param>
         /// <param name="index"></param>
-        public void buyoffer(Entrepreneur buyer,int index)
+        public void BuyOffer(Entrepreneur buyer,int index)
         {
             catalog[index].getOffer(buyer);
 

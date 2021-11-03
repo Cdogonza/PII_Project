@@ -15,8 +15,12 @@ namespace Tests
     /// Prueba de la clase <see cref="OfferManager"/>.
     /// </summary>
     [TestFixture]
-    public class PublishOffer
+    public class SearchTest
     {
+        /// <summary>
+        /// emprededor para pruebas
+        /// </summary>
+        private Entrepreneur entrepreneur;
         /// <summary>
         /// Catalogo para pruebas.
         /// </summary>
@@ -45,62 +49,53 @@ namespace Tests
             this.offerAdmin =  new OfferManager();
             this.searcher =  new Search();
             this.company = new Company("compania1","098239334","Las Piedras","Construcción");
-             ArrayList tags  = new ArrayList();
+            Permission permissionA = new Permission("Materiales inflamables");
+            Permission permissionB = new Permission("Residuos medicos");
+
+            DataManager dataManager  = new DataManager();
+            dataManager.AddPermission(permissionA);
+            dataManager.AddPermission(permissionB);
+            
+            this.company.AddPermission(dataManager.GetPermissions()[0]);
+            
+                
+
+            ArrayList tags  = new ArrayList();
             tags.Add("tag1");
             tags.Add("tag");              
             DateTime publicationDate = new DateTime(2008, 3, 1, 7, 0, 0);
             DateTime deliverydate = new DateTime();
             MaterialType materialType  =  new MaterialType("Tela", "Recortes de tela de 1x1");
             this.material =  new Material("Tela",materialType,"200","100","Berro 1231");
-            this.offer = new Offer("Promocion de verano",this.material,"Berro1231",200.00,true,tags,deliverydate,publicationDate,this.company);
+            this.offer = new Offer("Promoción de verano",this.material,"Berro1231",200.00,true,tags,deliverydate,publicationDate,this.company);
+            Singleton<OfferManager>.Instance.SaveOffer(this.offer);
+
+            Permission permissionC = new Permission("Materiales inflamables");
+            this.entrepreneur = new Entrepreneur("Empre2","091234567","Galicia 1234","Construcción","Trabajo en altura");
+            Singleton<OfferManager>.Instance.BuyOffer(this.entrepreneur,0);
         }
 
         /// <summary>
-        /// Prueba de creacion de offerManager
+        // /// Prueba de creacion de offerManager
         ///</summary>
         [Test]
-        public void CompanyTest()
+        public void FilterByLocation()
         {
-            Assert.AreEqual(this.company.Name,"compania1");
-            Assert.AreEqual(this.company.Location,"Las Piedras");
-            Assert.AreEqual(this.company.Phone,"098239334");
+            Assert.That(this.searcher.GetOfferByLocation("Berro1231"),Contains.Substring("Berro1231"));
             
-            Assert.AreEqual(this.company.AreaOfWork.Name,"Construcción");
+            // Assert.AreEqual(Singleton<OfferManager>.Instance.catalog[0].Entrepreneur,this.entrepreneur);
         }
 
+
         /// <summary>
-        /// Prueba de creacion de oferta
+        // /// Prueba de creacion de offerManager
         ///</summary>
         [Test]
-        public void OfferTest()
+        public void FilterByWord()
         {
-
-            Assert.AreEqual(this.offer.Location,"Berro1231");
-            Assert.AreEqual(this.offer.Cost,200.00);
-            Assert.AreEqual(this.offer.Availability,true);
-            Assert.AreEqual(this.offer.Name,"Promocion de verano");
-
+            Assert.That(this.searcher.GetOfferByWord("tag1"),Contains.Substring("Promoción de verano"));
             
-            Assert.AreEqual(this.offer.Material,this.material);
-            ArrayList tags  = new ArrayList();
-            tags.Add("tag1");
-            tags.Add("tag");               
-            Assert.AreEqual(this.offer.Tags,tags);
-            Assert.AreEqual(this.offer.Company.Name,this.company.Name);
-
-        }
-
-
-
-        [Test]
-        /// <summary>
-        // /// Prueba de creacion de oferta
-        ///</summary>
-        public void PublishTest()
-        {
-
-            this.offerAdmin.SaveOffer(this.offer);
-            Assert.AreEqual(this.offerAdmin.catalog[0],this.offer);
+            // Assert.AreEqual(Singleton<OfferManager>.Instance.catalog[0].Entrepreneur,this.entrepreneur);
         }
 
     }
