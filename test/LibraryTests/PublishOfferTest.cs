@@ -91,11 +91,10 @@ namespace Tests
         }
 
 
-
-        [Test]
         /// <summary>
-        // /// Prueba de creacion de oferta
-        ///</summary>
+        /// Prueba de creacion de oferta
+        /// </summary>
+        [Test]
         public void PublishTest()
         {
 

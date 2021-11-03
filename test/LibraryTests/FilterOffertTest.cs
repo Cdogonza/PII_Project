@@ -76,8 +76,8 @@ namespace Tests
         }
 
         /// <summary>
-        // /// Prueba de creacion de offerManager
-        ///</summary>
+        /// Prueba de creacion de offerManager
+        /// </summary>
         [Test]
         public void FilterByLocation()
         {
@@ -88,8 +88,8 @@ namespace Tests
 
 
         /// <summary>
-        // /// Prueba de creacion de offerManager
-        ///</summary>
+        /// Prueba de creacion de offerManager
+        /// </summary>
         [Test]
         public void FilterByWord()
         {
