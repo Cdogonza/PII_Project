@@ -41,7 +41,8 @@
         </member>
         <member name="T:ClassLibrary.ConsolePrinter">
             <summary>
-            Esta clase tiene como responsabilidad impirmir por pantalla la informacion que recibe de las otras clases
+            Esta clase implementa el tipo Iprinter y tiene como responsabilidad imprirmir 
+            por pantalla la informacion que recibe de las otras clases.
             </summary>
         </member>
         <member name="M:ClassLibrary.ConsolePrinter.PrintOffersAvailability(ClassLibrary.OfferManager)">
@@ -118,7 +119,9 @@
         </member>
         <member name="T:ClassLibrary.DataManager">
             <summary>
-            Esta clase es la encargada de manejar los datos de AreaOfWork(Rubros) MaterialsTypes y Permissions(Habilitaciones)
+            /// Esta clase es la encargada de manejar los datos de AreaOfWork(Rubros) MaterialsTypes y Permissions(Habilitaciones)
+            Se implementa utilizando singleton con el fin de utilizar una unica instancia, 
+            ya que no queremos que hayan multiples listas de Rubros, Permisos y Tipos de materiales
             </summary>
         </member>
         <member name="F:ClassLibrary.DataManager.areaofwork">
@@ -386,7 +389,7 @@
         </member>
         <member name="T:ClassLibrary.MaterialType">
             <summary>
-            Esta clase representa los tipos de materiales.
+            Esta clase representa los tipos de materiales
             </summary>
         </member>
         <member name="P:ClassLibrary.MaterialType.Name">
@@ -410,7 +413,8 @@
         </member>
         <member name="T:ClassLibrary.Offer">
             <summary>
-            Esta clase esteblece los parametros necesarios para la creacion de la oferta
+            Esta clase esteblece los parametros necesarios para la creacion de la oferta/.
+            Implementa el patron SRP ya que tiene una unica razon de cambio
             </summary>
         </member>
         <member name="P:ClassLibrary.Offer.Name">
@@ -479,7 +483,7 @@
             </summary>
             <value></value>
         </member>
-        <member name="F:ClassLibrary.Offer.permissions">
+        <member name="F:ClassLibrary.Offer.offerpermissions">
             <summary>
             La lista de permisos que tiene que tener el emprendedor para adquirir la la oferta
             </summary>
@@ -523,7 +527,9 @@
         </member>
         <member name="T:ClassLibrary.OfferManager">
             <summary>
-            Clase experta en el manejo de las ofertas
+            En esta clase se puede ver el uso del patron Expert, y aque es experto en el manejo
+            de las ofertas de la aplicacion, incluso cuando se instancia esta clase la instanciamos
+            a traves de singleton de modo de manejar una unica instancia.
             </summary>
         </member>
         <member name="F:ClassLibrary.OfferManager.catalog">
@@ -571,7 +577,7 @@
         </member>
         <member name="T:ClassLibrary.Permission">
             <summary>
-            Esta clase representa los permisos de las empresas y emprendedores
+            Esta clase representa los permisos de las empresas, ofertas y emprendedores
             </summary>
         </member>
         <member name="M:ClassLibrary.Permission.#ctor(System.String)">
@@ -588,7 +594,7 @@
         </member>
         <member name="T:ClassLibrary.Search">
             <summary>
-            Filtra el catálogo según diferentes términos
+            Esta clase es la responsable en las busquedas dentro del catalogo de ofertas de la aplicacion
             </summary>
         </member>
         <member name="F:ClassLibrary.Search.catalog">
