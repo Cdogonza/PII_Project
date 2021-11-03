@@ -4,11 +4,11 @@ using System;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase esteblece los parametros necesarios para la creacion de la oferta
+    /// Esta clase esteblece los parametros necesarios para la creacion de la oferta/.
+    /// Implementa el patron SRP ya que tiene una unica razon de cambio
     /// </summary>
     public class Offer
     {
-        //public string Material{get;set;}
         /// <summary>
         /// Nombre de la oferta
         /// </summary>
@@ -69,7 +69,7 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam List="Permission"></typeparam>
         /// <returns></returns>
-        public List<Permission> permissions = new List<Permission>();
+        public List<Permission> offerpermissions = new List<Permission>();
         /// <summary>
         /// El id lo utilizamos para identificar cada oferta en el catalogo
         /// </summary>
@@ -108,7 +108,7 @@ namespace ClassLibrary
         public void AddPermission(string permission)
         {
             Permission newPermission = new Permission(permission);
-            permissions.Add(newPermission);
+            offerpermissions.Add(newPermission);
         }
         /// <summary>
         /// Metodo que retorna los datos de la empresa para ser enviados al emprendedor que compro la oferta

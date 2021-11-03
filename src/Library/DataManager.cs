@@ -5,11 +5,12 @@ using System;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase es la encargada de manejar los datos de AreaOfWork(Rubros) MaterialsTypes y Permissions(Habilitaciones)
+    /// /// Esta clase es la encargada de manejar los datos de AreaOfWork(Rubros) MaterialsTypes y Permissions(Habilitaciones)
+    /// Se implementa utilizando singleton con el fin de utilizar una unica instancia, 
+    /// ya que no queremos que hayan multiples listas de Rubros, Permisos y Tipos de materiales
     /// </summary>
     public class DataManager
     {
-
         /// <summary>
         /// Lista de String donde se almacenan los rubros
         /// </summary>

@@ -4,7 +4,8 @@ namespace ClassLibrary
 {
 
     /// <summary>
-    /// Esta clase tiene como responsabilidad impirmir por pantalla la informacion que recibe de las otras clases
+    /// Esta clase implementa el tipo Iprinter y tiene como responsabilidad imprirmir 
+    /// por pantalla la informacion que recibe de las otras clases.
     /// </summary>
     public class ConsolePrinter : IPrinter
     {
