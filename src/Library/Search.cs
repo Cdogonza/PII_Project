@@ -63,7 +63,6 @@ namespace ClassLibrary
 
         }
         /// <summary>
-
         /// Filtra el catálogo de ofertas según su categoria (tipo de material)
         /// </summary>
         /// <param name="category"></param>

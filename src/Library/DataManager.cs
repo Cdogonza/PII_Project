@@ -13,21 +13,21 @@ namespace ClassLibrary
         /// <summary>
         /// Lista de String donde se almacenan los rubros
         /// </summary>
-        /// <typeparam name="string"></typeparam>
+        /// <typeparam List="string"></typeparam>
         /// <returns></returns>        
         public List<string> areaofwork = new List<string>();
 
         /// <summary>
         /// Lista de MaterialType donde se almacenan los tipos de materiales 
         /// </summary>
-        /// <typeparam name="MaterialType"></typeparam>
+        /// <typeparam List="MaterialType"></typeparam>
         /// <returns></returns>
         public List<MaterialType> materialsType = new List<MaterialType>();
 
         /// <summary>
-        /// Lista de Permisos donde se alamacenan los permisos a ser usados por las empresas y las ofertas
+        /// Lista de Permisos donde se almacenan los permisos a ser usados por las empresas y las ofertas
         /// </summary>
-        /// <typeparam name="Permission"></typeparam>
+        /// <typeparam List="Permission"></typeparam>
         /// <returns></returns>
         public List<Permission> permissions = new List<Permission>();
 
@@ -60,7 +60,7 @@ namespace ClassLibrary
         ///  Metodo que retorna el permiso segun el lugar de la lista ingresado
         /// </summary>
         /// <param name="indice"></param>
-        /// <returns></returns>//  
+        /// <returns></returns> 
         public Permission GetPermissionByIndex(int indice)
         {
             indice-=1;
@@ -88,7 +88,7 @@ namespace ClassLibrary
         ///  Retorna la lista de Permisos almacenados en el sistema
         /// </summary>
         /// <returns></returns>
-        public  List<Permission> GetPermissions()
+        public List<Permission> GetPermissions()
         {
             return this.permissions;
         }
