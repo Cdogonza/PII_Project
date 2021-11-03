@@ -4,7 +4,7 @@ namespace ClassLibrary
 {
 
     /// <summary>
-    /// 
+    /// Esta clase tiene como responsabilidad impirmir por pantalla la informacion que recibe de las otras clases
     /// </summary>
     public class ConsolePrinter : IPrinter
     {
@@ -12,7 +12,7 @@ namespace ClassLibrary
         /// Este metodo se encarga de imprimir en pantalla lo que devuelve GetOffertsAvailability de OfferManager
         /// </summary>
         /// <param name="offermanager"></param>
-        public void PrintOffertsAvailability(OfferManager offermanager)
+        public void PrintOffersAvailability(OfferManager offermanager)
         {
             Console.WriteLine(offermanager.GetOffersAvailability());
         }
@@ -22,7 +22,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="offermanager"></param>
         /// <param name="company"></param>
-        public void PrintMyOffertsAvailability(OfferManager offermanager, Company company)
+        public void PrintMyOffersAvailability(OfferManager offermanager, Company company)
         {
             Console.WriteLine(offermanager.GetMyOffersAvailability(company));
         }
@@ -32,7 +32,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="search"></param>
         /// <param name="location"></param>
-        public void PrintOffertsByLocation(Search search, string location)
+        public void PrintOffersByLocation(Search search, string location)
         {
             Console.WriteLine(search.GetOfferByLocation(location));
         }
@@ -42,7 +42,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="search"></param>
         /// <param name="word"></param>
-        public void PrintOffertsByWord(Search search, string word)
+        public void PrintOffersByWord(Search search, string word)
         {
             Console.WriteLine(search.GetOfferByWord(word));
         }
@@ -52,7 +52,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="search"></param>
         /// <param name="category"></param>
-        public void PrintOffertsByCategory(Search search, string category)
+        public void PrintOffersByCategory(Search search, string category)
         {
             Console.WriteLine(search.GetOfferByCategory(category));
         }
@@ -62,7 +62,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="search"></param>
         /// <param name="entrepreneur"></param>
-        public void PrintOffertsByEntrepreneur(Search search, Entrepreneur entrepreneur)
+        public void PrintOffersByEntrepreneur(Search search, Entrepreneur entrepreneur)
         {
             Console.WriteLine(search.GetOfferByEntrepreneur(entrepreneur));
         }
@@ -72,7 +72,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="search"></param>
         /// <param name="company"></param>
-        public void PrintOffertsByCompany(Search search, Company company)
+        public void PrintOffersByCompany(Search search, Company company)
         {
             Console.WriteLine(search.GetOfferByCompany(company));
         }
@@ -103,10 +103,5 @@ namespace ClassLibrary
         {
             Console.WriteLine(datamanager.GetTextToPrintMaterialType());
         }
-    
-    
-
-    
     }
-
 }

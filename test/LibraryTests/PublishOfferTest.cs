@@ -53,7 +53,7 @@ namespace Tests
         }
 
         /// <summary>
-        // /// Prueba de creacion de offerManager
+        /// Prueba de creacion de offerManager
         ///</summary>
         [Test]
         public void CompaniTest()
@@ -65,10 +65,10 @@ namespace Tests
             Assert.AreEqual(this.company.AreaOfWork.Name,"Construcción");
         }
 
-        [Test]
         /// <summary>
-        // /// Prueba de creacion de oferta
+        /// Prueba de creacion de oferta
         ///</summary>
+        [Test]
         public void OfferTest()
         {
 
