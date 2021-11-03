@@ -15,7 +15,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="offermanager"></param>
         /// <param name="company"></param>
-        void PrintMyOffersAvailability(OfferManager offermanager, Company company);
+        void PrintMyOffersAvailability(Search search, Company company);
         void PrintOffersByLocation(Search search, string location);
         void PrintOffersByWord(Search search, string word);
         void PrintOffersByCategory(Search search, string category);

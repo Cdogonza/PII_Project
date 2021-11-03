@@ -132,7 +132,7 @@ namespace ClassLibrary
         public string GetAvailableOffersByCompany(Company company)
         {
 
-            string data = $"Las ofertas habilitadas para la compania son: \n";
+            string data = $"Las ofertas habilitadas para la empresa son: \n";
 
             foreach (Offer offer in catalog)
             {
