@@ -66,7 +66,7 @@ namespace Tests
             DateTime publicationDate = new DateTime(2008, 3, 1, 7, 0, 0);
             DateTime deliverydate = new DateTime();
             MaterialType materialType  =  new MaterialType("Tela", "Recortes de tela de 1x1");
-            this.material =  new Material("Tela",materialType,"200","100","Berro 1231");
+            this.material =  new Material("Tela",materialType,"200",100,"Berro 1231");
             this.offer = new Offer("Promoción de verano",this.material,"Berro1231",200.00,true,tags,deliverydate,publicationDate,this.company);
             Singleton<OfferManager>.Instance.SaveOffer(this.offer);
 
