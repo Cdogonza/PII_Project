@@ -3,7 +3,7 @@ using System;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase representa los tipos de materiales.
+    /// Esta clase representa los tipos de materiales
     /// </summary>
     public class MaterialType
     {
