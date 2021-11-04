@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="namespace_class_library" kind="namespace" language="C#">
+    <compoundname>ClassLibrary</compoundname>
+    <innerclass refid="class_class_library_1_1_admin" prot="public">ClassLibrary::Admin</innerclass>
+    <innerclass refid="class_class_library_1_1_area_of_work" prot="public">ClassLibrary::AreaOfWork</innerclass>
+    <innerclass refid="class_class_library_1_1_company" prot="public">ClassLibrary::Company</innerclass>
+    <innerclass refid="class_class_library_1_1_console_printer" prot="public">ClassLibrary::ConsolePrinter</innerclass>
+    <innerclass refid="class_class_library_1_1_data_manager" prot="public">ClassLibrary::DataManager</innerclass>
+    <innerclass refid="class_class_library_1_1_entrepreneur" prot="public">ClassLibrary::Entrepreneur</innerclass>
+    <innerclass refid="interface_class_library_1_1_i_printer" prot="public">ClassLibrary::IPrinter</innerclass>
+    <innerclass refid="class_class_library_1_1_material" prot="public">ClassLibrary::Material</innerclass>
+    <innerclass refid="class_class_library_1_1_material_type" prot="public">ClassLibrary::MaterialType</innerclass>
+    <innerclass refid="class_class_library_1_1_offer" prot="public">ClassLibrary::Offer</innerclass>
+    <innerclass refid="class_class_library_1_1_offer_manager" prot="public">ClassLibrary::OfferManager</innerclass>
+    <innerclass refid="class_class_library_1_1_permission" prot="public">ClassLibrary::Permission</innerclass>
+    <innerclass refid="class_class_library_1_1_program" prot="public">ClassLibrary::Program</innerclass>
+    <innerclass refid="class_class_library_1_1_search" prot="public">ClassLibrary::Search</innerclass>
+    <innerclass refid="class_class_library_1_1_singleton" prot="public">ClassLibrary::Singleton</innerclass>
+    <innerclass refid="class_class_library_1_1_user_base" prot="public">ClassLibrary::UserBase</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Admin.cs" line="3" column="1"/>
+  </compounddef>
+</doxygen>

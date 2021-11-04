@@ -12,7 +12,7 @@ using System.Collections;
 namespace Tests
 {
     /// <summary>
-    /// Prueba de la clase <see cref="OfferManager"/>.
+    /// Prueba de la clase <see cref="Search"/>.
     /// </summary>
     [TestFixture]
     public class SearchTest

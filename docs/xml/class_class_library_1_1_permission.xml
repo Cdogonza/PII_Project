@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="class_class_library_1_1_permission" kind="class" language="C#" prot="public">
+    <compoundname>ClassLibrary::Permission</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_class_library_1_1_permission_1ab90e8756e27274ac2f994698bb3774f5" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string ClassLibrary.Permission.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+<para>String con el nombre del permiso </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Permission.cs" line="24" column="23" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Permission.cs" bodystart="24" bodyend="24"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_class_library_1_1_permission_1a34e4bdada3352bb3358b3664eb3bfd5c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ClassLibrary.Permission.Permission</definition>
+        <argsstring>(string name)</argsstring>
+        <name>Permission</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Constructor de la clase </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Permission.cs" line="15" column="16" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Permission.cs" bodystart="15" bodyend="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Esta clase representa los permisos de las empresas, ofertas y emprendedores </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Permission.cs" line="9" column="11" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Permission.cs" bodystart="10" bodyend="26"/>
+    <listofallmembers>
+      <member refid="class_class_library_1_1_permission_1ab90e8756e27274ac2f994698bb3774f5" prot="public" virt="non-virtual"><scope>ClassLibrary::Permission</scope><name>Name</name></member>
+      <member refid="class_class_library_1_1_permission_1a34e4bdada3352bb3358b3664eb3bfd5c" prot="public" virt="non-virtual"><scope>ClassLibrary::Permission</scope><name>Permission</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

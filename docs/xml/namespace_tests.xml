@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="namespace_tests" kind="namespace" language="C#">
+    <compoundname>Tests</compoundname>
+    <innerclass refid="class_tests_1_1_buy_offer" prot="public">Tests::BuyOffer</innerclass>
+    <innerclass refid="class_tests_1_1_perrmission_test" prot="public">Tests::PerrmissionTest</innerclass>
+    <innerclass refid="class_tests_1_1_publish_offer" prot="public">Tests::PublishOffer</innerclass>
+    <innerclass refid="class_tests_1_1_search_test" prot="public">Tests::SearchTest</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/BuyOfferTest.cs" line="12" column="1"/>
+  </compounddef>
+</doxygen>
