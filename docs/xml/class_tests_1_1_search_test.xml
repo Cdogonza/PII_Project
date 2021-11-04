@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="class_tests_1_1_search_test" kind="class" language="C#" prot="public">
+    <compoundname>Tests::SearchTest</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_tests_1_1_search_test_1a9bb3192098d172f540759a9faf472913" prot="private" static="no" mutable="no">
+        <type><ref refid="class_class_library_1_1_entrepreneur" kindref="compound">Entrepreneur</ref></type>
+        <definition>Entrepreneur Tests.SearchTest.entrepreneur</definition>
+        <argsstring></argsstring>
+        <name>entrepreneur</name>
+        <briefdescription>
+<para>emprededor para pruebas </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" line="23" column="30" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tests_1_1_search_test_1a69aa6a98212cae2dee27773009d5dd1f" prot="private" static="no" mutable="no">
+        <type><ref refid="class_class_library_1_1_offer_manager" kindref="compound">OfferManager</ref></type>
+        <definition>OfferManager Tests.SearchTest.offerAdmin</definition>
+        <argsstring></argsstring>
+        <name>offerAdmin</name>
+        <briefdescription>
+<para>Catalogo para pruebas. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" line="27" column="30" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tests_1_1_search_test_1a259eeb52f9e785b0ffda0c93dce7c17c" prot="private" static="no" mutable="no">
+        <type><ref refid="class_class_library_1_1_material" kindref="compound">Material</ref></type>
+        <definition>Material Tests.SearchTest.material</definition>
+        <argsstring></argsstring>
+        <name>material</name>
+        <briefdescription>
+<para>Material para pruebas </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" line="31" column="26" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tests_1_1_search_test_1a48e69d7d2124f43c8a4fcbab6c3e3484" prot="private" static="no" mutable="no">
+        <type><ref refid="class_class_library_1_1_company" kindref="compound">Company</ref></type>
+        <definition>Company Tests.SearchTest.company</definition>
+        <argsstring></argsstring>
+        <name>company</name>
+        <briefdescription>
+<para>Compania para la empresa </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" line="35" column="25" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tests_1_1_search_test_1a9af0368ad322a3f6d4788e5ebcd9e145" prot="private" static="no" mutable="no">
+        <type><ref refid="class_class_library_1_1_search" kindref="compound">Search</ref></type>
+        <definition>Search Tests.SearchTest.searcher</definition>
+        <argsstring></argsstring>
+        <name>searcher</name>
+        <briefdescription>
+<para>Buscador para pruebas </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" line="40" column="24" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tests_1_1_search_test_1ae5c02b7f8d7645b517ec692ee815e21d" prot="private" static="no" mutable="no">
+        <type><ref refid="class_class_library_1_1_offer" kindref="compound">Offer</ref></type>
+        <definition>Offer Tests.SearchTest.offer</definition>
+        <argsstring></argsstring>
+        <name>offer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" line="41" column="23" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_tests_1_1_search_test_1afcd4b24802072d7776e3cbbfa79d719f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tests.SearchTest.Setup</definition>
+        <argsstring>()</argsstring>
+        <name>Setup</name>
+        <briefdescription>
+<para>Crea las intancias utiilzadas en los test </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" line="47" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" bodystart="47" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tests_1_1_search_test_1a2e82745ddefeb22c7a8ed5729c3a881e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tests.SearchTest.FilterByLocation</definition>
+        <argsstring>()</argsstring>
+        <name>FilterByLocation</name>
+        <briefdescription>
+<para>Prueba de filtrado por ubicación </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" line="82" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" bodystart="82" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tests_1_1_search_test_1afc10c0dcad6ac8153d4702e4b65629eb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tests.SearchTest.FilterByWord</definition>
+        <argsstring>()</argsstring>
+        <name>FilterByWord</name>
+        <briefdescription>
+<para>Prueba de filtrado por palabra (tag) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" line="94" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" bodystart="94" bodyend="99"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Prueba de la clase Search. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" line="18" column="11" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/FilterOffertTest.cs" bodystart="19" bodyend="101"/>
+    <listofallmembers>
+      <member refid="class_tests_1_1_search_test_1a48e69d7d2124f43c8a4fcbab6c3e3484" prot="private" virt="non-virtual"><scope>Tests::SearchTest</scope><name>company</name></member>
+      <member refid="class_tests_1_1_search_test_1a9bb3192098d172f540759a9faf472913" prot="private" virt="non-virtual"><scope>Tests::SearchTest</scope><name>entrepreneur</name></member>
+      <member refid="class_tests_1_1_search_test_1a2e82745ddefeb22c7a8ed5729c3a881e" prot="public" virt="non-virtual"><scope>Tests::SearchTest</scope><name>FilterByLocation</name></member>
+      <member refid="class_tests_1_1_search_test_1afc10c0dcad6ac8153d4702e4b65629eb" prot="public" virt="non-virtual"><scope>Tests::SearchTest</scope><name>FilterByWord</name></member>
+      <member refid="class_tests_1_1_search_test_1a259eeb52f9e785b0ffda0c93dce7c17c" prot="private" virt="non-virtual"><scope>Tests::SearchTest</scope><name>material</name></member>
+      <member refid="class_tests_1_1_search_test_1ae5c02b7f8d7645b517ec692ee815e21d" prot="private" virt="non-virtual"><scope>Tests::SearchTest</scope><name>offer</name></member>
+      <member refid="class_tests_1_1_search_test_1a69aa6a98212cae2dee27773009d5dd1f" prot="private" virt="non-virtual"><scope>Tests::SearchTest</scope><name>offerAdmin</name></member>
+      <member refid="class_tests_1_1_search_test_1a9af0368ad322a3f6d4788e5ebcd9e145" prot="private" virt="non-virtual"><scope>Tests::SearchTest</scope><name>searcher</name></member>
+      <member refid="class_tests_1_1_search_test_1afcd4b24802072d7776e3cbbfa79d719f" prot="public" virt="non-virtual"><scope>Tests::SearchTest</scope><name>Setup</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

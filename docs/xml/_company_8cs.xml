@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="_company_8cs" kind="file" language="C#">
+    <compoundname>Company.cs</compoundname>
+    <innerclass refid="class_class_library_1_1_company" prot="public">ClassLibrary::Company</innerclass>
+    <innernamespace refid="namespace_class_library">ClassLibrary</innernamespace>
+    <innernamespace refid="namespace_system_1_1_collections">System::Collections</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">using</highlight><highlight class="normal"><sp/>System.Collections.Generic;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>System;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>System.Collections;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_class_library" kindref="compound">ClassLibrary</ref></highlight></codeline>
+<codeline lineno="6"><highlight class="normal">{<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="10" refid="class_class_library_1_1_company" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_class_library_1_1_company" kindref="compound">Company</ref><sp/>:<sp/><ref refid="class_class_library_1_1_user_base" kindref="compound">UserBase</ref></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="20" refid="class_class_library_1_1_company_1a83385d0765114a063d6fd467e6bf3dce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_class_library_1_1_company_1a83385d0765114a063d6fd467e6bf3dce" kindref="member">Company</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>name,</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>phone,</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>location,</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>area)<sp/>:<sp/>base<sp/>(name,phone,location,area)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="28" refid="class_class_library_1_1_company_1a28e1ea4de3c279da6afbd9008de30431" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>List&lt;string&gt;<sp/><ref refid="class_class_library_1_1_company_1a28e1ea4de3c279da6afbd9008de30431" kindref="member">DataCompany</ref>()</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>List<sp/>&lt;string&gt;<sp/>data<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>List&lt;string&gt;();<sp/><sp/></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data.Add(this.<ref refid="class_class_library_1_1_user_base_1a2a69ad1f167101d28cd23cb1f5732b43" kindref="member">Name</ref>);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data.Add(Convert.ToString(</highlight><highlight class="keyword">this</highlight><highlight class="normal">.Phone));</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data.Add(this.<ref refid="class_class_library_1_1_user_base_1a0dd7b4a421cd568a8cfcef37d52115ec" kindref="member">Location</ref>);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>data;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Company.cs"/>
+  </compounddef>
+</doxygen>

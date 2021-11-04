@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="_entrepreneur_8cs" kind="file" language="C#">
+    <compoundname>Entrepreneur.cs</compoundname>
+    <innerclass refid="class_class_library_1_1_entrepreneur" prot="public">ClassLibrary::Entrepreneur</innerclass>
+    <innernamespace refid="namespace_class_library">ClassLibrary</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">using</highlight><highlight class="normal"><sp/>System.Collections.Generic;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_class_library" kindref="compound">ClassLibrary</ref></highlight></codeline>
+<codeline lineno="4"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="8" refid="class_class_library_1_1_entrepreneur" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_class_library_1_1_entrepreneur" kindref="compound">Entrepreneur</ref><sp/>:<sp/><ref refid="class_class_library_1_1_user_base" kindref="compound">UserBase</ref></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="14" refid="class_class_library_1_1_entrepreneur_1a7f75ceaaa81b8e691a6eca4aaff8fa1b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="class_class_library_1_1_entrepreneur_1a7f75ceaaa81b8e691a6eca4aaff8fa1b" kindref="member">Specialization</ref><sp/>{</highlight><highlight class="keyword">get</highlight><highlight class="normal">;<sp/></highlight><highlight class="keyword">set</highlight><highlight class="normal">;}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="25" refid="class_class_library_1_1_entrepreneur_1a05dec20147cb9e0cce61bc1157e9196b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_class_library_1_1_entrepreneur_1a05dec20147cb9e0cce61bc1157e9196b" kindref="member">Entrepreneur</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>name,</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>phone,</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>location,</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>area,</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>specialization)<sp/>:<sp/>base<sp/>(name,phone,location,area)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this.<ref refid="class_class_library_1_1_entrepreneur_1a7f75ceaaa81b8e691a6eca4aaff8fa1b" kindref="member">Specialization</ref><sp/>=<sp/>specialization;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Entrepreneur.cs"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="_r_e_a_d_m_e_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">Algo<sp/>que<sp/>nos<sp/>desafió<sp/>fue<sp/>aplicar<sp/>todos<sp/>los<sp/>patrones<sp/>vistos<sp/>en<sp/>el<sp/>curso<sp/>a<sp/>nuestro<sp/>código,<sp/>y<sp/>también<sp/>fue<sp/>algo<sp/>que<sp/>aprendimos<sp/>haciendo<sp/>el<sp/>proyecto.<sp/>No<sp/>porque<sp/>no<sp/>hayamos<sp/>estudiado<sp/>en<sp/>su<sp/>momento<sp/>ni<sp/>hecho<sp/>los<sp/>ejercicios<sp/>correspondientes,<sp/>sino<sp/>que<sp/>nos<sp/>dimos<sp/>cuentas<sp/>que<sp/>algunos<sp/>conceptos<sp/>estaban<sp/>claros<sp/>en<sp/>la<sp/>teoría<sp/>pero<sp/>a<sp/>la<sp/>hora<sp/>de<sp/>aplicarlo<sp/>junto<sp/>con<sp/>los<sp/>demás<sp/>patrones<sp/>se<sp/>complicaba.</highlight></codeline>
+<codeline><highlight class="normal">Otra<sp/>cosa<sp/>que<sp/>fue<sp/>un<sp/>desafío<sp/>fue<sp/>la<sp/>comunicación<sp/>entre<sp/>las<sp/>clases,<sp/>no<sp/>estabamos<sp/>acostumbrados<sp/>a<sp/>tener<sp/>tantas<sp/>clases<sp/>con<sp/>tantas<sp/>relaciones<sp/>entre<sp/>ellas<sp/>y<sp/>costó<sp/>conectarlas.<sp/>Por<sp/>ejemplo<sp/>con<sp/>DataManager<sp/>nos<sp/>pasó<sp/>eso,<sp/>al<sp/>principio<sp/>no<sp/>existía<sp/>la<sp/>clased<sp/>y<sp/>nos<sp/>dimos<sp/>cuenta<sp/>que<sp/>debía<sp/>existir,<sp/>luego<sp/>le<sp/>dimos<sp/>demasiadas<sp/>responsabilidades<sp/>que<sp/>no<sp/>le<sp/>correspondían,<sp/>hasta<sp/>que<sp/>al<sp/>final<sp/>encontramos<sp/>la<sp/>forma<sp/>de<sp/>que<sp/>funcione<sp/>y<sp/>cumpla<sp/>con<sp/>los<sp/>patrones.</highlight></codeline>
+<codeline><highlight class="normal">Los<sp/>recursos<sp/>que<sp/>utilizamos<sp/>fueron<sp/>los<sp/>repositorios<sp/>dados<sp/>en<sp/>el<sp/>curso.<sp/>Releimos<sp/>varias<sp/>veces<sp/>toda<sp/>la<sp/>información<sp/>dada,<sp/>y<sp/>nos<sp/>fue<sp/>útil<sp/>tenerlo<sp/>a<sp/>mano<sp/>para<sp/>checkear<sp/>a<sp/>medida<sp/>que<sp/>avanzabamos.</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/README.md"/>
+  </compounddef>
+</doxygen>

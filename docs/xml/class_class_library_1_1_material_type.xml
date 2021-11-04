@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="class_class_library_1_1_material_type" kind="class" language="C#" prot="public">
+    <compoundname>ClassLibrary::MaterialType</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_class_library_1_1_material_type_1a423146e823ac43aa420c7073324fcd3b" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string ClassLibrary.MaterialType.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+<para>String del nombre del tipo de material </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/MaterialType.cs" line="15" column="23" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/MaterialType.cs" bodystart="15" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="property" id="class_class_library_1_1_material_type_1af09b9a272c1e25e0795e8f4d9331dc0a" prot="private" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string ClassLibrary.MaterialType.Description</definition>
+        <argsstring></argsstring>
+        <name>Description</name>
+        <briefdescription>
+<para>String de la descripcion sobre el tipo de material </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/MaterialType.cs" line="22" column="24" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/MaterialType.cs" bodystart="22" bodyend="22"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_class_library_1_1_material_type_1adc37495d8b8b5c20b321dcc80a069e63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ClassLibrary.MaterialType.MaterialType</definition>
+        <argsstring>(string name, string description)</argsstring>
+        <name>MaterialType</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>description</declname>
+        </param>
+        <briefdescription>
+<para>Constructor de la clase <ref refid="class_class_library_1_1_material_type" kindref="compound">MaterialType</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>description</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/MaterialType.cs" line="29" column="16" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/MaterialType.cs" bodystart="29" bodyend="33"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Esta clase representa los tipos de materiales </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/MaterialType.cs" line="8" column="11" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/MaterialType.cs" bodystart="9" bodyend="36"/>
+    <listofallmembers>
+      <member refid="class_class_library_1_1_material_type_1af09b9a272c1e25e0795e8f4d9331dc0a" prot="private" virt="non-virtual"><scope>ClassLibrary::MaterialType</scope><name>Description</name></member>
+      <member refid="class_class_library_1_1_material_type_1adc37495d8b8b5c20b321dcc80a069e63" prot="public" virt="non-virtual"><scope>ClassLibrary::MaterialType</scope><name>MaterialType</name></member>
+      <member refid="class_class_library_1_1_material_type_1a423146e823ac43aa420c7073324fcd3b" prot="public" virt="non-virtual"><scope>ClassLibrary::MaterialType</scope><name>Name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

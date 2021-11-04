@@ -1,0 +1,427 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="class_class_library_1_1_console_printer" kind="class" language="C#" prot="public">
+    <compoundname>ClassLibrary::ConsolePrinter</compoundname>
+    <basecompoundref refid="interface_class_library_1_1_i_printer" prot="public" virt="non-virtual">ClassLibrary.IPrinter</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_class_library_1_1_console_printer_1ac4d1a583eb597f2ad413fec1a648d05f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ClassLibrary.ConsolePrinter.PrintOffersAvailability</definition>
+        <argsstring>(OfferManager offermanager)</argsstring>
+        <name>PrintOffersAvailability</name>
+        <reimplements refid="interface_class_library_1_1_i_printer_1a291d9f07dbddfb1e8edf9d5c0d3c8473">PrintOffersAvailability</reimplements>
+        <param>
+          <type><ref refid="class_class_library_1_1_offer_manager" kindref="compound">OfferManager</ref></type>
+          <declname>offermanager</declname>
+        </param>
+        <briefdescription>
+<para>Este metodo se encarga de imprimir en pantalla lo que devuelve GetOffertsAvailability de <ref refid="class_class_library_1_1_offer_manager" kindref="compound">OfferManager</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>offermanager</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" line="16" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" bodystart="16" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_console_printer_1a7a85bf0050e9c1822d3904db26c42f99" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ClassLibrary.ConsolePrinter.PrintMyOffersAvailability</definition>
+        <argsstring>(Search search, Company company)</argsstring>
+        <name>PrintMyOffersAvailability</name>
+        <reimplements refid="interface_class_library_1_1_i_printer_1a7b4ecbbbdd076d31cc488f7a815dfac5">PrintMyOffersAvailability</reimplements>
+        <param>
+          <type><ref refid="class_class_library_1_1_search" kindref="compound">Search</ref></type>
+          <declname>search</declname>
+        </param>
+        <param>
+          <type><ref refid="class_class_library_1_1_company" kindref="compound">Company</ref></type>
+          <declname>company</declname>
+        </param>
+        <briefdescription>
+<para>Este metodo se encarga de imprimir en pantalla lo que devuelve GetMyOffertsAvailability de <ref refid="class_class_library_1_1_offer_manager" kindref="compound">OfferManager</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>search</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>company</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" line="26" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" bodystart="26" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_console_printer_1a24552ce365dbcfffe6aecc63d1252a21" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ClassLibrary.ConsolePrinter.PrintOffersByLocation</definition>
+        <argsstring>(Search search, string location)</argsstring>
+        <name>PrintOffersByLocation</name>
+        <reimplements refid="interface_class_library_1_1_i_printer_1a8a69c76592de73cccf5a0680d6ac6076">PrintOffersByLocation</reimplements>
+        <param>
+          <type><ref refid="class_class_library_1_1_search" kindref="compound">Search</ref></type>
+          <declname>search</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>location</declname>
+        </param>
+        <briefdescription>
+<para>Este metodo se encarga de imprimir en pantalla lo que devuelve GetOfferByLocation de <ref refid="class_class_library_1_1_search" kindref="compound">Search</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>search</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>location</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" line="36" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" bodystart="36" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_console_printer_1a77491591b38086a023f20f770f792791" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ClassLibrary.ConsolePrinter.PrintOffersByWord</definition>
+        <argsstring>(Search search, string word)</argsstring>
+        <name>PrintOffersByWord</name>
+        <reimplements refid="interface_class_library_1_1_i_printer_1a27f60d29430cefa1b50462bb2420cb60">PrintOffersByWord</reimplements>
+        <param>
+          <type><ref refid="class_class_library_1_1_search" kindref="compound">Search</ref></type>
+          <declname>search</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>word</declname>
+        </param>
+        <briefdescription>
+<para>Este metodo se encarga de imprimir en pantalla lo que devuelve GetOfferByWord de <ref refid="class_class_library_1_1_search" kindref="compound">Search</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>search</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>word</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" line="46" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" bodystart="46" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_console_printer_1acf80b8200d5d7fdc8089b11ad39a45fe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ClassLibrary.ConsolePrinter.PrintOffersByCategory</definition>
+        <argsstring>(Search search, string category)</argsstring>
+        <name>PrintOffersByCategory</name>
+        <reimplements refid="interface_class_library_1_1_i_printer_1a2376a8f6a2d5cbe67e7d1f53ca57fc13">PrintOffersByCategory</reimplements>
+        <param>
+          <type><ref refid="class_class_library_1_1_search" kindref="compound">Search</ref></type>
+          <declname>search</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>category</declname>
+        </param>
+        <briefdescription>
+<para>Este metodo se encarga de imprimir en pantalla lo que devuelve GetOfferByCategory de <ref refid="class_class_library_1_1_search" kindref="compound">Search</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>search</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>category</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" line="56" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" bodystart="56" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_console_printer_1a5aac2cb53b92fcbe9fa0c3dd2388085f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ClassLibrary.ConsolePrinter.PrintOffersByEntrepreneur</definition>
+        <argsstring>(Search search, Entrepreneur entrepreneur)</argsstring>
+        <name>PrintOffersByEntrepreneur</name>
+        <reimplements refid="interface_class_library_1_1_i_printer_1acd8b7c54e3b5686d06ad4432cc5e1a04">PrintOffersByEntrepreneur</reimplements>
+        <param>
+          <type><ref refid="class_class_library_1_1_search" kindref="compound">Search</ref></type>
+          <declname>search</declname>
+        </param>
+        <param>
+          <type><ref refid="class_class_library_1_1_entrepreneur" kindref="compound">Entrepreneur</ref></type>
+          <declname>entrepreneur</declname>
+        </param>
+        <briefdescription>
+<para>Este metodo se encarga de imprimir en pantalla lo que devuelve GetOfferByEntrepreneur de <ref refid="class_class_library_1_1_search" kindref="compound">Search</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>search</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>entrepreneur</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" line="66" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" bodystart="66" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_console_printer_1a05a50427996eb0dd70f7665b6f3ad92f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ClassLibrary.ConsolePrinter.PrintOffersByCompany</definition>
+        <argsstring>(Search search, Company company)</argsstring>
+        <name>PrintOffersByCompany</name>
+        <reimplements refid="interface_class_library_1_1_i_printer_1a096ed9ecdfafe521eee3b0631a0f2943">PrintOffersByCompany</reimplements>
+        <param>
+          <type><ref refid="class_class_library_1_1_search" kindref="compound">Search</ref></type>
+          <declname>search</declname>
+        </param>
+        <param>
+          <type><ref refid="class_class_library_1_1_company" kindref="compound">Company</ref></type>
+          <declname>company</declname>
+        </param>
+        <briefdescription>
+<para>Este metodo se encarga de imprimir en pantalla lo que devuelve GetOfferByCompany de <ref refid="class_class_library_1_1_search" kindref="compound">Search</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>search</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>company</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" line="76" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" bodystart="76" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_console_printer_1a7937d0c8a99a2ec125801b9e60713f57" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ClassLibrary.ConsolePrinter.PrintPermissions</definition>
+        <argsstring>(DataManager datamanager)</argsstring>
+        <name>PrintPermissions</name>
+        <reimplements refid="interface_class_library_1_1_i_printer_1a45855ac76b79bfc34b15d04e9ba8baad">PrintPermissions</reimplements>
+        <param>
+          <type><ref refid="class_class_library_1_1_data_manager" kindref="compound">DataManager</ref></type>
+          <declname>datamanager</declname>
+        </param>
+        <briefdescription>
+<para>Este metodo se encarga de imprimir en pantalla lo que devuelve GetTextToPrintPermission de Datamanager </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>datamanager</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<linebreak/>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" line="85" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" bodystart="85" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_console_printer_1a6a1f7b16fe432963161c7a3769e35f42" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ClassLibrary.ConsolePrinter.PrintAreaOfWork</definition>
+        <argsstring>(DataManager datamanager)</argsstring>
+        <name>PrintAreaOfWork</name>
+        <reimplements refid="interface_class_library_1_1_i_printer_1ab7e894a930cb92920c8916d36fdae92b">PrintAreaOfWork</reimplements>
+        <param>
+          <type><ref refid="class_class_library_1_1_data_manager" kindref="compound">DataManager</ref></type>
+          <declname>datamanager</declname>
+        </param>
+        <briefdescription>
+<para>Este metodo se encarga de imprimir en pantalla lo que devuelve GetTextToPrintPermission de Datamanager </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>datamanager</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" line="94" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" bodystart="94" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_console_printer_1aff05a8262c1c29fc2c112f64f660952d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ClassLibrary.ConsolePrinter.PrintMaterialType</definition>
+        <argsstring>(DataManager datamanager)</argsstring>
+        <name>PrintMaterialType</name>
+        <reimplements refid="interface_class_library_1_1_i_printer_1a7c9c0538aa9e1dcf8ffb5d1c68928666">PrintMaterialType</reimplements>
+        <param>
+          <type><ref refid="class_class_library_1_1_data_manager" kindref="compound">DataManager</ref></type>
+          <declname>datamanager</declname>
+        </param>
+        <briefdescription>
+<para>Este metodo se encarga de imprimir en pantalla lo que devuelve GetTextToPrintMaterialType de Datamanager </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>datamanager</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" line="103" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" bodystart="103" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_console_printer_1a091c5690102c111ab56eca485c15945c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ClassLibrary.ConsolePrinter.PrintUserPermissions</definition>
+        <argsstring>(UserBase userbase)</argsstring>
+        <name>PrintUserPermissions</name>
+        <reimplements refid="interface_class_library_1_1_i_printer_1a12a9ac9e307ba483b3c5b2b54f6c2d6b">PrintUserPermissions</reimplements>
+        <param>
+          <type><ref refid="class_class_library_1_1_user_base" kindref="compound">UserBase</ref></type>
+          <declname>userbase</declname>
+        </param>
+        <briefdescription>
+<para>Metodo para imprimir por pantalla los permisos que posee el usuario </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>userbase</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" line="112" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" bodystart="112" bodyend="115"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Esta clase implementa el tipo Iprinter y tiene como responsabilidad imprirmir por pantalla la informacion que recibe de las otras clases. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ClassLibrary.ConsolePrinter</label>
+        <link refid="class_class_library_1_1_console_printer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>IPrinter</label>
+        <link refid="interface_class_library_1_1_i_printer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ClassLibrary.ConsolePrinter</label>
+        <link refid="class_class_library_1_1_console_printer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>IPrinter</label>
+        <link refid="interface_class_library_1_1_i_printer"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" line="10" column="11" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/ConsolePrinter.cs" bodystart="11" bodyend="116"/>
+    <listofallmembers>
+      <member refid="class_class_library_1_1_console_printer_1a6a1f7b16fe432963161c7a3769e35f42" prot="public" virt="non-virtual"><scope>ClassLibrary::ConsolePrinter</scope><name>PrintAreaOfWork</name></member>
+      <member refid="class_class_library_1_1_console_printer_1aff05a8262c1c29fc2c112f64f660952d" prot="public" virt="non-virtual"><scope>ClassLibrary::ConsolePrinter</scope><name>PrintMaterialType</name></member>
+      <member refid="class_class_library_1_1_console_printer_1a7a85bf0050e9c1822d3904db26c42f99" prot="public" virt="non-virtual"><scope>ClassLibrary::ConsolePrinter</scope><name>PrintMyOffersAvailability</name></member>
+      <member refid="class_class_library_1_1_console_printer_1ac4d1a583eb597f2ad413fec1a648d05f" prot="public" virt="non-virtual"><scope>ClassLibrary::ConsolePrinter</scope><name>PrintOffersAvailability</name></member>
+      <member refid="class_class_library_1_1_console_printer_1acf80b8200d5d7fdc8089b11ad39a45fe" prot="public" virt="non-virtual"><scope>ClassLibrary::ConsolePrinter</scope><name>PrintOffersByCategory</name></member>
+      <member refid="class_class_library_1_1_console_printer_1a05a50427996eb0dd70f7665b6f3ad92f" prot="public" virt="non-virtual"><scope>ClassLibrary::ConsolePrinter</scope><name>PrintOffersByCompany</name></member>
+      <member refid="class_class_library_1_1_console_printer_1a5aac2cb53b92fcbe9fa0c3dd2388085f" prot="public" virt="non-virtual"><scope>ClassLibrary::ConsolePrinter</scope><name>PrintOffersByEntrepreneur</name></member>
+      <member refid="class_class_library_1_1_console_printer_1a24552ce365dbcfffe6aecc63d1252a21" prot="public" virt="non-virtual"><scope>ClassLibrary::ConsolePrinter</scope><name>PrintOffersByLocation</name></member>
+      <member refid="class_class_library_1_1_console_printer_1a77491591b38086a023f20f770f792791" prot="public" virt="non-virtual"><scope>ClassLibrary::ConsolePrinter</scope><name>PrintOffersByWord</name></member>
+      <member refid="class_class_library_1_1_console_printer_1a7937d0c8a99a2ec125801b9e60713f57" prot="public" virt="non-virtual"><scope>ClassLibrary::ConsolePrinter</scope><name>PrintPermissions</name></member>
+      <member refid="class_class_library_1_1_console_printer_1a091c5690102c111ab56eca485c15945c" prot="public" virt="non-virtual"><scope>ClassLibrary::ConsolePrinter</scope><name>PrintUserPermissions</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="class_class_library_1_1_offer_manager" kind="class" language="C#" prot="public">
+    <compoundname>ClassLibrary::OfferManager</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_class_library_1_1_offer_manager_1a4f99ca8b416ca7e4a02764ffb79cbbab" prot="public" static="no" mutable="no">
+        <type>List&lt; <ref refid="class_class_library_1_1_offer" kindref="compound">Offer</ref> &gt;</type>
+        <definition>List&lt;Offer&gt; ClassLibrary.OfferManager.catalog</definition>
+        <argsstring></argsstring>
+        <name>catalog</name>
+        <initializer>= new List&lt;<ref refid="class_class_library_1_1_offer" kindref="compound">Offer</ref>&gt;()</initializer>
+        <briefdescription>
+<para>Catalogo de ofertas de nuestra aplicacion </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/OfferManager.cs" line="17" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/OfferManager.cs" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_class_library_1_1_offer_manager_1af4405549f9ad53adf96a6a343186e339" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ClassLibrary.OfferManager.OfferManager</definition>
+        <argsstring>()</argsstring>
+        <name>OfferManager</name>
+        <briefdescription>
+<para>Este es el constructor de la clase </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/OfferManager.cs" line="21" column="17" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/OfferManager.cs" bodystart="21" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_offer_manager_1a32d0fe9109d77eff86f1898d1adcf4ae" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ClassLibrary.OfferManager.SaveOffer</definition>
+        <argsstring>(Offer offer)</argsstring>
+        <name>SaveOffer</name>
+        <param>
+          <type><ref refid="class_class_library_1_1_offer" kindref="compound">Offer</ref></type>
+          <declname>offer</declname>
+        </param>
+        <briefdescription>
+<para>Este metodo lo que hace es, una vez creada la oferta se guarda en el catalogo de la aplicacion </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>offer</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/OfferManager.cs" line="29" column="20" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/OfferManager.cs" bodystart="29" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_offer_manager_1a8d9670a2d7e2c86897bbcde07b035dd0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ClassLibrary.OfferManager.PublishOffer</definition>
+        <argsstring>(int id)</argsstring>
+        <name>PublishOffer</name>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Este metodo se utiliza para re publicar ofertas que son priodicas </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/OfferManager.cs" line="37" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/OfferManager.cs" bodystart="37" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_offer_manager_1a80bc1ba20a048192c4b59b960a278871" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ClassLibrary.OfferManager.DiseableOffer</definition>
+        <argsstring>(int id)</argsstring>
+        <name>DiseableOffer</name>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Este metodo desabilita una oferta del catalogo </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/OfferManager.cs" line="46" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/OfferManager.cs" bodystart="46" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_offer_manager_1aa4385f3b048a17cb77dd875503f6ba6e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>string ClassLibrary.OfferManager.GetOffersAvailability</definition>
+        <argsstring>()</argsstring>
+        <name>GetOffersAvailability</name>
+        <briefdescription>
+<para>Este metodo retorna las ofertas del catalogo que estan habilitadas </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/OfferManager.cs" line="56" column="22" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/OfferManager.cs" bodystart="56" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_offer_manager_1a9a5e10bdc1cfffa24c92ece54a340882" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ClassLibrary.OfferManager.BuyOffer</definition>
+        <argsstring>(Entrepreneur buyer, int index)</argsstring>
+        <name>BuyOffer</name>
+        <param>
+          <type><ref refid="class_class_library_1_1_entrepreneur" kindref="compound">Entrepreneur</ref></type>
+          <declname>buyer</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>El metodo siguiente permite comprar la oferta al emprendedor </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buyer</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/OfferManager.cs" line="78" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/OfferManager.cs" bodystart="78" bodyend="82"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>En esta clase se puede ver el uso del patron Expert, y aque es experto en el manejo de las ofertas de la aplicacion, incluso cuando se instancia esta clase la instanciamos a traves de singleton de modo de manejar una unica instancia. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/OfferManager.cs" line="10" column="11" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/OfferManager.cs" bodystart="11" bodyend="83"/>
+    <listofallmembers>
+      <member refid="class_class_library_1_1_offer_manager_1a9a5e10bdc1cfffa24c92ece54a340882" prot="public" virt="non-virtual"><scope>ClassLibrary::OfferManager</scope><name>BuyOffer</name></member>
+      <member refid="class_class_library_1_1_offer_manager_1a4f99ca8b416ca7e4a02764ffb79cbbab" prot="public" virt="non-virtual"><scope>ClassLibrary::OfferManager</scope><name>catalog</name></member>
+      <member refid="class_class_library_1_1_offer_manager_1a80bc1ba20a048192c4b59b960a278871" prot="public" virt="non-virtual"><scope>ClassLibrary::OfferManager</scope><name>DiseableOffer</name></member>
+      <member refid="class_class_library_1_1_offer_manager_1aa4385f3b048a17cb77dd875503f6ba6e" prot="public" virt="non-virtual"><scope>ClassLibrary::OfferManager</scope><name>GetOffersAvailability</name></member>
+      <member refid="class_class_library_1_1_offer_manager_1af4405549f9ad53adf96a6a343186e339" prot="public" virt="non-virtual"><scope>ClassLibrary::OfferManager</scope><name>OfferManager</name></member>
+      <member refid="class_class_library_1_1_offer_manager_1a8d9670a2d7e2c86897bbcde07b035dd0" prot="public" virt="non-virtual"><scope>ClassLibrary::OfferManager</scope><name>PublishOffer</name></member>
+      <member refid="class_class_library_1_1_offer_manager_1a32d0fe9109d77eff86f1898d1adcf4ae" prot="public" virt="non-virtual"><scope>ClassLibrary::OfferManager</scope><name>SaveOffer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

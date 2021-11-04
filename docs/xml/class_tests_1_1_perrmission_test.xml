@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="class_tests_1_1_perrmission_test" kind="class" language="C#" prot="public">
+    <compoundname>Tests::PerrmissionTest</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_tests_1_1_perrmission_test_1aab7f8a49acbe4d4c953c5ecb15f8a8a8" prot="private" static="no" mutable="no">
+        <type><ref refid="class_class_library_1_1_entrepreneur" kindref="compound">Entrepreneur</ref></type>
+        <definition>Entrepreneur Tests.PerrmissionTest.entrepreneur</definition>
+        <argsstring></argsstring>
+        <name>entrepreneur</name>
+        <briefdescription>
+<para>emprededor para pruebas </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" line="24" column="30" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tests_1_1_perrmission_test_1a8b3ceb0da40d8e0b9389b7d9baf0103c" prot="private" static="no" mutable="no">
+        <type><ref refid="class_class_library_1_1_offer_manager" kindref="compound">OfferManager</ref></type>
+        <definition>OfferManager Tests.PerrmissionTest.offerAdmin</definition>
+        <argsstring></argsstring>
+        <name>offerAdmin</name>
+        <briefdescription>
+<para>Catalogo para pruebas. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" line="28" column="30" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tests_1_1_perrmission_test_1a14378c1b343575551b766e85df9ceaa1" prot="private" static="no" mutable="no">
+        <type><ref refid="class_class_library_1_1_material" kindref="compound">Material</ref></type>
+        <definition>Material Tests.PerrmissionTest.material</definition>
+        <argsstring></argsstring>
+        <name>material</name>
+        <briefdescription>
+<para>Material para pruebas </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" line="32" column="26" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tests_1_1_perrmission_test_1ac5e64a6b046800491cbc5b3f5b829652" prot="private" static="no" mutable="no">
+        <type><ref refid="class_class_library_1_1_company" kindref="compound">Company</ref></type>
+        <definition>Company Tests.PerrmissionTest.company</definition>
+        <argsstring></argsstring>
+        <name>company</name>
+        <briefdescription>
+<para>Compania para la empresa </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" line="36" column="25" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tests_1_1_perrmission_test_1ac8573db10408d2f6de1e9cf0aeb2e816" prot="private" static="no" mutable="no">
+        <type><ref refid="class_class_library_1_1_search" kindref="compound">Search</ref></type>
+        <definition>Search Tests.PerrmissionTest.searcher</definition>
+        <argsstring></argsstring>
+        <name>searcher</name>
+        <briefdescription>
+<para>Buscador para pruebas </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" line="41" column="24" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tests_1_1_perrmission_test_1ad08859a1b8b843f7520fb7adaeb8e0c1" prot="private" static="no" mutable="no">
+        <type><ref refid="class_class_library_1_1_permission" kindref="compound">Permission</ref></type>
+        <definition>Permission Tests.PerrmissionTest.permission</definition>
+        <argsstring></argsstring>
+        <name>permission</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" line="42" column="28" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tests_1_1_perrmission_test_1a56b43f3bb54f579d4f77c7703d8aeee1" prot="private" static="no" mutable="no">
+        <type><ref refid="class_class_library_1_1_data_manager" kindref="compound">DataManager</ref></type>
+        <definition>DataManager Tests.PerrmissionTest.dataManager</definition>
+        <argsstring></argsstring>
+        <name>dataManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" line="43" column="29" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tests_1_1_perrmission_test_1ab60a572ad8cdd54743bf698d89c3163c" prot="private" static="no" mutable="no">
+        <type><ref refid="class_class_library_1_1_offer" kindref="compound">Offer</ref></type>
+        <definition>Offer Tests.PerrmissionTest.offer</definition>
+        <argsstring></argsstring>
+        <name>offer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" line="44" column="23" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_tests_1_1_perrmission_test_1ab77b22909053d02600e11f06341526d5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tests.PerrmissionTest.Setup</definition>
+        <argsstring>()</argsstring>
+        <name>Setup</name>
+        <briefdescription>
+<para>Crea las intancias utiilzadas en los test </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" line="50" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" bodystart="50" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tests_1_1_perrmission_test_1a0d36614f9d7e94255a7676321bede443" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tests.PerrmissionTest.Permission</definition>
+        <argsstring>()</argsstring>
+        <name>Permission</name>
+        <briefdescription>
+<para>Prueba de asignación de permisos con datamanager </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" line="83" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" bodystart="83" bodyend="87"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Prueba de la clase <ref refid="class_tests_1_1_perrmission_test_1a0d36614f9d7e94255a7676321bede443" kindref="member">Permission</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" line="19" column="11" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/test/LibraryTests/PermissionTest.cs" bodystart="20" bodyend="88"/>
+    <listofallmembers>
+      <member refid="class_tests_1_1_perrmission_test_1ac5e64a6b046800491cbc5b3f5b829652" prot="private" virt="non-virtual"><scope>Tests::PerrmissionTest</scope><name>company</name></member>
+      <member refid="class_tests_1_1_perrmission_test_1a56b43f3bb54f579d4f77c7703d8aeee1" prot="private" virt="non-virtual"><scope>Tests::PerrmissionTest</scope><name>dataManager</name></member>
+      <member refid="class_tests_1_1_perrmission_test_1aab7f8a49acbe4d4c953c5ecb15f8a8a8" prot="private" virt="non-virtual"><scope>Tests::PerrmissionTest</scope><name>entrepreneur</name></member>
+      <member refid="class_tests_1_1_perrmission_test_1a14378c1b343575551b766e85df9ceaa1" prot="private" virt="non-virtual"><scope>Tests::PerrmissionTest</scope><name>material</name></member>
+      <member refid="class_tests_1_1_perrmission_test_1ab60a572ad8cdd54743bf698d89c3163c" prot="private" virt="non-virtual"><scope>Tests::PerrmissionTest</scope><name>offer</name></member>
+      <member refid="class_tests_1_1_perrmission_test_1a8b3ceb0da40d8e0b9389b7d9baf0103c" prot="private" virt="non-virtual"><scope>Tests::PerrmissionTest</scope><name>offerAdmin</name></member>
+      <member refid="class_tests_1_1_perrmission_test_1ad08859a1b8b843f7520fb7adaeb8e0c1" prot="private" virt="non-virtual"><scope>Tests::PerrmissionTest</scope><name>permission</name></member>
+      <member refid="class_tests_1_1_perrmission_test_1a0d36614f9d7e94255a7676321bede443" prot="public" virt="non-virtual"><scope>Tests::PerrmissionTest</scope><name>Permission</name></member>
+      <member refid="class_tests_1_1_perrmission_test_1ac8573db10408d2f6de1e9cf0aeb2e816" prot="private" virt="non-virtual"><scope>Tests::PerrmissionTest</scope><name>searcher</name></member>
+      <member refid="class_tests_1_1_perrmission_test_1ab77b22909053d02600e11f06341526d5" prot="public" virt="non-virtual"><scope>Tests::PerrmissionTest</scope><name>Setup</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

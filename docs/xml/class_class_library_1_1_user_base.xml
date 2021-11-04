@@ -1,0 +1,244 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="class_class_library_1_1_user_base" kind="class" language="C#" prot="public">
+    <compoundname>ClassLibrary::UserBase</compoundname>
+    <derivedcompoundref refid="class_class_library_1_1_company" prot="public" virt="non-virtual">ClassLibrary.Company</derivedcompoundref>
+    <derivedcompoundref refid="class_class_library_1_1_entrepreneur" prot="public" virt="non-virtual">ClassLibrary.Entrepreneur</derivedcompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_class_library_1_1_user_base_1a2a69ad1f167101d28cd23cb1f5732b43" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string ClassLibrary.UserBase.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+<para>Propiedad Nombre del usuario </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" line="12" column="23" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" bodystart="12" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="property" id="class_class_library_1_1_user_base_1a0dd7b4a421cd568a8cfcef37d52115ec" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string ClassLibrary.UserBase.Location</definition>
+        <argsstring></argsstring>
+        <name>Location</name>
+        <briefdescription>
+<para>Propiedad ubicación de la empresa </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" line="17" column="23" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" bodystart="17" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="property" id="class_class_library_1_1_user_base_1a5d008b662cee2324c17b511847e0e3bd" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string ClassLibrary.UserBase.Phone</definition>
+        <argsstring></argsstring>
+        <name>Phone</name>
+        <briefdescription>
+<para>Propiedad telefono del usuario </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" line="22" column="23" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" bodystart="22" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="property" id="class_class_library_1_1_user_base_1a541e16174826f50f0ee77014b80abdb2" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_class_library_1_1_area_of_work" kindref="compound">AreaOfWork</ref></type>
+        <definition>AreaOfWork ClassLibrary.UserBase.AreaOfWork</definition>
+        <argsstring></argsstring>
+        <name>AreaOfWork</name>
+        <briefdescription>
+<para>Instancia de clase <ref refid="class_class_library_1_1_area_of_work" kindref="compound">AreaOfWork</ref> que representa una categoria de la empresa </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" line="27" column="27" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" bodystart="27" bodyend="27"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_class_library_1_1_user_base_1a2d1482be2fb50255b1c69b3956be4101" prot="private" static="no" mutable="no">
+        <type>List&lt; <ref refid="class_class_library_1_1_permission" kindref="compound">Permission</ref> &gt;</type>
+        <definition>List&lt;Permission&gt; ClassLibrary.UserBase.permissions</definition>
+        <argsstring></argsstring>
+        <name>permissions</name>
+        <initializer>= new List&lt;<ref refid="class_class_library_1_1_permission" kindref="compound">Permission</ref>&gt;()</initializer>
+        <briefdescription>
+<para>Lista de habilitaciones que posee un usario </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" line="34" column="22" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_class_library_1_1_user_base_1af5958488dcd559a8c97b26d7b2ec1b3f" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ClassLibrary.UserBase.UserBase</definition>
+        <argsstring>(string name, string phone, string location, string area)</argsstring>
+        <name>UserBase</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>phone</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>location</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>area</declname>
+        </param>
+        <briefdescription>
+<para>Permite crear instancias de los usuarios del programa </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>phone</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>location</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" line="45" column="19" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" bodystart="45" bodyend="72"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_class_library_1_1_user_base_1ac18c8030b0f9e78e38b1454f2a7c2c5b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ClassLibrary.UserBase.AddPermission</definition>
+        <argsstring>(Permission permission)</argsstring>
+        <name>AddPermission</name>
+        <param>
+          <type><ref refid="class_class_library_1_1_permission" kindref="compound">Permission</ref></type>
+          <declname>permission</declname>
+        </param>
+        <briefdescription>
+<para>Permite agregar permisios a un usuario </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" line="77" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" bodystart="77" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_user_base_1a8906e9d9bdbcd687a0d2c0965987dbd6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ClassLibrary.UserBase.RemovePermission</definition>
+        <argsstring>(int index)</argsstring>
+        <name>RemovePermission</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+<para>Permite eliminar un permiso de un usuario </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" line="89" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" bodystart="89" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_user_base_1abc8bdc5757659bace2bc6d0b90a193f6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>string ClassLibrary.UserBase.GetPermissions</definition>
+        <argsstring>()</argsstring>
+        <name>GetPermissions</name>
+        <briefdescription>
+<para>permite obtener la lista de permisos de un usuario </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" line="97" column="23" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" bodystart="97" bodyend="107"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Esta clase define las propiedas y comportamiento que comparten los diferentes usuarios de la empresa </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ClassLibrary.UserBase</label>
+        <link refid="class_class_library_1_1_user_base"/>
+      </node>
+      <node id="2">
+        <label>ClassLibrary.Company</label>
+        <link refid="class_class_library_1_1_company"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ClassLibrary.Entrepreneur</label>
+        <link refid="class_class_library_1_1_entrepreneur"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" line="7" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/UserBase.cs" bodystart="8" bodyend="108"/>
+    <listofallmembers>
+      <member refid="class_class_library_1_1_user_base_1ac18c8030b0f9e78e38b1454f2a7c2c5b" prot="public" virt="non-virtual"><scope>ClassLibrary::UserBase</scope><name>AddPermission</name></member>
+      <member refid="class_class_library_1_1_user_base_1a541e16174826f50f0ee77014b80abdb2" prot="public" virt="non-virtual"><scope>ClassLibrary::UserBase</scope><name>AreaOfWork</name></member>
+      <member refid="class_class_library_1_1_user_base_1abc8bdc5757659bace2bc6d0b90a193f6" prot="public" virt="non-virtual"><scope>ClassLibrary::UserBase</scope><name>GetPermissions</name></member>
+      <member refid="class_class_library_1_1_user_base_1a0dd7b4a421cd568a8cfcef37d52115ec" prot="public" virt="non-virtual"><scope>ClassLibrary::UserBase</scope><name>Location</name></member>
+      <member refid="class_class_library_1_1_user_base_1a2a69ad1f167101d28cd23cb1f5732b43" prot="public" virt="non-virtual"><scope>ClassLibrary::UserBase</scope><name>Name</name></member>
+      <member refid="class_class_library_1_1_user_base_1a2d1482be2fb50255b1c69b3956be4101" prot="private" virt="non-virtual"><scope>ClassLibrary::UserBase</scope><name>permissions</name></member>
+      <member refid="class_class_library_1_1_user_base_1a5d008b662cee2324c17b511847e0e3bd" prot="public" virt="non-virtual"><scope>ClassLibrary::UserBase</scope><name>Phone</name></member>
+      <member refid="class_class_library_1_1_user_base_1a8906e9d9bdbcd687a0d2c0965987dbd6" prot="public" virt="non-virtual"><scope>ClassLibrary::UserBase</scope><name>RemovePermission</name></member>
+      <member refid="class_class_library_1_1_user_base_1af5958488dcd559a8c97b26d7b2ec1b3f" prot="protected" virt="non-virtual"><scope>ClassLibrary::UserBase</scope><name>UserBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
