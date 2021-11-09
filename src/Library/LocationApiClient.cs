@@ -71,8 +71,8 @@ namespace ClassLibrary
         /// <returns>Las coordenadas de la dirección.</returns>
         public async Task<Location> GetLocationAsync(
             [Required] string address,
-            [Required]string city = "Montevideo",
-            [Required]string department = "Montevideo",
+            [Required]string city ,
+            [Required]string department ,
             [Required]string country = "Uruguay")
         {
             var parameters = new Dictionary<string, string>
@@ -105,8 +105,8 @@ namespace ClassLibrary
         /// </remarks>
         public Location GetLocation(
             [Required] string address,
-            [Required] string city = "Montevideo",
-            [Required] string department = "Montevideo",
+            [Required] string city,
+            [Required] string department,
             [Required] string country = "Uruguay")
         {
             return AsyncContext.Run(() => this.GetLocationAsync(address, city, department, country));

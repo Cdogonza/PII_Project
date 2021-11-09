@@ -33,6 +33,7 @@ namespace Tests
         /// Compania para la empresa
         /// </summary>
         private Company company;
+        private Location Location;
 
         /// <summary>
         /// Buscador para pruebas
@@ -46,6 +47,7 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
+            LocationApiClient Loc = new LocationApiClient();
             this.offerAdmin =  new OfferManager();
             this.searcher =  new Search();
             this.company = new Company("compania1","098239334","Las Piedras","Construcción");
@@ -56,7 +58,8 @@ namespace Tests
             DateTime deliverydate = new DateTime();
             MaterialType materialType  =  new MaterialType("Tela", "Recortes de tela de 1x1");
             this.material =  new Material("Tela",materialType,"200",100,"Berro 1231");
-            this.offer = new Offer("Promocion de verano",this.material,"Berro1231",200.00,true,tags,deliverydate,publicationDate,this.company);
+            this.Location =Loc.GetLocation("Berro 1231","Montevideo","Montevideo");
+            this.offer = new Offer("Promocion de verano",this.material,this.Location,200.00,true,tags,deliverydate,publicationDate,this.company);
             this.offerAdmin.SaveOffer(this.offer);
 
             this.entrepreneur = new Entrepreneur("Empre2","091234567","Galicia 1234","Construcción","Trabajo en altura");

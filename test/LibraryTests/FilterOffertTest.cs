@@ -39,6 +39,7 @@ namespace Tests
         /// </summary>
         private Search searcher ;
         private Offer offer ;
+        private Location Location;
 
         /// <summary>
         /// Crea las intancias utiilzadas en los test
@@ -46,6 +47,7 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
+            LocationApiClient Loc = new LocationApiClient();
             this.offerAdmin =  new OfferManager();
             this.searcher =  new Search();
             this.company = new Company("compania1","098239334","Las Piedras","Construcción");
@@ -67,7 +69,8 @@ namespace Tests
             DateTime deliverydate = new DateTime();
             MaterialType materialType  =  new MaterialType("Tela", "Recortes de tela de 1x1");
             this.material =  new Material("Tela",materialType,"200",100,"Berro 1231");
-            this.offer = new Offer("Promoción de verano",this.material,"Berro1231",200.00,true,tags,deliverydate,publicationDate,this.company);
+            this.Location =Loc.GetLocation("Berro 1231","Montevideo","Montevideo");
+            this.offer = new Offer("Promoción de verano",this.material,this.Location,200.00,true,tags,deliverydate,publicationDate,this.company);
             Singleton<OfferManager>.Instance.SaveOffer(this.offer);
 
             Permission permissionC = new Permission("Materiales inflamables");
@@ -81,8 +84,8 @@ namespace Tests
         [Test]
         public void FilterByLocation()
         {
-            Assert.That(this.searcher.GetOfferByLocation("Berro1231"),Contains.Substring("Berro1231"));
-            
+            Assert.That(this.searcher.GetOfferByDepartment("Montevideo") ,Contains.Substring("Montevideo"));
+           
             // Assert.AreEqual(Singleton<OfferManager>.Instance.catalog[0].Entrepreneur,this.entrepreneur);
         }
 

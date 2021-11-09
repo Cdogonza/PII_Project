@@ -4,6 +4,27 @@
         <name>Library</name>
     </assembly>
     <members>
+        <member name="T:ClassLibrary.Admin">
+            <summary>
+            Esta clase representa al administrador del Bot
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Admin.Name">
+            <summary>
+            Propiedad nombre del Administrador
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Admin.#ctor(System.String)">
+            <summary>
+            Constructor de la clase Admin
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Admin.InviteCompany(System.String)">
+            <summary>
+            Metodo que se utilizara para invitar a las Empresas al sistema.
+            </summary>
+            <param name="company"></param>
+        </member>
         <member name="T:ClassLibrary.AreaOfWork">
             <summary>
             Representa una categoria de una empresa
