@@ -40,6 +40,80 @@
             Crea instancias de este tipo
             </summary>
         </member>
+        <member name="T:ClassLibrary.BaseHandler">
+            <summary>
+            Clase base para implementar el patrón Chain of Responsibility. En ese patrón se pasa un mensaje a través de una
+            cadena de "handlers" que pueden procesar o no el mensaje. Cada "handler" decide si procesa el mensaje, o si se lo
+            pasa al siguiente. Esta clase base implmementa la responsabilidad de recibir el mensaje y pasarlo al siguiente
+            "handler" en caso que el mensaje no sea procesado. La responsabilidad de decidir si el mensaje se procesa o no, y
+            de procesarlo, se delega a las clases sucesoras de esta clase base.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.BaseHandler.Next">
+            <summary>
+            Obtiene el próximo "handler".
+            </summary>
+            <value>El "handler" que será invocado si este "handler" no procesa el mensaje.</value>
+        </member>
+        <member name="P:ClassLibrary.BaseHandler.Keywords">
+            <summary>
+            Obtiene o asigna el conjunto de palabras clave que este "handler" puede procesar.
+            </summary>
+            <value>Un array de palabras clave.</value>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.#ctor(ClassLibrary.IHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.BaseHandler"/>.
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.#ctor(System.String[],ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.BaseHandler"/> con una lista de comandos.
+            </summary>
+            <param name="keywords">La lista de comandos.</param>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Este método debe ser sobreescrito por las clases sucesores. La clase sucesora procesa el mensaje y retorna
+            true o no lo procesa y retorna false.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="responder">La respuesta al mensaje procesado.</param>
+            <returns>true si el mensaje fue procesado; false en caso contrario</returns>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.InternalCancel">
+            <summary>
+            Este método puede ser sobreescrito en las clases sucesores que procesan varios mensajes cambiando de estado
+            entre mensajes deben sobreescribir este método para volver al estado inicial. En la clase base no hace nada.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.CanHandle(Telegram.Bot.Types.Message)">
+            <summary>
+            Determina si este "handler" puede procesar el mensaje. En la clase base se utiliza el array
+            <see cref="P:ClassLibrary.BaseHandler.Keywords"/> para buscar el texto en el mensaje ignorando mayúsculas y minúsculas. Las
+            clases sucesores pueden sobreescribir este método para proveer otro mecanismo para determina si procesan o no
+            un mensaje.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <returns>true si el mensaje puede ser pocesado; false en caso contrario.</returns>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.Handle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa el mensaje o la pasa al siguiente "handler" si existe.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+            <returns>El "handler" que procesó el mensaje si el mensaje fue procesado; null en caso contrario.</returns>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.Cancel">
+            <summary>
+            Retorna este "handler" al estado inicial. En los "handler" sin estado no hace nada. Los "handlers" que
+            procesan varios mensajes cambiando de estado entre mensajes deben sobreescribir este método para volver al
+            estado inicial.
+            </summary>
+        </member>
         <member name="T:ClassLibrary.Company">
             <summary>
             Clase que representa a un usuario del tipo compania dentro del programa
@@ -311,6 +385,51 @@
             <param name="area"></param>
             <param name="specialization"></param>
             <returns></returns>
+        </member>
+        <member name="T:ClassLibrary.HelloHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.HelloHandler.#ctor(ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.HelloHandler"/>. Esta clase procesa el mensaje "hola".
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.HelloHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa el mensaje "hola" y retorna true; retorna false en caso contrario.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+            <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
+        </member>
+        <member name="T:ClassLibrary.IHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.IHandler.Next">
+            <summary>
+            Obtiene el próximo "handler".
+            </summary>
+            <value>El "handler" que será invocado si este "handler" no procesa el mensaje.</value>
+        </member>
+        <member name="M:ClassLibrary.IHandler.Handle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa el mensaje o la pasa al siguiente "handler" si existe.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+            <returns>El "handler" que procesó el mensaje si el mensaje fue procesado; null en caso contrario.</returns>
+        </member>
+        <member name="M:ClassLibrary.IHandler.Cancel">
+            <summary>
+            Retorna este "handler" al estado inicial y cancela el próximo "handler" si existe. Es utilizado para que los
+            "handlers" que procesan varios mensajes cambiando de estado entre mensajes puedan volver al estado inicial en
+            caso de error por ejemplo.
+            </summary>
         </member>
         <member name="T:ClassLibrary.IPrinter">
             <summary>
@@ -856,6 +975,38 @@
             Crea una instancia Singleton en caso de que no exista, en caso de que exista devuelve la clase existente.
             </summary>
             <value></value>
+        </member>
+        <member name="T:ClassLibrary.TelegramBot">
+            <summary>
+            Una clase que implementa un bot de Telegram.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.TelegramBot.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.TelegramBot.HandleUpdateAsync(Telegram.Bot.Types.Update,System.Threading.CancellationToken)">
+            <summary>
+            Maneja las actualizaciones del bot (todo lo que llega), incluyendo mensajes, ediciones de mensajes,
+            respuestas a botones, etc. En este ejemplo sólo manejamos mensajes de texto.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.TelegramBot.HandleMessageReceived(Telegram.Bot.Types.Message)">
+            <summary>
+            Maneja los mensajes que se envían al bot.
+            Lo único que hacemos por ahora es escuchar 3 tipos de mensajes:
+            - "hola": responde con texto
+            - "chau": responde con texto
+            - "foto": responde con una foto
+            </summary>
+            <param name="message">El mensaje recibido</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.TelegramBot.HandleErrorAsync(System.Exception,System.Threading.CancellationToken)">
+            <summary>
+            Manejo de excepciones. Por ahora simplemente la imprimimos en la consola.
+            </summary>
         </member>
         <member name="T:ClassLibrary.UserBase">
             <summary>

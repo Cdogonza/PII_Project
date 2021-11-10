@@ -14,7 +14,7 @@ namespace ClassLibrary
         /// <summary>
         /// Propiedad ubicación de la empresa
         /// </summary>
-        public string Location{get; set;}
+        public Location Location{get; set;}
 
         /// <summary>
         /// Propiedad telefono del usuario
@@ -42,7 +42,7 @@ namespace ClassLibrary
         /// <param name="location"></param>
         /// <param name="area"></param>
 
-        protected UserBase(string name, string phone, string location, string area)
+        protected UserBase(string name, string phone, Location location, string area)
         {
             if (String.IsNullOrWhiteSpace(name))
             {
@@ -52,11 +52,6 @@ namespace ClassLibrary
             if (String.IsNullOrWhiteSpace(phone))
             {
                 throw new ArgumentNullException(phone);
-            }
-            
-            if (String.IsNullOrWhiteSpace(location))
-            {
-                throw new ArgumentNullException(location);
             }
             if (String.IsNullOrWhiteSpace(area))
             {
