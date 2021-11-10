@@ -12,7 +12,8 @@ using System.Collections;
 namespace Tests
 {
     /// <summary>
-    /// Prueba de la clase <see cref="OfferManager"/>.
+    /// Prueba de la clase <see cref="Permission"/>.
+    /// 
     /// </summary>
     [TestFixture]
     public class PerrmissionTest

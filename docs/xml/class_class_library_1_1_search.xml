@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="class_class_library_1_1_search" kind="class" language="C#" prot="public">
+    <compoundname>ClassLibrary::Search</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_class_library_1_1_search_1a61ac555f5f093be902dc8f48bc4d5711" prot="private" static="no" mutable="no">
+        <type>List&lt; <ref refid="class_class_library_1_1_offer" kindref="compound">Offer</ref> &gt;</type>
+        <definition>List&lt;Offer&gt; ClassLibrary.Search.catalog</definition>
+        <argsstring></argsstring>
+        <name>catalog</name>
+        <initializer>= new List&lt;<ref refid="class_class_library_1_1_offer" kindref="compound">Offer</ref>&gt;()</initializer>
+        <briefdescription>
+<para>Crea una lista de ofertas vacía </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Search.cs" line="15" column="22" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Search.cs" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_class_library_1_1_search_1ae0075974106fa2869025ab4b624cb453" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ClassLibrary.Search.Search</definition>
+        <argsstring>()</argsstring>
+        <name>Search</name>
+        <briefdescription>
+<para>Carga una copia del catalogo de ofertas a la lista </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Search.cs" line="19" column="16" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Search.cs" bodystart="19" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_search_1a1423552a76b0321ef33d86bbc323d162" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>string ClassLibrary.Search.GetOfferByLocation</definition>
+        <argsstring>(string location)</argsstring>
+        <name>GetOfferByLocation</name>
+        <param>
+          <type>string</type>
+          <declname>location</declname>
+        </param>
+        <briefdescription>
+<para>Filtra el catálogo de búsquedas según su ubicación </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>location</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Retorna un string con una lista de ofertas</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Search.cs" line="28" column="23" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Search.cs" bodystart="28" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_search_1ae11aa8b3d098cfbff026a3c236872b41" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>string ClassLibrary.Search.GetOfferByWord</definition>
+        <argsstring>(string word)</argsstring>
+        <name>GetOfferByWord</name>
+        <param>
+          <type>string</type>
+          <declname>word</declname>
+        </param>
+        <briefdescription>
+<para>Filtra el catálogo de búsquedas según palabras clave </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>word</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Retorna un string con una lista de ofertas</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Search.cs" line="49" column="23" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Search.cs" bodystart="49" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_search_1a3818e213889c78273af02646c5aee107" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>string ClassLibrary.Search.GetOfferByCategory</definition>
+        <argsstring>(string category)</argsstring>
+        <name>GetOfferByCategory</name>
+        <param>
+          <type>string</type>
+          <declname>category</declname>
+        </param>
+        <briefdescription>
+<para>Filtra el catálogo de ofertas según su categoria (tipo de material) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>category</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Search.cs" line="72" column="23" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Search.cs" bodystart="72" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_search_1a6982895a7a0987fcf72849b0839871fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>string ClassLibrary.Search.GetOfferByEntrepreneur</definition>
+        <argsstring>(Entrepreneur entrepreneur)</argsstring>
+        <name>GetOfferByEntrepreneur</name>
+        <param>
+          <type><ref refid="class_class_library_1_1_entrepreneur" kindref="compound">Entrepreneur</ref></type>
+          <declname>entrepreneur</declname>
+        </param>
+        <briefdescription>
+<para>Filtra el catálogo de búsquedas que compró un emprendedor </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>entrepreneur</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Retorna un string con una lista de ofertas</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Search.cs" line="93" column="23" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Search.cs" bodystart="93" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_search_1ae21a518aaab5b8c07311b6032fc15da7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>string ClassLibrary.Search.GetOfferByCompany</definition>
+        <argsstring>(Company company)</argsstring>
+        <name>GetOfferByCompany</name>
+        <param>
+          <type><ref refid="class_class_library_1_1_company" kindref="compound">Company</ref></type>
+          <declname>company</declname>
+        </param>
+        <briefdescription>
+<para>Filtra el catálogo de búsquedas que publicó una empresa </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>company</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Retorna un string con una lista de ofertas</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Search.cs" line="111" column="23" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Search.cs" bodystart="111" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_search_1a31e85f002a230d0c8d7b43d9c6e98af5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>string ClassLibrary.Search.GetAvailableOffersByCompany</definition>
+        <argsstring>(Company company)</argsstring>
+        <name>GetAvailableOffersByCompany</name>
+        <param>
+          <type><ref refid="class_class_library_1_1_company" kindref="compound">Company</ref></type>
+          <declname>company</declname>
+        </param>
+        <briefdescription>
+<para>Filtra el catálogo de ofertas y agrupa las que están disponibles y fueron publicadas por determinada compañia </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>company</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Retorna un string con una lista de ofertas</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Search.cs" line="133" column="23" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Search.cs" bodystart="133" bodyend="153"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Esta clase es la responsable en las busquedas dentro del catalogo de ofertas de la aplicacion </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Search.cs" line="10" column="11" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Search.cs" bodystart="11" bodyend="154"/>
+    <listofallmembers>
+      <member refid="class_class_library_1_1_search_1a61ac555f5f093be902dc8f48bc4d5711" prot="private" virt="non-virtual"><scope>ClassLibrary::Search</scope><name>catalog</name></member>
+      <member refid="class_class_library_1_1_search_1a31e85f002a230d0c8d7b43d9c6e98af5" prot="public" virt="non-virtual"><scope>ClassLibrary::Search</scope><name>GetAvailableOffersByCompany</name></member>
+      <member refid="class_class_library_1_1_search_1a3818e213889c78273af02646c5aee107" prot="public" virt="non-virtual"><scope>ClassLibrary::Search</scope><name>GetOfferByCategory</name></member>
+      <member refid="class_class_library_1_1_search_1ae21a518aaab5b8c07311b6032fc15da7" prot="public" virt="non-virtual"><scope>ClassLibrary::Search</scope><name>GetOfferByCompany</name></member>
+      <member refid="class_class_library_1_1_search_1a6982895a7a0987fcf72849b0839871fc" prot="public" virt="non-virtual"><scope>ClassLibrary::Search</scope><name>GetOfferByEntrepreneur</name></member>
+      <member refid="class_class_library_1_1_search_1a1423552a76b0321ef33d86bbc323d162" prot="public" virt="non-virtual"><scope>ClassLibrary::Search</scope><name>GetOfferByLocation</name></member>
+      <member refid="class_class_library_1_1_search_1ae11aa8b3d098cfbff026a3c236872b41" prot="public" virt="non-virtual"><scope>ClassLibrary::Search</scope><name>GetOfferByWord</name></member>
+      <member refid="class_class_library_1_1_search_1ae0075974106fa2869025ab4b624cb453" prot="public" virt="non-virtual"><scope>ClassLibrary::Search</scope><name>Search</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

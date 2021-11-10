@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="_material_8cs" kind="file" language="C#">
+    <compoundname>Material.cs</compoundname>
+    <innerclass refid="class_class_library_1_1_material" prot="public">ClassLibrary::Material</innerclass>
+    <innernamespace refid="namespace_class_library">ClassLibrary</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>System;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_class_library" kindref="compound">ClassLibrary</ref></highlight></codeline>
+<codeline lineno="6"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="10" refid="class_class_library_1_1_material" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_class_library_1_1_material" kindref="compound">Material</ref></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="16" refid="class_class_library_1_1_material_1ae41a5954a97408576520d9832efbd68a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="class_class_library_1_1_material_1ae41a5954a97408576520d9832efbd68a" kindref="member">Name</ref>{</highlight><highlight class="keyword">get</highlight><highlight class="normal">;<sp/></highlight><highlight class="keyword">set</highlight><highlight class="normal">;}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="class_class_library_1_1_material_1a7e5e02929899c13332042262b6546ef0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_class_library_1_1_material_type" kindref="compound">MaterialType</ref><sp/><ref refid="class_class_library_1_1_material_1a7e5e02929899c13332042262b6546ef0" kindref="member">Type</ref>{</highlight><highlight class="keyword">get</highlight><highlight class="normal">;</highlight><highlight class="keyword">set</highlight><highlight class="normal">;}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="class_class_library_1_1_material_1ae16014bea3b8322a4f074c17f1fef8eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="class_class_library_1_1_material_1ae16014bea3b8322a4f074c17f1fef8eb" kindref="member">Quantity</ref>{</highlight><highlight class="keyword">get</highlight><highlight class="normal">;</highlight><highlight class="keyword">set</highlight><highlight class="normal">;}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="class_class_library_1_1_material_1a6ce4736c0dd986be5c36290005695f40" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="class_class_library_1_1_material_1a6ce4736c0dd986be5c36290005695f40" kindref="member">Cost</ref>{</highlight><highlight class="keyword">get</highlight><highlight class="normal">;</highlight><highlight class="keyword">set</highlight><highlight class="normal">;}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="class_class_library_1_1_material_1a5a83ef1bad2cad94c9832338ecb39909" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="class_class_library_1_1_material_1a5a83ef1bad2cad94c9832338ecb39909" kindref="member">Location</ref>{</highlight><highlight class="keyword">get</highlight><highlight class="normal">;</highlight><highlight class="keyword">set</highlight><highlight class="normal">;}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="class_class_library_1_1_material_1a2261182032193219affe6ecf1b9682a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_class_library_1_1_material_1a2261182032193219affe6ecf1b9682a9" kindref="member">Material</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>name,<sp/><ref refid="class_class_library_1_1_material_type" kindref="compound">MaterialType</ref><sp/>type,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>quantity,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>cost,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>location)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this.<ref refid="class_class_library_1_1_material_1ae41a5954a97408576520d9832efbd68a" kindref="member">Name</ref><sp/>=<sp/>name;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this.<ref refid="class_class_library_1_1_material_1a7e5e02929899c13332042262b6546ef0" kindref="member">Type</ref><sp/>=<sp/>type;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this.<ref refid="class_class_library_1_1_material_1ae16014bea3b8322a4f074c17f1fef8eb" kindref="member">Quantity</ref><sp/>=<sp/>quantity;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this.<ref refid="class_class_library_1_1_material_1a6ce4736c0dd986be5c36290005695f40" kindref="member">Cost</ref><sp/>=<sp/>cost;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this.<ref refid="class_class_library_1_1_material_1a5a83ef1bad2cad94c9832338ecb39909" kindref="member">Location</ref><sp/>=<sp/>location;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Material.cs"/>
+  </compounddef>
+</doxygen>

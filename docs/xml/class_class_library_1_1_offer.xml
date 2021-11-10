@@ -1,0 +1,392 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="class_class_library_1_1_offer" kind="class" language="C#" prot="public">
+    <compoundname>ClassLibrary::Offer</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_class_library_1_1_offer_1a0a158c5963f51dd8c5b603c3842c740b" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string ClassLibrary.Offer.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+<para>Nombre de la oferta </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" line="16" column="23" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" bodystart="16" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="property" id="class_class_library_1_1_offer_1a38fc13d2b9a4dc23c406ee49d6756aea" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>double</type>
+        <definition>double ClassLibrary.Offer.Cost</definition>
+        <argsstring></argsstring>
+        <name>Cost</name>
+        <briefdescription>
+<para>Costo en caso de que tenga </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" line="21" column="23" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" bodystart="21" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="property" id="class_class_library_1_1_offer_1afab26b80d90722c41ae6fab721d2cae4" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string ClassLibrary.Offer.Location</definition>
+        <argsstring></argsstring>
+        <name>Location</name>
+        <briefdescription>
+<para>Ubicacion donde la company tiene el material de la oferta </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" line="26" column="23" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" bodystart="26" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="property" id="class_class_library_1_1_offer_1a9f71553774a8ab5dbf9c09b7d90d5aa4" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool ClassLibrary.Offer.Availability</definition>
+        <argsstring></argsstring>
+        <name>Availability</name>
+        <briefdescription>
+<para>Establece si la oferta esta disponible para algun emprendedor o simplemente esta creada pero no disponible </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" line="31" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" bodystart="31" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="property" id="class_class_library_1_1_offer_1a83f4003cafb401e049ae7541216dabdc" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool ClassLibrary.Offer.RegularOffers</definition>
+        <argsstring></argsstring>
+        <name>RegularOffers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" line="36" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" bodystart="36" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="property" id="class_class_library_1_1_offer_1aa55145b6a6c6f609fad4bc73a7b80f40" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>ArrayList</type>
+        <definition>ArrayList ClassLibrary.Offer.Tags</definition>
+        <argsstring></argsstring>
+        <name>Tags</name>
+        <briefdescription>
+<para>Palabras claves para darle la facilidad al emprendedor de encontrar la oferta </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" line="41" column="26" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" bodystart="41" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="property" id="class_class_library_1_1_offer_1a1ee55396870527495bac053bc60f40b2" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>DateTime</type>
+        <definition>DateTime ClassLibrary.Offer.DeliveryDate</definition>
+        <argsstring></argsstring>
+        <name>DeliveryDate</name>
+        <briefdescription>
+<para>Fecha de compra de la oferta </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" line="46" column="25" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="property" id="class_class_library_1_1_offer_1a7c14ea0a074e3424bf323128210569c9" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>DateTime</type>
+        <definition>DateTime ClassLibrary.Offer.PublicationDate</definition>
+        <argsstring></argsstring>
+        <name>PublicationDate</name>
+        <briefdescription>
+<para>Fecha de la publicacion de la oferta </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" line="51" column="25" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" bodystart="51" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="property" id="class_class_library_1_1_offer_1afb3949890af47cac3ad392555dc48e8f" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_class_library_1_1_company" kindref="compound">Company</ref></type>
+        <definition>Company ClassLibrary.Offer.Company</definition>
+        <argsstring></argsstring>
+        <name>Company</name>
+        <briefdescription>
+<para><ref refid="class_class_library_1_1_company" kindref="compound">Company</ref> que creo la oferta </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" line="56" column="24" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" bodystart="56" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="property" id="class_class_library_1_1_offer_1a6874e88c369f917e7fd45313d0ef8927" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_class_library_1_1_entrepreneur" kindref="compound">Entrepreneur</ref></type>
+        <definition>Entrepreneur ClassLibrary.Offer.Entrepreneur</definition>
+        <argsstring></argsstring>
+        <name>Entrepreneur</name>
+        <briefdescription>
+<para>Este parametro esta vacio hasta un emprendedor adquiere la oferta </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" line="61" column="29" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="property" id="class_class_library_1_1_offer_1a18df31e0c3c715c10f68df7bd582be57" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_class_library_1_1_material" kindref="compound">Material</ref></type>
+        <definition>Material ClassLibrary.Offer.Material</definition>
+        <argsstring></argsstring>
+        <name>Material</name>
+        <briefdescription>
+<para>Establece el material de la oferta </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" line="66" column="25" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" bodystart="66" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="property" id="class_class_library_1_1_offer_1ac5512b7e2dcf379cc74c92ba3d135669" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int ClassLibrary.Offer.id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+<para>El id lo utilizamos para identificar cada oferta en el catalogo </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" line="77" column="20" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" bodystart="77" bodyend="77"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_class_library_1_1_offer_1af35912778d767cdf227a31568ed06744" prot="public" static="no" mutable="no">
+        <type>List&lt; <ref refid="class_class_library_1_1_permission" kindref="compound">Permission</ref> &gt;</type>
+        <definition>List&lt;Permission&gt; ClassLibrary.Offer.offerpermissions</definition>
+        <argsstring></argsstring>
+        <name>offerpermissions</name>
+        <initializer>= new List&lt;<ref refid="class_class_library_1_1_permission" kindref="compound">Permission</ref>&gt;()</initializer>
+        <briefdescription>
+<para>La lista de permisos que tiene que tener el emprendedor para adquirir la la oferta </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" line="72" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_class_library_1_1_offer_1a29bbe32999cae006145286bb4fcd33f9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ClassLibrary.Offer.Offer</definition>
+        <argsstring>(string name, Material material, string location, double cost, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)</argsstring>
+        <name>Offer</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="class_class_library_1_1_material" kindref="compound">Material</ref></type>
+          <declname>material</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>location</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>cost</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>regularoffers</declname>
+        </param>
+        <param>
+          <type>ArrayList</type>
+          <declname>tags</declname>
+        </param>
+        <param>
+          <type>DateTime</type>
+          <declname>deliverydate</declname>
+        </param>
+        <param>
+          <type>DateTime</type>
+          <declname>publicationdate</declname>
+        </param>
+        <param>
+          <type><ref refid="class_class_library_1_1_company" kindref="compound">Company</ref></type>
+          <declname>offer</declname>
+        </param>
+        <briefdescription>
+<para>Este es el constructor de la oferta que recibe los parametros para crear la misma </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>material</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>location</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cost</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>regularoffers</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tags</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>deliverydate</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>publicationdate</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offer</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" line="90" column="16" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" bodystart="90" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_offer_1af35e4175d53042b63c2cfb4b463e231e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ClassLibrary.Offer.AddPermission</definition>
+        <argsstring>(string permission)</argsstring>
+        <name>AddPermission</name>
+        <param>
+          <type>string</type>
+          <declname>permission</declname>
+        </param>
+        <briefdescription>
+<para>Permite agregar permisos a la oferta </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>permission</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" line="108" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" bodystart="108" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="class_class_library_1_1_offer_1a1edea35a5eefa8b04b41965bc16fda43" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; string &gt;</type>
+        <definition>List&lt; string &gt; ClassLibrary.Offer.getOffer</definition>
+        <argsstring>(Entrepreneur entrepreneur)</argsstring>
+        <name>getOffer</name>
+        <param>
+          <type><ref refid="class_class_library_1_1_entrepreneur" kindref="compound">Entrepreneur</ref></type>
+          <declname>entrepreneur</declname>
+        </param>
+        <briefdescription>
+<para>Metodo que retorna los datos de la empresa para ser enviados al emprendedor que compro la oferta A su vez deja como no disponible la oferta en el catalogo y coloca el nombre del emprendedor a la oferta </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>entrepreneur</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" line="120" column="21" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" bodystart="120" bodyend="128"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Esta clase esteblece los parametros necesarios para la creacion de la oferta/. Implementa el patron SRP ya que tiene una unica razon de cambio </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" line="10" column="11" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Offer.cs" bodystart="11" bodyend="131"/>
+    <listofallmembers>
+      <member refid="class_class_library_1_1_offer_1af35e4175d53042b63c2cfb4b463e231e" prot="public" virt="non-virtual"><scope>ClassLibrary::Offer</scope><name>AddPermission</name></member>
+      <member refid="class_class_library_1_1_offer_1a9f71553774a8ab5dbf9c09b7d90d5aa4" prot="public" virt="non-virtual"><scope>ClassLibrary::Offer</scope><name>Availability</name></member>
+      <member refid="class_class_library_1_1_offer_1afb3949890af47cac3ad392555dc48e8f" prot="public" virt="non-virtual"><scope>ClassLibrary::Offer</scope><name>Company</name></member>
+      <member refid="class_class_library_1_1_offer_1a38fc13d2b9a4dc23c406ee49d6756aea" prot="public" virt="non-virtual"><scope>ClassLibrary::Offer</scope><name>Cost</name></member>
+      <member refid="class_class_library_1_1_offer_1a1ee55396870527495bac053bc60f40b2" prot="public" virt="non-virtual"><scope>ClassLibrary::Offer</scope><name>DeliveryDate</name></member>
+      <member refid="class_class_library_1_1_offer_1a6874e88c369f917e7fd45313d0ef8927" prot="public" virt="non-virtual"><scope>ClassLibrary::Offer</scope><name>Entrepreneur</name></member>
+      <member refid="class_class_library_1_1_offer_1a1edea35a5eefa8b04b41965bc16fda43" prot="public" virt="non-virtual"><scope>ClassLibrary::Offer</scope><name>getOffer</name></member>
+      <member refid="class_class_library_1_1_offer_1ac5512b7e2dcf379cc74c92ba3d135669" prot="public" virt="non-virtual"><scope>ClassLibrary::Offer</scope><name>id</name></member>
+      <member refid="class_class_library_1_1_offer_1afab26b80d90722c41ae6fab721d2cae4" prot="public" virt="non-virtual"><scope>ClassLibrary::Offer</scope><name>Location</name></member>
+      <member refid="class_class_library_1_1_offer_1a18df31e0c3c715c10f68df7bd582be57" prot="public" virt="non-virtual"><scope>ClassLibrary::Offer</scope><name>Material</name></member>
+      <member refid="class_class_library_1_1_offer_1a0a158c5963f51dd8c5b603c3842c740b" prot="public" virt="non-virtual"><scope>ClassLibrary::Offer</scope><name>Name</name></member>
+      <member refid="class_class_library_1_1_offer_1a29bbe32999cae006145286bb4fcd33f9" prot="public" virt="non-virtual"><scope>ClassLibrary::Offer</scope><name>Offer</name></member>
+      <member refid="class_class_library_1_1_offer_1af35912778d767cdf227a31568ed06744" prot="public" virt="non-virtual"><scope>ClassLibrary::Offer</scope><name>offerpermissions</name></member>
+      <member refid="class_class_library_1_1_offer_1a7c14ea0a074e3424bf323128210569c9" prot="public" virt="non-virtual"><scope>ClassLibrary::Offer</scope><name>PublicationDate</name></member>
+      <member refid="class_class_library_1_1_offer_1a83f4003cafb401e049ae7541216dabdc" prot="public" virt="non-virtual"><scope>ClassLibrary::Offer</scope><name>RegularOffers</name></member>
+      <member refid="class_class_library_1_1_offer_1aa55145b6a6c6f609fad4bc73a7b80f40" prot="public" virt="non-virtual"><scope>ClassLibrary::Offer</scope><name>Tags</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

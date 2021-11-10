@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="class_class_library_1_1_program" kind="class" language="C#" prot="public">
+    <compoundname>ClassLibrary::Program</compoundname>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_class_library_1_1_program_1af8e5507ec3c4ea31e01b7cecd24a563b" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ClassLibrary.Program.Main</definition>
+        <argsstring>(string[] args)</argsstring>
+        <name>Main</name>
+        <param>
+          <type>string[]</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Program/Program.cs" line="15" column="17" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Program/Program.cs" bodystart="15" bodyend="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Program/Program.cs" line="13" column="11" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Program/Program.cs" bodystart="13" bodyend="19"/>
+    <listofallmembers>
+      <member refid="class_class_library_1_1_program_1af8e5507ec3c4ea31e01b7cecd24a563b" prot="private" virt="non-virtual"><scope>ClassLibrary::Program</scope><name>Main</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

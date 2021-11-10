@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="class_class_library_1_1_area_of_work" kind="class" language="C#" prot="public">
+    <compoundname>ClassLibrary::AreaOfWork</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_class_library_1_1_area_of_work_1a280f245088a8e5d427b80160b04961ac" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string ClassLibrary.AreaOfWork.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+<para>Propiedad nombre de la categoria de la empresa </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/AreaOfWork.cs" line="13" column="23" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/AreaOfWork.cs" bodystart="13" bodyend="13"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_class_library_1_1_area_of_work_1a8415b3c418e9c9cff353b3105e3af47f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ClassLibrary.AreaOfWork.AreaOfWork</definition>
+        <argsstring>(string name)</argsstring>
+        <name>AreaOfWork</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Crea instancias de este tipo </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/AreaOfWork.cs" line="17" column="16" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/AreaOfWork.cs" bodystart="17" bodyend="24"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Representa una categoria de una empresa </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/AreaOfWork.cs" line="8" column="11" bodyfile="C:/Users/gpaz1/Desktop/PII_Project/src/Library/AreaOfWork.cs" bodystart="9" bodyend="26"/>
+    <listofallmembers>
+      <member refid="class_class_library_1_1_area_of_work_1a8415b3c418e9c9cff353b3105e3af47f" prot="public" virt="non-virtual"><scope>ClassLibrary::AreaOfWork</scope><name>AreaOfWork</name></member>
+      <member refid="class_class_library_1_1_area_of_work_1a280f245088a8e5d427b80160b04961ac" prot="public" virt="non-virtual"><scope>ClassLibrary::AreaOfWork</scope><name>Name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

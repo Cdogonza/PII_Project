@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="md__c___users_gpaz1__desktop__p_i_i__project__r_e_a_d_m_e" kind="page">
+    <compoundname>md_C__Users_gpaz1_Desktop_PII_Project_README</compoundname>
+    <title>README</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Algo que nos desafió fue aplicar todos los patrones vistos en el curso a nuestro código, y también fue algo que aprendimos haciendo el proyecto. No porque no hayamos estudiado en su momento ni hecho los ejercicios correspondientes, sino que nos dimos cuentas que algunos conceptos estaban claros en la teoría pero a la hora de aplicarlo junto con los demás patrones se complicaba. Otra cosa que fue un desafío fue la comunicación entre las clases, no estabamos acostumbrados a tener tantas clases con tantas relaciones entre ellas y costó conectarlas. Por ejemplo con DataManager nos pasó eso, al principio no existía la clased y nos dimos cuenta que debía existir, luego le dimos demasiadas responsabilidades que no le correspondían, hasta que al final encontramos la forma de que funcione y cumpla con los patrones. Los recursos que utilizamos fueron los repositorios dados en el curso. Releimos varias veces toda la información dada, y nos fue útil tenerlo a mano para checkear a medida que avanzabamos. </para>
+    </detaileddescription>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/README.md"/>
+  </compounddef>
+</doxygen>

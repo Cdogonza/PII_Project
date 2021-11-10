@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="dir_f741251061e5c7c7ed48ab45c3348f11" kind="dir">
+    <compoundname>C:/Users/gpaz1/Desktop/PII_Project/src/Library</compoundname>
+    <innerdir refid="dir_cbe82175095d6d72ec018218ba990fa7">C:/Users/gpaz1/Desktop/PII_Project/src/Library/Interfaces</innerdir>
+    <innerdir refid="dir_489a34f874ee199237b4241587f8b6f5">C:/Users/gpaz1/Desktop/PII_Project/src/Library/obj</innerdir>
+    <innerfile refid="_admin_8cs">Admin.cs</innerfile>
+    <innerfile refid="_area_of_work_8cs">AreaOfWork.cs</innerfile>
+    <innerfile refid="_company_8cs">Company.cs</innerfile>
+    <innerfile refid="_console_printer_8cs">ConsolePrinter.cs</innerfile>
+    <innerfile refid="_data_manager_8cs">DataManager.cs</innerfile>
+    <innerfile refid="_entrepreneur_8cs">Entrepreneur.cs</innerfile>
+    <innerfile refid="_material_8cs">Material.cs</innerfile>
+    <innerfile refid="_material_type_8cs">MaterialType.cs</innerfile>
+    <innerfile refid="_offer_8cs">Offer.cs</innerfile>
+    <innerfile refid="_offer_manager_8cs">OfferManager.cs</innerfile>
+    <innerfile refid="_permission_8cs">Permission.cs</innerfile>
+    <innerfile refid="_search_8cs">Search.cs</innerfile>
+    <innerfile refid="_singleton_8cs">Singleton.cs</innerfile>
+    <innerfile refid="_user_base_8cs">UserBase.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/"/>
+  </compounddef>
+</doxygen>

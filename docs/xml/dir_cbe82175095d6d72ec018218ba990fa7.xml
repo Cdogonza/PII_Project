@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="es">
+  <compounddef id="dir_cbe82175095d6d72ec018218ba990fa7" kind="dir">
+    <compoundname>C:/Users/gpaz1/Desktop/PII_Project/src/Library/Interfaces</compoundname>
+    <innerfile refid="_i_printer_8cs">IPrinter.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/gpaz1/Desktop/PII_Project/src/Library/Interfaces/"/>
+  </compounddef>
+</doxygen>
