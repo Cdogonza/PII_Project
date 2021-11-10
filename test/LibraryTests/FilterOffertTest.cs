@@ -84,7 +84,7 @@ namespace Tests
         [Test]
         public void FilterByLocation()
         {
-            Assert.That(this.searcher.GetOfferByDepartment("Montevideo") ,Contains.Substring("Colonia"));
+            Assert.That(this.searcher.GetOfferByDepartment("Montevideo") ,Contains.Substring("Montevideo"));
            
             // Assert.AreEqual(Singleton<OfferManager>.Instance.catalog[0].Entrepreneur,this.entrepreneur);
         }
