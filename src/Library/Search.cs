@@ -1,5 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Configuration;
+using System.Runtime.CompilerServices;
+using Ucu.Poo.Locations.Client;
 
 namespace ClassLibrary
 {
@@ -41,6 +45,50 @@ namespace ClassLibrary
             }
             return data;
         }
+
+        public string GetOfferByApiLocation(string location)
+        {
+            List<Offer> byApiLocation = new List<Offer>();
+            
+            LocationApiClient client = new LocationApiClient();
+            
+            Location entrepreneurLocation = await client.GetLocationAsync(location);
+
+            foreach (Offer offer in catalog)
+            {
+                Location offerLocation = await client.GetLocationAsync(offer.Location);
+
+                if (entrepreneurLocation.Locality = offerLocation.Locality)
+                {
+                    byApiLocation.Add(offer);
+        
+                }
+            }
+        }
+        
+
+        public string GetOfferByDistance(string location, int inputdistance)
+        {
+            List<Offer> byDistance = new List<Offer>();
+            
+            LocationApiClient client = new LocationApiClient();
+            
+            Location entrepreneurLocation = await client.GetLocationAsync(location);
+
+            foreach (Offer offer in catalog)
+            {
+                Location offerLocation = await client.GetLocationAsync(offer.Location);
+
+                Distance distance = await client.GetDistanceAsync(entrepreneurLocation,offerLocation);
+
+                if ( distance.TravelDistance <= Convert.ToDouble(inputdistance))
+                {
+                    byDistance.Add(offer);
+        
+                }
+            }
+        }
+
         /// <summary>
         /// Filtra el catálogo de búsquedas según palabras clave
         /// </summary>
