@@ -23,19 +23,19 @@ namespace ClassLibrary
         /// <summary>
         /// Filtra el catálogo de búsquedas según su ubicación
         /// </summary>
-        /// <param name="location"></param>
+        /// <param name="department"></param>
         /// <returns>Retorna un string con una lista de ofertas</returns>
-        public string GetOfferByLocation(string location)
+        public string GetOfferByDepartment(string department)
         {
             List<Offer> byLocation = new List<Offer>();
 
-            string data = $"Las ofertas con esta ubicación son: \n";
+            string data = $"Las ofertas del departamento ingresado son: \n";
 
             foreach (Offer offer in catalog)
             {
-                if (offer.Location == location)
+                if (offer.Location.Locality == department)
                 {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} Ubicación: {offer.Location}\n ";
+                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} Ubicación: {offer.Location.FormattedAddress}\n ";
                     byLocation.Add(offer);
                 }
             }
