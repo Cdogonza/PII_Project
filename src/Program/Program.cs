@@ -11,10 +11,12 @@ namespace ClassLibrary
     /// 
     /// </summary>
     public class Program{
-
-    static void Main(string[] args)
+    /// <summary>
+    /// 
+    /// </summary>
+    static void Main()
     {
-        
+        TelegramBot botcito = new TelegramBot();
     }
     }
  }
