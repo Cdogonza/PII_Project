@@ -23,7 +23,7 @@ namespace ClassLibrary
         /// Ubicacion donde la company tiene el material de la oferta
         /// </summary>
         /// <value></value>
-        public string Location{get;set;}
+        public Location Location{get;set;}
         /// <summary>
         /// Establece si la oferta esta disponible para algun emprendedor o simplemente esta creada pero no disponible
         /// </summary>
@@ -87,7 +87,7 @@ namespace ClassLibrary
         /// <param name="deliverydate"></param>
         /// <param name="publicationdate"></param>
         /// <param name="offer"></param>
-        public Offer(string name, Material material, string location, double cost, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
+        public Offer(string name, Material material, Location location, double cost, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
         {
             this.id = id +1;
             this.Name = name;
