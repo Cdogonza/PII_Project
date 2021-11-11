@@ -46,47 +46,31 @@ namespace ClassLibrary
             return data;
         }
 
-        public string GetOfferByApiLocation(string location)
-        {
-            List<Offer> byApiLocation = new List<Offer>();
-            
-            LocationApiClient client = new LocationApiClient();
-            
-            Location entrepreneurLocation = await client.GetLocationAsync(location);
-
-            foreach (Offer offer in catalog)
-            {
-                Location offerLocation = await client.GetLocationAsync(offer.Location);
-
-                if (entrepreneurLocation.Locality = offerLocation.Locality)
-                {
-                    byApiLocation.Add(offer);
-        
-                }
-            }
-        }
-        
-
-        public string GetOfferByDistance(string location, int inputdistance)
+               /// <summary>
+        /// Metodo para filtrar las ofertas que estan dentro de un rango de distancia entre la oferta y el emprendedor 
+        /// </summary>
+        /// <param name="entrepreneur"></param>
+        /// <param name="inputdistance"></param>
+        /// <returns>Retorna un string con una lista de ofertas</returns>
+        public string GetOfferByDistance(Entrepreneur entrepreneur, int inputdistance)
         {
             List<Offer> byDistance = new List<Offer>();
             
             LocationApiClient client = new LocationApiClient();
             
-            Location entrepreneurLocation = await client.GetLocationAsync(location);
+            string data = $"Las ofertas encontradas dentro de la distancia ingresada son: \n";
 
             foreach (Offer offer in catalog)
             {
-                Location offerLocation = await client.GetLocationAsync(offer.Location);
-
-                Distance distance = await client.GetDistanceAsync(entrepreneurLocation,offerLocation);
+                Distance distance = client.GetDistance(entrepreneur.Location, offer.Location);
 
                 if ( distance.TravelDistance <= Convert.ToDouble(inputdistance))
                 {
+                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} Ubicación: {offer.Location.FormattedAddress}\n ";
                     byDistance.Add(offer);
-        
                 }
             }
+            return data;
         }
 
         /// <summary>
