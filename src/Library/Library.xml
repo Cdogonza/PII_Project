@@ -4,6 +4,27 @@
         <name>Library</name>
     </assembly>
     <members>
+        <member name="T:ClassLibrary.Admin">
+            <summary>
+            Esta clase representa al administrador del Bot
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Admin.Name">
+            <summary>
+            Propiedad nombre del Administrador
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Admin.#ctor(System.String)">
+            <summary>
+            Constructor de la clase Admin
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Admin.InviteCompany(System.String)">
+            <summary>
+            Metodo que se utilizara para invitar a las Empresas al sistema.
+            </summary>
+            <param name="company"></param>
+        </member>
         <member name="T:ClassLibrary.AreaOfWork">
             <summary>
             Representa una categoria de una empresa
@@ -17,6 +38,80 @@
         <member name="M:ClassLibrary.AreaOfWork.#ctor(System.String)">
             <summary>
             Crea instancias de este tipo
+            </summary>
+        </member>
+        <member name="T:ClassLibrary.BaseHandler">
+            <summary>
+            Clase base para implementar el patrón Chain of Responsibility. En ese patrón se pasa un mensaje a través de una
+            cadena de "handlers" que pueden procesar o no el mensaje. Cada "handler" decide si procesa el mensaje, o si se lo
+            pasa al siguiente. Esta clase base implmementa la responsabilidad de recibir el mensaje y pasarlo al siguiente
+            "handler" en caso que el mensaje no sea procesado. La responsabilidad de decidir si el mensaje se procesa o no, y
+            de procesarlo, se delega a las clases sucesoras de esta clase base.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.BaseHandler.Next">
+            <summary>
+            Obtiene el próximo "handler".
+            </summary>
+            <value>El "handler" que será invocado si este "handler" no procesa el mensaje.</value>
+        </member>
+        <member name="P:ClassLibrary.BaseHandler.Keywords">
+            <summary>
+            Obtiene o asigna el conjunto de palabras clave que este "handler" puede procesar.
+            </summary>
+            <value>Un array de palabras clave.</value>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.#ctor(ClassLibrary.IHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.BaseHandler"/>.
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.#ctor(System.String[],ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.BaseHandler"/> con una lista de comandos.
+            </summary>
+            <param name="keywords">La lista de comandos.</param>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Este método debe ser sobreescrito por las clases sucesores. La clase sucesora procesa el mensaje y retorna
+            true o no lo procesa y retorna false.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="responder">La respuesta al mensaje procesado.</param>
+            <returns>true si el mensaje fue procesado; false en caso contrario</returns>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.InternalCancel">
+            <summary>
+            Este método puede ser sobreescrito en las clases sucesores que procesan varios mensajes cambiando de estado
+            entre mensajes deben sobreescribir este método para volver al estado inicial. En la clase base no hace nada.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.CanHandle(Telegram.Bot.Types.Message)">
+            <summary>
+            Determina si este "handler" puede procesar el mensaje. En la clase base se utiliza el array
+            <see cref="P:ClassLibrary.BaseHandler.Keywords"/> para buscar el texto en el mensaje ignorando mayúsculas y minúsculas. Las
+            clases sucesores pueden sobreescribir este método para proveer otro mecanismo para determina si procesan o no
+            un mensaje.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <returns>true si el mensaje puede ser pocesado; false en caso contrario.</returns>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.Handle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa el mensaje o la pasa al siguiente "handler" si existe.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+            <returns>El "handler" que procesó el mensaje si el mensaje fue procesado; null en caso contrario.</returns>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.Cancel">
+            <summary>
+            Retorna este "handler" al estado inicial. En los "handler" sin estado no hace nada. Los "handlers" que
+            procesan varios mensajes cambiando de estado entre mensajes deben sobreescribir este método para volver al
+            estado inicial.
             </summary>
         </member>
         <member name="T:ClassLibrary.Company">
@@ -243,6 +338,32 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:ClassLibrary.Distance">
+            <summary>
+            Representa la distancia entre las coordenas o las direcciones de origen y destino retornada en los métodos
+            <see cref="M:ClassLibrary.LocationApiClient.GetDistanceAsync(ClassLibrary.Location,ClassLibrary.Location)"/> o
+            <see cref="M:ClassLibrary.LocationApiClient.GetDistanceAsync(System.String,System.String)"/>.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Distance.Found">
+            <summary>
+            Obtiene o establece un valor que indica si se encontraron o no las coordenas o las direcciones de origen y
+            destino.
+            </summary>
+            <value>true si se encontró la dirección; false en caso contrario.</value>
+        </member>
+        <member name="P:ClassLibrary.Distance.TravelDistance">
+            <summary>
+            Obtiene o establece la distancia entre las coordenadas o las direcciones de origen y destino.
+            </summary>
+            <value>La distancia en metros.</value>
+        </member>
+        <member name="P:ClassLibrary.Distance.TravelDuration">
+            <summary>
+            Obtiene o establece el tiempo que se demora en llegar de las coordenadas o de las direcciones de origen a las de destino.
+            </summary>
+            <value>El tiempo que se demora en minutos.</value>
+        </member>
         <member name="T:ClassLibrary.Entrepreneur">
             <summary>
              Esta clase representa al emprendedor el cual hereda metodos y atributos de la clase UserBase
@@ -264,6 +385,51 @@
             <param name="area"></param>
             <param name="specialization"></param>
             <returns></returns>
+        </member>
+        <member name="T:ClassLibrary.HelloHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.HelloHandler.#ctor(ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.HelloHandler"/>. Esta clase procesa el mensaje "hola".
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.HelloHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa el mensaje "hola" y retorna true; retorna false en caso contrario.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+            <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
+        </member>
+        <member name="T:ClassLibrary.IHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.IHandler.Next">
+            <summary>
+            Obtiene el próximo "handler".
+            </summary>
+            <value>El "handler" que será invocado si este "handler" no procesa el mensaje.</value>
+        </member>
+        <member name="M:ClassLibrary.IHandler.Handle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa el mensaje o la pasa al siguiente "handler" si existe.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+            <returns>El "handler" que procesó el mensaje si el mensaje fue procesado; null en caso contrario.</returns>
+        </member>
+        <member name="M:ClassLibrary.IHandler.Cancel">
+            <summary>
+            Retorna este "handler" al estado inicial y cancela el próximo "handler" si existe. Es utilizado para que los
+            "handlers" que procesan varios mensajes cambiando de estado entre mensajes puedan volver al estado inicial en
+            caso de error por ejemplo.
+            </summary>
         </member>
         <member name="T:ClassLibrary.IPrinter">
             <summary>
@@ -341,6 +507,154 @@
             Metodo que imprime todos los permisos del usuario
             </summary>
             <param name="userbase"></param>    
+        </member>
+        <member name="T:ClassLibrary.Location">
+            <summary>
+            Representa las coordenadas y otros datos de la ubicación de una dirección retornada en el método
+            <see cref="M:ClassLibrary.LocationApiClient.GetLocationAsync(System.String,System.String,System.String,System.String)"/>.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Location.Found">
+            <summary>
+            Obtiene o establece un valor que indica si se encontró o no la dirección. En ese caso son válidos los demás
+            valores. En caso contrario los demás valores son indeterminados.
+            </summary>
+            <value>true si se encontró la dirección; false en caso contrario.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.AddresLine">
+            <summary>
+            Obtiene o establece la dirección: calle y número, ruta y kilómetro, etc.
+            </summary>
+            <value>Por ejemplo, Avenida 8 de Octubre 2738.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.CountryRegion">
+            <summary>
+            Obtiene o establece el país.
+            </summary>
+            <value>Por ejemplo, Uruguay.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.FormattedAddress">
+            <summary>
+            Obtiene o establece la dirección completa, incluyendo ciudad, código postal, etc.
+            </summary>
+            <value>Por ejemplo, Avenida 8 de Octubre 2738, Montevideo, 11200, Uruguay.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.Locality">
+            <summary>
+            Obtiene o establece la localidad o ciudad.
+            </summary>
+            <value>Por ejemplo, Montevideo.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.PostalCode">
+            <summary>
+            Obtiene o establece el código postal.
+            </summary>
+            <value>Por ejemplo, 11200.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.Latitude">
+            <summary>
+            Obtiene o establece la latitud de la dirección.
+            </summary>
+            <value>El valor de la latitud en formato decimal.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.Longitude">
+            <summary>
+            Obtiene o establece la longitud de la dirección.
+            </summary>
+            <value>El valor de la longitud en formato decimal.</value>
+        </member>
+        <member name="T:ClassLibrary.LocationApiClient">
+            <summary>
+            Un cliente de la API de localización.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.GetLocationAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Obtiene las coordenadas de una dirección.
+            </summary>
+            <param name="address">La dirección.</param>
+            <param name="city">La ciudad. Es opcional. El valor predeterminado es Montevideo.</param>
+            <param name="department">El departamento, estado, provincia, etc. Es opcional. El valor predeterminado es `ontevideo.</param>
+            <param name="country">El país. Es opcional. El valor predeterminado es Uruguay.</param>
+            <returns>Las coordenadas de la dirección.</returns>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.GetLocation(System.String,System.String,System.String,System.String)">
+            <inheritdoc cref="M:ClassLibrary.LocationApiClient.GetLocationAsync(System.String,System.String,System.String,System.String)" />
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.GetDistanceAsync(ClassLibrary.Location,ClassLibrary.Location)">
+            <summary>
+            Obtiene la distancia entre dos coordenadas.
+            </summary>
+            <param name="from">La coordenada de origen.</param>
+            <param name="to">La coordenada de destino.</param>
+            <returns>La distancia entre las dos coordenadas.</returns>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.GetDistance(ClassLibrary.Location,ClassLibrary.Location)">
+            <inheritdoc cref="M:ClassLibrary.LocationApiClient.GetDistanceAsync(ClassLibrary.Location,ClassLibrary.Location)" />
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.GetDistanceAsync(System.String,System.String)">
+            <summary>
+            Obtiene la distancia entre dos direcciones.
+            </summary>
+            <param name="from">La dirección de origen.</param>
+            <param name="to">La dirección de destino.</param>
+            <returns>La distancia entre las dos direcciones.</returns>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.GetDistance(System.String,System.String)">
+            <inheritdoc cref="M:ClassLibrary.LocationApiClient.GetDistanceAsync(System.String,System.String)" />.
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.DownloadMapAsync(System.Double,System.Double,System.String,System.Int32)">
+            <summary>
+            Descarga una mapa de una coordenada.
+            </summary>
+            <param name="latitude">La latitud de la coordenada.</param>
+            <param name="longitude">La longitud de la coordenada.</param>
+            <param name="path">La ruta del archivo donde guardar el mapa. El formato es PNG.</param>
+            <param name="zoomLevel">El nivel de zoom del mapa entre 1 y 20. Es opcional. El valor predeterminado es
+            15.</param>
+            <returns>
+            Una tarea que representa la operación asincrónica.
+            </returns>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.DownloadMap(System.Double,System.Double,System.String,System.Int32)">
+            <inheritdoc cref="M:ClassLibrary.LocationApiClient.DownloadMapAsync(System.Double,System.Double,System.String,System.Int32)" />.
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.DownloadRouteAsync(System.Double,System.Double,System.Double,System.Double,System.String)">
+            <summary>
+            Un mapa con una ruta entre dos coordenadas.
+            </summary>
+            <param name="fromLatitude">La latitud de la coordenada de origen.</param>
+            <param name="fromLongitude">La longitu de la coordenada de origen.</param>
+            <param name="toLatitude">La latitud de la coordenada de destino.</param>
+            <param name="toLongitude">La longitud de la coordenada de destino.</param>
+            <param name="path">La ruta del archivo donde guardar el mapa. Es formato es PNG.</param>
+            <returns>
+            Una tarea que representa la operación asincrónica.
+            </returns>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.DownloadRoute(System.Double,System.Double,System.Double,System.Double,System.String)">
+            <inheritdoc cref="M:ClassLibrary.LocationApiClient.DownloadRouteAsync(System.Double,System.Double,System.Double,System.Double,System.String)" />
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.Dispose">
+            <inheritdoc cref="T:System.IDisposable" />
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.Dispose(System.Boolean)">
+            <inheritdoc cref="T:System.IDisposable" />
         </member>
         <member name="T:ClassLibrary.Material">
             <summary>
@@ -496,7 +810,7 @@
             </summary>
             <value></value>
         </member>
-        <member name="M:ClassLibrary.Offer.#ctor(System.String,ClassLibrary.Material,System.String,System.Double,System.Boolean,System.Collections.ArrayList,System.DateTime,System.DateTime,ClassLibrary.Company)">
+        <member name="M:ClassLibrary.Offer.#ctor(System.String,ClassLibrary.Material,ClassLibrary.Location,System.Double,System.Boolean,System.Collections.ArrayList,System.DateTime,System.DateTime,ClassLibrary.Company)">
             <summary>
             Este es el constructor de la oferta que recibe los parametros para crear la misma
             </summary>
@@ -607,11 +921,11 @@
             Carga una copia del catalogo de ofertas a la lista
             </summary>
         </member>
-        <member name="M:ClassLibrary.Search.GetOfferByLocation(System.String)">
+        <member name="M:ClassLibrary.Search.GetOfferByDepartment(System.String)">
             <summary>
             Filtra el catálogo de búsquedas según su ubicación
             </summary>
-            <param name="location"></param>
+            <param name="department"></param>
             <returns>Retorna un string con una lista de ofertas</returns>
         </member>
         <member name="M:ClassLibrary.Search.GetOfferByWord(System.String)">
@@ -661,6 +975,38 @@
             Crea una instancia Singleton en caso de que no exista, en caso de que exista devuelve la clase existente.
             </summary>
             <value></value>
+        </member>
+        <member name="T:ClassLibrary.TelegramBot">
+            <summary>
+            Una clase que implementa un bot de Telegram.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.TelegramBot.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.TelegramBot.HandleUpdateAsync(Telegram.Bot.Types.Update,System.Threading.CancellationToken)">
+            <summary>
+            Maneja las actualizaciones del bot (todo lo que llega), incluyendo mensajes, ediciones de mensajes,
+            respuestas a botones, etc. En este ejemplo sólo manejamos mensajes de texto.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.TelegramBot.HandleMessageReceived(Telegram.Bot.Types.Message)">
+            <summary>
+            Maneja los mensajes que se envían al bot.
+            Lo único que hacemos por ahora es escuchar 3 tipos de mensajes:
+            - "hola": responde con texto
+            - "chau": responde con texto
+            - "foto": responde con una foto
+            </summary>
+            <param name="message">El mensaje recibido</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.TelegramBot.HandleErrorAsync(System.Exception,System.Threading.CancellationToken)">
+            <summary>
+            Manejo de excepciones. Por ahora simplemente la imprimimos en la consola.
+            </summary>
         </member>
         <member name="T:ClassLibrary.UserBase">
             <summary>

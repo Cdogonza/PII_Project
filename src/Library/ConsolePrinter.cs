@@ -35,7 +35,7 @@ namespace ClassLibrary
         /// <param name="location"></param>
         public void PrintOffersByLocation(Search search, string location)
         {
-            Console.WriteLine(search.GetOfferByLocation(location));
+            Console.WriteLine(search.GetOfferByDepartment(location));
         }
         
         /// <summary>

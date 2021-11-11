@@ -46,7 +46,7 @@
         </member>
         <member name="T:Tests.SearchTest">
             <summary>
-            Prueba de la clase <see cref="T:ClassLibrary.OfferManager"/>.
+            Prueba de la clase <see cref="T:ClassLibrary.Search"/>.
             </summary>
         </member>
         <member name="F:Tests.SearchTest.entrepreneur">
@@ -91,7 +91,8 @@
         </member>
         <member name="T:Tests.PerrmissionTest">
             <summary>
-            Prueba de la clase <see cref="T:ClassLibrary.OfferManager"/>.
+            Prueba de la clase <see cref="M:Tests.PerrmissionTest.Permission"/>.
+            
             </summary>
         </member>
         <member name="F:Tests.PerrmissionTest.entrepreneur">
@@ -131,7 +132,7 @@
         </member>
         <member name="T:Tests.PublishOffer">
             <summary>
-            Prueba de la clase <see cref="T:ClassLibrary.OfferManager"/>.
+            Prueba de la clase <see cref="T:ClassLibrary.Offer"/>.
             </summary>
         </member>
         <member name="F:Tests.PublishOffer.offerAdmin">
