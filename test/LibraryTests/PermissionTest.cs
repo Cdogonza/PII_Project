@@ -42,7 +42,9 @@ namespace Tests
         private Permission permission ;
         private DataManager dataManager;
         private Offer offer ;
-        private Location Location;
+        private Location LocationOffer;
+        private Location LocatioCompany;
+        private Location LocatioEntrepreneur;
 
         /// <summary>
         /// Crea las intancias utiilzadas en los test
@@ -50,9 +52,11 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
+            LocationApiClient Loc = new LocationApiClient();
             this.offerAdmin =  new OfferManager();
             this.searcher =  new Search();
-            this.company = new Company("compania1","098239334","Las Piedras","Construcción");
+            LocatioCompany =Loc.GetLocation("Berro 1231","Montevideo","Montevideo");
+            this.company = new Company("compania1","098239334",LocatioCompany,"Construcción");
             
             
             this.permission  = new Permission("Materiales inflamables");
@@ -61,7 +65,6 @@ namespace Tests
             DataManager dataManager  = new DataManager();
             this.dataManager =  dataManager;
             this.dataManager.AddPermission(this.permission);
-            LocationApiClient Loc = new LocationApiClient();
             //AGREGA A LA COMPANIA UN PERMISO
             this.company.AddPermission(dataManager.GetPermissions()[0]);
             ArrayList tags  = new ArrayList();
@@ -71,11 +74,11 @@ namespace Tests
             DateTime deliverydate = new DateTime();
             MaterialType materialType  =  new MaterialType("Tela", "Recortes de tela de 1x1");
             this.material =  new Material("Tela",materialType,"200",100,"Berro 1231");
-            this.Location =Loc.GetLocation("Berro 1231","Montevideo","Montevideo");
-            this.offer = new Offer("Promocion de verano",this.material,Location,200.00,true,tags,deliverydate,publicationDate,this.company);
+            this.LocationOffer =Loc.GetLocation("Berro 1231","Montevideo","Montevideo");
+            this.offer = new Offer("Promocion de verano",this.material,LocationOffer,200.00,true,tags,deliverydate,publicationDate,this.company);
             this.offerAdmin.SaveOffer(this.offer);
-
-            this.entrepreneur = new Entrepreneur("Empre2","091234567","Galicia 1234","Construcción","Trabajo en altura");
+            LocatioEntrepreneur =Loc.GetLocation("Colorado 2326","Montevideo","Montevideo");
+            this.entrepreneur = new Entrepreneur("Empre2","091234567",LocatioEntrepreneur,"Construcción","Trabajo en altura");
         }
 
         /// <summary>
