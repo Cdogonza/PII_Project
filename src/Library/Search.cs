@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Runtime.CompilerServices;
-using Ucu.Poo.Locations.Client;
+//using Ucu.Poo.Locations.Client;
 
 namespace ClassLibrary
 {
