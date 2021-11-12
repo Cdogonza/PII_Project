@@ -84,6 +84,11 @@
             Prueba de filtrado por ubicación
             </summary>
         </member>
+        <member name="M:Tests.SearchTest.FilterByDistance">
+            <summary>
+            Test Filtrado por distancia
+            </summary>
+        </member>
         <member name="M:Tests.SearchTest.FilterByWord">
             <summary>
             Prueba de filtrado por palabra (tag)

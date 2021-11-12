@@ -39,7 +39,7 @@ namespace ClassLibrary
             {
                 if (offer.Location.Locality == department)
                 {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} Ubicación: {offer.Location.FormattedAddress}\n ";
+                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} Ubicación: {offer.Location.FormattedAddress}\n ";
                     byLocation.Add(offer);
                 }
             }
@@ -66,7 +66,7 @@ namespace ClassLibrary
 
                 if ( distance.TravelDistance <= Convert.ToDouble(inputdistance))
                 {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} Ubicación: {offer.Location.FormattedAddress}\n ";
+                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} Ubicación: {offer.Location.FormattedAddress} Distancia: {distance.TravelDistance}km \n ";
                     byDistance.Add(offer);
                 }
             }
@@ -88,7 +88,7 @@ namespace ClassLibrary
             {
                 if (offer.Tags.Contains(word))
                 {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
                     byWord.Add(offer);
                 }
             }
@@ -111,7 +111,7 @@ namespace ClassLibrary
             {
                 if (offer.Material.Type.Name == category)
                 {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
                     byCategory.Add(offer);
                 }
             }
@@ -130,7 +130,7 @@ namespace ClassLibrary
             {
                 if(offer.Entrepreneur == entrepreneur)
                 {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
                 }
             }
             return data;
@@ -149,7 +149,7 @@ namespace ClassLibrary
             {
                 if(offer.Company == company)
                 {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
                 }
             }
             return data;
@@ -173,7 +173,7 @@ namespace ClassLibrary
                 { 
                     if(offer.Availability)
                     {
-                        data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                        data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
                     }
                     else
                     {
