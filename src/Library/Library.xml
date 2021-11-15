@@ -119,7 +119,7 @@
             Clase que representa a un usuario del tipo compania dentro del programa
             </summary>
         </member>
-        <member name="M:ClassLibrary.Company.#ctor(System.String,System.String,System.String,System.String)">
+        <member name="M:ClassLibrary.Company.#ctor(System.String,System.String,ClassLibrary.Location,System.String)">
             <summary>
             Constructor de company
             </summary>
@@ -375,7 +375,7 @@
             </summary>
             <value></value>
         </member>
-        <member name="M:ClassLibrary.Entrepreneur.#ctor(System.String,System.String,System.String,System.String,System.String)">
+        <member name="M:ClassLibrary.Entrepreneur.#ctor(System.String,System.String,ClassLibrary.Location,System.String,System.String)">
             <summary>
             Constructor de la clase Entrepreneur
             </summary>
@@ -928,6 +928,14 @@
             <param name="department"></param>
             <returns>Retorna un string con una lista de ofertas</returns>
         </member>
+        <member name="M:ClassLibrary.Search.GetOfferByDistance(ClassLibrary.Entrepreneur,System.Int32)">
+            <summary>
+            Metodo para filtrar las ofertas que estan dentro de un rango de distancia entre la oferta y el emprendedor 
+            </summary>
+            <param name="entrepreneur"></param>
+            <param name="inputdistance"></param>
+            <returns>Retorna un string con una lista de ofertas</returns>
+        </member>
         <member name="M:ClassLibrary.Search.GetOfferByWord(System.String)">
             <summary>
             Filtra el catálogo de búsquedas según palabras clave
@@ -1040,7 +1048,7 @@
             <typeparam list="Permission"></typeparam>
             <returns></returns>
         </member>
-        <member name="M:ClassLibrary.UserBase.#ctor(System.String,System.String,System.String,System.String)">
+        <member name="M:ClassLibrary.UserBase.#ctor(System.String,System.String,ClassLibrary.Location,System.String)">
             <summary>
             Permite crear instancias de los usuarios del programa
             </summary>

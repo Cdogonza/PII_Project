@@ -92,6 +92,16 @@ namespace Tests
             // Assert.AreEqual(Singleton<OfferManager>.Instance.catalog[0].Entrepreneur,this.entrepreneur);
         }
 
+        /// <summary>
+        /// Test Filtrado por distancia
+        /// </summary>
+        [Test]
+        public void FilterByDistance()
+        {
+            Assert.That(this.searcher.GetOfferByDistance(this.entrepreneur,10) ,Contains.Substring("Tela"));
+           
+            // Assert.AreEqual(Singleton<OfferManager>.Instance.catalog[0].Entrepreneur,this.entrepreneur);
+        }
 
         /// <summary>
         /// Prueba de filtrado por palabra (tag)

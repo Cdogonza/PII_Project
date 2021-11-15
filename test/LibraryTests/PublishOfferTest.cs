@@ -40,16 +40,18 @@ namespace Tests
         private Location LocatioEntrepreneur;
 
         /// <summary>
-        /// 
+        /// Crea las intancias utiilzadas en los test
         /// </summary>
+              
+        [SetUp]
         public void Setup()
         {
             LocationApiClient Loc = new LocationApiClient();
             this.offerAdmin =  new OfferManager();
             this.searcher =  new Search();
-            LocatioCompany =Loc.GetLocation("Berro 1231","Montevideo","Montevideo");
+            LocatioCompany =Loc.GetLocation("Bulevar del Bicentenario 318","Canelones","Canelones");
             this.company = new Company("compania1","098239334",LocatioCompany,"Construcción");
-             ArrayList tags  = new ArrayList();
+            ArrayList tags  = new ArrayList();
             tags.Add("tag1");
             tags.Add("tag");              
             DateTime publicationDate = new DateTime(2008, 3, 1, 7, 0, 0);
@@ -67,9 +69,8 @@ namespace Tests
         public void CompanyTest()
         {
             Assert.AreEqual(this.company.Name,"compania1");
-            Assert.AreEqual(this.company.Location,"Las Piedras");
+            Assert.That(this.company.Location.FormattedAddress, Contains.Substring("Canelones"));
             Assert.AreEqual(this.company.Phone,"098239334");
-            
             Assert.AreEqual(this.company.AreaOfWork.Name,"Construcción");
         }
 
@@ -80,7 +81,7 @@ namespace Tests
         public void OfferTest()
         {
 
-            Assert.AreEqual(this.offer.Location,"Berro1231");
+            Assert.That(this.offer.Location.AddresLine, Contains.Substring("Berro 1231"));
             Assert.AreEqual(this.offer.Cost,200.00);
             Assert.AreEqual(this.offer.Availability,true);
             Assert.AreEqual(this.offer.Name,"Promocion de verano");

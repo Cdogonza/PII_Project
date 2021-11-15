@@ -6,6 +6,12 @@
     <members>
         <member name="T:ClassLibrary.Program">
             <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Program.Main">
+            <summary>
+            
             </summary>
         </member>
     </members>
