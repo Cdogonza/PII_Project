@@ -35,12 +35,40 @@ namespace ClassLibrary
             {
                 if (offer.Location.Locality == department)
                 {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} Ubicación: {offer.Location.FormattedAddress}\n ";
+                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} Ubicación: {offer.Location.FormattedAddress}\n ";
                     byLocation.Add(offer);
                 }
             }
             return data;
         }
+
+               /// <summary>
+        /// Metodo para filtrar las ofertas que estan dentro de un rango de distancia entre la oferta y el emprendedor 
+        /// </summary>
+        /// <param name="entrepreneur"></param>
+        /// <param name="inputdistance"></param>
+        /// <returns>Retorna un string con una lista de ofertas</returns>
+        public string GetOfferByDistance(Entrepreneur entrepreneur, int inputdistance)
+        {
+            List<Offer> byDistance = new List<Offer>();
+            
+            LocationApiClient client = new LocationApiClient();
+            
+            string data = $"Las ofertas encontradas dentro de la distancia ingresada son: \n";
+
+            foreach (Offer offer in catalog)
+            {
+                Distance distance = client.GetDistance(entrepreneur.Location, offer.Location);
+
+                if ( distance.TravelDistance <= Convert.ToDouble(inputdistance))
+                {
+                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} Ubicación: {offer.Location.FormattedAddress} Distancia: {distance.TravelDistance}km \n ";
+                    byDistance.Add(offer);
+                }
+            }
+            return data;
+        }
+
         /// <summary>
         /// Filtra el catálogo de búsquedas según palabras clave
         /// </summary>
@@ -56,7 +84,7 @@ namespace ClassLibrary
             {
                 if (offer.Tags.Contains(word))
                 {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
                     byWord.Add(offer);
                 }
             }
@@ -79,7 +107,7 @@ namespace ClassLibrary
             {
                 if (offer.Material.Type.Name == category)
                 {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
                     byCategory.Add(offer);
                 }
             }
@@ -98,7 +126,7 @@ namespace ClassLibrary
             {
                 if(offer.Entrepreneur == entrepreneur)
                 {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
                 }
             }
             return data;
@@ -117,7 +145,7 @@ namespace ClassLibrary
             {
                 if(offer.Company == company)
                 {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
                 }
             }
             return data;
@@ -141,7 +169,7 @@ namespace ClassLibrary
                 { 
                     if(offer.Availability)
                     {
-                        data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                        data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
                     }
                     else
                     {
