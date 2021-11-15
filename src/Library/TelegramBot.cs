@@ -29,7 +29,7 @@ namespace ClassLibrary
             Bot = new TelegramBotClient(Token);
 
             firstHandler =
-                new HelloHandler(
+                new EntrepreneurRegister(
                 /*new GoodByeHandler(
                 new PhotoHandler(Bot, */null);
 
