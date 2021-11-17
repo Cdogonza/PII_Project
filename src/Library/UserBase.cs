@@ -42,7 +42,7 @@ namespace ClassLibrary
         /// <param name="location"></param>
         /// <param name="area"></param>
 
-        protected UserBase(string name, string phone, Location location, string area)
+        protected UserBase(long id,string name, string phone, Location location, string area)
         {
             if (String.IsNullOrWhiteSpace(name))
             {

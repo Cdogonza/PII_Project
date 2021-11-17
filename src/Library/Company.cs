@@ -17,8 +17,9 @@ namespace ClassLibrary
     /// <param name="location"></param>
     /// <param name="area"></param>
     /// <returns></returns>
-        public Company(string name,string phone,Location location,string area) : base (name,phone,location,area)
+        public Company(long id ,string name,string phone,Location location,string area) : base (id,name,phone,location,area)
         {
+
 
         }
         
@@ -28,6 +29,7 @@ namespace ClassLibrary
         public List<string> DataCompany()
         {
             List <string> data = new List<string>();  
+
             data.Add(this.Name);
             data.Add(Convert.ToString(this.Phone));
             data.Add(this.Location.AddresLine);

@@ -22,7 +22,7 @@ namespace ClassLibrary
         /// <param name="area"></param>
         /// <param name="specialization"></param>
         /// <returns></returns>
-        public Entrepreneur(string name,string phone,Location location,string area,string specialization) : base (name,phone,location,area)
+        public Entrepreneur(long id,string name,string phone,Location location,string area,string specialization) : base (id,name,phone,location,area)
         {
             this.Specialization = specialization;
         }

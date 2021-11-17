@@ -50,7 +50,7 @@ namespace Tests
             this.offerAdmin =  new OfferManager();
             this.searcher =  new Search();
             LocatioCompany =Loc.GetLocation("Bulevar del Bicentenario 318","Canelones","Canelones");
-            this.company = new Company("compania1","098239334",LocatioCompany,"Construcción");
+            this.company = new Company(1,"compania1","098239334",LocatioCompany,"Construcción");
             ArrayList tags  = new ArrayList();
             tags.Add("tag1");
             tags.Add("tag");              
