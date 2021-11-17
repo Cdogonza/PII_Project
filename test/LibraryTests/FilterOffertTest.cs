@@ -53,7 +53,7 @@ namespace Tests
             this.offerAdmin =  new OfferManager();
             this.searcher =  new Search();
             LocatioCompany =Loc.GetLocation("Berro 1231","Montevideo","Montevideo");
-            this.company = new Company("compania1","098239334",LocatioCompany,"Construcción");
+            this.company = new Company(2,"compania1","098239334",LocatioCompany,"Construcción");
             Permission permissionA = new Permission("Materiales inflamables");
             Permission permissionB = new Permission("Residuos medicos");
 
@@ -77,7 +77,7 @@ namespace Tests
             Singleton<OfferManager>.Instance.SaveOffer(this.offer);
             LocatioEntrepreneur =Loc.GetLocation("Colorado 2326","Montevideo","Montevideo");
             Permission permissionC = new Permission("Materiales inflamables");
-            this.entrepreneur = new Entrepreneur("Empre2","091234567",LocatioEntrepreneur,"Construcción","Trabajo en altura");
+            this.entrepreneur = new Entrepreneur(1,"Empre2","091234567",LocatioEntrepreneur,"Construcción","Trabajo en altura");
             Singleton<OfferManager>.Instance.BuyOffer(this.entrepreneur,0);
         }
 

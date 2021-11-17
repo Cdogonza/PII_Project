@@ -16,7 +16,7 @@ namespace ClassLibrary
     /// </summary>
     static void Main()
     {
-        TelegramBot botcito = new TelegramBot();
+     //   TelegramBot botcito = new TelegramBot();
     }
     }
  }
