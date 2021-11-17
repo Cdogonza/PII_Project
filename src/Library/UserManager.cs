@@ -26,7 +26,7 @@ namespace ClassLibrary
             //De esta manera se protege la encapsulación.        
             return userList.AsReadOnly();
         }
-        public UserTelegramBot GetUsuarioTelegram(long id) 
+        public UserTelegramBot GetTelegramUser(long id) 
         {
             foreach (UserTelegramBot user in userList)
             {
