@@ -13,9 +13,7 @@ namespace ClassLibrary
         /// <value></value>
         public string Specialization {get; set;}
         
-        /// <summary>
-        /// Constructor de la clase Entrepreneur
-        /// </summary>
+        
         /// <param name="name"></param>
         /// <param name="phone"></param>
         /// <param name="location"></param>

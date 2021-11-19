@@ -40,12 +40,33 @@
             Crea instancias de este tipo
             </summary>
         </member>
+        <member name="T:ClassLibrary.BotBase">
+            <summary>
+            Esta clase se encarga de aplicar la lógica correspondiente a la inicialización 
+            del programa y la administración de los Handlers.
+            De igual manera, se encarga de crear los mismos y corresponderlos con la función
+            SetNext(), también se encarga de crear una instancia para el Sender
+            (recibidor de mensajes) y para el Sender(enviador de mensajes).
+            
+            Esta clase posee una unica instancia creada mediante un Singleton, por lo que es accesible desde todo el programa.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.BotBase.GetInput(System.Int64,System.String)">
+            <summary>
+            Recibe input desde el Receiver y de esta manera y en conjunción con el Sender, 
+            procesa los mensajes recibidos y brinda una respuesta.
+            Crea instancias de los handlers, ya que de esta manera es posible que muchos usuarios 
+            utilicen el bot a la vez, ya que se creara una cadena de responsabilidades para los mensajes.
+            </summary>
+            <param name="id">Id del usuario que ingresa la información.</param>
+            <param name="message">Mensaje del usuario.</param>
+        </member>
         <member name="T:ClassLibrary.Company">
             <summary>
             Clase que representa a un usuario del tipo compania dentro del programa
             </summary>
         </member>
-        <member name="M:ClassLibrary.Company.#ctor(System.String,System.String,ClassLibrary.Location,System.String)">
+        <member name="M:ClassLibrary.Company.#ctor(System.Int64,System.String,System.String,ClassLibrary.Location,System.String)">
             <summary>
             Constructor de company
             </summary>
@@ -301,10 +322,7 @@
             </summary>
             <value></value>
         </member>
-        <member name="M:ClassLibrary.Entrepreneur.#ctor(System.String,System.String,ClassLibrary.Location,System.String,System.String)">
-            <summary>
-            Constructor de la clase Entrepreneur
-            </summary>
+        <member name="M:ClassLibrary.Entrepreneur.#ctor(System.Int64,System.String,System.String,ClassLibrary.Location,System.String,System.String)">
             <param name="name"></param>
             <param name="phone"></param>
             <param name="location"></param>
@@ -448,6 +466,11 @@
             Retorna este "handler" al estado inicial y cancela el próximo "handler" si existe. Es utilizado para que los
             "handlers" que procesan varios mensajes cambiando de estado entre mensajes puedan volver al estado inicial en
             caso de error por ejemplo.
+            </summary>
+        </member>
+        <member name="T:ClassLibrary.InitialHandler">
+            <summary>
+            El handler inicial, el cual modifica el estado del pedido según lo necesitado.
             </summary>
         </member>
         <member name="T:ClassLibrary.IPrinter">
@@ -1003,6 +1026,11 @@
             </summary>
             <value></value>
         </member>
+        <member name="T:ClassLibrary.StateEnum">
+            <summary>
+            Estados posibles de los handlers.
+            </summary>
+        </member>
         <member name="T:ClassLibrary.TelegramBot">
             <summary>
             Una clase que implementa un bot de Telegram.
@@ -1011,28 +1039,6 @@
         <member name="M:ClassLibrary.TelegramBot.#ctor">
             <summary>
             
-            </summary>
-        </member>
-        <member name="M:ClassLibrary.TelegramBot.HandleUpdateAsync(Telegram.Bot.Types.Update,System.Threading.CancellationToken)">
-            <summary>
-            Maneja las actualizaciones del bot (todo lo que llega), incluyendo mensajes, ediciones de mensajes,
-            respuestas a botones, etc. En este ejemplo sólo manejamos mensajes de texto.
-            </summary>
-        </member>
-        <member name="M:ClassLibrary.TelegramBot.HandleMessageReceived(Telegram.Bot.Types.Message)">
-            <summary>
-            Maneja los mensajes que se envían al bot.
-            Lo único que hacemos por ahora es escuchar 3 tipos de mensajes:
-            - "hola": responde con texto
-            - "chau": responde con texto
-            - "foto": responde con una foto
-            </summary>
-            <param name="message">El mensaje recibido</param>
-            <returns></returns>
-        </member>
-        <member name="M:ClassLibrary.TelegramBot.HandleErrorAsync(System.Exception,System.Threading.CancellationToken)">
-            <summary>
-            Manejo de excepciones. Por ahora simplemente la imprimimos en la consola.
             </summary>
         </member>
         <member name="T:ClassLibrary.UserBase">
@@ -1067,7 +1073,7 @@
             <typeparam list="Permission"></typeparam>
             <returns></returns>
         </member>
-        <member name="M:ClassLibrary.UserBase.#ctor(System.String,System.String,ClassLibrary.Location,System.String)">
+        <member name="M:ClassLibrary.UserBase.#ctor(System.Int64,System.String,System.String,ClassLibrary.Location,System.String)">
             <summary>
             Permite crear instancias de los usuarios del programa
             </summary>
