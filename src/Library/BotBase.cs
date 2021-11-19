@@ -59,15 +59,13 @@ namespace ClassLibrary
         {
             
             AbstractHandler<UserRequest> initialHandler = new InitialHandler();
-            // AbstractHandler<UserRequest> defaultHandler = new DefaultHandler();
-            // AbstractHandler<UserRequest> companiHandler = new DefaultHandler();
-            // AbstractHandler<UserRequest> er = new DefaultHandler();
-            initialHandler.SetNext(null);
+            // AbstractHandler<UserRequest> companyHandler = new CompanyHandler();
+            // initialHandler.SetNext(companyHandler.SetNext());
             
             ISend telegramSender = new TelegramSend();
             UserRequest userRequest = GetRequestById(id, message);
             UserRequest response = initialHandler.Handle(userRequest);
-            telegramSender.SendMessage(response.Id, response.Message);
+            telegramSender.SendMessage(response.Id, response.OutgoingMsg);
         }
         public UserRequest GetRequestById(long id, string message) 
         {
@@ -75,7 +73,7 @@ namespace ClassLibrary
             {
                 if (request.Id == id)
                 {
-                    request.Message = message;
+                    request.ArrivedMsg = message;
                     return request;
                 }
             }

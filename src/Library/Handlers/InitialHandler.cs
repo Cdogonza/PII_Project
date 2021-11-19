@@ -1,4 +1,4 @@
-
+using System;
 namespace ClassLibrary
 {
     /// <summary>
@@ -11,26 +11,29 @@ namespace ClassLibrary
         }
         protected override UserRequest HandleRequest(UserRequest request)
         {
-            request.Message = "Ingrese el título";
-            if (request.Message == "Escribir")
-            {
-                // request.State = StateEnum.Status1;
-                request.Message = "Ingrese el título";
-                return request;
-            }
+            request.OutgoingMsg = "Buenas";
+            UserTelegramBot currentUser = UsersManager.Instance.GetTelegramUser(request.Id);
             
+            if(currentUser.authenticated == false && request.State != StateEnum.AwaitingForCompanyChoice){
+                
+                request.OutgoingMsg = "Usted no se encuentra ingresado en la appliación , ingrese 1 Empresa o 2 para Emmprendedor";
+                request.State = StateEnum.AwaitingForCompanyChoice;
+            }
+            else if(currentUser.authenticated == false && request.State == StateEnum.AwaitingForCompanyChoice){
+                if(request.ArrivedMsg == "1"){
+                    currentUser.userMode = "1";
+                    request.State = StateEnum.AwaitingForCompanyInput;
+                }   
+                else if (request.ArrivedMsg == "2") {
+                    currentUser.userMode = "2";
+                    request.State = StateEnum.AwaitingForCompanyInput;
+                }
+            }
+            return request;
+
+            // this._nextHandler.HandleRequest(request);
+
             
-            else if (request.Message == "Configurar")
-            {
-                // request.State= StateEnum.Status1;
-                request.Message = "Ingrese Información";
-                return request;
-            }
-            else
-            {
-                request.Message = "¿Que quiere hacer? \nIngresar informacion --> Escribir\nComenzar la configuración --> Configurar";
-                return request;
-            }
         }
     }
 }
