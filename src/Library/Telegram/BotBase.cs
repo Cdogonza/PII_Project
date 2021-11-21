@@ -19,7 +19,7 @@ namespace ClassLibrary
     /// </summary>
     public class BotBase
     {
-        #region Singleton
+       // #region Singleton
         
         private BotBase(){}
         private static BotBase instance;
@@ -35,7 +35,7 @@ namespace ClassLibrary
                 return instance;
             }
         }
-        #endregion
+      //  #endregion
 
         private List<UserRequest> requestList = new List<UserRequest>();
         public void Start()
@@ -57,8 +57,10 @@ namespace ClassLibrary
         /// <param name="message">Mensaje del usuario.</param>
         public void GetInput(long id, string message)
         {
-            
-            AbstractHandler<UserRequest> initialHandler = new InitialHandler();
+            AbstractHandler<UserRequest> initialHandler = new InitialHandler(new InitialCondition());
+            AbstractHandler<UserRequest> userChoiceCreation = new UserChoiceCreationHandler(new UserChoiceCreationCondition());
+            AbstractHandler<UserRequest> CompanyRegistrationHandler = new CompanyRegistrationHandler(new CompanyRegistrationCondition());
+            initialHandler.SetNext(userChoiceCreation).SetNext(CompanyRegistrationHandler);
             // AbstractHandler<UserRequest> companyHandler = new CompanyHandler();
             // initialHandler.SetNext(companyHandler.SetNext());
             
