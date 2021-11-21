@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 namespace ClassLibrary
 
 {
@@ -6,7 +7,7 @@ namespace ClassLibrary
         public long Id{get; private set;}
 
         public bool authenticated {get; private set;}
-
+        public List<string> companyInfo = new List<string>();
         public string userMode {get; set;}
 
         public UserBase currentCompany{get; set;}
