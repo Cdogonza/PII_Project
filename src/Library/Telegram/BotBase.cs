@@ -60,7 +60,7 @@ namespace ClassLibrary
             AbstractHandler<UserRequest> initialHandler = new InitialHandler(new InitialCondition());
             AbstractHandler<UserRequest> userChoiceCreation = new UserChoiceCreationHandler(new UserChoiceCreationCondition());
             AbstractHandler<UserRequest> CompanyRegistrationHandler = new CompanyRegistrationHandler(new CompanyRegistrationCondition());
-            initialHandler.SetNext(userChoiceCreation).SetNext(CompanyRegistrationHandler);
+            initialHandler.SetNext(userChoiceCreation).SetNext(CompanyRegistrationHandler).SetNext(initialHandler);
             // AbstractHandler<UserRequest> companyHandler = new CompanyHandler();
             // initialHandler.SetNext(companyHandler.SetNext());
             

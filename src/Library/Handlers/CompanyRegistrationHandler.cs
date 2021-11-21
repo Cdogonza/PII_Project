@@ -8,26 +8,56 @@ namespace ClassLibrary
     /// </summary>
     public class CompanyRegistrationHandler : AbstractHandler<UserRequest>
     {
+        public int contador = 0;
         List<string> companyInfo = new List<string>();
         public CompanyRegistrationHandler(ICondition<UserRequest> condition) : base (condition)
         {
+        
         }
         protected override UserRequest HandleRequest(UserRequest request)
         {
-            request.OutgoingMsg = "Ingrese nombre Empresa";
-            companyInfo.Add(request.ArrivedMsg);
-            if (request.State == StateEnum.AwaitingForCompanyRegistration && companyInfo.Count == 0){
-                request.OutgoingMsg = "Ingrese un telefono";  
+            
+            if (request.State == StateEnum.AwaitingForCompanyRegistration){
+                companyInfo.Add(request.ArrivedMsg);
+                contador++;
+                if (contador == 1)
+                {
+                //    foreach (var item in companyInfo){
+                //        request.OutgoingMsg = $"{item}";
+                //    }
+                request.OutgoingMsg = "Ingrese un telefono";
+                companyInfo.Add(request.ArrivedMsg);
+                contador++;
+                //return request; 
+                }
+                if (contador == 2)
+                {
+                request.OutgoingMsg = "Ingrese una dir";
+                companyInfo.Add(request.ArrivedMsg);
+                contador++;
+                //return request;    
+                }              
+
+            //return request;
+   /*         
+            else if (request.State == StateEnum.AwaitingForCompanyRegistration && companyInfo.Count == 1){
+                companyInfo.Add(request.ArrivedMsg);
+                request.OutgoingMsg = "Ingrese una dir";
+                return request;  
               //  request.State = StateEnum.AwaitingForCompanyData;
             }
-            if (request.State == StateEnum.AwaitingForCompanyRegistration && companyInfo.Count == 1){
+            else if (request.State == StateEnum.AwaitingForCompanyRegistration && companyInfo.Count == 2){
                 companyInfo.Add(request.ArrivedMsg);
-                request.OutgoingMsg = "Ingrese dir";
-
-
+                request.OutgoingMsg = "Ingrese ciudad";
+                return request;
             }
             return request;
             
+//              foreach (var item in companyInfo){
+  //          request.OutgoingMsg = $"{item}";
+*/
         }
+        return request;
     }
+}
 }

@@ -16,7 +16,7 @@ namespace ClassLibrary
                 if(request.ArrivedMsg == "1"){
                     currentUser.userMode = "1";
                     request.State = StateEnum.AwaitingForCompanyRegistration;
-                    request.OutgoingMsg = "Usted Ingreso la opcion Compania";
+                    request.OutgoingMsg = "Ingrese Nombre de empresa";
                     return request;
                 }   
                 else if (request.ArrivedMsg == "2") {
