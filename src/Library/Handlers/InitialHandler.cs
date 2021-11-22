@@ -16,13 +16,12 @@ namespace ClassLibrary
             if(currentUser.authenticated == false && request.State == StateEnum.Initial){
                 request.Status =false;
                 request.State = StateEnum.AwaitingForUserChoice;
-                request.OutgoingMsg = "Usted no se encuentra ingresado en la appliación , ingrese 1 Empresa o 2 para Emprendedor";
+                request.OutgoingMsg = "Usted no se encuentra ingresado en la apliación, ingrese 1 para Empresa o 2 para Emprendedor";
                 return request;
             }
-            request.Status =false;
+            request.Status = false;
             return request;
 
-            // this._nextHandler.HandleRequest(request);
         }
     }
         

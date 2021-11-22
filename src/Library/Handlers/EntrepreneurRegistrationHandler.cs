@@ -25,27 +25,27 @@ namespace ClassLibrary
                         currentUser.companyInfo.Add(request.ArrivedMsg);
                         break;
                     case 1:
-                        request.OutgoingMsg = "Ingrese un telefono";
+                        request.OutgoingMsg = "Ingrese un teléfono.";
                         currentUser.companyInfo.Add(request.ArrivedMsg);
                         break;
                     case 2:
-                        request.OutgoingMsg = "Ingrese Calle y Nro";
+                        request.OutgoingMsg = "Ingrese Calle y Nro de puerta.";
                         currentUser.companyInfo.Add(request.ArrivedMsg);
                         break;
                     case 3:
-                        request.OutgoingMsg = "Ingrese Ciudad";
+                        request.OutgoingMsg = "Ingrese Ciudad.";
                         currentUser.companyInfo.Add(request.ArrivedMsg);
                         break;
                     case 4:
-                        request.OutgoingMsg = "Ingrese Departamento";
+                        request.OutgoingMsg = "Ingrese Departamento.";
                         currentUser.companyInfo.Add(request.ArrivedMsg);
                         break;
                     case 5:
-                        request.OutgoingMsg = "Ingrese el Rubro";
+                        request.OutgoingMsg = "Ingrese el Rubro.";
                         currentUser.companyInfo.Add(request.ArrivedMsg);
                         break;
                     case 6:
-                        request.OutgoingMsg = "Ingrese su especializacion";
+                        request.OutgoingMsg = "Ingrese su especialización.";
                         currentUser.companyInfo.Add(request.ArrivedMsg);
                         
                         break; 
@@ -58,11 +58,11 @@ namespace ClassLibrary
                 }
         return request;
 
-        }
+            }
            
         return request;      
-    }
+        }
 
    
-}
+    }
 }
