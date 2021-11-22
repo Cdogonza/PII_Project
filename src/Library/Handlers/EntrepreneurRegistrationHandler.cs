@@ -21,6 +21,7 @@ namespace ClassLibrary
                 switch (currentUser.companyInfo.Count)
                 {
                     case 0:
+                        request.OutgoingMsg = "Ingrese Nombre de Emprendedor";
                         currentUser.companyInfo.Add(request.ArrivedMsg);
                         break;
                     case 1:
@@ -46,10 +47,14 @@ namespace ClassLibrary
                     case 6:
                         request.OutgoingMsg = "Ingrese su especializacion";
                         currentUser.companyInfo.Add(request.ArrivedMsg);
+                        
+                        break; 
+                    case 7:
                         LocationApiClient Loc = new LocationApiClient();
                         LocationOffer=Loc.GetLocation(currentUser.companyInfo[2],currentUser.companyInfo[3],currentUser.companyInfo[4]);
                         Entrepreneur emp = new Entrepreneur(request.Id,currentUser.companyInfo[0],currentUser.companyInfo[1],LocationOffer,currentUser.companyInfo[5],currentUser.companyInfo[6]);                        
-                        break;               
+                        break;
+                                  
                 }
         return request;
 

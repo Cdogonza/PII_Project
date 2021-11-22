@@ -56,8 +56,6 @@ namespace ClassLibrary
             initialHandler.SetNext(userChoiceCreation);
             userChoiceCreation.SetNext(EntrepreneurRegistrationHandler);
             EntrepreneurRegistrationHandler.SetNext(CompanyRegistrationHandler);
-            // AbstractHandler<UserRequest> companyHandler = new CompanyHandler();
-            // initialHandler.SetNext(companyHandler.SetNext());
             
             ISend telegramSender = new TelegramSend();
             UserRequest userRequest = GetRequestById(id, message);
