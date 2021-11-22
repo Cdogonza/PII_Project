@@ -18,7 +18,7 @@ namespace ClassLibrary
             }else{
                 if (request.State == StateEnum.WrongCode){
                     request.OutgoingMsg = "Código Incorrecto. Ingrese uno nuevo.";
-                    request.State = StateEnum.AwaitingForCode;
+                    request.State = StateEnum.Start;
                     request.Status = false;
                     return request;
                 }

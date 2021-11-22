@@ -24,7 +24,7 @@ namespace ClassLibrary
         {
             this.Specialization = specialization;
             Console.WriteLine("Cree Emprendedor");
-            Console.WriteLine(id);
+            Console.WriteLine(specialization);
         }
         
     }

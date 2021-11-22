@@ -26,13 +26,12 @@ namespace ClassLibrary
                 }   
                 else if (request.ArrivedMsg == "2") {
                     currentUser.userMode = "2";
-                    request.State = StateEnum.AwaitingForEntrepreneurRegistration;                   
-                    request.OutgoingMsg = "Ingrese Nombre de Emprendedor";
-                   
+                                      
+                    request.State = StateEnum.AwaitingForEntrepreneurRegistration; 
                     return request;
                 }
                 else{
-                    request.OutgoingMsg = "Opcion no valida, ingrese opcion 1 para empresa o 2 para emprendedor";
+                    request.OutgoingMsg = "Ingrese opcion 1 para empresa o 2 para emprendedor";
                     return request;
                 }
                 

@@ -47,14 +47,6 @@ namespace ClassLibrary
                 
             }
         }
-        /// <summary>
-        /// Recibe input desde el Receiver y de esta manera y en conjunción con el Sender, 
-        /// procesa los mensajes recibidos y brinda una respuesta.
-        /// Crea instancias de los handlers, ya que de esta manera es posible que muchos usuarios 
-        /// utilicen el bot a la vez, ya que se creara una cadena de responsabilidades para los mensajes.
-        /// </summary>
-        /// <param name="id">Id del usuario que ingresa la información.</param>
-        /// <param name="message">Mensaje del usuario.</param>
         public void GetInput(long id, string message)
         {
             AbstractHandler<UserRequest> welcomeHandler = new WelcomeHandler();
@@ -65,11 +57,11 @@ namespace ClassLibrary
             AbstractHandler<UserRequest> EntrepreneurRegistrationHandler = new EntrepreneurRegistrationHandler();
             
             welcomeHandler.SetNext(invitationCodeHandler);
-            invitationCodeHandler.SetNext(initialHandler/*.SetNext(userChoiceCreation))*/);
-            initialHandler.SetNext(welcomeHandler);
-    
-            // AbstractHandler<UserRequest> companyHandler = new CompanyHandler();
-            // initialHandler.SetNext(companyHandler.SetNext());
+            invitationCodeHandler.SetNext(initialHandler);
+            initialHandler.SetNext(userChoiceCreation);
+            userChoiceCreation.SetNext(EntrepreneurRegistrationHandler);
+            EntrepreneurRegistrationHandler.SetNext(CompanyRegistrationHandler);
+            CompanyRegistrationHandler.SetNext(welcomeHandler);
             
             ISend telegramSender = new TelegramSend();
             UserRequest userRequest = GetRequestById(id, message);
@@ -77,8 +69,9 @@ namespace ClassLibrary
             UserRequest response0 = invitationCodeHandler.Handle(userRequest);
             UserRequest response1 = initialHandler.Handle(userRequest);
             UserRequest response2 = userChoiceCreation.Handle(userRequest);
+            UserRequest response3 = EntrepreneurRegistrationHandler.Handle(userRequest);
+            UserRequest response4 = CompanyRegistrationHandler.Handle(userRequest);
             telegramSender.SendMessage(response.Id, response.OutgoingMsg);
-            //telegramSender.SendMessage(response2.Id, response2.OutgoingMsg);
         }
         public UserRequest GetRequestById(long id, string message) 
         {

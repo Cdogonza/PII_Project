@@ -19,6 +19,7 @@ namespace ClassLibrary
             this.ArrivedMsg = message;
             this.State = StateEnum.Start;
             this.Status = true;
+            
 
         }
     }

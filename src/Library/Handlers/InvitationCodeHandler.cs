@@ -13,11 +13,9 @@ namespace ClassLibrary
             if(currentUser.authenticated == false && request.State == StateEnum.AwaitingForCode){
                 if (request.ArrivedMsg == "1234"){
                     request.State = StateEnum.Initial;
-                    Console.WriteLine(request.State);
                     request.Status = false;
                     return request;
-                }else{
-                
+                }else{              
                 request.State = StateEnum.WrongCode;
                 request.Status = false;
                 return request;
