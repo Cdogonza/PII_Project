@@ -1,37 +1,60 @@
 using Telegram.Bot.Types;
-
+using System;
 namespace ClassLibrary
 {
-    /// <summary>
-    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
-    /// </summary>
-    public class EntrepreneurRegister : BaseHandler
+    public class EntrepreneurRegister: AbstractHandler<UserRequest>
     {
-        /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="HelloHandler"/>. Esta clase procesa el mensaje "hola".
-        /// </summary>
-        /// <param name="next">El próximo "handler".</param>
-        public EntrepreneurRegister(BaseHandler next) : base(next)
+        public EntrepreneurRegister()
         {
-            this.Keywords = new string[] {"hola"};
+         
         }
-
-        /// <summary>
-        /// Procesa el mensaje "hola" y retorna true; retorna false en caso contrario.
-        /// </summary>
-        /// <param name="message">El mensaje a procesar.</param>
-        /// <param name="response">La respuesta al mensaje procesado.</param>
-        /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
-        protected override bool InternalHandle(Message message, out string response)
+        protected override UserRequest HandleRequest(UserRequest request)
         {
-            if (this.CanHandle(message))
-            {
-                response = "¡Hola! ¿Cómo estás?";
-                return true;
-            }
+        
+            UserTelegramBot currentUser = UsersManager.Instance.GetTelegramUser(request.Id);
+      
+            Console.WriteLine("Te digo que no entra aca lpm");
+            if (request.State == StateEnum.AwaitingForEntrepreneurRegistration){
+                request.Status=false;
+                
+                switch (currentUser.companyInfo.Count)
+                {
+                    case 0:
+                        currentUser.companyInfo.Add(request.ArrivedMsg);
+                        break;
+                    case 1:
+                        request.OutgoingMsg = "Ingrese un telefono";
+                        currentUser.companyInfo.Add(request.ArrivedMsg);
+                        break;
+                    case 2:
+                        request.OutgoingMsg = "Ingrese Calle y Nro";
+                        currentUser.companyInfo.Add(request.ArrivedMsg);
+                        break;
+                    case 3:
+                        request.OutgoingMsg = "Ingrese Ciudad";
+                        currentUser.companyInfo.Add(request.ArrivedMsg);
+                        break;
+                    case 4:
+                        request.OutgoingMsg = "Ingrese Departamento";
+                        currentUser.companyInfo.Add(request.ArrivedMsg);
+                        break;
+                    case 5:
+                        request.OutgoingMsg = "Ingrese el Rubro";
+                        currentUser.companyInfo.Add(request.ArrivedMsg);
+                        break;
+                    case 6:
+                        request.OutgoingMsg = "Ingrese su especializacion";
+                        currentUser.companyInfo.Add(request.ArrivedMsg);
+                        
+                        break;
+                
+                }
 
-            response = string.Empty;
-            return false;
+        return request;
+
         }
+        request.Status =false;
+        return request;
     }
+}
 }

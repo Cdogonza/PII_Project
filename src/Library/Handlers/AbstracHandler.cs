@@ -10,7 +10,7 @@ namespace ClassLibrary
     
     public abstract class AbstractHandler<T>
     {
-        private ICondition<T> condition;
+       
 
         public AbstractHandler<T> _nextHandler;
         public AbstractHandler<T> SetNext(AbstractHandler<T> handler)
@@ -19,21 +19,27 @@ namespace ClassLibrary
             return handler;
         }
     
-        protected AbstractHandler(ICondition<T> condition)
+        protected AbstractHandler()
         {
-            this.condition = condition;
+           
         }
 
-        public virtual T Handle(T request)
+        public virtual UserRequest Handle(UserRequest request)
         {
-                if (this.condition.IsSatisfied(request))
+
+                if (request.Status == true)
                 {
+                    Console.WriteLine("CACA");
+                    request.Status=false;
                     return this.HandleRequest(request);
+                   
                 }
                 else
                 {
                    if (this._nextHandler != null)
                     {
+                    Console.WriteLine("CACona");
+                    request.Status=true;
                     return this._nextHandler.Handle(request);
                     }
                     else
@@ -43,6 +49,6 @@ namespace ClassLibrary
                 }
         }
         
-        protected abstract T HandleRequest(T request);
+        protected abstract UserRequest HandleRequest(UserRequest request);
     }
 }

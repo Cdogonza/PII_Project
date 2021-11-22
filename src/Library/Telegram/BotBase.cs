@@ -57,10 +57,12 @@ namespace ClassLibrary
         /// <param name="message">Mensaje del usuario.</param>
         public void GetInput(long id, string message)
         {
-            AbstractHandler<UserRequest> initialHandler = new InitialHandler(new InitialCondition());
-            AbstractHandler<UserRequest> userChoiceCreation = new UserChoiceCreationHandler(new UserChoiceCreationCondition());
-            AbstractHandler<UserRequest> CompanyRegistrationHandler = new CompanyRegistrationHandler(new CompanyRegistrationCondition());
-            initialHandler.SetNext(userChoiceCreation).SetNext(CompanyRegistrationHandler).SetNext(initialHandler);
+            AbstractHandler<UserRequest> initialHandler = new InitialHandler();
+            AbstractHandler<UserRequest> userChoiceCreation = new UserChoiceCreationHandler();
+            AbstractHandler<UserRequest> CompanyRegistrationHandler = new CompanyRegistrationHandler();
+            AbstractHandler<UserRequest> EntrepreneurRegister = new EntrepreneurRegister();
+            initialHandler.SetNext(userChoiceCreation).SetNext(userChoiceCreation).SetNext(EntrepreneurRegister);
+   
             // AbstractHandler<UserRequest> companyHandler = new CompanyHandler();
             // initialHandler.SetNext(companyHandler.SetNext());
             
@@ -75,8 +77,12 @@ namespace ClassLibrary
             {
                 if (request.Id == id)
                 {
+                    
                     request.ArrivedMsg = message;
+                    request.Status = false;
                     return request;
+                   
+
                 }
             }
             UserRequest newRequest = new UserRequest(id, message);

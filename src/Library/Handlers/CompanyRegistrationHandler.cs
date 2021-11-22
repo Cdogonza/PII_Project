@@ -9,7 +9,7 @@ namespace ClassLibrary
     public class CompanyRegistrationHandler : AbstractHandler<UserRequest>
     {
         //public int contador = 0;
-        public CompanyRegistrationHandler(ICondition<UserRequest> condition) : base (condition)
+        public CompanyRegistrationHandler()
         {
         
         }

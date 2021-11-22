@@ -77,6 +77,7 @@ namespace Tests
             Singleton<OfferManager>.Instance.SaveOffer(this.offer);
             LocatioEntrepreneur =Loc.GetLocation("Colorado 2326","Montevideo","Montevideo");
             Permission permissionC = new Permission("Materiales inflamables");
+            
             this.entrepreneur = new Entrepreneur(1,"Empre2","091234567",LocatioEntrepreneur,"Construcción","Trabajo en altura");
             Singleton<OfferManager>.Instance.BuyOffer(this.entrepreneur,0);
         }
