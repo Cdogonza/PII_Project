@@ -19,7 +19,8 @@ namespace ClassLibrary
                 request.OutgoingMsg = "Usted no se encuentra ingresado en la appliación , ingrese 1 Empresa o 2 para Emprendedor";
                 return request;
             }
-            request.Status =false;
+            Console.WriteLine("initial");
+            request.Status = false;
             return request;
 
             // this._nextHandler.HandleRequest(request);
