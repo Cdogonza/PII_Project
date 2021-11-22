@@ -11,6 +11,7 @@ namespace ClassLibrary
         AwaitingForEntrepreneurRegistration,
         AwaitingForCode,
         Start,
-        AwaitingForCompanyData
+        AwaitingForCompanyData,
+        WrongCode
     }
 }

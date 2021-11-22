@@ -57,20 +57,28 @@ namespace ClassLibrary
         /// <param name="message">Mensaje del usuario.</param>
         public void GetInput(long id, string message)
         {
+            AbstractHandler<UserRequest> welcomeHandler = new WelcomeHandler();
+            AbstractHandler<UserRequest> invitationCodeHandler = new InvitationCodeHandler();
             AbstractHandler<UserRequest> initialHandler = new InitialHandler();
             AbstractHandler<UserRequest> userChoiceCreation = new UserChoiceCreationHandler();
             AbstractHandler<UserRequest> CompanyRegistrationHandler = new CompanyRegistrationHandler();
             AbstractHandler<UserRequest> EntrepreneurRegistrationHandler = new EntrepreneurRegistrationHandler();
-            initialHandler.SetNext(EntrepreneurRegistrationHandler.SetNext(userChoiceCreation));
+            
+            welcomeHandler.SetNext(invitationCodeHandler);
+            invitationCodeHandler.SetNext(initialHandler/*.SetNext(userChoiceCreation))*/);
+            initialHandler.SetNext(welcomeHandler);
     
             // AbstractHandler<UserRequest> companyHandler = new CompanyHandler();
             // initialHandler.SetNext(companyHandler.SetNext());
             
             ISend telegramSender = new TelegramSend();
             UserRequest userRequest = GetRequestById(id, message);
-            UserRequest response = initialHandler.Handle(userRequest);
+            UserRequest response = welcomeHandler.Handle(userRequest);
+            UserRequest response0 = invitationCodeHandler.Handle(userRequest);
+            UserRequest response1 = initialHandler.Handle(userRequest);
             UserRequest response2 = userChoiceCreation.Handle(userRequest);
             telegramSender.SendMessage(response.Id, response.OutgoingMsg);
+            //telegramSender.SendMessage(response2.Id, response2.OutgoingMsg);
         }
         public UserRequest GetRequestById(long id, string message) 
         {
