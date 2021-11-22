@@ -48,8 +48,7 @@ namespace ClassLibrary
                         currentUser.companyInfo.Add(request.ArrivedMsg);
                         LocationApiClient Loc = new LocationApiClient();
                         LocationOffer=Loc.GetLocation(currentUser.companyInfo[2],currentUser.companyInfo[3],currentUser.companyInfo[4]);
-                        Entrepreneur emp = new Entrepreneur(request.Id,currentUser.companyInfo[0],currentUser.companyInfo[1],LocationOffer,currentUser.companyInfo[5],currentUser.companyInfo[6]);
-                        
+                        Entrepreneur emp = new Entrepreneur(request.Id,currentUser.companyInfo[0],currentUser.companyInfo[1],LocationOffer,currentUser.companyInfo[5],currentUser.companyInfo[6]);                        
                         break;               
                 }
         return request;

@@ -37,8 +37,7 @@ namespace ClassLibrary
                 else
                 {
                    if (this._nextHandler != null)
-                    {
-                    
+                    {                   
                     request.Status=true;
                     return this._nextHandler.Handle(request);
                     }

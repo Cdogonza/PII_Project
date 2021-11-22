@@ -47,22 +47,15 @@ namespace ClassLibrary
                 
             }
         }
-        /// <summary>
-        /// Recibe input desde el Receiver y de esta manera y en conjunción con el Sender, 
-        /// procesa los mensajes recibidos y brinda una respuesta.
-        /// Crea instancias de los handlers, ya que de esta manera es posible que muchos usuarios 
-        /// utilicen el bot a la vez, ya que se creara una cadena de responsabilidades para los mensajes.
-        /// </summary>
-        /// <param name="id">Id del usuario que ingresa la información.</param>
-        /// <param name="message">Mensaje del usuario.</param>
         public void GetInput(long id, string message)
         {
             AbstractHandler<UserRequest> initialHandler = new InitialHandler();
             AbstractHandler<UserRequest> userChoiceCreation = new UserChoiceCreationHandler();
             AbstractHandler<UserRequest> CompanyRegistrationHandler = new CompanyRegistrationHandler();
             AbstractHandler<UserRequest> EntrepreneurRegistrationHandler = new EntrepreneurRegistrationHandler();
-            initialHandler.SetNext(EntrepreneurRegistrationHandler.SetNext(userChoiceCreation));
-    
+            initialHandler.SetNext(userChoiceCreation);
+            userChoiceCreation.SetNext(EntrepreneurRegistrationHandler);
+            EntrepreneurRegistrationHandler.SetNext(CompanyRegistrationHandler);
             // AbstractHandler<UserRequest> companyHandler = new CompanyHandler();
             // initialHandler.SetNext(companyHandler.SetNext());
             
@@ -70,7 +63,9 @@ namespace ClassLibrary
             UserRequest userRequest = GetRequestById(id, message);
             UserRequest response = initialHandler.Handle(userRequest);
             UserRequest response2 = userChoiceCreation.Handle(userRequest);
+            UserRequest response3 = EntrepreneurRegistrationHandler.Handle(userRequest);
             telegramSender.SendMessage(response.Id, response.OutgoingMsg);
+
         }
         public UserRequest GetRequestById(long id, string message) 
         {

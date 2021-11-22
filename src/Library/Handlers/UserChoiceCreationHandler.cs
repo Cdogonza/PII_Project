@@ -26,9 +26,9 @@ namespace ClassLibrary
                 }   
                 else if (request.ArrivedMsg == "2") {
                     currentUser.userMode = "2";
-                    request.State = StateEnum.AwaitingForEntrepreneurRegistration;                   
+                                      
                     request.OutgoingMsg = "Ingrese Nombre de Emprendedor";
-                   
+                    request.State = StateEnum.AwaitingForEntrepreneurRegistration; 
                     return request;
                 }
                 else{
@@ -38,8 +38,6 @@ namespace ClassLibrary
                 
                 
             }
-            Console.WriteLine(request.ArrivedMsg);  
-            Console.WriteLine(request.Status);
             return request;   
         }
     }
