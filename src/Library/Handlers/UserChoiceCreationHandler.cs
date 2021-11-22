@@ -38,8 +38,6 @@ namespace ClassLibrary
                 
                 
             }
-            Console.WriteLine(request.ArrivedMsg);  
-            Console.WriteLine(request.Status);
             return request;   
         }
     }

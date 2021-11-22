@@ -64,7 +64,9 @@ namespace ClassLibrary
             AbstractHandler<UserRequest> CompanyRegistrationHandler = new CompanyRegistrationHandler();
             AbstractHandler<UserRequest> EntrepreneurRegistrationHandler = new EntrepreneurRegistrationHandler();
             
-            welcomeHandler.SetNext(invitationCodeHandler/*.SetNext(initialHandler.SetNext(userChoiceCreation))*/);
+            welcomeHandler.SetNext(invitationCodeHandler);
+            invitationCodeHandler.SetNext(initialHandler/*.SetNext(userChoiceCreation))*/);
+            initialHandler.SetNext(welcomeHandler);
     
             // AbstractHandler<UserRequest> companyHandler = new CompanyHandler();
             // initialHandler.SetNext(companyHandler.SetNext());
