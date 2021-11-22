@@ -11,9 +11,8 @@ namespace ClassLibrary
         }
         protected override UserRequest HandleRequest(UserRequest request)
         {
-           Console.WriteLine("entre");
-            UserTelegramBot currentUser = UsersManager.Instance.GetTelegramUser(request.Id);
-            
+          UserTelegramBot currentUser = UsersManager.Instance.GetTelegramUser(request.Id);
+
             if(currentUser.authenticated == false && request.State == StateEnum.Initial){
                 request.Status =false;
                 request.State = StateEnum.AwaitingForUserChoice;
@@ -24,8 +23,8 @@ namespace ClassLibrary
             return request;
 
             // this._nextHandler.HandleRequest(request);
-
-            
         }
     }
+        
 }
+
