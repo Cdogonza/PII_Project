@@ -57,14 +57,11 @@ namespace ClassLibrary
             AbstractHandler<UserRequest> EntrepreneurRegistrationHandler = new EntrepreneurRegistrationHandler();
             
             welcomeHandler.SetNext(invitationCodeHandler);
-            invitationCodeHandler.SetNext(initialHandler/*.SetNext(userChoiceCreation))*/);
+            invitationCodeHandler.SetNext(initialHandler);
             initialHandler.SetNext(userChoiceCreation);
             userChoiceCreation.SetNext(EntrepreneurRegistrationHandler);
             EntrepreneurRegistrationHandler.SetNext(CompanyRegistrationHandler);
-
-    
-            // AbstractHandler<UserRequest> companyHandler = new CompanyHandler();
-            // initialHandler.SetNext(companyHandler.SetNext());
+            CompanyRegistrationHandler.SetNext(welcomeHandler);
             
             ISend telegramSender = new TelegramSend();
             UserRequest userRequest = GetRequestById(id, message);

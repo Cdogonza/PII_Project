@@ -31,7 +31,7 @@ namespace ClassLibrary
                     return request;
                 }
                 else{
-                    request.OutgoingMsg = "Opcion no valida, ingrese opcion 1 para empresa o 2 para emprendedor";
+                    request.OutgoingMsg = "Ingrese opcion 1 para empresa o 2 para emprendedor";
                     return request;
                 }
                 
