@@ -9,6 +9,8 @@ namespace ClassLibrary
         AwaitingForUserChoice,
         AwaitingForCompanyRegistration,
         AwaitingForEntrepreneurRegistration,
+        AwaitingForCode,
+        Start,
         AwaitingForCompanyData
     }
 }
