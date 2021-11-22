@@ -11,24 +11,16 @@ namespace ClassLibrary
         }
         protected override UserRequest HandleRequest(UserRequest request)
         {
-            request.OutgoingMsg = "Buenas";
+           Console.WriteLine("entre");
             UserTelegramBot currentUser = UsersManager.Instance.GetTelegramUser(request.Id);
             
-            if(currentUser.authenticated == false && request.State != StateEnum.AwaitingForCompanyChoice){
-                
-                request.OutgoingMsg = "Usted no se encuentra ingresado en la appliación , ingrese 1 Empresa o 2 para Emmprendedor";
-                request.State = StateEnum.AwaitingForCompanyChoice;
+            if(currentUser.authenticated == false && request.State == StateEnum.Initial){
+                request.Status =false;
+                request.State = StateEnum.AwaitingForUserChoice;
+                request.OutgoingMsg = "Usted no se encuentra ingresado en la appliación , ingrese 1 Empresa o 2 para Emprendedor";
+                return request;
             }
-            else if(currentUser.authenticated == false && request.State == StateEnum.AwaitingForCompanyChoice){
-                if(request.ArrivedMsg == "1"){
-                    currentUser.userMode = "1";
-                    request.State = StateEnum.AwaitingForCompanyInput;
-                }   
-                else if (request.ArrivedMsg == "2") {
-                    currentUser.userMode = "2";
-                    request.State = StateEnum.AwaitingForCompanyInput;
-                }
-            }
+            request.Status =false;
             return request;
 
             // this._nextHandler.HandleRequest(request);

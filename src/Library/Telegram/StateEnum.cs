@@ -6,7 +6,9 @@ namespace ClassLibrary
     public enum StateEnum
     {
         Initial,
-        AwaitingForCompanyChoice,
-        AwaitingForCompanyInput
+        AwaitingForUserChoice,
+        AwaitingForCompanyRegistration,
+        AwaitingForEntrepreneurRegistration,
+        AwaitingForCompanyData
     }
 }

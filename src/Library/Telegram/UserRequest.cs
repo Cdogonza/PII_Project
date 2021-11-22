@@ -11,12 +11,15 @@ namespace ClassLibrary
 
         public string OutgoingMsg {get; set; }
         public StateEnum State {get; set; }
+        public bool Status {get; set; }
         
         public UserRequest(long id, string message)
         {
             this.Id = id;
             this.ArrivedMsg = message;
             this.State = StateEnum.Initial;
+            this.Status = true;
+
         }
     }
 }

@@ -19,7 +19,7 @@ namespace ClassLibrary
     /// </summary>
     public class BotBase
     {
-        #region Singleton
+       // #region Singleton
         
         private BotBase(){}
         private static BotBase instance;
@@ -35,7 +35,7 @@ namespace ClassLibrary
                 return instance;
             }
         }
-        #endregion
+      //  #endregion
 
         private List<UserRequest> requestList = new List<UserRequest>();
         public void Start()
@@ -57,14 +57,19 @@ namespace ClassLibrary
         /// <param name="message">Mensaje del usuario.</param>
         public void GetInput(long id, string message)
         {
-            
             AbstractHandler<UserRequest> initialHandler = new InitialHandler();
+            AbstractHandler<UserRequest> userChoiceCreation = new UserChoiceCreationHandler();
+            AbstractHandler<UserRequest> CompanyRegistrationHandler = new CompanyRegistrationHandler();
+            AbstractHandler<UserRequest> EntrepreneurRegistrationHandler = new EntrepreneurRegistrationHandler();
+            initialHandler.SetNext(userChoiceCreation);
+            userChoiceCreation.SetNext(EntrepreneurRegistrationHandler);
             // AbstractHandler<UserRequest> companyHandler = new CompanyHandler();
             // initialHandler.SetNext(companyHandler.SetNext());
             
             ISend telegramSender = new TelegramSend();
             UserRequest userRequest = GetRequestById(id, message);
             UserRequest response = initialHandler.Handle(userRequest);
+            UserRequest response2 = userChoiceCreation.Handle(userRequest);
             telegramSender.SendMessage(response.Id, response.OutgoingMsg);
         }
         public UserRequest GetRequestById(long id, string message) 
@@ -73,8 +78,11 @@ namespace ClassLibrary
             {
                 if (request.Id == id)
                 {
+                    
                     request.ArrivedMsg = message;
                     return request;
+                   
+
                 }
             }
             UserRequest newRequest = new UserRequest(id, message);

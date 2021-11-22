@@ -29,8 +29,9 @@ namespace ClassLibrary
         }
 
         // El token provisto por Telegram al crear el bot.
-        private string Token = "2099808385:AAGebOzNFY6kA5hwEY2XJbOJxZBzWAIM8U0";
-
+        //private string Token = "2099808385:AAGebOzNFY6kA5hwEY2XJbOJxZBzWAIM8U0";
+        private string Token = "2133513418:AAHIE7L6s-OQSi6BroKBheNa-JGIXAlsMR0";
+       // private string Token = "2133499409:AAFKS9VqLu7UXqQccvTHFFzcIvxwEoCGtkM";
         private static IHandler firstHandler;
 
         /// <summary>

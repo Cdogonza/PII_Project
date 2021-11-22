@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-
+using System;
 namespace ClassLibrary
 {
         /// <summary>
@@ -23,7 +23,10 @@ namespace ClassLibrary
         public Entrepreneur(long id,string name,string phone,Location location,string area,string specialization) : base (id,name,phone,location,area)
         {
             this.Specialization = specialization;
+            Console.WriteLine("Cree Emprendedor");
+            Console.WriteLine(location.AddresLine);
         }
+        
     }
 
 }

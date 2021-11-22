@@ -7,14 +7,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <CodeAnalysisRuleSet>..\..\.analyzers\Analyzers.ruleset</CodeAnalysisRuleSet>
+     <!-- <CodeAnalysisRuleSet>..\..\.analyzers\Analyzers.ruleset</CodeAnalysisRuleSet> -->
     <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup>
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+  <!--  <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild> -->
   </PropertyGroup>
 
   <ItemGroup>
