@@ -11,9 +11,9 @@ namespace ClassLibrary
         }
         protected override UserRequest HandleRequest(UserRequest request)
         {
-            Console.WriteLine("entre aca");
-            UserTelegramBot currentUser = UsersManager.Instance.GetTelegramUser(request.Id);
             
+            UserTelegramBot currentUser = UsersManager.Instance.GetTelegramUser(request.Id);
+            request.Status=false;
             if (request.State == StateEnum.AwaitingForUserChoice)
             {
            
@@ -26,10 +26,9 @@ namespace ClassLibrary
                 }   
                 else if (request.ArrivedMsg == "2") {
                     currentUser.userMode = "2";
-                    request.State = StateEnum.AwaitingForEntrepreneurRegistration;
-                     Console.WriteLine(request.State);
+                    request.State = StateEnum.AwaitingForEntrepreneurRegistration;                   
                     request.OutgoingMsg = "Ingrese Nombre de Emprendedor";
-                    
+                   
                     return request;
                 }
                 else{
@@ -40,7 +39,7 @@ namespace ClassLibrary
                 
             }
             Console.WriteLine(request.ArrivedMsg);  
-        request.Status=true;
+            Console.WriteLine(request.Status);
             return request;   
         }
     }

@@ -2,9 +2,11 @@ using Telegram.Bot.Types;
 using System;
 namespace ClassLibrary
 {
-    public class EntrepreneurRegister: AbstractHandler<UserRequest>
+    public class EntrepreneurRegistrationHandler: AbstractHandler<UserRequest>
     {
-        public EntrepreneurRegister()
+        bool estado = false;
+        private Location LocationOffer;
+        public EntrepreneurRegistrationHandler()
         {
          
         }
@@ -13,7 +15,6 @@ namespace ClassLibrary
         
             UserTelegramBot currentUser = UsersManager.Instance.GetTelegramUser(request.Id);
       
-            Console.WriteLine("Te digo que no entra aca lpm");
             if (request.State == StateEnum.AwaitingForEntrepreneurRegistration){
                 request.Status=false;
                 
@@ -45,16 +46,18 @@ namespace ClassLibrary
                     case 6:
                         request.OutgoingMsg = "Ingrese su especializacion";
                         currentUser.companyInfo.Add(request.ArrivedMsg);
-                        
-                        break;
-                
+                        LocationApiClient Loc = new LocationApiClient();
+                        LocationOffer=Loc.GetLocation(currentUser.companyInfo[2],currentUser.companyInfo[3],currentUser.companyInfo[4]);
+                        Entrepreneur emp = new Entrepreneur(request.Id,currentUser.companyInfo[0],currentUser.companyInfo[1],LocationOffer,currentUser.companyInfo[5],currentUser.companyInfo[6]);
+                        break;               
                 }
-
         return request;
 
         }
-        request.Status =false;
-        return request;
+           
+        return request;      
     }
+
+   
 }
 }

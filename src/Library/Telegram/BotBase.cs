@@ -60,15 +60,16 @@ namespace ClassLibrary
             AbstractHandler<UserRequest> initialHandler = new InitialHandler();
             AbstractHandler<UserRequest> userChoiceCreation = new UserChoiceCreationHandler();
             AbstractHandler<UserRequest> CompanyRegistrationHandler = new CompanyRegistrationHandler();
-            AbstractHandler<UserRequest> EntrepreneurRegister = new EntrepreneurRegister();
-            initialHandler.SetNext(userChoiceCreation).SetNext(userChoiceCreation).SetNext(EntrepreneurRegister);
-   
+            AbstractHandler<UserRequest> EntrepreneurRegistrationHandler = new EntrepreneurRegistrationHandler();
+            initialHandler.SetNext(userChoiceCreation);
+            userChoiceCreation.SetNext(EntrepreneurRegistrationHandler);
             // AbstractHandler<UserRequest> companyHandler = new CompanyHandler();
             // initialHandler.SetNext(companyHandler.SetNext());
             
             ISend telegramSender = new TelegramSend();
             UserRequest userRequest = GetRequestById(id, message);
             UserRequest response = initialHandler.Handle(userRequest);
+            UserRequest response2 = userChoiceCreation.Handle(userRequest);
             telegramSender.SendMessage(response.Id, response.OutgoingMsg);
         }
         public UserRequest GetRequestById(long id, string message) 
@@ -79,7 +80,6 @@ namespace ClassLibrary
                 {
                     
                     request.ArrivedMsg = message;
-                    request.Status = false;
                     return request;
                    
 

@@ -29,7 +29,7 @@ namespace ClassLibrary
 
                 if (request.Status == true)
                 {
-                    Console.WriteLine("CACA");
+                    
                     request.Status=false;
                     return this.HandleRequest(request);
                    
@@ -38,7 +38,7 @@ namespace ClassLibrary
                 {
                    if (this._nextHandler != null)
                     {
-                    Console.WriteLine("CACona");
+                    
                     request.Status=true;
                     return this._nextHandler.Handle(request);
                     }
