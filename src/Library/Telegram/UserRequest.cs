@@ -8,7 +8,7 @@ namespace ClassLibrary
     {
         public long Id {get; set; }
         public string ArrivedMsg {get; set; }
-
+        public string Command{get; set; }
         public string OutgoingMsg {get; set; }
         public StateEnum State {get; set; }
         public bool Status {get; set; }

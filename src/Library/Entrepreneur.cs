@@ -12,7 +12,7 @@ namespace ClassLibrary
         /// </summary>
         /// <value></value>
         public string Specialization {get; set;}
-        
+        public string Location{get;set;}
         
         /// <param name="name"></param>
         /// <param name="phone"></param>
@@ -20,9 +20,10 @@ namespace ClassLibrary
         /// <param name="area"></param>
         /// <param name="specialization"></param>
         /// <returns></returns>
-        public Entrepreneur(long id,string name,string phone,Location location,string area,string specialization) : base (id,name,phone,location,area)
+        public Entrepreneur(long id,string name,string phone,string location,string area,string specialization) : base (id,name,phone,area)
         {
             this.Specialization = specialization;
+            this.Location=location;
             Console.WriteLine("Cree Emprendedor");
             Console.WriteLine(specialization);
         }
