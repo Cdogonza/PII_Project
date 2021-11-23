@@ -1,4 +1,3 @@
-
 using Telegram.Bot.Types;
 
 namespace ClassLibrary
@@ -6,9 +5,8 @@ namespace ClassLibrary
     public class TelegramMsgAdapter : IMessage
     {
 
-        private Message message;
-
-        public TelegramMsgAdapter(Message message)
+        private  Message message;
+        private TelegramMsgAdapter(Message message)
         {
             this.message = message;
         }
@@ -20,7 +18,7 @@ namespace ClassLibrary
                 return this.message.Text;
             }
         }
-
+      
         public string ChatId
         {
             get

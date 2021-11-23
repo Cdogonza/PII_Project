@@ -17,6 +17,8 @@ namespace ClassLibrary
         /// <typeparam List="string"></typeparam>
         /// <returns></returns>        
         public List<string> areaofwork = new List<string>();
+        public List<Entrepreneur> entrepreneurs = new List<Entrepreneur>();
+        public List<Company> companies = new List<Company>();
 
         /// <summary>
         /// Lista de MaterialType donde se almacenan los tipos de materiales 
@@ -36,13 +38,49 @@ namespace ClassLibrary
         /// Metodo para agregar permisos al listado de permisos
         /// </summary>
         /// <param name="item"></param>
+        
         public void AddPermission(Permission item){
             this.permissions.Add(item);           
         }
 
+
+        public void AddEntrepreneur(long id, string name,string phone,Location location, string area, string specialization )
+        {
+            this.entrepreneurs.Add(new Entrepreneur(id,name,phone,location,area,specialization));
+        }
+
+        public Entrepreneur GetEntrepreneur(long userid)
+        {
+            foreach (Entrepreneur item in this.entrepreneurs)
+            {
+                if (item.Id == userid)
+                {
+                    return item;
+                }
+                
+            }
+            return null;
+        }
+         public void AddCompany(long id ,string name,string phone,Location location,string area)
+        {
+            this.companies.Add(new Company(id,name,phone,location,area));
+        }
+
+        public Company GetCompany(long userid)
+        {
+            foreach (Company item in this.companies)
+            {
+                if (item.Id == userid)
+                {
+                    return item;
+                }
+                
+            }
+            return null;
+        }
         /// <summary>
         /// Metodo que chequea si el permiso ingresado por el usuario existe en la lista de Permisos del sistema. 
-        /// </summary>
+        /// /// </summary>
         /// <param name="indice"></param>
         /// <returns></returns>
         public bool CheckPermission(int indice)

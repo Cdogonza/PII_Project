@@ -10,11 +10,12 @@ namespace ClassLibrary
         /// Propiedad Nombre del usuario
         /// </summary>
         public string Name { get;  set; }
+        public long Id { get;  set; }
 
         /// <summary>
-        /// Propiedad ubicación de la empresa
+        /// Propiedad ubicaciÃ³n de la empresa
         /// </summary>
-
+        public Location Location{get; set;}
 
         /// <summary>
         /// Propiedad telefono del usuario
@@ -42,7 +43,7 @@ namespace ClassLibrary
         /// <param name="location"></param>
         /// <param name="area"></param>
 
-        protected UserBase(long id,string name, string phone,string area)
+        protected UserBase(long id,string name, string phone, Location location, string area)
         {
             if (String.IsNullOrWhiteSpace(name))
             {
@@ -57,9 +58,13 @@ namespace ClassLibrary
             {
                 throw new ArgumentNullException(area);
             }
+            this.Id = id;
+
             this.Name = name;
             
             this.Phone = phone;
+
+            this.Location = location;
 
             this.AreaOfWork = new AreaOfWork(area);
         }
@@ -94,7 +99,7 @@ namespace ClassLibrary
             foreach (var permission in permissions)
             {
                 data = data + $"Name: {permission.Name} \n";
-                
+
             }
             return data;
         }

@@ -4,25 +4,33 @@ namespace ClassLibrary
     /// <summary>
     /// El handler inicial, el cual modifica el estado del pedido según lo necesitado.
     /// </summary>
-    public class InitialHandler : AbstractHandler<UserRequest>
+    public class InitialHandler: BaseHandler
     {
-        public InitialHandler()
+        public InitialHandler(BaseHandler next) : base(next)
         {
+            this.Keywords = new string[] {"/registrarse"};
         }
-        protected override UserRequest HandleRequest(UserRequest request)
+        protected override bool InternalHandle(IMessage message, out string response)
         {
-          UserTelegramBot currentUser = UsersManager.Instance.GetTelegramUser(request.Id);
-
-            if(currentUser.authenticated == false && request.State == StateEnum.Initial){
-                request.Status =false;
-                request.State = StateEnum.AwaitingForUserChoice;
-                request.OutgoingMsg = "Usted no se encuentra ingresado en la apliación, ingrese 1 para Empresa o 2 para Emprendedor";
-                return request;
+            
+            if(message.Text.ToLower().Equals( "/registrarse") )
+            {
+                
+               if (Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null | Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
+                {
+                    response = "Usted ya se encuentra registrado";
+                    return true;
+                }else
+                {
+                    
+                }
+                return true;
+            }else
+            {
+                response = "no entendi";
+                return false;
             }
-            request.Status = false;
-            return request;
 
-        }
     }
         
 }
