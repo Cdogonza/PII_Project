@@ -25,7 +25,7 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam List="MaterialType"></typeparam>
         /// <returns></returns>
-        public List<MaterialType> materialsType = new List<MaterialType>();
+        public List<MaterialType> materialsType = new List<MaterialType>(){new MaterialType("plastico","Descripcion plastico"),new MaterialType("papel","Descripcion papel"),new MaterialType("organico", "Descripcion organico")};
 
         /// <summary>
         /// Lista de Permisos donde se almacenan los permisos a ser usados por las empresas y las ofertas
