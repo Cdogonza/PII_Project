@@ -6,10 +6,10 @@ namespace ClassLibrary
     /// <summary>
     /// El handler inicial, el cual modifica el estado del pedido según lo necesitado.
     /// </summary>
-    public class InitialHandler: BaseHandler
+    public class RegistrationHandler: BaseHandler
     {
         public Collection<string> TempList = new Collection<string>();
-        public InitialHandler(BaseHandler next) : base(next)
+        public RegistrationHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/registrarse"};
         }
@@ -46,7 +46,7 @@ namespace ClassLibrary
                 if(Singleton<TelegramUserData>.Instance.userdata[message.ChatId].Count == 2 && Singleton<TelegramUserData>.Instance.userdata[message.ChatId][1].ToLower().Contains("/empresa") )
                 {
                     Singleton<TelegramUserData>.Instance.userdata[message.ChatId].Add(message.Text);
-                    response = "Ingrese su telefon";
+                    response = "Ingrese su telefono";
                     
                     return true;
                 
@@ -86,18 +86,12 @@ namespace ClassLibrary
                 if(Singleton<TelegramUserData>.Instance.userdata[message.ChatId].Count == 7 && Singleton<TelegramUserData>.Instance.userdata[message.ChatId][1].ToLower().Contains("/empresa")  )
                 {
                     Singleton<TelegramUserData>.Instance.userdata[message.ChatId].Add(message.Text);
-                     
-                     LocationApiClient Loc = new LocationApiClient();
-                    Location LocatioCompany =Loc.GetLocation(Singleton<TelegramUserData>.Instance.userdata[message.ChatId][3],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][4],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][5]);
-                    Company company = new Company(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.ChatId][2],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][3],LocatioCompany,Singleton<TelegramUserData>.Instance.userdata[message.ChatId][7]);
-                    response = "Se Creo La Empresa";
+                    
+                    DataManager company = new DataManager();
+                    company.AddCompany(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.ChatId][2],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][3],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][4],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][5],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][6],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][7]);
+                    response = "Se Creo La Empresa Correctamente\n Puede ver sus datos ingresando /vermisdatos";
                     return true;
-                }
-               
-             
-               
-
-            
+                }   
         response = null;
         return false;
         }

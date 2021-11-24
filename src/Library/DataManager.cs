@@ -11,6 +11,7 @@ namespace ClassLibrary
     /// </summary>
     public class DataManager
     {
+        public List <string> data = new List<string>();  
         /// <summary>
         /// Lista de String donde se almacenan los rubros
         /// </summary>
@@ -34,11 +35,12 @@ namespace ClassLibrary
         /// <returns></returns>
         public List<Permission> permissions = new List<Permission>();
 
-        /// <summary>
-        /// Metodo para agregar permisos al listado de permisos
-        /// </summary>
-        /// <param name="item"></param>
-        
+
+        public List<string> DataCompany()
+        {
+            
+            return data;
+        }
         public void AddPermission(Permission item){
             this.permissions.Add(item);           
         }
@@ -51,18 +53,22 @@ namespace ClassLibrary
 
         public Entrepreneur GetEntrepreneur(long userid)
         {
+            Console.WriteLine(userid);
             foreach (Entrepreneur item in this.entrepreneurs)
             {
                 if (item.Id == userid)
                 {
+                    Console.WriteLine(item.Id);
                     return item;
                 }
                 
             }
             return null;
         }
-         public void AddCompany(long id ,string name,string phone,Location location,string area)
+         public void AddCompany(long id ,string name,string phone,string calle,string ciudad,string departamento,string area)
         {
+            LocationApiClient Loc = new LocationApiClient();
+            Location location = Loc.GetLocation(calle,ciudad,departamento);
             this.companies.Add(new Company(id,name,phone,location,area));
         }
 
