@@ -10,7 +10,7 @@ namespace ClassLibrary
         /// Propiedad Nombre del usuario
         /// </summary>
         public string Name { get;  set; }
-        public long Id { get;  set; }
+        public string Id { get;  set; }
 
         /// <summary>
         /// Propiedad ubicaciÃ³n de la empresa
@@ -43,7 +43,7 @@ namespace ClassLibrary
         /// <param name="location"></param>
         /// <param name="area"></param>
 
-        protected UserBase(long id,string name, string phone, Location location, string area)
+        protected UserBase(string id,string name, string phone, Location location, string area)
         {
             if (String.IsNullOrWhiteSpace(name))
             {

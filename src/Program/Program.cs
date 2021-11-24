@@ -5,7 +5,7 @@ using Telegram.Bot.Extensions.Polling;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
-﻿//--------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------
 // <copyright file="Program.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
@@ -38,7 +38,7 @@ namespace ClassLibrary
 
             firstHandler =
                 new WelcomeHandler(
-                new InitialHandler(
+                new RegistrationHandler(
                 new PhotoHandler(Bot,null)));
             Message message = new Message();
             string response;
