@@ -1,30 +1,32 @@
 using System;
+using Telegram.Bot.Types;
+using System.Collections.ObjectModel;
+using System.Data;
+
 namespace ClassLibrary
-{
-    
-    public class WelcomeHandler : AbstractHandler<UserRequest>
+{ 
+    public class WelcomeHandler : BaseHandler
     {
-        public WelcomeHandler()
+        public WelcomeHandler(BaseHandler next) : base(next)
         {
+            this.Keywords = new string[] {"/start"};
         }
-        protected override UserRequest HandleRequest(UserRequest request)
+        protected override bool InternalHandle(IMessage message, out string response)
         {
-            UserTelegramBot currentUser = UsersManager.Instance.GetTelegramUser(request.Id);
-            if(currentUser.authenticated == false && request.State == StateEnum.Start){
-                request.State = StateEnum.AwaitingForCode;
-                request.OutgoingMsg = "Bienvenid@!\nIngrese el código de invitación";
-                request.Status = false;
-                return request;
-            }else{
-                if (request.State == StateEnum.WrongCode){
-                    request.OutgoingMsg = "Código Incorrecto. Ingrese uno nuevo.";
-                    request.State = StateEnum.Start;
-                    request.Status = false;
-                    return request;
-                }
+            
+            if(message.Text.ToLower().Equals( "/start"))
+            {
+                Singleton<TelegramUserData>.Instance.userdata.Add(message.ChatId,new Collection<string>());    
+                //response = "Usted no se encuentra ingresado en la appliación , ingrese 1 Empresa o 2 para Emprendedor";
+                response = "Bienvenido a la Aplicacion Equipo15\n Indique /registrarse si desea registrarse en nuestra plataforma";
+                return true;
+            }else
+            {
+                response = "no entendi";
+                return false;
             }
-            request.Status = false;
-            return request;
+             
         }
     }
 }
+

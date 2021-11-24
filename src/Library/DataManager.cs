@@ -16,7 +16,9 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam List="string"></typeparam>
         /// <returns></returns>        
-        public List<string> areaofwork = new List<string>();
+        public List<AreaOfWork> areaofwork = new List<AreaOfWork>(){new AreaOfWork("construccion"),new AreaOfWork("cocina"),new AreaOfWork("industria")};
+        public List<Entrepreneur> entrepreneurs = new List<Entrepreneur>();
+        public List<Company> companies = new List<Company>();
 
         /// <summary>
         /// Lista de MaterialType donde se almacenan los tipos de materiales 
@@ -30,19 +32,59 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam List="Permission"></typeparam>
         /// <returns></returns>
-        public List<Permission> permissions = new List<Permission>();
+        public List<Permission> permissions = new List<Permission>(){new Permission("Materiales Peligrosos"), new Permission("Residuos Medicos"), new Permission("Materiales Organicos"), new Permission("Materiales Inflamables")};
 
         /// <summary>
         /// Metodo para agregar permisos al listado de permisos
         /// </summary>
         /// <param name="item"></param>
+        
         public void AddPermission(Permission item){
             this.permissions.Add(item);           
         }
 
+
+        public void AddEntrepreneur(string id ,string name,string phone,string calle,string ciudad,string departamento,string area, string specialization )
+        {
+            LocationApiClient Loc = new LocationApiClient();
+            Location location = Loc.GetLocation(calle,ciudad,departamento);
+            this.entrepreneurs.Add(new Entrepreneur(id,name,phone,location,area,specialization));
+        }
+
+        public Entrepreneur GetEntrepreneur(string userid)
+        {
+            foreach (Entrepreneur item in this.entrepreneurs)
+            {
+                if (item.Id == userid)
+                {
+                    return item;
+                }
+                
+            }
+            return null;
+        }
+        public void AddCompany(string id ,string name,string phone,string calle,string ciudad,string departamento,string area)
+        {
+            LocationApiClient Loc = new LocationApiClient();
+            Location location = Loc.GetLocation(calle,ciudad,departamento);
+            this.companies.Add(new Company(id,name,phone,location,area));
+        }
+
+        public Company GetCompany(string userid)
+        {
+            foreach (Company item in this.companies)
+            {
+                if (item.Id == userid)
+                {
+                    return item;
+                }
+                
+            }
+            return null;
+        }
         /// <summary>
         /// Metodo que chequea si el permiso ingresado por el usuario existe en la lista de Permisos del sistema. 
-        /// </summary>
+        /// /// </summary>
         /// <param name="indice"></param>
         /// <returns></returns>
         public bool CheckPermission(int indice)
@@ -98,7 +140,7 @@ namespace ClassLibrary
         /// Metodo para agregar Rubros a la lista de Rubros
         /// </summary>
         /// <param name="item"></param>
-        public void AddAreaOfWork(string item)
+        public void AddAreaOfWork(AreaOfWork item)
         {
             this.areaofwork.Add(item);           
         }
@@ -126,7 +168,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="indice"></param>
         /// <returns></returns>
-        public string GetAreaOfWorkByIndex(int indice)
+        public AreaOfWork GetAreaOfWorkByIndex(int indice)
         {
             indice-=1;
             return this.areaofwork[indice];
@@ -141,7 +183,7 @@ namespace ClassLibrary
         {
             string data = $"La lista de Rubros existentes son: \n";
             int contador=1;
-            foreach (string item in this.areaofwork)
+            foreach (AreaOfWork item in this.areaofwork)
             {
                data = data + $"{contador}- {item}";
                contador+=1;
@@ -153,7 +195,7 @@ namespace ClassLibrary
         /// Retorna la lista de Rubros almacenados en el sistema
         /// </summary>
         /// <returns></returns>
-        public List<string> GetAreasOfWork()
+        public List<AreaOfWork> GetAreasOfWork()
         {
             return this.areaofwork;
         }

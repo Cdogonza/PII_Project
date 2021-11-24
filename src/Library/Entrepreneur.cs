@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using System;
+
 namespace ClassLibrary
 {
         /// <summary>
@@ -12,21 +12,18 @@ namespace ClassLibrary
         /// </summary>
         /// <value></value>
         public string Specialization {get; set;}
-        
-        
+
+
         /// <param name="name"></param>
         /// <param name="phone"></param>
         /// <param name="location"></param>
         /// <param name="area"></param>
         /// <param name="specialization"></param>
         /// <returns></returns>
-        public Entrepreneur(long id,string name,string phone,Location location,string area,string specialization) : base (id,name,phone,location,area)
+        public Entrepreneur(string id,string name,string phone,Location location,string area,string specialization) : base (id,name,phone,location,area)
         {
             this.Specialization = specialization;
-            Console.WriteLine("Cree Emprendedor");
-            Console.WriteLine(specialization);
         }
-        
     }
 
 }

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System;
-using System.Collections;
+
 
 namespace ClassLibrary
 {   
@@ -9,6 +9,7 @@ namespace ClassLibrary
     /// </summary>
     public class Company : UserBase
     {
+      
     /// <summary>
     /// Constructor de company
     /// </summary>
@@ -17,10 +18,16 @@ namespace ClassLibrary
     /// <param name="location"></param>
     /// <param name="area"></param>
     /// <returns></returns>
-        public Company(long id ,string name,string phone,Location location,string area) : base (id,name,phone,location,area)
+        public Company(string id ,string name,string phone,Location location,string area) : base (id,name,phone,location,area)
         {
 
-
+            Console.WriteLine("Cree  la Company Correctamente");
+            Console.WriteLine(id);
+            Console.WriteLine(name);
+            Console.WriteLine(phone);
+            Console.WriteLine(location.AddresLine);
+            Console.WriteLine(area);
+     
         }
         
         /// <summary>
