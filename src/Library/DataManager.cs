@@ -32,7 +32,7 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam List="Permission"></typeparam>
         /// <returns></returns>
-        public List<Permission> permissions = new List<Permission>();
+        public List<Permission> permissions = new List<Permission>(){new Permission("Materiales Peligrosos"), new Permission("Residuos Medicos"), new Permission("Materiales Organicos"), new Permission("Materiales Inflamables")};
 
         /// <summary>
         /// Metodo para agregar permisos al listado de permisos
@@ -44,8 +44,10 @@ namespace ClassLibrary
         }
 
 
-        public void AddEntrepreneur(string id, string name,string phone,Location location, string area, string specialization )
+        public void AddEntrepreneur(string id ,string name,string phone,string calle,string ciudad,string departamento,string area, string specialization )
         {
+            LocationApiClient Loc = new LocationApiClient();
+            Location location = Loc.GetLocation(calle,ciudad,departamento);
             this.entrepreneurs.Add(new Entrepreneur(id,name,phone,location,area,specialization));
         }
 
@@ -67,7 +69,7 @@ namespace ClassLibrary
             Location location = Loc.GetLocation(calle,ciudad,departamento);
             this.companies.Add(new Company(id,name,phone,location,area));
         }
-        
+
         public Company GetCompany(string userid)
         {
             foreach (Company item in this.companies)
