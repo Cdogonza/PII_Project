@@ -11,13 +11,14 @@ namespace ClassLibrary
     /// </summary>
     public class DataManager
     {
+        public string retorno;
         public List <string> data = new List<string>();  
         /// <summary>
         /// Lista de String donde se almacenan los rubros
         /// </summary>
         /// <typeparam List="string"></typeparam>
         /// <returns></returns>        
-        public List<string> areaofwork = new List<string>();
+        public List<AreaOfWork> areaofwork = new List<AreaOfWork>(){new AreaOfWork("construccion"),new AreaOfWork("cocina"),new AreaOfWork("industria")};
         public List<Entrepreneur> entrepreneurs = new List<Entrepreneur>();
         public List<Company> companies = new List<Company>();
 
@@ -46,42 +47,44 @@ namespace ClassLibrary
         }
 
 
-        public void AddEntrepreneur(long id, string name,string phone,Location location, string area, string specialization )
+        public void AddEntrepreneur(string id, string name,string phone,Location location, string area, string specialization )
         {
             this.entrepreneurs.Add(new Entrepreneur(id,name,phone,location,area,specialization));
         }
 
-        public Entrepreneur GetEntrepreneur(long userid)
+        public Entrepreneur GetEntrepreneur(string userid)
         {
-            Console.WriteLine(userid);
+            
             foreach (Entrepreneur item in this.entrepreneurs)
             {
                 if (item.Id == userid)
                 {
-                    Console.WriteLine(item.Id);
+                    
                     return item;
                 }
                 
             }
             return null;
         }
-         public void AddCompany(long id ,string name,string phone,string calle,string ciudad,string departamento,string area)
+        public void AddCompany(string id ,string name,string phone,string calle,string ciudad,string departamento,string area)
         {
             LocationApiClient Loc = new LocationApiClient();
             Location location = Loc.GetLocation(calle,ciudad,departamento);
             this.companies.Add(new Company(id,name,phone,location,area));
         }
-
-        public Company GetCompany(long userid)
+        
+        public string GetCompany(string userid)
         {
-            foreach (Company item in this.companies)
+            Console.WriteLine(userid);
+            if(this.companies[0].Equals(userid) )
             {
-                if (item.Id == userid)
-                {
-                    return item;
-                }
-                
+
+                Console.WriteLine(this.companies[0]);
+                    retorno = companies[0].ToString();
+                    return retorno;
             }
+                
+            
             return null;
         }
         /// <summary>
@@ -142,7 +145,7 @@ namespace ClassLibrary
         /// Metodo para agregar Rubros a la lista de Rubros
         /// </summary>
         /// <param name="item"></param>
-        public void AddAreaOfWork(string item)
+        public void AddAreaOfWork(AreaOfWork item)
         {
             this.areaofwork.Add(item);           
         }
@@ -170,7 +173,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="indice"></param>
         /// <returns></returns>
-        public string GetAreaOfWorkByIndex(int indice)
+        public AreaOfWork GetAreaOfWorkByIndex(int indice)
         {
             indice-=1;
             return this.areaofwork[indice];
@@ -185,7 +188,7 @@ namespace ClassLibrary
         {
             string data = $"La lista de Rubros existentes son: \n";
             int contador=1;
-            foreach (string item in this.areaofwork)
+            foreach (AreaOfWork item in this.areaofwork)
             {
                data = data + $"{contador}- {item}";
                contador+=1;
@@ -197,7 +200,7 @@ namespace ClassLibrary
         /// Retorna la lista de Rubros almacenados en el sistema
         /// </summary>
         /// <returns></returns>
-        public List<string> GetAreasOfWork()
+        public List<AreaOfWork> GetAreasOfWork()
         {
             return this.areaofwork;
         }

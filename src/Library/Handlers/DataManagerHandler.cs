@@ -17,15 +17,9 @@ namespace ClassLibrary
             if(message.Text.ToLower().Equals("/vermisdatos") )
             {
                 Console.WriteLine("Entre aca en /vermisdatos");
-                
-              response = Singleton<DataManager>.Instance.GetCompany(message.UserId).Id;
-    
-                    
-                    //Singleton<DataManager>.Instance.GetCompany(message.UserId);
+                response= $"Su Nombre de Empresa es {Singleton<DataManager>.Instance.GetCompany(message.UserId)}";
                     return true;
-               
-                response="Algo Salio mal1";
-                return true;
+
             }
             response="Algo Salio mal2";
             return true;

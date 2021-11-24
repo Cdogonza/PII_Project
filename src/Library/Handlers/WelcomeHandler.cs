@@ -1,5 +1,8 @@
 using System;
 using Telegram.Bot.Types;
+using System.Collections.ObjectModel;
+using System.Data;
+
 namespace ClassLibrary
 { 
     public class WelcomeHandler : BaseHandler
@@ -13,7 +16,7 @@ namespace ClassLibrary
             
             if(message.Text.ToLower().Equals( "/start"))
             {
-                
+                Singleton<TelegramUserData>.Instance.userdata.Add(message.ChatId,new Collection<string>());    
                 //response = "Usted no se encuentra ingresado en la appliación , ingrese 1 Empresa o 2 para Emprendedor";
                 response = "Bienvenido a la Aplicacion Equipo15\n Indique /registrarse si desea registrarse en nuestra plataforma";
                 return true;
