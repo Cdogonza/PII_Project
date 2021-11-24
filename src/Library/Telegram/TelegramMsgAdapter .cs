@@ -6,7 +6,7 @@ namespace ClassLibrary
     {
 
         private  Message message;
-        private TelegramMsgAdapter(Message message)
+        public TelegramMsgAdapter(Message message)
         {
             this.message = message;
         }
