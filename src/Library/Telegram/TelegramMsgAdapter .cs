@@ -4,11 +4,14 @@ namespace ClassLibrary
 {
     public class TelegramMsgAdapter : IMessage
     {
-
+        private long userId;
+        private string chatId;
         private  Message message;
         public TelegramMsgAdapter(Message message)
         {
             this.message = message;
+            this.userId = message.From.Id;
+            this.chatId = message.Chat.Id.ToString();
         }
 
         public string Text
@@ -18,7 +21,7 @@ namespace ClassLibrary
                 return this.message.Text;
             }
         }
-      
+    
         public string ChatId
         {
             get
