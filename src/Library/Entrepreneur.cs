@@ -12,6 +12,8 @@ namespace ClassLibrary
         /// </summary>
         /// <value></value>
         public string Specialization {get; set;}
+        public string Permissions {get; set;}
+
 
 
         /// <param name="name"></param>
@@ -20,7 +22,7 @@ namespace ClassLibrary
         /// <param name="area"></param>
         /// <param name="specialization"></param>
         /// <returns></returns>
-        public Entrepreneur(string id,string name,string phone,Location location,string area,string specialization) : base (id,name,phone,location,area)
+        public Entrepreneur(string id,string name,string phone,Location location,string area,string specialization, string permission) : base (id,name,phone,location,area)
         {
             this.Specialization = specialization;
         }

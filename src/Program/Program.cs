@@ -26,6 +26,7 @@ namespace ClassLibrary
         // *Importante*:
         // Para probar este ejemplo, crea un bot nuevo y eeemplaza este token por el de tu bot.
         private static string Token = "2133513418:AAHIE7L6s-OQSi6BroKBheNa-JGIXAlsMR0";
+        //private static string Token = "2133499409:AAFKS9VqLu7UXqQccvTHFFzcIvxwEoCGtkM";
 
         private static IHandler firstHandler;
 
@@ -40,9 +41,12 @@ namespace ClassLibrary
                 new WelcomeHandler(
                 new RegistrationHandler(
                 new MaterialsHandler(
-                new PhotoHandler(Bot,null))));
+                new DataManagerHandler(
+                new CloseSessionHandler(
+                new DefaultHandler(null
+                /*new PhotoHandler(Bot,null)*/))))));
             Message message = new Message();
-            string response;
+           
             var cts = new CancellationTokenSource();
 
             // Comenzamos a escuchar mensajes. Esto se hace en otro hilo (en background). El primer método
@@ -53,7 +57,7 @@ namespace ClassLibrary
                 cts.Token
             );
 
-            Console.WriteLine($"Bot is up!");
+            Console.WriteLine($"Ingrese /Start para Ingresar al Bot");
 
             // Esperamos a que el usuario aprete Enter en la consola para terminar el bot.
             Console.ReadLine();
