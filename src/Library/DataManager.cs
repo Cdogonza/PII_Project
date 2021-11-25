@@ -124,11 +124,11 @@ namespace ClassLibrary
         /// <returns>data</returns> Texto que obtiene ConsolePrinter para imprimir
         public string GetTextToPrintPermission()
         {
-            int contador=1;
+            int contador=0;
             string data = $"La lista de Permisos existentes son: \n";
             foreach (Permission item in this.permissions)
             {
-               data = data + $"{contador}- {item}"; 
+               data = data + $"{contador}- {item.Name}\n"; 
                contador+=1;
             }
             return data;
@@ -189,10 +189,10 @@ namespace ClassLibrary
         public string GetTextToPrintAreaOfWork()
         {
             string data = $"La lista de Rubros existentes son: \n";
-            int contador=1;
+            int contador=0;
             foreach (AreaOfWork item in this.areaofwork)
             {
-               data = data + $"{contador}- {item}";
+               data = data + $"{contador} - {item.Name}\n";
                contador+=1;
             }
             return data;
@@ -211,11 +211,17 @@ namespace ClassLibrary
         /// Agrega un tipo de Material a la lista de MaterialTypes
         /// </summary>
         /// <param name="item"></param>
-        public void AddMaterialType(MaterialType item)
+       
+       public void AddMaterialType(string name, string description)
+       {
+           this.materialsType.Add(new MaterialType(name, description));
+       }
+       /* public void AddMaterialType(MaterialType item)
         {
             this.materialsType.Add(item);           
         }
-
+       */
+       
         /// <summary>
         /// Verifica si el material ingresado por el usuario existe en la lista de Materiales.
         /// </summary>
@@ -251,7 +257,7 @@ namespace ClassLibrary
         public string GetTextToPrintMaterialType()
         {
             string data = $"La lista de Materiales existentes son: \n";
-            int contador=1;
+            int contador=0;
             foreach (MaterialType item in this.materialsType)
             {
                 data = data + $"{contador} - {item.Name} - {item.Description}\n";
