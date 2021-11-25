@@ -12,13 +12,13 @@ namespace ClassLibrary
     {
         public MaterialsHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"/materialtype", "/listar"};
+            this.Keywords = new string[] {"/materialtype", "/listar", "/agregar_tipodemateriales"};
         }
         protected override bool InternalHandle(IMessage message, out string response)
         {
             Console.WriteLine($"{message.Text}  {message.UserId} ");
          
-            if (message.Text.ToLower().Equals("/materialtype"))
+            if(message.Text.ToLower().Equals("/materialtype"))
             {
                 if(!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
                 {
@@ -42,14 +42,17 @@ namespace ClassLibrary
                     return true;
                 }
             }
-                if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].Contains("/materialtype") )
+            
+            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Trim().Contains("/materialtype") )
+            {
+                if(message.Text.ToLower().Equals("/listar") )
                 {
-                    Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                    response = $"{Singleton<DataManager>.Instance.GetTextToPrintMaterialType()}";
-                    return true;
-                }   
-                                    
-                if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 1 && message.Text.ToLower().Equals("/agregar_tipodemateriales") )
+                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                response = $"{Singleton<DataManager>.Instance.GetTextToPrintMaterialType()}";
+                return true;
+                }                   
+                
+                if(message.Text.ToLower().Equals("/agregar_tipodemateriales") )
                 {
                     Console.WriteLine("Entre a agregar tipo de materiales");
                     if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null )
@@ -70,15 +73,22 @@ namespace ClassLibrary
                 }
 
                 if (Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/agregar_tipodemateriales"))
-                {
-                    if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
                     {
-                    Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                    response = "Ingrese la descripcion del Tipo de Material:";
-                    return true;
+                        if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
+                        {
+                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                        response = "Ingrese la descripcion del Tipo de Material:";
+                        return true;
+                        }
+                        if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 3)
+                        {
+                            Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                            Singleton<DataManager>.Instance.AddMaterialType(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]);
+                            response = $"Se creo el Tipo de material con exito - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][2]} - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]} ";
+                            return true;
+                        }
                     }
                 }
-
                 //if (message.Text.ToLower().Equals("/listar_tipodemateriales") | message.Text.ToLower().Equals("/agregar_tipodemateriales") )
                 //{
                     //if(!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))

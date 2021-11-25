@@ -16,7 +16,7 @@ namespace ClassLibrary
         }
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            if (Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
+            if (Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId) )
             {
                 if(message.Text.ToLower().Equals("/registrarse") )
                 {
@@ -33,7 +33,9 @@ namespace ClassLibrary
                         return true;
                     }
                 }
-                    
+
+                if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Trim().Equals("/registrarse"))
+                {
                     if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 1 && message.Text.ToLower().Trim().Equals("/empresa"))
                     {
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text); /// agrego texto /empresa
@@ -181,9 +183,9 @@ namespace ClassLibrary
 
                     }
             }    
-            response = String.Empty ;
-            return false;
+        }
+        response = String.Empty ;
+        return false;
         }
     }
 }
-
