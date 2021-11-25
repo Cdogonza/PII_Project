@@ -33,18 +33,7 @@ namespace ClassLibrary
         /// <summary>
         /// Devuelve una lista con la información de una compania
         /// </summary>
-        public List<string> DataCompany()
-        {
-            List <string> data = new List<string>();  
-
-            data.Add(this.Name);
-            data.Add(Convert.ToString(this.Phone));
-            data.Add(this.Location.AddresLine);
-            data.Add(this.Location.CountryRegion);
-            data.Add(this.Location.Locality);
-            data.Add(this.Location.PostalCode);
-            return data;
-        }
+        
     
 
     }

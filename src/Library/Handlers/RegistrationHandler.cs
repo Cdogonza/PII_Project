@@ -96,25 +96,15 @@ namespace ClassLibrary
                             case 7:
                             
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(Singleton<DataManager>.Instance.areaofwork[Int32.Parse(message.Text)].Name);
-                            DataManager datamanager = new DataManager();
-                            datamanager.AddCompany(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.ChatId][2],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][3],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][4],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][5],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][6],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][7]);
-                            response = "Se Creo La Empresa Correctamente\n Puede ver sus datos ingresando /vermisdatos";
-                            Console.WriteLine($"0 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][0]}");
-                            Console.WriteLine($"1 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][1]}");
-                            Console.WriteLine($"2 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][2]}");
-                            Console.WriteLine($"3 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]}");
-                            Console.WriteLine($"4 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][4]}");
-                            Console.WriteLine($"5 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][5]}");
-                            Console.WriteLine($"6 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][6]}");
-                            Console.WriteLine($"7 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][7]}");
-                            Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
+                            
+                            Singleton<DataManager>.Instance.AddCompany(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.ChatId][2],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][3],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][4],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][5],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][6],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][7]);
+                            response = $"Se Creo La Empresa Correctamente\n Puede ver sus datos ingresando \n /vermisdatos \n /mostrar_materiales";
+                            //Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
                             return true;
                         
                         }
 
                     }
-                    Console.WriteLine($"0 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][0]}");
-                    Console.WriteLine($"1 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][1]}");
                     if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/emprendedor"))
                     {
                         
@@ -146,7 +136,7 @@ namespace ClassLibrary
                             case 6:                      
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                             int num = 0;
-                            string responsetemp = "Ingrese Rubro de la Empresa\n ";
+                            string responsetemp = "Ingrese Rubro de la Emprendimieno\n ";
                             foreach (AreaOfWork areaofwork in Singleton<DataManager>.Instance.areaofwork)
                             {
                                 responsetemp += $"{num} - {areaofwork.Name}\n "; 
@@ -159,35 +149,35 @@ namespace ClassLibrary
                             
                             case 7:
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(Singleton<DataManager>.Instance.areaofwork[Int32.Parse(message.Text)].Name);
-                            response = "ingrese una especializacion de la empresa";
+                            response = "ingrese una especializacion de la Emprendimieno";
                             return true;
-
                             case 8:
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                            DataManager datamanager = new DataManager();
-                            datamanager.AddEntrepreneur(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][3],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][4],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][5],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][6],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][7],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][8]);
+                            int num2 = 0;
+                            string responsetemp2 = "Ingrese un permiso en caso de tenerlo\n ";
+                            foreach (Permission permission in Singleton<DataManager>.Instance.permissions)
+                            {
+                                responsetemp2 += $"{num2} - {permission.Name}\n "; 
+                                num2 ++;
+                            }
+                            
+                            response = responsetemp2;
+                            
+                            return true;
+                            case 9:
+                            Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(Singleton<DataManager>.Instance.permissions[Int32.Parse(message.Text)].Name);
+                        
+                            Singleton<DataManager>.Instance.AddEntrepreneur(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][3],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][4],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][5],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][6],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][7],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][8],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][9]);
                             response = "Se Creo el Emprendedor Correctamente\n Puede ver sus datos ingresando /vermisdatos";
-                            Console.WriteLine($"0 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][0]}");
-                            Console.WriteLine($"1 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][1]}");
-                            Console.WriteLine($"2 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][2]}");
-                            Console.WriteLine($"3 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]}");
-                            Console.WriteLine($"4 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][4]}");
-                            Console.WriteLine($"5 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][5]}");
-                            Console.WriteLine($"6 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][6]}");
-                            Console.WriteLine($"7 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][7]}");
-                            Console.WriteLine($"8 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][8]}");
-                            Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
+                            //Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
                             return true;
                         
                         }
 
                     }
             }    
-                response = String.Empty ;
-                return false;
-
-            
-
+            response = String.Empty ;
+            return false;
         }
     }
 }

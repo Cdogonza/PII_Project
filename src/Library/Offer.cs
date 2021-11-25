@@ -124,7 +124,7 @@ namespace ClassLibrary
                 this.Entrepreneur = entrepreneur;
                 this.Availability = false;          
             }
-            return this.Company.DataCompany();
+            return null;// this.Company.DataCompany();
         }
       
         

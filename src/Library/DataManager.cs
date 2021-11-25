@@ -11,6 +11,8 @@ namespace ClassLibrary
     /// </summary>
     public class DataManager
     {
+      
+        public List <string> data = new List<string>();  
         /// <summary>
         /// Lista de String donde se almacenan los rubros
         /// </summary>
@@ -25,43 +27,57 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam List="MaterialType"></typeparam>
         /// <returns></returns>
-        public List<MaterialType> materialsType = new List<MaterialType>();
+        public List<MaterialType> materialsType = new List<MaterialType>(){new MaterialType("plastico","Descripcion plastico"),new MaterialType("papel","Descripcion papel"),new MaterialType("organico", "Descripcion organico")};
 
         /// <summary>
         /// Lista de Permisos donde se almacenan los permisos a ser usados por las empresas y las ofertas
         /// </summary>
         /// <typeparam List="Permission"></typeparam>
         /// <returns></returns>
-        public List<Permission> permissions = new List<Permission>(){new Permission("Materiales Peligrosos"), new Permission("Residuos Medicos"), new Permission("Materiales Organicos"), new Permission("Materiales Inflamables")};
+        public List<Permission> permissions = new List<Permission>(){new Permission("Materiales Peligrosos"), new Permission("Residuos Medicos"), new Permission("Materiales Organicos"), new Permission("Materiales Inflamables"), new Permission("Sin Permisos")};
 
-        /// <summary>
-        /// Metodo para agregar permisos al listado de permisos
-        /// </summary>
-        /// <param name="item"></param>
-        
+
+        public List<Company>  DataCompany()
+        {
+            List<Company> companiesEmpty = new List<Company>();
+            companies = companiesEmpty;
+            return companies;
+        }
         public void AddPermission(Permission item){
             this.permissions.Add(item);           
         }
+    public void CerrarSession()
+    {
+        List<Entrepreneur>  vacia = new List<Entrepreneur>();
+        List<Company>  vacia2 = new List<Company>();
+        entrepreneurs = vacia;
+        companies = vacia2;
+    }
 
-
-        public void AddEntrepreneur(string id ,string name,string phone,string calle,string ciudad,string departamento,string area, string specialization )
+        public void AddEntrepreneur(string id ,string name,string phone,string calle,string ciudad,string departamento,string area, string specialization, string permission )
         {
             LocationApiClient Loc = new LocationApiClient();
             Location location = Loc.GetLocation(calle,ciudad,departamento);
-            this.entrepreneurs.Add(new Entrepreneur(id,name,phone,location,area,specialization));
+            this.entrepreneurs.Add(new Entrepreneur(id,name,phone,location,area,specialization,permission));
         }
 
-        public Entrepreneur GetEntrepreneur(string userid)
+        public string GetEntrepreneur(string userid)
         {
+            string datos = $"Los datos de su Emprendimiento son: \n";
             foreach (Entrepreneur item in this.entrepreneurs)
             {
                 if (item.Id == userid)
                 {
-                    return item;
+                   datos =$" {item.Name}\n {item.Phone}\n{item.Location.FormattedAddress}\n{item.Specialization}\n{item.Permissions}\n";
+                   return datos;
                 }
-                
+                else
+                {
+                    return null;
+                }
+                 
             }
-            return null;
+return null;
         }
         public void AddCompany(string id ,string name,string phone,string calle,string ciudad,string departamento,string area)
         {
@@ -70,17 +86,23 @@ namespace ClassLibrary
             this.companies.Add(new Company(id,name,phone,location,area));
         }
 
-        public Company GetCompany(string userid)
+        public string GetCompany(string userid)
         {
+            string datos = $"Los datos de su Company son: \n";
             foreach (Company item in this.companies)
             {
                 if (item.Id == userid)
                 {
-                    return item;
+                   datos =$" {item.Name}\n {item.Phone}\n{item.Location.FormattedAddress}\n{item.AreaOfWork.Name}\n";
+                   return datos;
                 }
-                
+                else
+                {
+                    return null;
+                }
+                 
             }
-            return null;
+return null;
         }
         /// <summary>
         /// Metodo que chequea si el permiso ingresado por el usuario existe en la lista de Permisos del sistema. 
@@ -117,11 +139,11 @@ namespace ClassLibrary
         /// <returns>data</returns> Texto que obtiene ConsolePrinter para imprimir
         public string GetTextToPrintPermission()
         {
-            int contador=1;
+            int contador=0;
             string data = $"La lista de Permisos existentes son: \n";
             foreach (Permission item in this.permissions)
             {
-               data = data + $"{contador}- {item}"; 
+               data = data + $"{contador}- {item.Name}"; 
                contador+=1;
             }
             return data;
@@ -185,7 +207,7 @@ namespace ClassLibrary
             int contador=1;
             foreach (AreaOfWork item in this.areaofwork)
             {
-               data = data + $"{contador}- {item}";
+               data = data + $"{contador}- {item.Name}";
                contador+=1;
             }
             return data;
