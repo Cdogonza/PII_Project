@@ -65,6 +65,13 @@ namespace ClassLibrary
         }
         public void AddCompany(string id ,string name,string phone,string calle,string ciudad,string departamento,string area)
         {
+          /*  Console.WriteLine($"id - {id}");
+            Console.WriteLine($"name - {name}");
+            Console.WriteLine($"phone - {phone}");
+            Console.WriteLine($"calle - {calle}");
+            Console.WriteLine($"ciudad - {ciudad}");
+            Console.WriteLine($"depto - {departamento}");
+            Console.WriteLine($"area - {area}"); */
             LocationApiClient Loc = new LocationApiClient();
             Location location = Loc.GetLocation(calle,ciudad,departamento);
             this.companies.Add(new Company(id,name,phone,location,area));
@@ -247,7 +254,7 @@ namespace ClassLibrary
             int contador=1;
             foreach (MaterialType item in this.materialsType)
             {
-                data = data + $"{contador} - {item}";
+                data = data + $"{contador} - {item.Name} - {item.Description}\n";
                 contador+=1;
             }
             return data;

@@ -21,13 +21,13 @@ namespace ClassLibrary
         public Company(string id ,string name,string phone,Location location,string area) : base (id,name,phone,location,area)
         {
 
-            Console.WriteLine("Cree  la Company Correctamente");
-            Console.WriteLine(id);
+            Console.WriteLine("Cree la Company Correctamente");
+         /*   Console.WriteLine(id);
             Console.WriteLine(name);
             Console.WriteLine(phone);
             Console.WriteLine(location.AddresLine);
             Console.WriteLine(area);
-     
+        */
         }
         
         /// <summary>

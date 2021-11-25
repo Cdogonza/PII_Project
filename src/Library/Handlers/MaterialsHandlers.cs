@@ -25,8 +25,8 @@ namespace ClassLibrary
                     Console.WriteLine("Entre en materiales");            
                     int num = 0;
                     StringBuilder responsetemp = new StringBuilder();
-                    responsetemp.Append("A continuacion se muestran los tipos de materiales disponibles:\n ");
-                  //  Singleton<DataManager>.Instance.GetTextToPrintMaterialType();  
+                  //responsetemp.Append("A continuacion se muestran los tipos de materiales disponibles:\n ");
+                  //Singleton<DataManager>.Instance.GetTextToPrintMaterialType();  
                     responsetemp.Append($"{Singleton<DataManager>.Instance.GetTextToPrintMaterialType()}\n "); 
                     response = $"{responsetemp}";
                     return true;
