@@ -39,8 +39,7 @@ namespace ClassLibrary
 
         public List<Company>  DataCompany()
         {
-            List<Company> companiesEmpty = new List<Company>();
-            companies = companiesEmpty;
+            
             return companies;
         }
         public void AddPermission(Permission item){
