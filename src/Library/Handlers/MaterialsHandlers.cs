@@ -12,25 +12,31 @@ namespace ClassLibrary
     {
         public MaterialsHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"/mostrar_materiales"};
+            this.Keywords = new string[] {"/mostrar_tipomateriales","/agregar_tipomateriales"};
         }
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            Console.WriteLine("No entro en el if");
-            Console.WriteLine($"{Singleton<DataManager>.Instance.GetCompany(message.UserId)}");
-            if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
+            if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null | Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null )
             {
-                if(message.Text.ToLower().Equals("/mostrar_materiales") )
+                if(message.Text.ToLower().Equals("/mostrar_tipomateriales") )
                 {
-                    Console.WriteLine("Entre en materiales");            
-                    int num = 0;
                     StringBuilder responsetemp = new StringBuilder();
-                  //responsetemp.Append("A continuacion se muestran los tipos de materiales disponibles:\n ");
-                  //Singleton<DataManager>.Instance.GetTextToPrintMaterialType();  
                     responsetemp.Append($"{Singleton<DataManager>.Instance.GetTextToPrintMaterialType()}\n "); 
                     response = $"{responsetemp}";
                     return true;
                 }
+            }
+            
+            if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null )
+            {
+                if(message.Text.ToLower().Equals("/agregar_tipomateriales") )
+                {
+                    response = "Ingrese el nombre del Material";
+                    return true;
+
+                }
+            
+                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
             }
             response = String.Empty ;
             return false;
