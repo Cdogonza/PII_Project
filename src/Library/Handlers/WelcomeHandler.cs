@@ -22,7 +22,7 @@ namespace ClassLibrary
                 return true;
             }else
             {
-                response = "no entendi";
+                response = String.Empty;
                 return false;
             }
              
