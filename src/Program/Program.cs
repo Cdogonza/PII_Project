@@ -42,8 +42,8 @@ namespace ClassLibrary
                 new RegistrationHandler(
                 new MaterialsHandler(
                 new DataManagerHandler(
-                new DefaultHandler(
                 new CloseSessionHandler(
+                new DefaultHandler(
                 new PhotoHandler(Bot,null)))))));
             Message message = new Message();
            

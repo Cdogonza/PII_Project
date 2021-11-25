@@ -14,13 +14,13 @@ namespace ClassLibrary
             {
                 if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                 {
-                    response = "Los comandos disponibles para las empresas son\n/vermisdatos\n/registrarse\n/mostrar_materiales\n/salir";
+                    response = "Los comandos disponibles para las empresas son\n/vermisdatos\n/registrarse\n/mostrar_materiales\n/cerrar_session";
                     return true;
                 }else
                 {
                     if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                     {
-                        response = "Los comandos disponibles para los emprendedores son\n /registrarse\n/vermisdato\n/salir";
+                        response = "Los comandos disponibles para los emprendedores son\n /registrarse\n/vermisdato\n/cerrar_session";
                         return true;
                 }else
                 {
@@ -29,6 +29,7 @@ namespace ClassLibrary
                 }
                  
                 }
+                
                               
             }
             response = "Para ayuda indique /help para ayuda con los comandos";

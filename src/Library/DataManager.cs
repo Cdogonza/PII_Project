@@ -37,10 +37,11 @@ namespace ClassLibrary
         public List<Permission> permissions = new List<Permission>(){new Permission("Materiales Peligrosos"), new Permission("Residuos Medicos"), new Permission("Materiales Organicos"), new Permission("Materiales Inflamables"), new Permission("Sin Permisos")};
 
 
-        public List<string> DataCompany()
+        public List<Company>  DataCompany()
         {
-            
-            return data;
+            List<Company> companiesEmpty = new List<Company>();
+            companies = companiesEmpty;
+            return companies;
         }
         public void AddPermission(Permission item){
             this.permissions.Add(item);           
