@@ -1,6 +1,8 @@
 
 using System.Collections.Generic;
-using System.Collections;
+using System.IO;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System;
 namespace ClassLibrary
 {
@@ -83,26 +85,30 @@ return null;
         {
             LocationApiClient Loc = new LocationApiClient();
             Location location = Loc.GetLocation(calle,ciudad,departamento);
-            this.companies.Add(new Company(id,name,phone,location,area));
+            DataPersister.SaveData("Companies",new Company(id,name,phone,location,area));
         }
 
         public string GetCompany(string userid)
         {
-            string datos = $"Los datos de su Company son: \n";
-            foreach (Company item in this.companies)
-            {
-                if (item.Id == userid)
-                {
-                   datos =$" {item.Name}\n {item.Phone}\n{item.Location.FormattedAddress}\n{item.AreaOfWork.Name}\n";
-                   return datos;
-                }
-                else
-                {
-                    return null;
-                }
-                 
+            string currentObjs = "";
+            if (File.Exists(@"Companies.json")){
+                currentObjs  = File.ReadAllText(@"Companies.json");
             }
-return null;
+            string[] objs = currentObjs.Split("|");
+            foreach (string item in objs)
+            {
+                JsonSerializerOptions options = new()
+                {
+                    ReferenceHandler = MyReferenceHandler.Instance,
+                    WriteIndented = true
+                };
+
+                Company Company = JsonSerializer.Deserialize<Company>(item, options);
+                if (Company.Id == userid){
+                    return Company.ConvertToJson();
+                }
+            }
+            return null;    
         }
         /// <summary>
         /// Metodo que chequea si el permiso ingresado por el usuario existe en la lista de Permisos del sistema. 
