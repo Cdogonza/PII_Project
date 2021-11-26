@@ -14,10 +14,10 @@ namespace ClassLibrary
         }
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            Console.WriteLine("Entre a cerrar_session antes if");
+            
             if(message.Text.ToLower().Equals("/cerrar_session"))
             {
-                Console.WriteLine("Entre a cerrar_session");
+        
                 if (Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
                 {
             

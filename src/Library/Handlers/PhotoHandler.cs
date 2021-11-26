@@ -56,9 +56,10 @@ namespace ClassLibrary
             // Can be null during testing
             if (bot != null)
             {
+                
                 await bot.SendChatActionAsync(message.ChatId, ChatAction.UploadPhoto);
 
-                const string filePath = @"profile.jpeg";
+                const string filePath = @"C:\Users\gpaz\Desktop\PII_2021_2_Equipo15\Assets\map.png";
                 using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
                 var fileName = filePath.Split(Path.DirectorySeparatorChar).Last();
 

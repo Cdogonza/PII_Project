@@ -33,7 +33,7 @@ namespace ClassLibrary
                               
             }
             response = "Para ayuda indique /help para ayuda con los comandos";
-            return true;
+            return false;
         }
     }
 }
