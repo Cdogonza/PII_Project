@@ -43,7 +43,7 @@ namespace ClassLibrary
                     {
                         case 1:  //2
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                        response = "Ingrese el material que desea publicar.";
+                        response = "Ingrese el material que desea publicar";
                         return true;
 
                         case 2:  //3
@@ -54,7 +54,7 @@ namespace ClassLibrary
 
                         case 3:  //4
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                        response = "Ingrese una breve descripcion del material.";
+                        response = "Ingrese una breve descripción del material";
 
                         return true;
 
@@ -66,13 +66,13 @@ namespace ClassLibrary
 
                         case 5:  //6
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                        response = "Ingrese calle y numero de puerta";
+                        response = "Ingrese calle y número de puerta";
 
                         return true;
 
                         case 6:  //7
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                        response = "Ingrese la Ciudad";
+                        response = "Ingrese la ciudad";
 
                         return true;
 
@@ -90,13 +90,13 @@ namespace ClassLibrary
 
                         case 9:  //10
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                        response = "Su compra es una oferta regular? Y/N";
+                        response = "Su compra es una oferta regular? Si/No";
 
-                        if(message.Text.ToUpper() == "N")
+                        if(message.Text.ToUpper() == "NO")
                         {
                             regularoffer = false;
                         }
-                        else if(message.Text.ToUpper() == "Y")
+                        else if(message.Text.ToUpper() == "SI")
                         {
                             regularoffer = true;
                         }
@@ -105,38 +105,37 @@ namespace ClassLibrary
 
                         case 10:  //11
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                        response = "Desea agregar tags a su oferta) Y/N";
+                        response = "Desea agregar tags a su oferta? Si/No";
 
                         return true;
 
                         case 11:  //12
 
-                        if(message.Text.ToUpper() == "N")
+                        if(message.Text.ToUpper() == "NO")
                         {
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                             response = "no se agregan tags a la oferta";
                         }
-                        else if(message.Text.ToUpper() == "Y")
+                        else if(message.Text.ToUpper() == "SI")
                         {
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                            response = "Agrege sus tags separados por '-' ";
+                            response = "Agregue sus tags separados por '-' ";
                         }
                         else
                         {
-                            response = "Dato mal ingresado, debe ingresar Y/N";
+                            response = "Dato mal ingresado, debe ingresar Si o No";
                         }
 
                         return true;
 
                         case 12: //13
-                        if (Singleton<TelegramUserData>.Instance.userdata[message.UserId][11].ToUpper().Equals("Y"))
+                        if (Singleton<TelegramUserData>.Instance.userdata[message.UserId][11].ToUpper().Equals("SI"))
                         {
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                            // ArrayList tags = message.Text.Split(',');
                             tags.AddRange(message.Text.Split('-'));
                         }
 
-                        //Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                         DateTime publicationdate = DateTime.Now;
                         DateTime deliverydate = new DateTime();
 
@@ -153,12 +152,11 @@ namespace ClassLibrary
                         Console.WriteLine($"10 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][10]}");
                         Console.WriteLine($"11 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][11]}");
                         Console.WriteLine($"12 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][12]}");
-                        Console.WriteLine($"13 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][13]}");
-
+                        
                         Singleton<DataManager>.Instance.AddMaterial(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],new MaterialType(Singleton<TelegramUserData>.Instance.userdata[message.UserId][3],Singleton<TelegramUserData>.Instance.userdata[message.UserId][4]),Singleton<TelegramUserData>.Instance.userdata[message.UserId][5]);
                         Singleton<OfferManager>.Instance.AddOffer(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1],Singleton<DataManager>.Instance.AddMaterial(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],new MaterialType(Singleton<TelegramUserData>.Instance.userdata[message.UserId][3],Singleton<TelegramUserData>.Instance.userdata[message.UserId][4]),Singleton<TelegramUserData>.Instance.userdata[message.UserId][5]),Singleton<TelegramUserData>.Instance.userdata[message.UserId][6],Singleton<TelegramUserData>.Instance.userdata[message.UserId][7],Singleton<TelegramUserData>.Instance.userdata[message.UserId][8],Convert.ToDouble(Singleton<TelegramUserData>.Instance.userdata[message.UserId][9]),regularoffer,tags,deliverydate,publicationdate,Singleton<DataManager>.Instance.GetCompanyInstance(message.UserId));
                         Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
-                        response = "Se publicó la oferta correctamente !";
+                        response = "Se publicó la oferta correctamente!";
                         return true;
 
                     }
