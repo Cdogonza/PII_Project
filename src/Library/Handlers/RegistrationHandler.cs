@@ -104,7 +104,7 @@ namespace ClassLibrary
                                 Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(Singleton<DataManager>.Instance.areaofwork[Int32.Parse(message.Text)].Name);
                                 
                                 Singleton<DataManager>.Instance.AddCompany(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.UserId][3],Singleton<TelegramUserData>.Instance.userdata[message.UserId][4],Singleton<TelegramUserData>.Instance.userdata[message.UserId][5],Singleton<TelegramUserData>.Instance.userdata[message.UserId][6],Singleton<TelegramUserData>.Instance.userdata[message.UserId][7],Singleton<TelegramUserData>.Instance.userdata[message.UserId][8]);
-                                response = $"Se Creo La Empresa Correctamente\n Puede ver sus datos ingresando \n /vermisdatos \n /materialtype \n /agregar_tipodemateriales";
+                                response = $"Se Creo La Empresa Correctamente\n Puede ver sus datos ingresando \n /vermisdatos \n /tipo_material";
                                 //Console.WriteLine($"0 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][0]}");
                                 //Console.WriteLine($"1 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][1]}");
                                 //Console.WriteLine($"2 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][2]}");
@@ -121,8 +121,6 @@ namespace ClassLibrary
                             }
 
                         }
-
-                }
 
                         if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Trim().Equals("/emprendedor"))
                         {
@@ -156,17 +154,18 @@ namespace ClassLibrary
                                                             
                                 case 7:
                                 Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(Singleton<DataManager>.Instance.areaofwork[Int32.Parse(message.Text)].Name);
-                                response = "ingrese una especializacion de su Emprendimiento";
+                                response = "Ingrese una especialización de su Emprendimiento";
                                 return true;
 
                                 case 8:
                                 Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                                response = $"{Singleton<DataManager>.Instance.GetTextToPrintPermission()}";
+                                response = $"Ingrese un permiso. \n{Singleton<DataManager>.Instance.GetTextToPrintPermission()}";
                                 return true;
-                                case 9:
 
+                                case 9:
+                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(Singleton<DataManager>.Instance.permissions[Int32.Parse(message.Text)].Name);
                                 Singleton<DataManager>.Instance.AddEntrepreneur(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],Singleton<TelegramUserData>.Instance.userdata[message.UserId][3],Singleton<TelegramUserData>.Instance.userdata[message.UserId][4],Singleton<TelegramUserData>.Instance.userdata[message.UserId][5],Singleton<TelegramUserData>.Instance.userdata[message.UserId][6],Singleton<TelegramUserData>.Instance.userdata[message.UserId][7],Singleton<TelegramUserData>.Instance.userdata[message.UserId][8],Singleton<TelegramUserData>.Instance.userdata[message.UserId][9]);
-                                response = "Se Creo el Emprendedor Correctamente\n Puede ver sus datos ingresando /vermisdatos /listar_tipodemateriales";
+                                response = "Se Creo el Emprendedor Correctamente\n Puede ver sus datos ingresando /vermisdatos /tipo_material";
                                 Console.WriteLine($"0 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][0]}");
                                 Console.WriteLine($"1 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][1]}");
                                 Console.WriteLine($"2 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][2]}");
@@ -176,6 +175,7 @@ namespace ClassLibrary
                                 Console.WriteLine($"6 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][6]}");
                                 Console.WriteLine($"7 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][7]}");
                                 Console.WriteLine($"8 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][8]}");
+                                Console.WriteLine($"9 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][9]}");
                                 Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
                                 //Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();
                                 Console.WriteLine($"Registration USERID - {message.UserId}");
@@ -184,6 +184,7 @@ namespace ClassLibrary
                             }
 
                         }
+                }
                 
             }
             response = String.Empty ;
