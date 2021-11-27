@@ -28,6 +28,13 @@ namespace ClassLibrary
         public List<MaterialType> materialsType = new List<MaterialType>();
 
         /// <summary>
+        /// Lista de Material donde se almacenan los materiales
+        /// </summary>
+        /// <typeparam name="Material"></typeparam>
+        /// <returns></returns>
+        public List<Material> materials = new List<Material>();
+
+        /// <summary>
         /// Lista de Permisos donde se almacenan los permisos a ser usados por las empresas y las ofertas
         /// </summary>
         /// <typeparam List="Permission"></typeparam>
@@ -39,7 +46,8 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="item"></param>
         
-        public void AddPermission(Permission item){
+        public void AddPermission(Permission item)
+        {
             this.permissions.Add(item);           
         }
 
@@ -207,6 +215,19 @@ namespace ClassLibrary
         public void AddMaterialType(MaterialType item)
         {
             this.materialsType.Add(item);           
+        }
+
+        /// <summary>
+        /// El metodo crea una instacia de Material y la agrega al catalogo.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <param name="quantity"></param>
+        /// <param name="cost"></param>
+        /// <param name="location"></param>
+        public void AddMaterial (string name, MaterialType type, string quantity)
+        {
+            this.materials.Add(new Material(name,type,quantity));
         }
 
         /// <summary>
