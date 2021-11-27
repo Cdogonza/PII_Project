@@ -42,6 +42,11 @@ namespace ClassLibrary
             
             return companies;
         }
+        public List<Entrepreneur>  DataEntrepeneur()
+        {
+            
+            return entrepreneurs;
+        }
         public void AddPermission(Permission item){
             this.permissions.Add(item);           
         }

@@ -6,6 +6,7 @@ using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.InputFiles;
 using Nito.AsyncEx;
+using System.Collections.Generic;
 
 namespace ClassLibrary
 {
@@ -22,7 +23,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         /// <param name="bot">El bot para enviar la foto.</param>
         public PhotoHandler(TelegramBotClient bot, BaseHandler next)
-            : base(new string[] { "foto" }, next)
+            : base(new string[] { "/ver_mapa","/help","/mostrar_ruta" }, next)
         {
             this.bot = bot;
         }
@@ -35,18 +36,114 @@ namespace ClassLibrary
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            if (this.CanHandle(message))
+            if(message.Text.ToLower().Equals("/help"))
+            {
+                 if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null )
+                {
+                    response = "Los comandos disponibles para las empresas son\n/vermisdatos\n/registrarse\n/mostrar_materiales\n/ver_mapa\n/cerrar_session";
+                    return true;
+                }else
+                {
+                    if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
+                    {
+                        response = "Los comandos disponibles para los emprendedores son\n /registrarse\n/vermisdato\n/ver_mapa\n/mostrar_ruta\n/cerrar_session";
+                        return true;
+                    }else
+                    {
+                        response = "Para comenzar indeque el comando /start";
+                        return true;
+                    }
+                 
+                } 
+                          
+            }else
+            {
+            if(message.Text.ToLower().Equals("/mostrar_ruta"))
+            {
+                 if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
+                    {
+                        LocationApiClient loc = new LocationApiClient();
+                    double lat=0;
+                    double log=0;
+                    
+                    string path=@"route.png";
+                    List<Entrepreneur>  lista = new List<Entrepreneur>();
+                    lista = Singleton<DataManager>.Instance.DataEntrepeneur();
+                   foreach (var item in lista)
+                   {                     
+                       lat =item.Location.Latitude;
+                       log=item.Location.Longitude;
+                   }
+
+                     response = $"";
+                     loc.DownloadRoute(lat,log,-34.88064073732325, -56.14675630747833,path);
+                               
+                    AsyncContext.Run(() => SendProfileImageRout(message));                    
+                    return true;
+                    }
+            }
+            else
+            {
+            
+              if (this.CanHandle(message))
             {
                 // await SendProfileImage(message);
-                AsyncContext.Run(() => SendProfileImage(message));
+                if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
+                {
+                    LocationApiClient loc = new LocationApiClient();
+                    double lat=0;
+                    double log=0;
+                    int zoomLevel = 15;
+                    string path=@"map.png";
+                    List<Company> lista = new List<Company>();
+                    lista = Singleton<DataManager>.Instance.DataCompany();
+                   foreach (var item in lista)
+                   {
+                      
+                       lat =item.Location.Latitude;
+                       log=item.Location.Longitude;
+                   }
+                     response = $"";
+                     loc.DownloadMap(lat,log,path,zoomLevel);
+                               
+                    AsyncContext.Run(() => SendProfileImage(message));                    
+                    return true;
+                }
+                else
+                {
+                    if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
+                    {
+                        LocationApiClient loc = new LocationApiClient();
+                    double lat=0;
+                    double log=0;
+                    int zoomLevel = 15;
+                    string path=@"map.png";
+                    List<Entrepreneur>  lista = new List<Entrepreneur>();
+                    lista = Singleton<DataManager>.Instance.DataEntrepeneur();
+                   foreach (var item in lista)
+                   {                     
+                       lat =item.Location.Latitude;
+                       log=item.Location.Longitude;
+                   }
+                     response = $"";
+                     loc.DownloadMap(lat,log,path,zoomLevel);
+                               
+                    AsyncContext.Run(() => SendProfileImage(message));                    
+                    return true;
+                    }
+                }
+                
 
                 response = string.Empty;
                 return true;
             }
-
-            response = string.Empty;
-            return false;
-        }
+}
+                response = "Para ayuda indique /help para ayuda con los comandos";
+                 return false; 
+           
+        }  
+            }
+            
 
         /// <summary>
         /// Envía una imagen como respuesta al mensaje recibido. Como ejemplo enviamos siempre la misma foto.
@@ -59,14 +156,33 @@ namespace ClassLibrary
                 
                 await bot.SendChatActionAsync(message.ChatId, ChatAction.UploadPhoto);
 
-                const string filePath = @"C:\Users\gpaz\Desktop\PII_2021_2_Equipo15\Assets\map.png";
+                const string filePath = @"map.png";
                 using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
                 var fileName = filePath.Split(Path.DirectorySeparatorChar).Last();
 
                 await bot.SendPhotoAsync(
                     chatId: message.ChatId,
                     photo: new InputOnlineFile(fileStream, fileName),
-                    caption: "Te ves bien!"
+                    caption: $"Direccion de la Empresa"
+                );
+            }
+        }
+                private async Task SendProfileImageRout(IMessage message)
+        {
+            // Can be null during testing
+            if (bot != null)
+            {
+                
+                await bot.SendChatActionAsync(message.ChatId, ChatAction.UploadPhoto);
+
+                const string filePath = @"route.png";
+                using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+                var fileName = filePath.Split(Path.DirectorySeparatorChar).Last();
+
+                await bot.SendPhotoAsync(
+                    chatId: message.ChatId,
+                    photo: new InputOnlineFile(fileStream, fileName),
+                    caption: $"Camino a la Empresa"
                 );
             }
         }
