@@ -12,13 +12,13 @@ namespace ClassLibrary
     {
         public MaterialsHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"/materialtype", "/listar", "/agregar_tipodemateriales"};
+            this.Keywords = new string[] {"/tipo_material", "/listar", "/agregar_tipodemateriales"};
         }
         protected override bool InternalHandle(IMessage message, out string response)
         {
             Console.WriteLine($"{message.Text}  {message.UserId} ");
          
-            if(message.Text.ToLower().Equals("/materialtype"))
+            if(message.Text.ToLower().Equals("/tipo_material"))
             {
                 if(!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
                 {
@@ -43,7 +43,7 @@ namespace ClassLibrary
                 }
             }
             
-            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Trim().Contains("/materialtype") )
+            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Trim().Contains("/tipo_material") )
             {
                 if(message.Text.ToLower().Equals("/listar") )
                 {
@@ -77,14 +77,14 @@ namespace ClassLibrary
                         if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
                         {
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                        response = "Ingrese la descripcion del Tipo de Material:";
+                        response = "Ingrese la descripción del tipo de Material:";
                         return true;
                         }
                         if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 3)
                         {
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                             Singleton<DataManager>.Instance.AddMaterialType(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]);
-                            response = $"Se creo el Tipo de material con exito - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][2]} - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]} ";
+                            response = $"Se creó el tipo de material con éxito \n - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][2]} - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]} ";
                             return true;
                         }
                     }
