@@ -42,7 +42,7 @@ namespace ClassLibrary
                 new RegistrationHandler(              
                 new DataManagerHandler(
                 new MaterialTypesHandler(
-                new PermissionsHandler(
+                new PublicationHandler(
                 new OfferHandler(    
                 new CloseSessionHandler(                             
                 new MapsHandler(Bot,null))))))));
