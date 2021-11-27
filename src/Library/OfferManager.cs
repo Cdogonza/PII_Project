@@ -84,7 +84,7 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// El metodo crea una instacia de la oferta y la agrega al catalogo.
+        ///  El metodo crea una instacia de la oferta y la agrega al catalogo.
         /// </summary>
         /// <param name="name"></param>
         /// <param name="material"></param>
