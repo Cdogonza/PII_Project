@@ -266,8 +266,7 @@ namespace ClassLibrary
         /// <param name="name"></param>
         /// <param name="type"></param>
         /// <param name="quantity"></param>
-        /// <param name="cost"></param>
-        /// <param name="location"></param>
+        /// <returns>newmaterial</returns>
         public Material AddMaterial (string name, MaterialType type, string quantity)
         {
             Material newmaterial = new Material(name,type,quantity);
@@ -275,6 +274,11 @@ namespace ClassLibrary
             return newmaterial;
         }
 
+        /// <summary>
+        /// Crea una instancia de la empresa
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <returns></returns>
         public Company GetCompanyInstance(string userid)
 
         {
