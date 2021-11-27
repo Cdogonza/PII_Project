@@ -15,7 +15,7 @@ namespace ClassLibrary
         public ArrayList tags = new ArrayList();
         public OfferHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"/publicar_oferta","/comprar_Oferta"};
+            this.Keywords = new string[] {"/publicar_oferta"};
         }
         protected override bool InternalHandle(IMessage message, out string response)
         {
