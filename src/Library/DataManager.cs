@@ -60,22 +60,29 @@ namespace ClassLibrary
             
             return companies;
         }
+        
+        /// <summary>
+        /// Metodo para agregar permisos al listado de permisos
+        /// </summary>
+        /// <param name="item"></param>
+        
+        public void AddPermission(string permission)
+        {
+            this.permissions.Add(new Permission (permission));           
+        }
+
         public List<Entrepreneur>  DataEntrepeneur()
         {
             
             return entrepreneurs;
         }
-        public void AddPermission(Permission item){
-            this.permissions.Add(item);           
+        public void CloseSession()
+        {
+            List<Entrepreneur>  vacia = new List<Entrepreneur>();
+            List<Company>  vacia2 = new List<Company>();
+            entrepreneurs = vacia;
+            this.companies = vacia2;
         }
-    public void CloseSession()
-    {
-        List<Entrepreneur>  vacia = new List<Entrepreneur>();
-        List<Company>  vacia2 = new List<Company>();
-        entrepreneurs = vacia;
-        this.companies = vacia2;
-    }
-
         public void AddEntrepreneur(string id ,string name,string phone,string calle,string ciudad,string departamento,string area, string specialization, string permission )
         {
             LocationApiClient Loc = new LocationApiClient();
@@ -122,7 +129,7 @@ namespace ClassLibrary
                 }
                     
             }
-return null;
+            return null;
              
         }
     
@@ -290,6 +297,7 @@ return null;
             }
             return null;
         }
+
 
         /// <summary>
         /// Verifica si el material ingresado por el usuario existe en la lista de Materiales.

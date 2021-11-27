@@ -85,6 +85,7 @@ namespace ClassLibrary
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                             Singleton<DataManager>.Instance.AddMaterialType(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]);
                             response = $"Se creó el tipo de material con éxito \n - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][2]} - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]} ";
+                            Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
                             return true;
                         }
                     }
