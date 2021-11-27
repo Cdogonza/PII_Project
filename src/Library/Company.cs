@@ -21,30 +21,19 @@ namespace ClassLibrary
         public Company(string id ,string name,string phone,Location location,string area) : base (id,name,phone,location,area)
         {
 
-            Console.WriteLine("Cree  la Company Correctamente");
-            Console.WriteLine(id);
+            Console.WriteLine("Cree la Company Correctamente");
+         /*   Console.WriteLine(id);
             Console.WriteLine(name);
             Console.WriteLine(phone);
             Console.WriteLine(location.AddresLine);
             Console.WriteLine(area);
-     
+        */
         }
         
         /// <summary>
         /// Devuelve una lista con la información de una compania
         /// </summary>
-        public List<string> DataCompany()
-        {
-            List <string> data = new List<string>();  
-
-            data.Add(this.Name);
-            data.Add(Convert.ToString(this.Phone));
-            data.Add(this.Location.AddresLine);
-            data.Add(this.Location.CountryRegion);
-            data.Add(this.Location.Locality);
-            data.Add(this.Location.PostalCode);
-            return data;
-        }
+        
     
 
     }
