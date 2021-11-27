@@ -11,6 +11,8 @@ namespace ClassLibrary
     /// </summary>
     public class DataManager
     {
+      
+        public List <string> data = new List<string>();  
         /// <summary>
         /// Lista de String donde se almacenan los rubros
         /// </summary>
@@ -25,7 +27,7 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam List="MaterialType"></typeparam>
         /// <returns></returns>
-        public List<MaterialType> materialsType = new List<MaterialType>();
+        public List<MaterialType> materialsType = new List<MaterialType>(){new MaterialType("plastico","Descripcion plastico"),new MaterialType("papel","Descripcion papel"),new MaterialType("organico", "Descripcion organico")};
 
         /// <summary>
         /// Lista de Material donde se almacenan los materiales
@@ -39,8 +41,16 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam List="Permission"></typeparam>
         /// <returns></returns>
-        public List<Permission> permissions = new List<Permission>(){new Permission("Materiales Peligrosos"), new Permission("Residuos Medicos"), new Permission("Materiales Organicos"), new Permission("Materiales Inflamables")};
+        public List<Permission> permissions = new List<Permission>(){new Permission("Materiales Peligrosos"), new Permission("Residuos Medicos"), new Permission("Materiales Organicos"), new Permission("Materiales Inflamables"), new Permission("Sin Permisos")};
 
+
+        public List<Company>  DataCompany()
+        {
+            List<Company> companiesEmpty = new List<Company>();
+            companies = companiesEmpty;
+            return companies;
+        }
+        
         /// <summary>
         /// Metodo para agregar permisos al listado de permisos
         /// </summary>
@@ -50,43 +60,69 @@ namespace ClassLibrary
         {
             this.permissions.Add(item);           
         }
+        
+        public void CerrarSession()
+        {
+        List<Entrepreneur>  vacia = new List<Entrepreneur>();
+        List<Company>  vacia2 = new List<Company>();
+        entrepreneurs = vacia;
+        companies = vacia2;
+        }
 
-
-        public void AddEntrepreneur(string id ,string name,string phone,string calle,string ciudad,string departamento,string area, string specialization )
+        public void AddEntrepreneur(string id ,string name,string phone,string calle,string ciudad,string departamento,string area, string specialization, string permission )
         {
             LocationApiClient Loc = new LocationApiClient();
             Location location = Loc.GetLocation(calle,ciudad,departamento);
-            this.entrepreneurs.Add(new Entrepreneur(id,name,phone,location,area,specialization));
+            this.entrepreneurs.Add(new Entrepreneur(id,name,phone,location,area,specialization,permission));
         }
 
-        public Entrepreneur GetEntrepreneur(string userid)
+        public string GetEntrepreneur(string userid)
         {
+            string datos = $"Los datos de su Emprendimiento son: \n";
             foreach (Entrepreneur item in this.entrepreneurs)
             {
                 if (item.Id == userid)
                 {
-                    return item;
+                   datos =$" {item.Name}\n {item.Phone}\n{item.Location.FormattedAddress}\n{item.Specialization}\n{item.Permissions}\n";
+                   return datos;
                 }
-                
+                else
+                {
+                    return null;
+                }
+                 
             }
             return null;
         }
         public void AddCompany(string id ,string name,string phone,string calle,string ciudad,string departamento,string area)
         {
+          /*  Console.WriteLine($"id - {id}");
+            Console.WriteLine($"name - {name}");
+            Console.WriteLine($"phone - {phone}");
+            Console.WriteLine($"calle - {calle}");
+            Console.WriteLine($"ciudad - {ciudad}");
+            Console.WriteLine($"depto - {departamento}");
+            Console.WriteLine($"area - {area}"); */
             LocationApiClient Loc = new LocationApiClient();
             Location location = Loc.GetLocation(calle,ciudad,departamento);
             this.companies.Add(new Company(id,name,phone,location,area));
         }
 
-        public Company GetCompany(string userid)
+        public string GetCompany(string userid)
         {
+            string datos = $"Los datos de su Company son: \n";
             foreach (Company item in this.companies)
             {
                 if (item.Id == userid)
                 {
-                    return item;
+                   datos =$" {item.Name}\n {item.Phone}\n{item.Location.FormattedAddress}\n{item.AreaOfWork.Name}\n";
+                   return datos;
                 }
-                
+                else
+                {
+                    return null;
+                }
+                 
             }
             return null;
         }
@@ -125,11 +161,11 @@ namespace ClassLibrary
         /// <returns>data</returns> Texto que obtiene ConsolePrinter para imprimir
         public string GetTextToPrintPermission()
         {
-            int contador=1;
+            int contador=0;
             string data = $"La lista de Permisos existentes son: \n";
             foreach (Permission item in this.permissions)
             {
-               data = data + $"{contador}- {item}"; 
+               data = data + $"{contador}- {item.Name}\n"; 
                contador+=1;
             }
             return data;
@@ -190,10 +226,10 @@ namespace ClassLibrary
         public string GetTextToPrintAreaOfWork()
         {
             string data = $"La lista de Rubros existentes son: \n";
-            int contador=1;
+            int contador=0;
             foreach (AreaOfWork item in this.areaofwork)
             {
-               data = data + $"{contador}- {item}";
+               data = data + $"{contador} - {item.Name}\n";
                contador+=1;
             }
             return data;
@@ -212,11 +248,17 @@ namespace ClassLibrary
         /// Agrega un tipo de Material a la lista de MaterialTypes
         /// </summary>
         /// <param name="item"></param>
-        public void AddMaterialType(MaterialType item)
+       
+       public void AddMaterialType(string name, string description)
+       {
+           this.materialsType.Add(new MaterialType(name, description));
+       }
+       /* public void AddMaterialType(MaterialType item)
         {
             this.materialsType.Add(item);           
         }
-
+       */
+       
         /// <summary>
         /// El metodo crea una instacia de Material y la agrega al catalogo.
         /// </summary>
@@ -265,10 +307,10 @@ namespace ClassLibrary
         public string GetTextToPrintMaterialType()
         {
             string data = $"La lista de Materiales existentes son: \n";
-            int contador=1;
+            int contador=0;
             foreach (MaterialType item in this.materialsType)
             {
-                data = data + $"{contador} - {item}";
+                data = data + $"{contador} - {item.Name} - {item.Description}\n";
                 contador+=1;
             }
             return data;
