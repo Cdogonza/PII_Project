@@ -16,10 +16,14 @@ namespace ClassLibrary
             
             if(message.Text.ToLower().Equals( "/start"))
             {
-                Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId,new Collection<string>());    
-                response = "Bienvenido a la Aplicacion Equipo15\n Indique /registrarse si desea \nregistrarse en nuestra plataforma";
+                if(!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
+                {
+                    Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId,new Collection<string>());    
+                }    
+                response = "Bienvenido a la Aplicacion Equipo15\n Indique /registrarse si desea registrarse en nuestra plataforma";
                 return true;
-            }else
+            }
+            else
             {
                 response = String.Empty;
                 return false;
