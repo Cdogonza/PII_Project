@@ -39,7 +39,8 @@ namespace ClassLibrary
             firstHandler =
                 new WelcomeHandler(
                 new RegistrationHandler(
-                new PhotoHandler(Bot,null)));
+                new OfferHandler(
+                new PhotoHandler(Bot,null))));
             Message message = new Message();
             string response;
             var cts = new CancellationTokenSource();
