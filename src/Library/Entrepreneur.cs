@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-
+using System.Text.Json.Serialization;
 namespace ClassLibrary
 {
         /// <summary>
@@ -10,7 +10,7 @@ namespace ClassLibrary
         /// <summary>
         /// String de la especializacion
         /// </summary>
-        /// <value></value>
+        /// <value></value>]
         public string Specialization {get; set;}
         public string Permissions {get; set;}
 
@@ -22,6 +22,12 @@ namespace ClassLibrary
         /// <param name="area"></param>
         /// <param name="specialization"></param>
         /// <returns></returns>
+        
+        [JsonConstructor]
+        public Entrepreneur()
+        {
+
+        }
         public Entrepreneur(string id,string name,string phone,Location location,string area,string specialization, string permission) : base (id,name,phone,location,area)
         {
             this.Specialization = specialization;

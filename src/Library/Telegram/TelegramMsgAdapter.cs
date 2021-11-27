@@ -20,6 +20,7 @@ namespace ClassLibrary
             {
                 return this.message.Text;
             }
+            set{}
         }
     
         public string ChatId
