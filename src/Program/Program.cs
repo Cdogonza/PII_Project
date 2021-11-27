@@ -40,11 +40,13 @@ namespace ClassLibrary
             firstHandler =
                 new WelcomeHandler(
                 new RegistrationHandler(
-                new MaterialsHandler(
+                new MaterialTypesHandler(
+                new PermissionsHandler(
                 new DataManagerHandler(
+                new OfferHandler(
                 new CloseSessionHandler(
                 new DefaultHandler(null
-                /*new PhotoHandler(Bot,null)*/))))));
+                /*new PhotoHandler(Bot,null)*/))))))));
             Message message = new Message();
            
             var cts = new CancellationTokenSource();

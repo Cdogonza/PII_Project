@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 
 namespace ClassLibrary
 { 
@@ -9,7 +10,6 @@ namespace ClassLibrary
         }
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            
             if(message.Text.ToLower().Equals("/help"))
             {
                 if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)

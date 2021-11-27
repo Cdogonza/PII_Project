@@ -56,9 +56,9 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="item"></param>
         
-        public void AddPermission(Permission item)
+        public void AddPermission(string permission)
         {
-            this.permissions.Add(item);           
+            this.permissions.Add(new Permission (permission));           
         }
         
         public void CerrarSession()
@@ -267,10 +267,13 @@ namespace ClassLibrary
         /// <param name="quantity"></param>
         /// <param name="cost"></param>
         /// <param name="location"></param>
-        public void AddMaterial (string name, MaterialType type, string quantity)
+        public Material AddMaterial (string name, MaterialType type, string quantity)
         {
-            this.materials.Add(new Material(name,type,quantity));
+            Material newmaterial = new Material(name,type,quantity);
+            this.materials.Add(newmaterial);
+            return newmaterial;
         }
+
 
         /// <summary>
         /// Verifica si el material ingresado por el usuario existe en la lista de Materiales.
@@ -300,6 +303,21 @@ namespace ClassLibrary
             return this.materialsType[indice];
         }
         
+
+
+        public Company GetCompanyInstance(string userid)
+
+        {
+            foreach (Company item in this.companies)
+            {
+                if (item.Id == userid)
+                {
+                   return item;
+                }
+            }
+            return null;
+        }
+
         /// <summary>
         /// Metodo utilizado para obtener todos los rubros de la lista y retornarlos como texto,
         /// Para que ConsolePrinter pueda obtener ese texto e 
