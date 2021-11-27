@@ -9,21 +9,22 @@ namespace ClassLibrary
 {
     public class OfferHandler : BaseHandler
     {
-        public bool recurrentoffer;
+        public bool regularoffer;
+        
 
-        public ArrayList tags;
+        public ArrayList tags = new ArrayList();
         public OfferHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/publicar_oferta","/comprar_Oferta"};
         }
         protected override bool InternalHandle(IMessage message, out string response)
         {
+            if(!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
+            {
+                Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId,new Collection<string>());
+            }
             if(message.Text.ToLower().Equals("/publicar_oferta"))
             {
-                if(!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
-                {
-                    Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId,new Collection<string>());
-                }
                 if(Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                 {
                 //1
@@ -32,7 +33,7 @@ namespace ClassLibrary
                     return true;
                 }
             }
-
+            
             if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/publicar_oferta"))
             {
 
@@ -91,11 +92,11 @@ namespace ClassLibrary
 
                     if(message.Text.ToUpper() == "N")
                     {
-                        recurrentoffer = false;
+                        regularoffer = false;
                     }
                     else if(message.Text.ToUpper() == "Y")
                     {
-                        recurrentoffer = true;
+                        regularoffer = true;
                     }
                     // TODO Probar si funciona el esle
                     return true;
@@ -111,7 +112,6 @@ namespace ClassLibrary
                     if(message.Text.ToUpper() == "N")
                     {
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                        ArrayList tags = new ArrayList(null);
                         response = "no se agregan tags a la oferta";
                     }
                     else if(message.Text.ToUpper() == "Y")
@@ -153,8 +153,9 @@ namespace ClassLibrary
                     Console.WriteLine($"12 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][12]}");
                     Console.WriteLine($"13 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][13]}");
 
-                    //Singleton<OfferManager>.Instance.AddOffer(Singleton<TelegramUserData>.Instance.userdata[message.ChatId][1],Singleton<DataManager>.Instance.AddMaterial(Singleton<TelegramUserData>.Instance.userdata[message.ChatId][2],new MaterialType(Singleton<TelegramUserData>.Instance.userdata[message.ChatId][3],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][4]),Singleton<TelegramUserData>.Instance.userdata[message.ChatId][5]),Singleton<TelegramUserData>.Instance.userdata[message.ChatId][6],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][7],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][8],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][9],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][10],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][11],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][12],deliverydate,publicationdate,Singleton<DataManager>.Instance.GetCompany(message.UserId));
-                    response = $"Se Creo La Empresa Correctamente\n Puede ver sus datos ingresando \n /vermisdatos \n /mostrar_materiales";
+                    Singleton<DataManager>.Instance.AddMaterial(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],new MaterialType(Singleton<TelegramUserData>.Instance.userdata[message.UserId][3],Singleton<TelegramUserData>.Instance.userdata[message.UserId][4]),Singleton<TelegramUserData>.Instance.userdata[message.UserId][5]);
+                    Singleton<OfferManager>.Instance.AddOffer(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1],Singleton<DataManager>.Instance.AddMaterial(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],new MaterialType(Singleton<TelegramUserData>.Instance.userdata[message.UserId][3],Singleton<TelegramUserData>.Instance.userdata[message.UserId][4]),Singleton<TelegramUserData>.Instance.userdata[message.UserId][5]),Singleton<TelegramUserData>.Instance.userdata[message.UserId][6],Singleton<TelegramUserData>.Instance.userdata[message.UserId][7],Singleton<TelegramUserData>.Instance.userdata[message.UserId][8],Convert.ToDouble(Singleton<TelegramUserData>.Instance.userdata[message.UserId][9]),regularoffer,tags,deliverydate,publicationdate,Singleton<DataManager>.Instance.GetCompanyInstance(message.UserId));
+                    response = $"Se Creo La Oferta Correctamente";
                     return true;
 
                 }

@@ -125,6 +125,7 @@ namespace ClassLibrary
 return null;
              
         }
+    
         /// <summary>
         /// Metodo que chequea si el permiso ingresado por el usuario existe en la lista de Permisos del sistema. 
         /// /// </summary>
@@ -266,9 +267,24 @@ return null;
         /// <param name="quantity"></param>
         /// <param name="cost"></param>
         /// <param name="location"></param>
-        public void AddMaterial (string name, MaterialType type, string quantity)
+        public Material AddMaterial (string name, MaterialType type, string quantity)
         {
-            this.materials.Add(new Material(name,type,quantity));
+            Material newmaterial = new Material(name,type,quantity);
+            this.materials.Add(newmaterial);
+            return newmaterial;
+        }
+
+        public Company GetCompanyInstance(string userid)
+
+        {
+            foreach (Company item in this.companies)
+            {
+                if (item.Id == userid)
+                {
+                   return item;
+                }
+            }
+            return null;
         }
 
         /// <summary>
