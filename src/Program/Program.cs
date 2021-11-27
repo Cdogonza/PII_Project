@@ -25,8 +25,8 @@ namespace ClassLibrary
         //
         // *Importante*:
         // Para probar este ejemplo, crea un bot nuevo y eeemplaza este token por el de tu bot.
-        private static string Token = "2133513418:AAHIE7L6s-OQSi6BroKBheNa-JGIXAlsMR0";
-        //Belu = private static string Token = "2105636402:AAG6BbtW--SQ0pVOOpRKcHQQJTl7rwFWRxA";
+        //private static string Token = "2133513418:AAHIE7L6s-OQSi6BroKBheNa-JGIXAlsMR0";
+        private static string Token = "2105636402:AAG6BbtW--SQ0pVOOpRKcHQQJTl7rwFWRxA";
         private static IHandler firstHandler;
 
         /// <summary>
