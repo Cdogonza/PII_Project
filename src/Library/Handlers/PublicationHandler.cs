@@ -7,13 +7,13 @@ using System.Collections;
 
 namespace ClassLibrary
 {
-    public class OfferHandler : BaseHandler
+    public class PublicationHandler : BaseHandler
     {
         public bool regularoffer;
         
 
         public ArrayList tags = new ArrayList();
-        public OfferHandler(BaseHandler next) : base(next)
+        public PublicationHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/publicar_oferta"};
         }
