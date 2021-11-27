@@ -110,7 +110,11 @@ namespace ClassLibrary
             }
             return data;
         }
-        public string ConvertToJson()
+        public string ConvertToJsonCompany()
+        {
+            return JsonSerializer.Serialize(this);
+        }
+         public string ConvertToJsonEntrepreneur()
         {
             return JsonSerializer.Serialize(this);
         }

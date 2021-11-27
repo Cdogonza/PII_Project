@@ -13,6 +13,8 @@ namespace ClassLibrary
         /// Json utilizando JsonSerializer.Deserialize.
         /// </summary>
         /// <returns>El objeto convertido a texto en formato Json.</returns>
-        string ConvertToJson();
+        string ConvertToJsonCompany();
+        string ConvertToJsonEntrepreneur();
+        
     }
 }

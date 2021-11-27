@@ -99,7 +99,7 @@ namespace ClassLibrary
                             
                             Singleton<DataManager>.Instance.AddCompany(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.ChatId][2],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][3],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][4],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][5],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][6],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][7]);
                             response = $"Se Creo La Empresa Correctamente\n Puede ver sus datos ingresando \n /vermisdatos \n /mostrar_materiales";
-                            //Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
+                            Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
                             return true;
                         
                         }

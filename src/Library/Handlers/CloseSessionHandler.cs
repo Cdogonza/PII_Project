@@ -23,7 +23,7 @@ namespace ClassLibrary
             
                     response = $"Cerrando Session";
 
-                    Singleton<DataManager>.Instance.DataCompany();
+                    Singleton<DataManager>.Instance.CloseSession();
                     Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
                     
                     return true;

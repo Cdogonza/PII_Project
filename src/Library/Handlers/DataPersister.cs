@@ -20,7 +20,7 @@ namespace ClassLibrary
                 currentObjs  = File.ReadAllText($"{@colection}.json");
             }
             
-            string json = instance.ConvertToJson();     
+            string json = instance.ConvertToJsonCompany();     
             // File.WriteAllText($"{@colection}.json", json);
             
             if (currentObjs != ""){

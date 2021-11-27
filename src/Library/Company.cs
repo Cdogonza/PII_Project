@@ -31,9 +31,7 @@ namespace ClassLibrary
                  
         }
         
-        /// <summary>
-        /// Devuelve una lista con la información de una compania
-        /// </summary>
+
         
     
 
