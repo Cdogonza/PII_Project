@@ -20,8 +20,9 @@ namespace ClassLibrary
                 {
                    
                     response= Singleton<DataManager>.Instance.GetCompany(message.UserId);
-                return true;
-                }else
+                    return true;
+                }
+                else
                 {
                     if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                     {

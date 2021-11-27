@@ -77,10 +77,17 @@ namespace ClassLibrary
                 }
                  
             }
-return null;
+            return null;
         }
         public void AddCompany(string id ,string name,string phone,string calle,string ciudad,string departamento,string area)
         {
+          /*  Console.WriteLine($"id - {id}");
+            Console.WriteLine($"name - {name}");
+            Console.WriteLine($"phone - {phone}");
+            Console.WriteLine($"calle - {calle}");
+            Console.WriteLine($"ciudad - {ciudad}");
+            Console.WriteLine($"depto - {departamento}");
+            Console.WriteLine($"area - {area}"); */
             LocationApiClient Loc = new LocationApiClient();
             Location location = Loc.GetLocation(calle,ciudad,departamento);
             this.companies.Add(new Company(id,name,phone,location,area));
@@ -102,7 +109,7 @@ return null;
                 }
                  
             }
-return null;
+            return null;
         }
         /// <summary>
         /// Metodo que chequea si el permiso ingresado por el usuario existe en la lista de Permisos del sistema. 
@@ -143,7 +150,7 @@ return null;
             string data = $"La lista de Permisos existentes son: \n";
             foreach (Permission item in this.permissions)
             {
-               data = data + $"{contador}- {item.Name}"; 
+               data = data + $"{contador}- {item.Name}\n"; 
                contador+=1;
             }
             return data;
@@ -204,10 +211,10 @@ return null;
         public string GetTextToPrintAreaOfWork()
         {
             string data = $"La lista de Rubros existentes son: \n";
-            int contador=1;
+            int contador=0;
             foreach (AreaOfWork item in this.areaofwork)
             {
-               data = data + $"{contador}- {item.Name}";
+               data = data + $"{contador} - {item.Name}\n";
                contador+=1;
             }
             return data;
@@ -226,11 +233,17 @@ return null;
         /// Agrega un tipo de Material a la lista de MaterialTypes
         /// </summary>
         /// <param name="item"></param>
-        public void AddMaterialType(MaterialType item)
+       
+       public void AddMaterialType(string name, string description)
+       {
+           this.materialsType.Add(new MaterialType(name, description));
+       }
+       /* public void AddMaterialType(MaterialType item)
         {
             this.materialsType.Add(item);           
         }
-
+       */
+       
         /// <summary>
         /// Verifica si el material ingresado por el usuario existe en la lista de Materiales.
         /// </summary>
@@ -266,10 +279,10 @@ return null;
         public string GetTextToPrintMaterialType()
         {
             string data = $"La lista de Materiales existentes son: \n";
-            int contador=1;
+            int contador=0;
             foreach (MaterialType item in this.materialsType)
             {
-                data = data + $"{contador} - {item}";
+                data = data + $"{contador} - {item.Name} - {item.Description}\n";
                 contador+=1;
             }
             return data;
