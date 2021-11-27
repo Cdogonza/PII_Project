@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
-
 namespace ClassLibrary
 {
     /// <summary>
@@ -16,72 +15,74 @@ namespace ClassLibrary
         }
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            if (Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId) )
+            if ((Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId)))
             {
-                if(message.Text.ToLower().Equals("/registrarse") )
+                if(message.Text.ToLower().Equals( "/registrarse") )
                 {
-                    
-                if (Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null | Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
-                    {
-                        response = "Usted ya se encuentra registrado";
+
+                    if (Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null | Singleton<DataManager>.Instance.GetCompany(message.UserId) != null){
+                        response = "Usted ya se encuentra registrad@";
                         return true;
-                    }else
-                    {
+                        }else
+                        {
+                            Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                            response = "Registrarse como Empresa o como Emprendedor\n/Empresa\n/Emprendedor";
+                            return true;
+                        }
+                }
                     
-                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                        response = "Registrarse como Empresa o como Emprendedor\n/Empresa\n/Emprendedor";
-                        return true;
-                    }
+                if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 1 && message.Text.ToLower().Equals("/empresa"))
+                {
+                    Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text); /// agrego texto /empresa
+                    response = "Ingrese el código de invitación";
+                    return true;
                 }
 
-                if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Trim().Equals("/registrarse"))
+                if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 1 && message.Text.ToLower().Equals("/emprendedor"))
                 {
-                    if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 1 && message.Text.ToLower().Trim().Equals("/empresa"))
+                    Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text); /// agrego texto /emprendendor
+                    response = "Ingrese el nombre de su emprendimiento";
+                    return true;
+                }
+
+                if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/empresa"))
+                {
+                    if(message.Text.ToLower().Equals( "1234") && Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
                     {
-                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text); /// agrego texto /empresa
-                        response = "Ingrese nombre de la empresa";
+                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                        response = "Ingrese el nombre de la empresa";
                         return true;
-                    
                     }
-                   
-                    if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 1 && message.Text.ToLower().Trim().Equals("/emprendedor"))
-                    {
-                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text); /// agrego texto /emprendendor
-                        response = "Ingrese nombre de su emprendimiento";
+                    if (!message.Text.ToLower().Equals( "1234") && Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2) { 
+
+                        response = "Código incorrecto, intente nuevamente";
                         return true;
-                    
                     }
-                   
-                    if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Trim().Equals("/empresa"))
-                    {
-                        
+
                         switch(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count)
                         {
-                            case 2:                    
+                            case 3:                
+                            response = "Ingrese su teléfono";
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                            response = "Ingrese su telefono";
                             return true;
-                        
-                        
-                            case 3:
+
+
+                            case 4:
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                             response = "Ingrese Calle y Numero de puerta";
                             return true;
-                            
-                            case 4:
-                            Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                            response = "Ingrese Ciudad";
-                            
-                            return true;
-                        
+
                             case 5:
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                            response = "Ingrese Departamento";
-                            
+                            response = "Ingrese Ciudad";                                
                             return true;
-                        
-                            case 6:                      
-                            
+
+                            case 6:
+                            Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                            response = "Ingrese Departamento";                                
+                            return true;
+
+                            case 7:                  
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                             /*
                             int num = 0;
@@ -97,12 +98,11 @@ namespace ClassLibrary
                              */
                             response = $"{Singleton<DataManager>.Instance.GetTextToPrintAreaOfWork()}";
                             return true;
-                    
-                            case 7:
-                            
+
+                            case 8:
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(Singleton<DataManager>.Instance.areaofwork[Int32.Parse(message.Text)].Name);
                             
-                            Singleton<DataManager>.Instance.AddCompany(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.ChatId][2],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][3],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][4],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][5],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][6],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][7]);
+                            Singleton<DataManager>.Instance.AddCompany(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.ChatId][3],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][4],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][5],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][6],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][7],Singleton<TelegramUserData>.Instance.userdata[message.ChatId][8]);
                             response = $"Se Creo La Empresa Correctamente\n Puede ver sus datos ingresando \n /vermisdatos \n /materialtype \n /agregar_tipodemateriales";
                             //Console.WriteLine($"0 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][0]}");
                             //Console.WriteLine($"1 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][1]}");
@@ -117,10 +117,11 @@ namespace ClassLibrary
                            // Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId,new Collection<string>());
                             Console.WriteLine($"Registration USERID - {message.UserId}");
                             return true;
-                        
                         }
 
                     }
+
+            }
  
                     if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Trim().Equals("/emprendedor"))
                     {
@@ -182,10 +183,9 @@ namespace ClassLibrary
                         }
 
                     }
-            }    
-        }
-        response = String.Empty ;
-        return false;
+        
+            response = String.Empty ;
+            return false;
         }
     }
 }
