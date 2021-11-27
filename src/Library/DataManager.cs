@@ -30,6 +30,13 @@ namespace ClassLibrary
         public List<MaterialType> materialsType = new List<MaterialType>(){new MaterialType("plastico","Descripcion plastico"),new MaterialType("papel","Descripcion papel"),new MaterialType("organico", "Descripcion organico")};
 
         /// <summary>
+        /// Lista de Material donde se almacenan los materiales
+        /// </summary>
+        /// <typeparam name="Material"></typeparam>
+        /// <returns></returns>
+        public List<Material> materials = new List<Material>();
+
+        /// <summary>
         /// Lista de Permisos donde se almacenan los permisos a ser usados por las empresas y las ofertas
         /// </summary>
         /// <typeparam List="Permission"></typeparam>
@@ -43,16 +50,24 @@ namespace ClassLibrary
             companies = companiesEmpty;
             return companies;
         }
-        public void AddPermission(Permission item){
+        
+        /// <summary>
+        /// Metodo para agregar permisos al listado de permisos
+        /// </summary>
+        /// <param name="item"></param>
+        
+        public void AddPermission(Permission item)
+        {
             this.permissions.Add(item);           
         }
-    public void CerrarSession()
-    {
+        
+        public void CerrarSession()
+        {
         List<Entrepreneur>  vacia = new List<Entrepreneur>();
         List<Company>  vacia2 = new List<Company>();
         entrepreneurs = vacia;
         companies = vacia2;
-    }
+        }
 
         public void AddEntrepreneur(string id ,string name,string phone,string calle,string ciudad,string departamento,string area, string specialization, string permission )
         {
@@ -244,6 +259,19 @@ namespace ClassLibrary
         }
        */
        
+        /// <summary>
+        /// El metodo crea una instacia de Material y la agrega al catalogo.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <param name="quantity"></param>
+        /// <param name="cost"></param>
+        /// <param name="location"></param>
+        public void AddMaterial (string name, MaterialType type, string quantity)
+        {
+            this.materials.Add(new Material(name,type,quantity));
+        }
+
         /// <summary>
         /// Verifica si el material ingresado por el usuario existe en la lista de Materiales.
         /// </summary>
