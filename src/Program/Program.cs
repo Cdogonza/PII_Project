@@ -43,7 +43,7 @@ namespace ClassLibrary
                 new MaterialsHandler(
                 new DataManagerHandler(
                 new CloseSessionHandler(                             
-                new PhotoHandler(Bot,null))))));
+                new MapsHandler(Bot,null))))));
             Message message = new Message();
            
             var cts = new CancellationTokenSource();
