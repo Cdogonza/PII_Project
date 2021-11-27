@@ -28,9 +28,7 @@ namespace ClassLibrary
                     return true;
                 }
                  
-                }
-                
-                              
+                }                               
             }
             response = "Para ayuda indique /help para ayuda con los comandos";
             return true;

@@ -58,7 +58,7 @@ namespace ClassLibrary
                     }
                     if(message.Text.ToUpper().Equals("Y"))
                     {
-                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                        //Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                         response = "Ingrese el nombre de la nueva habilitacion";
                         return true;
                     }

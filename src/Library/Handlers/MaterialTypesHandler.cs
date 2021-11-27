@@ -49,8 +49,9 @@ namespace ClassLibrary
                 {
                     if(message.Text.ToLower().Equals("/listar") )
                     {
-                    Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                    //Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                     response = $"{Singleton<DataManager>.Instance.GetTextToPrintMaterialType()}";
+
                     return true;
                     }                   
                     
@@ -64,7 +65,7 @@ namespace ClassLibrary
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                             Console.WriteLine($"0 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][0]}");
                             Console.WriteLine($"Count - {Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count}");
-                            response = "Ingrese el nombre del Material";
+                            response = "Ingrese el nombre del Tipo de Material";
                             return true;
                         }
                         else
@@ -87,6 +88,7 @@ namespace ClassLibrary
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                             Singleton<DataManager>.Instance.AddMaterialType(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]);
                             response = $"Se creo el Tipo de material con exito - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][2]} - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]} ";
+                            
                             return true;
                         }
                     }

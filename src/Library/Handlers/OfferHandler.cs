@@ -157,9 +157,10 @@ namespace ClassLibrary
 
                         Singleton<DataManager>.Instance.AddMaterial(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],new MaterialType(Singleton<TelegramUserData>.Instance.userdata[message.UserId][3],Singleton<TelegramUserData>.Instance.userdata[message.UserId][4]),Singleton<TelegramUserData>.Instance.userdata[message.UserId][5]);
                         Singleton<OfferManager>.Instance.AddOffer(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1],Singleton<DataManager>.Instance.AddMaterial(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],new MaterialType(Singleton<TelegramUserData>.Instance.userdata[message.UserId][3],Singleton<TelegramUserData>.Instance.userdata[message.UserId][4]),Singleton<TelegramUserData>.Instance.userdata[message.UserId][5]),Singleton<TelegramUserData>.Instance.userdata[message.UserId][6],Singleton<TelegramUserData>.Instance.userdata[message.UserId][7],Singleton<TelegramUserData>.Instance.userdata[message.UserId][8],Convert.ToDouble(Singleton<TelegramUserData>.Instance.userdata[message.UserId][9]),regularoffer,tags,deliverydate,publicationdate,Singleton<DataManager>.Instance.GetCompanyInstance(message.UserId));
+                        Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
+
                         response = $"Se Creo La Oferta Correctamente";
                         return true;
-
                     }
                 }
             }

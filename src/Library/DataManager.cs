@@ -1,6 +1,8 @@
 
 using System.Collections.Generic;
-using System.Collections;
+using System.IO;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System;
 namespace ClassLibrary
 {
@@ -9,9 +11,16 @@ namespace ClassLibrary
     /// Se implementa utilizando singleton con el fin de utilizar una unica instancia, 
     /// ya que no queremos que hayan multiples listas de Rubros, Permisos y Tipos de materiales
     /// </summary>
-    public class DataManager
+    public class DataManager : IJsonConvertible
+
     {
-      
+        [JsonConstructor]        
+        public DataManager()
+        {
+            this.companies = new List<Company>();
+            this.entrepreneurs = new List<Entrepreneur>();
+        }
+       
         public List <string> data = new List<string>();  
         /// <summary>
         /// Lista de String donde se almacenan los rubros
@@ -19,7 +28,9 @@ namespace ClassLibrary
         /// <typeparam List="string"></typeparam>
         /// <returns></returns>        
         public List<AreaOfWork> areaofwork = new List<AreaOfWork>(){new AreaOfWork("construccion"),new AreaOfWork("cocina"),new AreaOfWork("industria")};
+        [JsonInclude]
         public List<Entrepreneur> entrepreneurs = new List<Entrepreneur>();
+        [JsonInclude]
         public List<Company> companies = new List<Company>();
 
         /// <summary>
@@ -46,8 +57,7 @@ namespace ClassLibrary
 
         public List<Company>  DataCompany()
         {
-            List<Company> companiesEmpty = new List<Company>();
-            companies = companiesEmpty;
+            
             return companies;
         }
         
@@ -60,24 +70,37 @@ namespace ClassLibrary
         {
             this.permissions.Add(new Permission (permission));           
         }
-        
-        public void CerrarSession()
-        {
-        List<Entrepreneur>  vacia = new List<Entrepreneur>();
-        List<Company>  vacia2 = new List<Company>();
-        entrepreneurs = vacia;
-        companies = vacia2;
-        }
 
+        public List<Entrepreneur>  DataEntrepeneur()
+        {
+            
+            return entrepreneurs;
+        }
+        public void CloseSession()
+        {
+            List<Entrepreneur>  vacia = new List<Entrepreneur>();
+            List<Company>  vacia2 = new List<Company>();
+            entrepreneurs = vacia;
+            this.companies = vacia2;
+        }
         public void AddEntrepreneur(string id ,string name,string phone,string calle,string ciudad,string departamento,string area, string specialization, string permission )
         {
             LocationApiClient Loc = new LocationApiClient();
             Location location = Loc.GetLocation(calle,ciudad,departamento);
             this.entrepreneurs.Add(new Entrepreneur(id,name,phone,location,area,specialization,permission));
+             this.ConvertToJsonEntrepreneur();
+        }
+        public void AddCompany(string id ,string name,string phone,string calle,string ciudad,string departamento,string area)
+        {
+            LocationApiClient Loc = new LocationApiClient();
+            Location location = Loc.GetLocation(calle,ciudad,departamento);
+            this.companies.Add(new Company(id,name,phone,location,area));
+            this.ConvertToJsonCompany();
         }
 
         public string GetEntrepreneur(string userid)
         {
+            this.LoadFromJsonEntrepreneur();
             string datos = $"Los datos de su Emprendimiento son: \n";
             foreach (Entrepreneur item in this.entrepreneurs)
             {
@@ -86,46 +109,30 @@ namespace ClassLibrary
                    datos =$" {item.Name}\n {item.Phone}\n{item.Location.FormattedAddress}\n{item.Specialization}\n{item.Permissions}\n";
                    return datos;
                 }
-                else
-                {
-                    return null;
-                }
+                
                  
             }
             return null;
         }
-        public void AddCompany(string id ,string name,string phone,string calle,string ciudad,string departamento,string area)
-        {
-          /*  Console.WriteLine($"id - {id}");
-            Console.WriteLine($"name - {name}");
-            Console.WriteLine($"phone - {phone}");
-            Console.WriteLine($"calle - {calle}");
-            Console.WriteLine($"ciudad - {ciudad}");
-            Console.WriteLine($"depto - {departamento}");
-            Console.WriteLine($"area - {area}"); */
-            LocationApiClient Loc = new LocationApiClient();
-            Location location = Loc.GetLocation(calle,ciudad,departamento);
-            this.companies.Add(new Company(id,name,phone,location,area));
-        }
-
+        
         public string GetCompany(string userid)
         {
+            
+            this.LoadFromJsonCompany();
             string datos = $"Los datos de su Company son: \n";
             foreach (Company item in this.companies)
             {
                 if (item.Id == userid)
                 {
-                   datos =$" {item.Name}\n {item.Phone}\n{item.Location.FormattedAddress}\n{item.AreaOfWork.Name}\n";
+                   datos =$" {item.Name}\n {item.Phone}\n{item.Location.FormattedAddress}\n";
                    return datos;
                 }
-                else
-                {
-                    return null;
-                }
-                 
+                    
             }
             return null;
+             
         }
+    
         /// <summary>
         /// Metodo que chequea si el permiso ingresado por el usuario existe en la lista de Permisos del sistema. 
         /// /// </summary>
@@ -274,6 +281,19 @@ namespace ClassLibrary
             return newmaterial;
         }
 
+        public Company GetCompanyInstance(string userid)
+
+        {
+            foreach (Company item in this.companies)
+            {
+                if (item.Id == userid)
+                {
+                   return item;
+                }
+            }
+            return null;
+        }
+
 
         /// <summary>
         /// Verifica si el material ingresado por el usuario existe en la lista de Materiales.
@@ -303,21 +323,6 @@ namespace ClassLibrary
             return this.materialsType[indice];
         }
         
-
-
-        public Company GetCompanyInstance(string userid)
-
-        {
-            foreach (Company item in this.companies)
-            {
-                if (item.Id == userid)
-                {
-                   return item;
-                }
-            }
-            return null;
-        }
-
         /// <summary>
         /// Metodo utilizado para obtener todos los rubros de la lista y retornarlos como texto,
         /// Para que ConsolePrinter pueda obtener ese texto e 
@@ -341,6 +346,87 @@ namespace ClassLibrary
         public List<MaterialType> GetMaterialsType()
         {
             return this.materialsType;
+        }
+          public string ConvertToJsonCompany()
+        {
+            string result = "{\"Items\":[";
+
+            foreach (Company item in this.companies)
+            {
+                result = result + item.ConvertToJsonCompany() + ",";
+            }
+
+            result = result.Remove(result.Length - 1);
+            result = result + "]}";
+
+            string temp = JsonSerializer.Serialize(this.companies);
+             File.WriteAllText(@"Companies.json", temp);
+            return result;
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };
+
+            return JsonSerializer.Serialize(this.companies, options);            
+        }
+         public void LoadFromJsonCompany()
+        {
+            
+            string json = File.ReadAllText(@"Companies.json");
+            if(json!="")
+            {
+            //this.Initialize();
+            //this.companies = JsonSerializer.Deserialize<Company>(json);
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };
+
+            this.companies = JsonSerializer.Deserialize<List<Company>>(json, options);
+           
+            }
+        }
+        public string ConvertToJsonEntrepreneur()
+        {
+            string result = "{\"Items\":[";
+
+            foreach (Entrepreneur item in this.entrepreneurs)
+            {
+                result = result + item.ConvertToJsonEntrepreneur() + ",";
+            }
+
+            result = result.Remove(result.Length - 1);
+            result = result + "]}";
+
+            string temp = JsonSerializer.Serialize(this.entrepreneurs);
+             File.WriteAllText(@"Entrepreneur.json", temp);
+            return result;
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };
+
+            return JsonSerializer.Serialize(this.entrepreneurs, options);            
+        }
+        public void LoadFromJsonEntrepreneur()
+        {
+            
+            string json = File.ReadAllText(@"Entrepreneur.json");
+            if(json!="")
+            {
+
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };
+
+            this.entrepreneurs = JsonSerializer.Deserialize<List<Entrepreneur>>(json, options);
+           
+            }
         }
 
         

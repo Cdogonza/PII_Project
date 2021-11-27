@@ -26,8 +26,8 @@ namespace ClassLibrary
         // *Importante*:
         // Para probar este ejemplo, crea un bot nuevo y eeemplaza este token por el de tu bot.
         private static string Token = "2133513418:AAHIE7L6s-OQSi6BroKBheNa-JGIXAlsMR0";
-        //private static string Token = "2133499409:AAFKS9VqLu7UXqQccvTHFFzcIvxwEoCGtkM";
-
+        //private static string Token = "2099808385:AAGebOzNFY6kA5hwEY2XJbOJxZBzWAIM8U0";
+       // private static string Token = "2133499409:AAFKS9VqLu7UXqQccvTHFFzcIvxwEoCGtkM";
         private static IHandler firstHandler;
 
         /// <summary>
@@ -39,16 +39,16 @@ namespace ClassLibrary
 
             firstHandler =
                 new WelcomeHandler(
-                new RegistrationHandler(
+                new RegistrationHandler(              
+                new DataManagerHandler(
                 new MaterialTypesHandler(
                 new PermissionsHandler(
-                new DataManagerHandler(
-                new OfferHandler(
-                new CloseSessionHandler(
-                new DefaultHandler(null
-                /*new PhotoHandler(Bot,null)*/))))))));
+                new OfferHandler(    
+                new CloseSessionHandler(                             
+                new MapsHandler(Bot,null))))))));
             Message message = new Message();
            
+
             var cts = new CancellationTokenSource();
 
             // Comenzamos a escuchar mensajes. Esto se hace en otro hilo (en background). El primer método
