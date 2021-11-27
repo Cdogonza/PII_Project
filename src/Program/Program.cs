@@ -39,11 +39,10 @@ namespace ClassLibrary
 
             firstHandler =
                 new WelcomeHandler(
-                new RegistrationHandler(
-                new MaterialsHandler(
+                new RegistrationHandler(              
                 new DataManagerHandler(
                 new CloseSessionHandler(                             
-                new MapsHandler(Bot,null))))));
+                new MapsHandler(Bot,null)))));
             Message message = new Message();
            
             var cts = new CancellationTokenSource();

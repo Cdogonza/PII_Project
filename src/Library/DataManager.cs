@@ -41,6 +41,13 @@ namespace ClassLibrary
         public List<MaterialType> materialsType = new List<MaterialType>(){new MaterialType("plastico","Descripcion plastico"),new MaterialType("papel","Descripcion papel"),new MaterialType("organico", "Descripcion organico")};
 
         /// <summary>
+        /// Lista de Material donde se almacenan los materiales
+        /// </summary>
+        /// <typeparam name="Material"></typeparam>
+        /// <returns></returns>
+        public List<Material> materials = new List<Material>();
+
+        /// <summary>
         /// Lista de Permisos donde se almacenan los permisos a ser usados por las empresas y las ofertas
         /// </summary>
         /// <typeparam List="Permission"></typeparam>
@@ -98,7 +105,7 @@ namespace ClassLibrary
                 
                  
             }
-return null;
+            return null;
         }
         
         public string GetCompany(string userid)
@@ -157,7 +164,7 @@ return null;
             string data = $"La lista de Permisos existentes son: \n";
             foreach (Permission item in this.permissions)
             {
-               data = data + $"{contador}- {item.Name}"; 
+               data = data + $"{contador}- {item.Name}\n"; 
                contador+=1;
             }
             return data;
@@ -218,10 +225,10 @@ return null;
         public string GetTextToPrintAreaOfWork()
         {
             string data = $"La lista de Rubros existentes son: \n";
-            int contador=1;
+            int contador=0;
             foreach (AreaOfWork item in this.areaofwork)
             {
-               data = data + $"{contador}- {item.Name}";
+               data = data + $"{contador} - {item.Name}\n";
                contador+=1;
             }
             return data;
@@ -240,9 +247,28 @@ return null;
         /// Agrega un tipo de Material a la lista de MaterialTypes
         /// </summary>
         /// <param name="item"></param>
-        public void AddMaterialType(MaterialType item)
+       
+       public void AddMaterialType(string name, string description)
+       {
+           this.materialsType.Add(new MaterialType(name, description));
+       }
+       /* public void AddMaterialType(MaterialType item)
         {
             this.materialsType.Add(item);           
+        }
+       */
+       
+        /// <summary>
+        /// El metodo crea una instacia de Material y la agrega al catalogo.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <param name="quantity"></param>
+        /// <param name="cost"></param>
+        /// <param name="location"></param>
+        public void AddMaterial (string name, MaterialType type, string quantity)
+        {
+            this.materials.Add(new Material(name,type,quantity));
         }
 
         /// <summary>
@@ -280,10 +306,10 @@ return null;
         public string GetTextToPrintMaterialType()
         {
             string data = $"La lista de Materiales existentes son: \n";
-            int contador=1;
+            int contador=0;
             foreach (MaterialType item in this.materialsType)
             {
-                data = data + $"{contador} - {item}";
+                data = data + $"{contador} - {item.Name} - {item.Description}\n";
                 contador+=1;
             }
             return data;

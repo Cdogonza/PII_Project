@@ -37,9 +37,6 @@ namespace ClassLibrary
             {
                 return this.message.From.Id.ToString();
             }
-            set{
-                this.message.From.Id=0;
-                }
         }
          public string FirstName
         {
