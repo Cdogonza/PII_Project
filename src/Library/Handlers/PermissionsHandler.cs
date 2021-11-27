@@ -11,9 +11,9 @@ namespace ClassLibrary
     /// <summary>
     /// El handler inicial, el cual modifica el estado del pedido según lo necesitado.
     /// </summary>
-    public class PermissionsHandler: BaseHandler
+    public class PublicationHandler: BaseHandler
     {
-        public PermissionsHandler(BaseHandler next) : base(next)
+        public PublicationHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/habilitaciones"};
         }
