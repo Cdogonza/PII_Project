@@ -43,7 +43,7 @@ namespace ClassLibrary
                 new DataManagerHandler(
                 new MaterialTypesHandler(
                 new PublicationHandler(
-                new OfferHandler(    
+                new PermissionsHandler(    
                 new CloseSessionHandler(                             
                 new MapsHandler(Bot,null))))))));
             Message message = new Message();
