@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Collections;
 using System;
+
 namespace ClassLibrary
 {   
     /// <summary>
@@ -79,6 +81,28 @@ namespace ClassLibrary
         {
             catalog[index].getOffer(buyer);
 
+        }
+
+        /// <summary>
+        /// El metodo crea una instacia de la oferta y la agrega al catalogo.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="material"></param>
+        /// <param name="street"></param>
+        /// <param name="city"></param>
+        /// <param name="department"></param>
+        /// <param name="cost"></param>
+        /// <param name="regularoffers"></param>
+        /// <param name="tags"></param>
+        /// <param name="deliverydate"></param>
+        /// <param name="publicationdate"></param>
+        /// <param name="offer"></param>
+        public void AddOffer (string name, Material material, string street, string city , string department , double cost, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
+        {
+            LocationApiClient Loc = new LocationApiClient();
+            Location locationoffer = Loc.GetLocation(street,city,department);
+
+            this.catalog.Add(new Offer(name,material,locationoffer,cost,regularoffers,tags,deliverydate,publicationdate,offer));
         }
     }
 

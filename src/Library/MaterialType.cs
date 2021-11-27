@@ -19,7 +19,7 @@ namespace ClassLibrary
         /// </summary>
         /// <value></value>
 
-        private string Description{get;set;}
+        public string Description{get;set;}
 
         /// <summary>
         /// Constructor de la clase MaterialType
