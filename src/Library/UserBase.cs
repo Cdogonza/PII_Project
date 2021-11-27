@@ -1,11 +1,18 @@
 using System.Collections.Generic;
 using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 namespace ClassLibrary
 {   /// <summary>
     /// Esta clase define las propiedas y comportamiento que comparten los diferentes usuarios de la empresa
     /// </summary>
-    public abstract class UserBase
+    public abstract class UserBase:IJsonConvertible
     { 
+        [JsonConstructor]
+
+        public UserBase(){
+
+        }
         /// <summary>
         /// Propiedad Nombre del usuario
         /// </summary>
@@ -102,6 +109,10 @@ namespace ClassLibrary
 
             }
             return data;
+        }
+        public string ConvertToJson()
+        {
+            return JsonSerializer.Serialize(this);
         }
     }
 }
