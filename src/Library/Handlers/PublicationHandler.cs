@@ -22,11 +22,13 @@ namespace ClassLibrary
         protected override bool InternalHandle(IMessage message, out string response)
         {
             var _myinstance = Singleton<TelegramUserData>.Instance.userdata;
+
             if(!_myinstance.ContainsKey(message.UserId))
             {
                 _myinstance.Add(message.UserId,new Collection<string>());
                 
             }
+
             if(message.Text.ToLower().Equals("/publicar_oferta"))
             {
                 if(Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
@@ -90,46 +92,47 @@ namespace ClassLibrary
                         {
                             _myinstance[message.UserId].Add("/continuar");
                             this.materialtypeDict[message.UserId].Add(message.Text);
-                            response = "Ingrese la cantidad que desea publicar";
+                            response = "Ingrese la unidad del Material (Ej: Pallet)";
                             return true;
                         }
                         else
                         {
                             _myinstance[message.UserId].Add(message.Text);
-                            response = "Ingrese la cantidad que desea publicar";
+                            response = "Ingrese la unidad del Material (Ej: Pallet)";
                             return true;
                         }
 
                         case 5:  //6
                         _myinstance[message.UserId].Add(message.Text);
                         response = "Ingrese calle y número de puerta";
-
                         return true;
 
                         case 6:  //7
                         _myinstance[message.UserId].Add(message.Text);
                         response = "Ingrese la ciudad";
-
                         return true;
 
                         case 7:  //8
                         _myinstance[message.UserId].Add(message.Text);
                         response = "Ingrese el departamento";
-
                         return true;
 
                         case 8:  //9
                         _myinstance[message.UserId].Add(message.Text);
+                        response = "Ingrese la cantidad a ofrecer(Ej: 1) :";
+                        return true;
+            
+                        case 9:  //9
+                        _myinstance[message.UserId].Add(message.Text);
                         response = "Ingrese el costo de su oferta";
-
                         return true;
 
-                        case 9:  //10
+                        case 10:  //10
                         _myinstance[message.UserId].Add(message.Text);
                         response = "Su compra es una oferta regular? Si/No";   
                         return true;
 
-                        case 10:  //11
+                        case 11:  //11
                         if(message.Text.ToUpper() == "NO")
                         {
                             regularoffer = false;
@@ -144,18 +147,18 @@ namespace ClassLibrary
 
                         return true;
 
-                        case 11:  //12
+                        case 12:  //12
 
                         if(message.Text.ToUpper() == "NO")
                         {
                             _myinstance[message.UserId].Add(message.Text);
-                            response = "no se agregan tags a la oferta \n \n presione /OK para continuar ";
+                            response = "no se agregan tags a la oferta \n \n presione /OK para finalizar";
                             return true;
                         }
                         else if(message.Text.ToUpper() == "SI")
                         {
                             _myinstance[message.UserId].Add(message.Text);
-                            response = "Agregue sus tags separados por '-' ";
+                            response = "Para Finalizar, agregue sus tags separados por '-' ";
                             return true;
                         }
                         else
@@ -164,16 +167,15 @@ namespace ClassLibrary
                             return true;
                         }
 
-                        case 12: //13
+                        case 13: //13
                         Console.WriteLine("Entre aca caso 12");
-                        if (_myinstance[message.UserId][11].ToUpper().Equals("SI"))
+                        if (_myinstance[message.UserId][12].ToUpper().Equals("SI"))
                         {
                             _myinstance[message.UserId].Add(message.Text);
                             tags.AddRange(message.Text.Split('-'));
                         }
-                        else if (_myinstance[message.UserId][11].ToUpper().Equals("NO"))
+                        else if (_myinstance[message.UserId][12].ToUpper().Equals("NO"))
                         {
-
                             _myinstance[message.UserId].Add(message.Text);
                             Console.WriteLine("Entre aca aca if caso 12");
                         }
@@ -181,32 +183,14 @@ namespace ClassLibrary
                         DateTime publicationdate = DateTime.Now;
                         DateTime deliverydate = new DateTime();
 
-                        // Console.WriteLine($"0 - {_myinstance[message.UserId][0]}");
-                        // Console.WriteLine($"1 - {_myinstance[message.UserId][1]}");
-                        // Console.WriteLine($"2 - {_myinstance[message.UserId][2]}");
-                        // Console.WriteLine($"3 - {_myinstance[message.UserId][3]}");
-                        // Console.WriteLine($"4 - {_myinstance[message.UserId][4]}");
-                        // Console.WriteLine($"5 - {_myinstance[message.UserId][5]}");
-                        // Console.WriteLine($"6 - {_myinstance[message.UserId][6]}");
-                        // Console.WriteLine($"7 - {_myinstance[message.UserId][7]}");
-                        // Console.WriteLine($"8 - {_myinstance[message.UserId][8]}");
-                        // Console.WriteLine($"9 - {_myinstance[message.UserId][9]}");
-                        // Console.WriteLine($"10 - {_myinstance[message.UserId][10]}");
-                        // Console.WriteLine($"11 - {_myinstance[message.UserId][11]}");
-                        // Console.WriteLine($"12 - {_myinstance[message.UserId][12]}");
-                        
-                        //Singleton<DataManager>.Instance.AddMaterial(_myinstance[message.UserId][2],new MaterialType(_myinstance[message.UserId][3],_myinstance[message.UserId][4]),_myinstance[message.UserId][5]);
-                        
-                        //Singleton<OfferManager>.Instance.AddOffer(_myinstance[message.UserId][1],Singleton<DataManager>.Instance.AddMaterial(_myinstance[message.UserId][2],new MaterialType(_myinstance[message.UserId][3],_myinstance[message.UserId][4]),_myinstance[message.UserId][5]),_myinstance[message.UserId][6],_myinstance[message.UserId][7],_myinstance[message.UserId][8],Convert.ToDouble(_myinstance[message.UserId][9]),regularoffer,tags,deliverydate,publicationdate,Singleton<DataManager>.Instance.GetCompanyInstance(message.UserId));
-
                         if(_myinstance[message.UserId][3].ToLower().Equals("/otro_materialtype"))
                         {
-                            Singleton<OfferManager>.Instance.AddOffer(_myinstance[message.UserId][1],Singleton<DataManager>.Instance.AddMaterial(_myinstance[message.UserId][2],Singleton<DataManager>.Instance.AddMaterialType(this.materialtypeDict[message.UserId][0],this.materialtypeDict[message.UserId][1]),_myinstance[message.UserId][5]),_myinstance[message.UserId][6],_myinstance[message.UserId][7],_myinstance[message.UserId][8],Convert.ToDouble(_myinstance[message.UserId][9]),regularoffer,tags,deliverydate,publicationdate,Singleton<DataManager>.Instance.GetCompanyInstance(message.UserId));
+                            Singleton<OfferManager>.Instance.AddOffer(_myinstance[message.UserId][1],Singleton<DataManager>.Instance.AddMaterial(_myinstance[message.UserId][2],Singleton<DataManager>.Instance.AddMaterialType(this.materialtypeDict[message.UserId][0],this.materialtypeDict[message.UserId][1]),_myinstance[message.UserId][5]),_myinstance[message.UserId][6],_myinstance[message.UserId][7],_myinstance[message.UserId][8],Int32.Parse(_myinstance[message.UserId][9]),Convert.ToDouble(_myinstance[message.UserId][10]),regularoffer,tags,deliverydate,publicationdate,Singleton<DataManager>.Instance.GetCompanyInstance(message.UserId));
                         }
                         else
                         //Ingresando por la lista desplegada
                         {    
-                           Singleton<OfferManager>.Instance.AddOffer(_myinstance[message.UserId][1],Singleton<DataManager>.Instance.AddMaterial(_myinstance[message.UserId][2],Singleton<DataManager>.Instance.GetMaterialTypeByIndex(Int32.Parse(_myinstance[message.UserId][3])),_myinstance[message.UserId][5]),_myinstance[message.UserId][6],_myinstance[message.UserId][7],_myinstance[message.UserId][8],Convert.ToDouble(_myinstance[message.UserId][9]),regularoffer,tags,deliverydate,publicationdate,Singleton<DataManager>.Instance.GetCompanyInstance(message.UserId));
+                           Singleton<OfferManager>.Instance.AddOffer(_myinstance[message.UserId][1],Singleton<DataManager>.Instance.AddMaterial(_myinstance[message.UserId][2],Singleton<DataManager>.Instance.GetMaterialTypeByIndex(Int32.Parse(_myinstance[message.UserId][3])),_myinstance[message.UserId][5]),_myinstance[message.UserId][6],_myinstance[message.UserId][7],_myinstance[message.UserId][8],Int32.Parse(_myinstance[message.UserId][9]),Convert.ToDouble(_myinstance[message.UserId][10]),regularoffer,tags,deliverydate,publicationdate,Singleton<DataManager>.Instance.GetCompanyInstance(message.UserId));
                         }
 
                         _myinstance.Remove(message.UserId);

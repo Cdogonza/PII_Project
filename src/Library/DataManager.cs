@@ -275,9 +275,9 @@ namespace ClassLibrary
         /// <param name="type"></param>
         /// <param name="quantity"></param>
         /// <returns>newmaterial</returns>
-        public Material AddMaterial (string name, MaterialType type, string quantity)
+        public Material AddMaterial (string name, MaterialType type, string unit)
         {
-            Material newmaterial = new Material(name,type,quantity);
+            Material newmaterial = new Material(name,type,unit);
             this.materials.Add(newmaterial);
             return newmaterial;
         }
@@ -325,7 +325,6 @@ namespace ClassLibrary
         /// <returns></returns>
         public MaterialType GetMaterialTypeByIndex(int indice)
         {
-            indice-=1;
             return this.materialsType[indice];
         }
         
