@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Collections;
 using System;
-
+using System.IO;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 namespace ClassLibrary
 {   
     /// <summary>
@@ -9,18 +11,20 @@ namespace ClassLibrary
     /// de las ofertas de la aplicacion, incluso cuando se instancia esta clase la instanciamos
     /// a traves de singleton de modo de manejar una unica instancia.
     /// </summary>
-    public class OfferManager 
+    public class OfferManager : IJsonConvertible
     {
         /// <summary>
         /// Catalogo de ofertas de nuestra aplicacion
         /// </summary>
         /// <typeparam List="Offer"></typeparam>
         /// <returns></returns>
+        [JsonInclude]
         public List<Offer> catalog = new List<Offer>();
         /// <summary>
         /// Este es el constructor de la clase
         /// </summary>
-         public OfferManager()
+           [JsonConstructor] 
+           public OfferManager()
         {
             
         }
@@ -101,9 +105,54 @@ namespace ClassLibrary
         {
             LocationApiClient Loc = new LocationApiClient();
             Location locationoffer = Loc.GetLocation(street,city,department);
-
             this.catalog.Add(new Offer(name,material,locationoffer,cost,regularoffers,tags,deliverydate,publicationdate,offer));
+            this.ConvertToJsonOffer();
         }
+        public string ConvertToJsonOffer()
+        {
+            string result = "{\"Items\":[";
+
+            foreach (Offer item in this.catalog)
+            {
+                result = result + item.ConvertToJsonOffer() + ",";
+            }
+
+            result = result.Remove(result.Length - 1);
+            result = result + "]}";
+
+            string temp = JsonSerializer.Serialize(this.catalog);
+             File.WriteAllText(@"Offer.json", temp);
+            return result;
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };
+
+            return JsonSerializer.Serialize(this.catalog, options);            
+        }
+        public void LoadFromJsonOffer()
+        {
+            
+            string json = File.ReadAllText(@"Offer.json");
+            if(json!="")
+            {
+
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };
+
+            this.catalog = JsonSerializer.Deserialize<List<Offer>>(json, options);
+           
+            }
+        }
+        public string ConvertToJsonEntrepreneur()
+        {return null;}
+          public string ConvertToJsonCompany()
+        {return null;}
+
     }
 
 }
