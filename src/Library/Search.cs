@@ -31,23 +31,27 @@ namespace ClassLibrary
             
             this.catalog = Singleton<OfferManager>.Instance.catalog;
             
-            string data;
+            string data="";
             int cont=0;
+
             foreach (Offer offer in this.catalog)
             {   
-               cont++;
+               
                 if (offer.Location.Locality == department)
                 {                  
-                    data = $"{cont}- id:{offer.id}- Oferta:{offer.Name}-\n Material: {offer.Material.Name}-\nCosto: {offer.Cost}-\nFecha Publicacion{offer.PublicationDate}-\nDireccion: {offer.Location.FormattedAddress}\n ";
-                    return data;
-                    //byLocation.Add(offer);
-                    //Console.WriteLine(data);
+                    data += $"{offer.Idd}- Oferta:{offer.Name}-\n Material: {offer.Material.Name}-\nCosto: {offer.Cost}-\nFecha Publicacion{offer.PublicationDate}-\nDireccion: {offer.Location.FormattedAddress}\n - /Obtener_Oferta";
                     
+                    cont++;
                 }
-                 
+               
+                
             }
-            cont=0;
-           return null;
+          
+           if(data =="")
+           {
+               data ="No hay Ofertas por el departamento ingresado /help";          
+           }
+            return data;
         }
 
                /// <summary>
@@ -70,7 +74,7 @@ namespace ClassLibrary
 
                 if ( distance.TravelDistance <= Convert.ToDouble(inputdistance))
                 {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} Ubicación: {offer.Location.FormattedAddress} Distancia: {distance.TravelDistance}km \n ";
+                    data = data + $"ID: {offer.Idd} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} Ubicación: {offer.Location.FormattedAddress} Distancia: {distance.TravelDistance}km \n ";
                     byDistance.Add(offer);
                 }
             }
@@ -92,7 +96,7 @@ namespace ClassLibrary
             {
                 if (offer.Tags.Contains(word))
                 {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                    data = data + $"ID: {offer.Idd} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
                     byWord.Add(offer);
                 }
             }
@@ -115,7 +119,7 @@ namespace ClassLibrary
             {
                 if (offer.Material.Type.Name == category)
                 {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                    data = data + $"ID: {offer.Idd} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
                     byCategory.Add(offer);
                 }
             }
@@ -134,7 +138,7 @@ namespace ClassLibrary
             {
                 if(offer.Entrepreneur == entrepreneur)
                 {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                    data = data + $"ID: {offer.Idd} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
                 }
             }
             return data;
@@ -153,7 +157,7 @@ namespace ClassLibrary
             {
                 if(offer.Company == company)
                 {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                    data = data + $"ID: {offer.Idd} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
                 }
             }
             return data;
@@ -177,7 +181,7 @@ namespace ClassLibrary
                 { 
                     if(offer.Availability)
                     {
-                        data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                        data = data + $"ID: {offer.Idd} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
                     }
                     else
                     {

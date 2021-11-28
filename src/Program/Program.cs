@@ -44,7 +44,7 @@ namespace ClassLibrary
                 new DataManagerHandler(
                 new MaterialTypesHandler(
                 new PublicationHandler(
-                new PermissionsHandler(  
+                 new PermissionsHandler(  
                 new SearchOffersHandler(  
                 new CloseSessionHandler(                             
                 new MapsHandler(Bot,null)))))))));

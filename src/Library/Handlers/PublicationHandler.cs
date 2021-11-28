@@ -22,23 +22,27 @@ namespace ClassLibrary
             if(!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
             {
                 Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId,new Collection<string>());
+                
             }
             if(message.Text.ToLower().Equals("/publicar_oferta"))
             {
                 if(Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                 {
                 //1
-                    Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                    response = "Ingrese el nombre de la oferta";
+                    Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text.ToLower());
+                    
+                    response = "Ingrese el nombre de la oferta";                  
                     return true;
                 }
+           
             }
-            
-            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1)
+            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1 && Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/publicar_oferta") )
             {
+                
+
                 if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/publicar_oferta"))
                 {
-
+                    
                     switch(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count)
                     {
                         case 1:  //2

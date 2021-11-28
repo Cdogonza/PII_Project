@@ -22,20 +22,19 @@ namespace ClassLibrary
             
             if(message.Text.ToLower().Equals("/registrarse") )
             {
-
                 if (Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null | Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                 {
                     response = "Usted ya se encuentra registrad@";
                     return true;
                     }else
                     {
-                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text.ToLower());
+                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text.ToLower()); //Agrego /registrarse al diccionario
                         response = "Registrarse como Empresa o como Emprendedor\n/Empresa\n/Emprendedor o cancela con /cancel ";
                         return true;
                     }
             }
             
-            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1)
+            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1 && Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/registrarse") )
             {
                 if(message.Text.ToLower().Equals("/cancel") )
                 {
@@ -47,7 +46,7 @@ namespace ClassLibrary
                 if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/registrarse"))
                 {
                    
-                    if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 1 && message.Text.ToLower().Contains("/empresa"))
+                    if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1 && message.Text.ToLower().Contains("/empresa"))
                     {
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text.ToLower()); /// agrego texto /empresa
                         response = "Ingrese el código de invitación";
@@ -98,7 +97,6 @@ namespace ClassLibrary
                                 Singleton<DataManager>.Instance.AddCompany(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.UserId][3],Singleton<TelegramUserData>.Instance.userdata[message.UserId][4],Singleton<TelegramUserData>.Instance.userdata[message.UserId][5],Singleton<TelegramUserData>.Instance.userdata[message.UserId][6],Singleton<TelegramUserData>.Instance.userdata[message.UserId][7],Singleton<TelegramUserData>.Instance.userdata[message.UserId][8]);
                                 response = $"Se creó la Empresa correctamente\n Las siguientes acciones posibles son: \n /publicar_oferta \n /vermisdatos \n /materialtype \n /habilitaciones";
                                 Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
-                                Console.WriteLine($"Registration USERID - {message.UserId}");
                                 return true;
                         
                         }

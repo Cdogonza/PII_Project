@@ -32,7 +32,7 @@ namespace ClassLibrary
 
                 if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null )
                 {
-                  //  Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                    Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                     response = "Usted No tiene privilegios para agregar habilitaciones al sistema";
                     return true;
                 }
@@ -40,13 +40,11 @@ namespace ClassLibrary
                 if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                 {
                     Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                   // Console.WriteLine($"0 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][0]}");
-                    //Console.WriteLine($"Count - {Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count}");
                     response = "Ingrese el nombre de la habilitacion a agregar al sistema";
                     return true;
                 }
             }
-            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1)
+            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1  &&Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/habilitaciones") )
             {
                 if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Trim().Contains("/habilitaciones") )
                 {

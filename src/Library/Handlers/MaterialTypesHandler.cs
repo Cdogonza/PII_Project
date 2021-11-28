@@ -43,7 +43,7 @@ namespace ClassLibrary
                 }
             }
             
-            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1)
+            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1 &&Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/materialtype"))
             {
                 if(message.Text.ToLower().Equals("/cancel") )
                 {

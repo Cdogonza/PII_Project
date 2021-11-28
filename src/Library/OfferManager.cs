@@ -66,7 +66,7 @@ namespace ClassLibrary
             {
                 if(offer.Availability)
                 {
-                    data = data + $"{offer.id} {offer.Name} Costo {offer.Cost} Fecha y hora de publicacion {offer.PublicationDate} \n";
+                    data = data + $"{offer.Idd} {offer.Name} Costo {offer.Cost} Fecha y hora de publicacion {offer.PublicationDate} \n";
                 }
                 else
                 {
@@ -105,7 +105,10 @@ namespace ClassLibrary
         {
             LocationApiClient Loc = new LocationApiClient();
             Location locationoffer = Loc.GetLocation(street,city,department);
-            this.catalog.Add(new Offer(name,material,locationoffer,cost,regularoffers,tags,deliverydate,publicationdate,offer));
+            Singleton<OfferManager>.Instance.LoadFromJsonOffer();
+            long valorUltimoId = this.catalog.Count+1;
+            Console.WriteLine(valorUltimoId);
+            this.catalog.Add(new Offer(valorUltimoId,name,material,locationoffer,cost,regularoffers,tags,deliverydate,publicationdate,offer));
             this.ConvertToJsonOffer();
         }
         public string ConvertToJsonOffer()
