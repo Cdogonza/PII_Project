@@ -16,7 +16,7 @@ namespace ClassLibrary
         }
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            Console.WriteLine($"material type {message.Text}  {message.UserId} ");
+            
             
             if(!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
             {       

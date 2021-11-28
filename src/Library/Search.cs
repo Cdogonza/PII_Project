@@ -27,26 +27,16 @@ namespace ClassLibrary
         /// <param name="department"></param>
         /// <returns>Retorna un string con una lista de ofertas</returns>
         public string GetOfferByDepartment(string department)
-        {
-            
-            this.catalog = Singleton<OfferManager>.Instance.catalog;
-            
-            string data="";
-            int cont=0;
-
+        {          
+            this.catalog = Singleton<OfferManager>.Instance.catalog;          
+            string data="";           
             foreach (Offer offer in this.catalog)
-            {   
-               
+            {                 
                 if (offer.Location.Locality == department)
                 {                  
                     data += $"{offer.Idd}- Oferta:{offer.Name}-\n Material: {offer.Material.Name}-\nCosto: {offer.Cost}-\nFecha Publicacion{offer.PublicationDate}-\nDireccion: {offer.Location.FormattedAddress}\n - /Obtener_Oferta";
-                    
-                    cont++;
-                }
-               
-                
-            }
-          
+                }               
+            }         
            if(data =="")
            {
                data ="No hay Ofertas por el departamento ingresado /help";          
@@ -111,20 +101,22 @@ namespace ClassLibrary
         /// <returns></returns>
         public string GetOfferByCategory(string category)
         {
-            List<Offer> byCategory = new List<Offer>();
-
-            string data = $"Las ofertas con esta categoria son: \n";
+            string data = $"";
 
             foreach (Offer offer in catalog)
             {
                 if (offer.Material.Type.Name == category)
                 {
-                    data = data + $"ID: {offer.Idd} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
-                    byCategory.Add(offer);
+                    data += $"{offer.Idd}- Oferta:{offer.Name}-\n Material: {offer.Material.Name}-\nCosto: {offer.Cost}-\nFecha Publicacion{offer.PublicationDate}-\nDireccion: {offer.Location.FormattedAddress}\n - /Obtener_Oferta";
                 }
-            }
+           }         
+           if(data ==" ")
+           {
+               data ="La categoria ingresada no es correcta /help";          
+           }
             return data;
         }
+        
         /// <summary>
         /// Filtra el catálogo de búsquedas que compró un emprendedor
         /// </summary>
