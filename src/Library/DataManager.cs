@@ -256,9 +256,11 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="item"></param>
        
-       public void AddMaterialType(string name, string description)
+       public MaterialType AddMaterialType(string name, string description)
        {
-           this.materialsType.Add(new MaterialType(name, description));
+           MaterialType newmaterialtype = new MaterialType(name, description);
+           this.materialsType.Add(newmaterialtype);
+           return newmaterialtype;
        }
        /* public void AddMaterialType(MaterialType item)
         {
