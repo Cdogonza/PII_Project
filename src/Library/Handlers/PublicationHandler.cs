@@ -90,8 +90,10 @@ namespace ClassLibrary
 
                         case 9:  //10
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                        response = "Su compra es una oferta regular? Si/No";
+                        response = "Su compra es una oferta regular? Si/No";   
+                        return true;
 
+                        case 10:  //11
                         if(message.Text.ToUpper() == "NO")
                         {
                             regularoffer = false;
@@ -100,10 +102,7 @@ namespace ClassLibrary
                         {
                             regularoffer = true;
                         }
-                        // TODO Probar si funciona el esle
-                        return true;
 
-                        case 10:  //11
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                         response = "Desea agregar tags a su oferta? Si/No";
 
@@ -114,28 +113,35 @@ namespace ClassLibrary
                         if(message.Text.ToUpper() == "NO")
                         {
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                            response = "no se agregan tags a la oferta";
+                            response = "no se agregan tags a la oferta \n \n presione /OK para continuar ";
+                            return true;
                         }
                         else if(message.Text.ToUpper() == "SI")
                         {
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                             response = "Agregue sus tags separados por '-' ";
+                            return true;
                         }
                         else
                         {
                             response = "Dato mal ingresado, debe ingresar Si o No";
+                            return true;
                         }
 
-                        return true;
-
                         case 12: //13
+                        Console.WriteLine("Entre aca caso 12");
                         if (Singleton<TelegramUserData>.Instance.userdata[message.UserId][11].ToUpper().Equals("SI"))
                         {
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                             tags.AddRange(message.Text.Split('-'));
                         }
+                        else if (Singleton<TelegramUserData>.Instance.userdata[message.UserId][11].ToUpper().Equals("NO"))
+                        {
 
-                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                            Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                            Console.WriteLine("Entre aca aca if caso 12");
+                        }
+
                         DateTime publicationdate = DateTime.Now;
                         DateTime deliverydate = new DateTime();
 
