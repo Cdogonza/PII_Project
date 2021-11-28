@@ -28,16 +28,17 @@ namespace ClassLibrary
         /// <returns>Retorna un string con una lista de ofertas</returns>
         public string GetOfferByDepartment(string department)
         {
-            List<Offer> byLocation = new List<Offer>();
+            
             this.catalog = Singleton<OfferManager>.Instance.catalog;
-             Console.WriteLine(department);
+            
             string data;
+            int cont=0;
             foreach (Offer offer in this.catalog)
             {   
-               
+               cont++;
                 if (offer.Location.Locality == department)
                 {                  
-                    data = $"id:{offer.id}- Oferta:{offer.Name}- Material: {offer.Material.Name}- \n Costo: {offer.Cost}- Fecha Publicacion{offer.PublicationDate}-\n Direccion: {offer.Location.FormattedAddress}\n ";
+                    data = $"{cont}- id:{offer.id}- Oferta:{offer.Name}-\n Material: {offer.Material.Name}-\nCosto: {offer.Cost}-\nFecha Publicacion{offer.PublicationDate}-\nDireccion: {offer.Location.FormattedAddress}\n ";
                     return data;
                     //byLocation.Add(offer);
                     //Console.WriteLine(data);
@@ -45,6 +46,7 @@ namespace ClassLibrary
                 }
                  
             }
+            cont=0;
            return null;
         }
 
