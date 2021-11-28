@@ -36,13 +36,6 @@ namespace ClassLibrary
             
             if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1 && Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/registrarse") )
             {
-                if(message.Text.ToLower().Equals("/cancel") )
-                {
-                    Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
-                    response = "Se cancela el proceso actual";
-                    return true;
-                }
-            
                 if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/registrarse"))
                 {
                    
