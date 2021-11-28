@@ -22,10 +22,10 @@ namespace ClassLibrary
         public MaterialType Type{get;set;}
 
         /// <summary>
-        /// String de la cantidad del material 
+        /// String de la unidad del material 
         /// </summary>
         /// <value></value>
-        public string Quantity{get;set;}
+        public string Unit{get;set;}
 
         /// <summary>
         /// Constructor de la clase
@@ -35,11 +35,11 @@ namespace ClassLibrary
         /// <param name="quantity"></param>
         /// <param name="cost"></param>
         /// <param name="location"></param>
-        public Material(string name, MaterialType type, string quantity)
+        public Material(string name, MaterialType type, string unit)
         {
             this.Name = name;
             this.Type = type;
-            this.Quantity = quantity;
+            this.Unit = unit;
         }
     }
 }

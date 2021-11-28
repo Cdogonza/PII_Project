@@ -17,6 +17,11 @@ namespace ClassLibrary
         /// <value></value>
         public string Name {get;set;}
         /// <summary>
+        /// Cantidad de unidades a ofrecer 
+        /// </summary>
+        /// <value></value>
+        public int Quantity {get; set;}
+        /// <summary>
         /// Costo en caso de que tenga
         /// </summary>
         /// <value></value>
@@ -95,12 +100,13 @@ namespace ClassLibrary
          {
 
          }
-         public Offer(long id,string name, Material material, Location location, double cost, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
+         public Offer(long id,string name, Material material, Location location, int quantity, double cost, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
         {
             this.Idd = id;
             this.Name = name;
             this.Material = material;
             this.Location = location;
+            this.Quantity = quantity;
             this.Cost = cost;
             this.Availability = true;
             this.Tags = tags;
