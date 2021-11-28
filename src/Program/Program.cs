@@ -40,6 +40,7 @@ namespace ClassLibrary
 
             firstHandler =
                 new WelcomeHandler(
+                new CancellationHandler(
                 new RegistrationHandler(              
                 new DataManagerHandler(
                 new MaterialTypesHandler(
@@ -47,7 +48,7 @@ namespace ClassLibrary
                  new PermissionsHandler(  
                 new SearchOffersHandler(  
                 new CloseSessionHandler(                             
-                new MapsHandler(Bot,null)))))))));
+                new MapsHandler(Bot,null))))))))));
             Message message = new Message();
            
 
