@@ -76,7 +76,7 @@ namespace ClassLibrary
         /// El id lo utilizamos para identificar cada oferta en el catalogo
         /// </summary>
         /// <value></value>
-        public int id {get;}
+        public long Idd {get;set;}
         /// <summary>
         /// Este es el constructor de la oferta que recibe los parametros para crear la misma
         /// </summary>
@@ -94,10 +94,10 @@ namespace ClassLibrary
          public Offer()
          {
 
-        }
-         public Offer(string name, Material material, Location location, double cost, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
+         }
+         public Offer(long id,string name, Material material, Location location, double cost, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
         {
-            this.id = id +1;
+            this.Idd = id;
             this.Name = name;
             this.Material = material;
             this.Location = location;
