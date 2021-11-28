@@ -15,6 +15,8 @@ namespace ClassLibrary
         /// <returns>El objeto convertido a texto en formato Json.</returns>
         string ConvertToJsonCompany();
         string ConvertToJsonEntrepreneur();
+        string ConvertToJsonOffer();
+        
         
     }
 }

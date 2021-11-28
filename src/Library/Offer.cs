@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using System.Collections;
 using System;
+using System.Text.Json.Serialization;
 namespace ClassLibrary
 {
     /// <summary>
     /// Esta clase esteblece los parametros necesarios para la creacion de la oferta/.
     /// Implementa el patron SRP ya que tiene una unica razon de cambio
     /// </summary>
-    public class Offer
+    public class Offer : IJsonConvertible
     {
         /// <summary>
         /// Nombre de la oferta
@@ -87,7 +88,13 @@ namespace ClassLibrary
         /// <param name="deliverydate"></param>
         /// <param name="publicationdate"></param>
         /// <param name="offer"></param>
-        public Offer(string name, Material material, Location location, double cost, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
+        
+         [JsonConstructor]
+         public Offer()
+         {
+
+        }
+         public Offer(string name, Material material, Location location, double cost, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
         {
             this.id = id +1;
             this.Name = name;
@@ -125,9 +132,18 @@ namespace ClassLibrary
                 this.Availability = false;          
             }
             return null;
-            // this.Company.DataCompany();
+           
         }
-      
+        public string ConvertToJsonCompany()
+        {
+            return null;
+        }
+        public string ConvertToJsonEntrepreneur()
+        {return null;}
+        public string ConvertToJsonOffer()
+        {
+            {return null;}
+        }
         
     }
 }

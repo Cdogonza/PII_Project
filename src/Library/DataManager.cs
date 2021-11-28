@@ -351,7 +351,7 @@ namespace ClassLibrary
         {
             return this.materialsType;
         }
-          public string ConvertToJsonCompany()
+        public string ConvertToJsonCompany()
         {
             string result = "{\"Items\":[";
 
@@ -392,6 +392,8 @@ namespace ClassLibrary
            
             }
         }
+        public string ConvertToJsonOffer()
+        {return null;}
         public string ConvertToJsonEntrepreneur()
         {
             string result = "{\"Items\":[";
@@ -415,6 +417,7 @@ namespace ClassLibrary
 
             return JsonSerializer.Serialize(this.entrepreneurs, options);            
         }
+     
         public void LoadFromJsonEntrepreneur()
         {
             
