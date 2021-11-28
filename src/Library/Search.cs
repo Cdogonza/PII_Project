@@ -32,6 +32,7 @@ namespace ClassLibrary
             this.catalog = Singleton<OfferManager>.Instance.catalog;
             
             string data="";
+            string title = $"Las ofertas en {department} son:";
             int cont=0;
 
             foreach (Offer offer in this.catalog)
@@ -39,19 +40,20 @@ namespace ClassLibrary
                
                 if (offer.Location.Locality == department)
                 {                  
-                    data += $"{offer.Idd}- Oferta:{offer.Name}-\n Material: {offer.Material.Name}-\nCosto: {offer.Cost}-\nFecha Publicacion{offer.PublicationDate}-\nDireccion: {offer.Location.FormattedAddress}\n - /Obtener_Oferta";
+                    data += $"{offer.Idd}- Oferta:{offer.Name}-\n Material: {offer.Material.Name}-\nCosto: {offer.Cost}-\nFecha de publicación: {offer.PublicationDate}-\nDireccion: {offer.Location.FormattedAddress}\n - /Obtener_Oferta";
                     
                     cont++;
                 }
-               
-                
             }
           
            if(data =="")
            {
-               data ="No hay Ofertas por el departamento ingresado /help";          
+               data ="No hay Ofertas por el departamento ingresado /help";  
+               return data;        
+           }else
+           {
+               return title + data;
            }
-            return data;
         }
 
                /// <summary>
@@ -130,37 +132,62 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="entrepreneur"></param>
         /// <returns>Retorna un string con una lista de ofertas</returns>
-        public string GetOfferByEntrepreneur(Entrepreneur entrepreneur)
+        public string GetOfferByEntrepreneur(string entrepreneur)
         {
-            string data = $"Las compras de este emprendedor son: \n";
+            this.catalog = Singleton<OfferManager>.Instance.catalog;
 
-            foreach (Offer offer in catalog)
+            string title = $"Las ofertas adquiridas por el emprendimiento {entrepreneur} son: \n";
+            string data = "";
+            int cont = 0;
+
+           /* foreach (Offer offer in this.catalog)
             {
-                if(offer.Entrepreneur == entrepreneur)
+                if (offer.Entrepreneur.Name == entrepreneur)
                 {
-                    data = data + $"ID: {offer.Idd} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                    data += $"{offer.Idd}) Oferta:{offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}";
+                    cont ++;
                 }
             }
-            return data;
+
+            if (data == "")
+            {
+                data = $"No hay ofertas adquiridas por el emprendimiento {entrepreneur}";
+                return data;
+            }else{*/
+                return title + data;
+            //}
         }
         /// <summary>
         /// Filtra el catálogo de búsquedas que publicó una empresa
         /// </summary>
         /// <param name="company"></param>
         /// <returns>Retorna un string con una lista de ofertas</returns>
-        public string GetOfferByCompany(Company company)
+        public string GetOfferByCompany(string companyId)
         {
+            this.catalog = Singleton<OfferManager>.Instance.catalog;
 
-            string data = $"Las ofertas de la empresa son: \n";
+            string title = $"Sus ofertas son: \n";
+            string data = "";
+            int cont = 0;
 
-            foreach (Offer offer in catalog)
+            foreach (Offer offer in this.catalog)
             {
-                if(offer.Company == company)
+                if (offer.Company.Id == companyId)
                 {
-                    data = data + $"ID: {offer.Idd} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                    data += $"{offer.Idd}) Oferta:{offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}";
+                    cont ++;
                 }
             }
-            return data;
+
+            if (data == "")
+            {
+                data = $"No tiene ofertas";
+                return data;
+            }else
+            {
+                return title + data;
+            }
+            
         }
 
 

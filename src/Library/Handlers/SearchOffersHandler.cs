@@ -28,95 +28,101 @@ namespace ClassLibrary
                     if(Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                     {
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text); 
-                        response = "Como Company tienes las siguientes opciones\n /oferta_por_emprendedor\n/mis_ofertas";
+                        response = "Como empresa tienes las siguientes opciones\n /oferta_por_emprendedor\n/mis_ofertas";
                         return true;
                     }
                     if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                     {
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);   
-                        response = "Como Entrepreneur tienes las siguientes opciones\n /todas_las_ofertas\n /oferta_por_palabra\n/oferta_por_departamento\n/oferta_por_distancia\n/oferta_por_categoria\n/oferta_por_emprendedor\n/oferta_por_company";                     
+                        response = "Como emprendimiento tienes las siguientes opciones\n /todas_las_ofertas\n /oferta_por_palabra\n/oferta_por_departamento\n/oferta_por_distancia\n/oferta_por_categoria\n/oferta_por_emprendedor\n/oferta_por_company";                     
                         return true; 
                     }
                 }
-                        if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1)
-                        {
-                            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/buscar_oferta"))
-                            {
-                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);//Agrego el comando ingresado por el usuario
+                
+                if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1)
+                {
+                    Console.WriteLine("ifffff");
+                    if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/buscar_oferta"))
+                    {
+                        Console.WriteLine("entre aca");
+                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);//Agrego el comando ingresado por el usuario
 
-                            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/oferta_por_emprendedor"))
-                                {
-                                    //codigo para buscar ofertas por emprendedor
-                                    response = "";
-                                    return true;
-                                }                               
-                            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/mis_ofertas"))
-                                {
-                                        //buscar ofertas propias
-                                        response = "";
-                                        return true;
-                                } 
-                             if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Trim().Contains("/oferta_por_palabra"))
+                        if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/oferta_por_emprendedor"))
+                        {
+                            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
                             {
-                                //codigo para buscar ofertas por palabra
-                                response = "";
+                                response = "Ingrese el nombre del emprendimiento";
                                 return true;
-                            }else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Trim().Contains("/oferta_por_departamento"))
+                            }                                 
+                            Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                            Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
+                            response=Singleton<Search>.Instance.GetOfferByEntrepreneur(message.Text);                             
+                            return true;
+
+                        }else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/mis_ofertas"))
+                        {
+                            Console.WriteLine("entre");
+                            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
                             {
-                               if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
-                               {
-                                response = "Ingrese el departamento";
+                                response=Singleton<Search>.Instance.GetOfferByCompany(message.UserId);       
                                 return true;
-                               }                                 
-                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                                response=Singleton<Search>.Instance.GetOfferByDepartment(message.Text);                             
-                                return true;
-                                                          
                             }
-                            else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Trim().Contains("/oferta_por_distancia"))
-                            {
-                            //codigo para buscar ofertas por distancia
+                            Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
+                            
+                        } 
+                        
+                        if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Trim().Contains("/oferta_por_palabra"))
+                        {
+                            //codigo para buscar ofertas por palabra
                             response = "";
                             return true;
-                            }
-                             else  if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/oferta_por_categoria"))
+                        }else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Trim().Contains("/oferta_por_departamento"))
+                        {
+                            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
                             {
-                                //codigo para buscar ofertas por categoria
-                                response = "";
+                                response = "Ingrese el departamento";
                                 return true;
-                            }
-                            else  if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/oferta_por_emprendedor"))
-                            {   
-                                //codigo para buscar ofertas por emprendedor
-                                response = "";
-                                return true;
-                                }
-                                else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/oferta_por_company"))
-                                {   
-                                    //codigo para buscar ofertas por company
-                                     response = "";
-                                     return true;
-                                }
-                                else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/todas_las_ofertas"))
-                                {   
-                                    //codigo para buscar ofertas por habilitadas
-                                    response = "";
-                                    return true;
-                                    }
-
-
-
-                            }
-                        
-
+                            }                                 
+                            Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                            response=Singleton<Search>.Instance.GetOfferByDepartment(message.Text);                             
+                            return true;
+                                                    
                         }
-                    
-             response = String.Empty ;
-            return false;
-                 }
-                            
-            
-           
-        }
-
+                        else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Trim().Contains("/oferta_por_distancia"))
+                        {
+                        //codigo para buscar ofertas por distancia
+                            response = "";
+                            return true;
+                        }
+                        else  if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/oferta_por_categoria"))
+                        {
+                            //codigo para buscar ofertas por categoria
+                            response = "";
+                            return true;
+                        }
+                        else  if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/oferta_por_emprendedor"))
+                        {   
+                            //codigo para buscar ofertas por emprendedor
+                            response = "";
+                            return true;
+                        }
+                            else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/oferta_por_company"))
+                            {   
+                                //codigo para buscar ofertas por company
+                                response = "";
+                                return true;
+                            }
+                            else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/todas_las_ofertas"))
+                            {   
+                                //codigo para buscar ofertas por habilitadas
+                                response = "";
+                                return true;
+                            }
+                    }
+                }
+                response = String.Empty ;
+                return false;       
+            }
     }
+
+}
