@@ -51,7 +51,16 @@ namespace ClassLibrary
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text.ToLower()); /// agrego texto /empresa
                         response = "Ingrese el código de invitación";
                         return true;
-                    }  
+                    }
+                    if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 1 && message.Text.ToLower().Equals("/emprendedor"))
+                    {
+                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text); /// agrego texto /emprendendor
+                        response = "Ingrese nombre de su emprendimiento";
+                        return true;                   
+                    }
+                }
+                    if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/empresa"))
+                    {  
                     if(message.Text.ToLower().Equals( "1234") && Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
                         {
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text.ToLower());
@@ -100,15 +109,10 @@ namespace ClassLibrary
                                 return true;
                         
                         }
-                    }else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 1 && message.Text.ToLower().Trim().Equals("/emprendedor"))
-                    {
-                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text); /// agrego texto /emprendendor
-                        response = "Ingrese nombre de su emprendimiento";
-                        return true;                   
-                    }
-                
+                        }
+                                 
             
-                    if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Trim().Contains("/emprendedor"))
+                    if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/emprendedor"))
                     {
                         
                         switch(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count)
