@@ -40,7 +40,7 @@ namespace ClassLibrary
             {
                 if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null )
                 {
-                    response = "Los comandos disponibles para las empresas son\n/vermisdatos\n/registrarse\n/mostrar_materiales\n/ver_mapa\n/cerrar_session";
+                    response = "Los comandos disponibles para las empresas son\n/vermisdatos\n/registrarse\n/mostrar_materiales\n/ver_mapa\n/publicar_oferta\n,/habilitaciones\n/cerrar_session";
                     return true;
                 }else
                 {

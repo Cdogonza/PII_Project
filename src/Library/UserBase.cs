@@ -6,7 +6,7 @@ namespace ClassLibrary
 {   /// <summary>
     /// Esta clase define las propiedas y comportamiento que comparten los diferentes usuarios de la empresa
     /// </summary>
-    public abstract class UserBase:IJsonConvertible
+    public abstract class UserBase : IJsonConvertible
     { 
         [JsonConstructor]
 
@@ -115,6 +115,10 @@ namespace ClassLibrary
             return JsonSerializer.Serialize(this);
         }
          public string ConvertToJsonEntrepreneur()
+        {
+            return JsonSerializer.Serialize(this);
+        }
+        public string ConvertToJsonOffer()
         {
             return JsonSerializer.Serialize(this);
         }
