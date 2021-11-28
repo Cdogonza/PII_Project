@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using System;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 namespace ClassLibrary
 {
@@ -142,7 +143,7 @@ namespace ClassLibrary
         {return null;}
         public string ConvertToJsonOffer()
         {
-            {return null;}
+           return JsonSerializer.Serialize(this);
         }
         
     }

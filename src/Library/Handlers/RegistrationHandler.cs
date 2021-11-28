@@ -29,7 +29,7 @@ namespace ClassLibrary
                     }else
                     {
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                        response = "Registrarse como Empresa o como Emprendedor\n/Empresa\n/Emprendedor";
+                        response = "Registrarse como Empresa o como Emprendedor\n/Empresa\n/Emprendedor o cancela con ";
                         return true;
                     }
             }
@@ -49,19 +49,8 @@ namespace ClassLibrary
                     {
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text); /// agrego texto /empresa
                         response = "Ingrese el código de invitación";
-                        return true;
-                    
-                    }
-                
-                    if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 1 && message.Text.ToLower().Trim().Equals("/emprendedor"))
-                    {
-                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text); /// agrego texto /emprendendor
-                        response = "Ingrese nombre de su emprendimiento";
-                        return true;
-                    
-                    }
-                
-                   if(message.Text.ToLower().Equals( "1234") && Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
+                      
+                    if(message.Text.ToLower().Equals( "1234") && Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
                         {
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                             response = "Ingrese el nombre de la empresa";
@@ -110,6 +99,14 @@ namespace ClassLibrary
                                 return true;
                         
                         }
+                    }else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 1 && message.Text.ToLower().Trim().Equals("/emprendedor"))
+                    {
+                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text); /// agrego texto /emprendendor
+                        response = "Ingrese nombre de su emprendimiento";
+                        return true;                   
+                    }
+                
+                   
 
                     
 
@@ -156,7 +153,7 @@ namespace ClassLibrary
                             case 9:
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(Singleton<DataManager>.Instance.permissions[Int32.Parse(message.Text)].Name);
                             Singleton<DataManager>.Instance.AddEntrepreneur(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],Singleton<TelegramUserData>.Instance.userdata[message.UserId][3],Singleton<TelegramUserData>.Instance.userdata[message.UserId][4],Singleton<TelegramUserData>.Instance.userdata[message.UserId][5],Singleton<TelegramUserData>.Instance.userdata[message.UserId][6],Singleton<TelegramUserData>.Instance.userdata[message.UserId][7],Singleton<TelegramUserData>.Instance.userdata[message.UserId][8],Singleton<TelegramUserData>.Instance.userdata[message.UserId][9]);
-                            response = "Se creó el Emprendedor correctamente\n Las siguientes acciones posibles son:\n/vermisdatos\n/tipo_material";
+                            response = "Se creó el Emprendedor correctamente\n Las siguientes acciones posibles son:\n/help";
                             Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);                                
                             return true;
                         

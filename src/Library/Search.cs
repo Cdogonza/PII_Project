@@ -12,13 +12,14 @@ namespace ClassLibrary
         /// <summary>
         /// Crea una lista de ofertas vacía
         /// </summary>
-        private List<Offer> catalog = new List<Offer>();
+        public List<Offer> catalog = new List<Offer>();
         /// <summary>
         /// Carga una copia del catalogo de ofertas a la lista
         /// </summary>
         public Search()
         {
-            this.catalog = Singleton<OfferManager>.Instance.catalog;
+             Singleton<OfferManager>.Instance.LoadFromJsonOffer();
+            
         }
         /// <summary>
         /// Filtra el catálogo de búsquedas según su ubicación
@@ -28,18 +29,23 @@ namespace ClassLibrary
         public string GetOfferByDepartment(string department)
         {
             List<Offer> byLocation = new List<Offer>();
-
-            string data = $"Las ofertas del departamento ingresado son: \n";
-
-            foreach (Offer offer in catalog)
-            {
+            this.catalog = Singleton<OfferManager>.Instance.catalog;
+             Console.WriteLine(department);
+            string data;
+            foreach (Offer offer in this.catalog)
+            {   
+               
                 if (offer.Location.Locality == department)
-                {
-                    data = data + $"ID: {offer.id} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} Ubicación: {offer.Location.FormattedAddress}\n ";
-                    byLocation.Add(offer);
+                {                  
+                    data = $"id:{offer.id}- Oferta:{offer.Name}- Material: {offer.Material.Name}- \n Costo: {offer.Cost}- Fecha Publicacion{offer.PublicationDate}-\n Direccion: {offer.Location.FormattedAddress}\n ";
+                    return data;
+                    //byLocation.Add(offer);
+                    //Console.WriteLine(data);
+                    
                 }
+                 
             }
-            return data;
+           return null;
         }
 
                /// <summary>

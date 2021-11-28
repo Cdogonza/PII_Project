@@ -26,7 +26,7 @@ namespace ClassLibrary
            [JsonConstructor] 
            public OfferManager()
         {
-            
+            this.catalog = new List<Offer>();
         }
         /// <summary>
         /// Este metodo lo que hace es, una vez creada la oferta se guarda en el catalogo de la aplicacion
