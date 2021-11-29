@@ -46,7 +46,7 @@ namespace ClassLibrary
                 {
                     if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                     {
-                        response = "Los comandos disponibles para los emprendedores son\n/buscar_oferta\n/registrarse\n/vermisdatos\n/ver_mapa\n/mostrar_ruta\n/cerrar_sesion";
+                        response = "Los comandos disponibles para los emprendedores son\n/buscar_oferta\n/registrarse\n/vermisdatos\n/rubros\n/ver_mapa\n/mostrar_ruta\n/cerrar_sesion";
                         return true;
                     }else
                     {
