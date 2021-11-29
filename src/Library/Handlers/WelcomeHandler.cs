@@ -20,8 +20,16 @@ namespace ClassLibrary
                 {
                     Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId,new Collection<string>());    
                 }    
-                response = "Bienvenido a la Aplicacion Equipo15\n Indique /registrarse si desea registrarse en nuestra plataforma";
-                return true;
+                if (Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null | Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
+                {
+                    response = "Bienvenido a la Aplicacion Equipo15\n Indique /help para ver los comandos disponibles";
+                    return true;
+                }
+                else
+                {    
+                    response = "Bienvenido a la Aplicacion Equipo15\n Indique /registrarse si desea registrarse en nuestra plataforma";
+                    return true;  
+                }
             }
             else
             {
