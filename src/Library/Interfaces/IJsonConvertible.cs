@@ -16,7 +16,9 @@ namespace ClassLibrary
         string ConvertToJsonCompany();
         string ConvertToJsonEntrepreneur();
         string ConvertToJsonOffer();
-        
+        string ConvertToJsonPermissions();
+        string ConvertToJsonMaterialTypes();
+        string ConvertToJsonAreaOfWork();
         
     }
 }

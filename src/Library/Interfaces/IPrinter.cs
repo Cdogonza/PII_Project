@@ -46,14 +46,14 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="search"></param>
         /// <param name="entrepreneur"></param>
-        void PrintOffersByEntrepreneur(Search search, Entrepreneur entrepreneur);
+        void PrintOffersByEntrepreneur(Search search, string entrepreneurId);
         
         /// <summary>
         /// Este metodo imprime todas las ofertas de una companía
         /// </summary>
         /// <param name="search"></param>
         /// <param name="company"></param>
-        void PrintOffersByCompany(Search search, Company company);
+        void PrintOffersByCompany(Search search, string companyId);
 
         /// <summary>
         /// Metodo que imprime todos los permisos cargados en el sistema

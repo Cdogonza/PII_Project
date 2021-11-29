@@ -10,7 +10,8 @@ namespace ClassLibrary
     { 
         [JsonConstructor]
 
-        public UserBase(){
+        public UserBase()
+        {
 
         }
         /// <summary>
@@ -119,6 +120,20 @@ namespace ClassLibrary
             return JsonSerializer.Serialize(this);
         }
         public string ConvertToJsonOffer()
+        {
+            return JsonSerializer.Serialize(this);
+        }
+
+        public string ConvertToJsonPermissions()
+        {
+            return JsonSerializer.Serialize(this);
+        }
+
+        public string ConvertToJsonMaterialTypes()
+        {
+            return JsonSerializer.Serialize(this);
+        }
+        public string ConvertToJsonAreaOfWork()
         {
             return JsonSerializer.Serialize(this);
         }

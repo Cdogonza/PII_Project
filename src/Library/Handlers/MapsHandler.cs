@@ -40,13 +40,13 @@ namespace ClassLibrary
             {
                 if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null )
                 {
-                    response = "Los comandos disponibles para las empresas son\n/buscar_oferta\n/vermisdatos\n/registrarse\n/mostrar_materiales\n/ver_mapa\n/publicar_oferta\n/habilitaciones\n/cerrar_session";
+                    response = "Los comandos disponibles para las empresas son\n/buscar_oferta\n/vermisdatos\n/registrarse\n/tipo_de_material\n/ver_mapa\n/publicar_oferta\n/habilitaciones\n/rubros\n/cerrar_sesion";
                     return true;
                 }else
                 {
                     if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                     {
-                        response = "Los comandos disponibles para los emprendedores son\n/buscar_oferta\n /registrarse\n/vermisdatos\n/ver_mapa\n/mostrar_ruta\n/cerrar_session";
+                        response = "Los comandos disponibles para los emprendedores son\n/buscar_oferta\n/registrarse\n/vermisdatos\n/ver_mapa\n/mostrar_ruta\n/cerrar_sesion";
                         return true;
                     }else
                     {

@@ -4,6 +4,9 @@ using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System;
+using System.ComponentModel;
+using System.Collections.Immutable;
+
 namespace ClassLibrary
 {
     /// <summary>
@@ -19,6 +22,7 @@ namespace ClassLibrary
         {
             this.companies = new List<Company>();
             this.entrepreneurs = new List<Entrepreneur>();
+            this.permissions = new List<Permission>();
         }
        
         public List <string> data = new List<string>();  
@@ -27,7 +31,7 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam List="string"></typeparam>
         /// <returns></returns>        
-        public List<AreaOfWork> areaofwork = new List<AreaOfWork>(){new AreaOfWork("construccion"),new AreaOfWork("cocina"),new AreaOfWork("industria")};
+        public List<AreaOfWork> areaofwork = new List<AreaOfWork>();
         [JsonInclude]
         public List<Entrepreneur> entrepreneurs = new List<Entrepreneur>();
         [JsonInclude]
@@ -38,7 +42,8 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam List="MaterialType"></typeparam>
         /// <returns></returns>
-        public List<MaterialType> materialsType = new List<MaterialType>(){new MaterialType("plastico","Descripcion plastico"),new MaterialType("papel","Descripcion papel"),new MaterialType("organico", "Descripcion organico")};
+        [JsonInclude]
+        public List<MaterialType> materialsType = new List<MaterialType>();//{new MaterialType("plastico","Descripcion plastico"),new MaterialType("papel","Descripcion papel"),new MaterialType("organico", "Descripcion organico")};
 
         /// <summary>
         /// Lista de Material donde se almacenan los materiales
@@ -52,8 +57,9 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam List="Permission"></typeparam>
         /// <returns></returns>
-        public List<Permission> permissions = new List<Permission>(){new Permission("Materiales Peligrosos"), new Permission("Residuos Medicos"), new Permission("Materiales Organicos"), new Permission("Materiales Inflamables"), new Permission("Sin Permisos")};
-
+        [JsonInclude]
+        public List<Permission> permissions = new List<Permission>(); // {AddPermission("Materiales Peligrosos"), new Permission("Residuos Medicos"), new Permission("Materiales Organicos"), new Permission("Materiales Inflamables")};
+        
 
         public List<Company>  DataCompany()
         {
@@ -76,15 +82,7 @@ namespace ClassLibrary
            return null;
         }
         
-        /// <summary>
-        /// Metodo para agregar permisos al listado de permisos
-        /// </summary>
-        /// <param name="item"></param>
-        
-        public void AddPermission(string permission)
-        {
-            this.permissions.Add(new Permission (permission));           
-        }
+
 
         public List<Entrepreneur>  DataEntrepeneur()
         {
@@ -148,6 +146,17 @@ namespace ClassLibrary
              
         }
     
+
+        /// <summary>
+        /// Metodo para agregar permisos al listado de permisos
+        /// </summary>
+        /// <param name="item"></param>
+        public void AddPermission(string permission)
+        {
+            this.permissions.Add(new Permission (permission)); 
+            this.ConvertToJsonPermissions();          
+        }
+
         /// <summary>
         /// Metodo que chequea si el permiso ingresado por el usuario existe en la lista de Permisos del sistema. 
         /// /// </summary>
@@ -155,6 +164,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public bool CheckPermission(int indice)
         {
+            this.LoadFromJsonPermission();
             if (indice <= this.permissions.Count ){
                 return true;
             }
@@ -172,7 +182,7 @@ namespace ClassLibrary
         /// <returns></returns> 
         public Permission GetPermissionByIndex(int indice)
         {
-            indice-=1;
+            this.LoadFromJsonPermission();
             return this.permissions[indice];
         }
 
@@ -183,6 +193,7 @@ namespace ClassLibrary
         /// <returns>data</returns> Texto que obtiene ConsolePrinter para imprimir
         public string GetTextToPrintPermission()
         {
+            this.LoadFromJsonPermission();
             int contador=0;
             string data = $"La lista de Permisos existentes son: \n";
             foreach (Permission item in this.permissions)
@@ -199,6 +210,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public List<Permission> GetPermissions()
         {
+            this.LoadFromJsonPermission();
             return this.permissions;
         }
         
@@ -206,9 +218,10 @@ namespace ClassLibrary
         /// Metodo para agregar Rubros a la lista de Rubros
         /// </summary>
         /// <param name="item"></param>
-        public void AddAreaOfWork(AreaOfWork item)
+        public void AddAreaOfWork(string areaOfWork)
         {
-            this.areaofwork.Add(item);           
+            this.areaofwork.Add(new AreaOfWork (areaOfWork)); 
+            this.ConvertToJsonAreaOfWork();          
         }
 
         /// <summary>
@@ -218,6 +231,7 @@ namespace ClassLibrary
         /// <returns>Retorna True si existe, sino retorna False</returns>        
         public bool CheckAreaOfWork(int indice)
         {
+            this.LoadFromJsonAreaOfWork();
             if (indice <= this.areaofwork.Count )
             {
                 return true;
@@ -236,7 +250,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public AreaOfWork GetAreaOfWorkByIndex(int indice)
         {
-            indice-=1;
+            this.LoadFromJsonAreaOfWork();
             return this.areaofwork[indice];
         }
 
@@ -247,6 +261,7 @@ namespace ClassLibrary
         /// <returns>data</returns> Texto que obtiene ConsolePrinter para imprimir
         public string GetTextToPrintAreaOfWork()
         {
+            this.LoadFromJsonAreaOfWork();
             string data = $"La lista de Rubros existentes son: \n";
             int contador=0;
             foreach (AreaOfWork item in this.areaofwork)
@@ -263,6 +278,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public List<AreaOfWork> GetAreasOfWork()
         {
+            this.LoadFromJsonAreaOfWork();
             return this.areaofwork;
         }
       
@@ -271,9 +287,12 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="item"></param>
        
-       public void AddMaterialType(string name, string description)
+       public MaterialType AddMaterialType(string name, string description)
        {
-           this.materialsType.Add(new MaterialType(name, description));
+           MaterialType newmaterialtype = new MaterialType(name, description);
+           this.materialsType.Add(newmaterialtype);
+           this.ConvertToJsonMaterialTypes();
+           return newmaterialtype;
        }
        /* public void AddMaterialType(MaterialType item)
         {
@@ -288,9 +307,9 @@ namespace ClassLibrary
         /// <param name="type"></param>
         /// <param name="quantity"></param>
         /// <returns>newmaterial</returns>
-        public Material AddMaterial (string name, MaterialType type, string quantity)
+        public Material AddMaterial (string name, MaterialType type, string unit)
         {
-            Material newmaterial = new Material(name,type,quantity);
+            Material newmaterial = new Material(name,type,unit);
             this.materials.Add(newmaterial);
             return newmaterial;
         }
@@ -301,7 +320,6 @@ namespace ClassLibrary
         /// <param name="userid"></param>
         /// <returns></returns>
         public Company GetCompanyInstance(string userid)
-
         {
             foreach (Company item in this.companies)
             {
@@ -321,7 +339,8 @@ namespace ClassLibrary
         /// <returns>Retorna True si el Tipo de Material existe en la lista, sino existe devuelve False</returns>
         public bool CheckMaterialType(int indice)
         {
-            if (indice <= this.materialsType.Count )
+            this.LoadFromJsonMaterialTypes();
+            if (indice <= this.materialsType.Count-1 )
             {
                 return true;
             }
@@ -338,7 +357,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public MaterialType GetMaterialTypeByIndex(int indice)
         {
-            indice-=1;
+            this.LoadFromJsonMaterialTypes();
             return this.materialsType[indice];
         }
         
@@ -348,6 +367,7 @@ namespace ClassLibrary
         /// </summary>
         public string GetTextToPrintMaterialType()
         {
+            this.LoadFromJsonMaterialTypes();
             string data = $"La lista de Materiales existentes son: \n";
             int contador=0;
             foreach (MaterialType item in this.materialsType)
@@ -364,6 +384,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public List<MaterialType> GetMaterialsType()
         {
+            this.LoadFromJsonMaterialTypes();
             return this.materialsType;
         }
         public string ConvertToJsonCompany()
@@ -391,7 +412,10 @@ namespace ClassLibrary
         }
          public void LoadFromJsonCompany()
         {
-            
+            if(!File.Exists(@"Companies.json"))
+            {
+                File.AppendAllText(@"Companies.json", "");
+            }                        
             string json = File.ReadAllText(@"Companies.json");
             if(json!="")
             {
@@ -435,7 +459,10 @@ namespace ClassLibrary
      
         public void LoadFromJsonEntrepreneur()
         {
-            
+            if(!File.Exists(@"Entrepreneur.json"))
+            {
+                File.AppendAllText(@"Entrepreneur.json", "");
+            }            
             string json = File.ReadAllText(@"Entrepreneur.json");
             if(json!="")
             {
@@ -451,7 +478,141 @@ namespace ClassLibrary
             }
         }
 
-        
+        public string ConvertToJsonPermissions()
+        {
+            string result = "{\"Items\":[";
+
+            foreach (Permission item in this.permissions)
+            {
+                result = result + item.ConvertToJsonPermissions() + ",";
+            }
+
+            result = result.Remove(result.Length - 1);
+            result = result + "]}";
+
+            string temp = JsonSerializer.Serialize(this.permissions);
+            File.WriteAllText(@"Permissions.json", temp);
+            return result;
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };
+
+            return JsonSerializer.Serialize(this.permissions, options);            
+        }
+
+        public void LoadFromJsonPermission()
+        {
+            if(!File.Exists(@"Permissions.json"))
+            {
+                File.AppendAllText(@"Permissions.json", "");
+            }
+            string json = File.ReadAllText(@"Permissions.json");
+            if(json!="")
+            {
+
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };
+
+            this.permissions = JsonSerializer.Deserialize<List<Permission>>(json, options);
+           
+            }
+        }
+     
+
+        public string ConvertToJsonMaterialTypes()
+        {
+            string result = "{\"Items\":[";
+
+            foreach (MaterialType item in this.materialsType)
+            {
+                result = result + item.ConvertToJsonMaterialTypes() + ",";
+            }
+
+            result = result.Remove(result.Length - 1);
+            result = result + "]}";
+
+            string temp = JsonSerializer.Serialize(this.materialsType);
+            File.WriteAllText(@"MaterialTypes.json", temp);
+            return result;
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };
+
+            return JsonSerializer.Serialize(this.materialsType, options);            
+        }
+
+        public void LoadFromJsonMaterialTypes()
+        {
+            if(!File.Exists(@"MaterialTypes.json"))
+            {
+                File.AppendAllText(@"MaterialTypes.json", "");
+            }
+            string json = File.ReadAllText(@"MaterialTypes.json");
+            if(json!="")
+            {
+
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };
+
+            this.materialsType = JsonSerializer.Deserialize<List<MaterialType>>(json, options);
+           
+            }
+        }
+
+        public string ConvertToJsonAreaOfWork()
+        {
+            string result = "{\"Items\":[";
+
+            foreach (AreaOfWork item in this.areaofwork)
+            {
+                result = result + item.ConvertToJsonAreaOfWork() + ",";
+            }
+
+            result = result.Remove(result.Length - 1);
+            result = result + "]}";
+
+            string temp = JsonSerializer.Serialize(this.areaofwork);
+            File.WriteAllText(@"AreaOfWork.json", temp);
+            return result;
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };
+
+            return JsonSerializer.Serialize(this.areaofwork, options);            
+        }
+
+        public void LoadFromJsonAreaOfWork()
+        {
+            if(!File.Exists(@"AreaOfWork.json"))
+            {
+                File.AppendAllText(@"AreaOfWork.json", "");
+            }
+            string json = File.ReadAllText(@"AreaOfWork.json");
+            if(json!="")
+            {
+
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };
+
+            this.areaofwork = JsonSerializer.Deserialize<List<AreaOfWork>>(json, options);
+           
+            }
+        }
     }
 
 }

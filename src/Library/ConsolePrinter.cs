@@ -63,7 +63,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="search"></param>
         /// <param name="entrepreneur"></param>
-        public void PrintOffersByEntrepreneur(Search search, Entrepreneur entrepreneur)
+        public void PrintOffersByEntrepreneur(Search search, string entrepreneurId)
         {
             //Console.WriteLine(search.GetOfferByEntrepreneur(entrepreneur));
         }
@@ -73,9 +73,9 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="search"></param>
         /// <param name="company"></param>
-        public void PrintOffersByCompany(Search search, Company company)
+        public void PrintOffersByCompany(Search search, string companyId)
         {
-            Console.WriteLine(search.GetOfferByCompany(company));
+            Console.WriteLine(search.GetOfferByCompany(companyId));
         }
     
         /// <summary>

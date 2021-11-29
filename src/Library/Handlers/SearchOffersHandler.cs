@@ -14,7 +14,7 @@ namespace ClassLibrary
         List<Offer> matVacia = new List<Offer>();
         public SearchOffersHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"/todas_las_ofertas","/oferta_por_palabra","/oferta_por_departamento","oferta_por_distancia","/oferta_por_categoria","/oferta_por_emprendedor","/oferta_por_company","/mis_ofertas"};
+            this.Keywords = new string[] {"/buscar_oferta","/todas_las_ofertas","/ofertas_por_palabra","/oferta_por_departamento","/oferta_por_distancia","/oferta_por_categoria","/mis_ofertas_adquiridas","/ofertas_por_empresa","/mis_ofertas","/mis_ofertas_por_emprendimiento"};
         }
             protected override bool InternalHandle(IMessage message, out string response)
             {
@@ -25,18 +25,16 @@ namespace ClassLibrary
                 }
                 if(message.Text.ToLower().Equals("/buscar_oferta"))
                 {
-                    
-                    
                     if(Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                     {
-                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text); //Agrego /buscar_oferta
-                        response = "Como Company tienes las siguientes opciones\n /oferta_por_emprendedor\n/mis_ofertas";
+                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text); 
+                        response = "Como empresa tienes las siguientes opciones\n/mis_ofertas_por_emprendimiento\n/mis_ofertas";
                         return true;
                     }
                     if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                     {
-                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);   //Agrego /buscar_oferta
-                        response = "Como Entrepreneur tienes las siguientes opciones\n /todas_las_ofertas\n /oferta_por_palabra\n/oferta_por_departamento\n/oferta_por_distancia\n/oferta_por_categoria\n/oferta_por_emprendedor\n/oferta_por_company";                     
+                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);   
+                        response = "Como emprendimiento tienes las siguientes opciones\n/todas_las_ofertas\n/ofertas_por_palabra\n/oferta_por_departamento\n/oferta_por_distancia\n/oferta_por_categoria\n/mis_ofertas_adquiridas\n/ofertas_por_empresa";                     
                          
                         return true; 
                     }
@@ -46,17 +44,18 @@ namespace ClassLibrary
                             if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/buscar_oferta"))
                             {
                                 Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);//Agrego el comando ingresado por el usuario
-
-                            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/oferta_por_emprendedor"))
+                                if(Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                                 {
-                                    //codigo para buscar ofertas por emprendedorBELENNNN
-                                    response = "";
-                                    return true;
-                                }                               
-                            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/mis_ofertas"))
-                                {
-                                        //buscar ofertas propias
-                                        response = "";
+                                    if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/mis_ofertas_por_emprendimiento"))
+                                    {
+                                        if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
+                                        {
+                                            response = "Ingrese el nombre del emprendimiento";
+                                            return true;
+                                        }                                 
+                                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();
+                                        response=Singleton<Search>.Instance.GetMyOffersByEntrepreneur(message.Text, message.UserId);                             
                                         return true;
                                 } 
                              if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Trim().Contains("/oferta_por_palabra"))
@@ -149,9 +148,10 @@ namespace ClassLibrary
 
                 }    
                         }        
-            response = String.Empty ;
-            return false;
-     }        
+            
+     } 
+     response = String.Empty ;
+            return false;       
     }
 
-}
+}}

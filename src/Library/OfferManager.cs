@@ -25,8 +25,8 @@ namespace ClassLibrary
         /// <summary>
         /// Este es el constructor de la clase
         /// </summary>
-           [JsonConstructor] 
-           public OfferManager()
+        [JsonConstructor] 
+        public OfferManager()
         {
             this.catalog = new List<Offer>();
         }
@@ -125,13 +125,13 @@ namespace ClassLibrary
         /// <param name="deliverydate"></param>
         /// <param name="publicationdate"></param>
         /// <param name="offer"></param>
-        public void AddOffer (string name, Material material, string street, string city , string department ,double cost, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
+        public void AddOffer (string name, Material material, int quantity, double cost, string street, string city , string department ,List<Permission> offerpermissions, bool regularoffers, List<string> tags, DateTime deliverydate, DateTime publicationdate, Company company)
         {
             LocationApiClient Loc = new LocationApiClient();
             Location locationoffer = Loc.GetLocation(street,city,department);
             Singleton<OfferManager>.Instance.LoadFromJsonOffer();
             long valorUltimoId = this.catalog.Count+1;
-            this.catalog.Add(new Offer(valorUltimoId,name,material,locationoffer,cost,regularoffers,tags,deliverydate,publicationdate,offer));
+            this.catalog.Add(new Offer(valorUltimoId, name, material, quantity, cost, locationoffer, offerpermissions, regularoffers, tags, deliverydate, publicationdate, company));
             this.ConvertToJsonOffer();
         }
         public string ConvertToJsonOffer()
@@ -176,9 +176,14 @@ namespace ClassLibrary
         }
         public string ConvertToJsonEntrepreneur()
         {return null;}
-          public string ConvertToJsonCompany()
+        public string ConvertToJsonCompany()
         {return null;}
-
+        public string ConvertToJsonPermissions()
+        {return null;}
+        public string ConvertToJsonMaterialTypes()
+        {return null;}
+        public string ConvertToJsonAreaOfWork()
+        {return null;}
     }
 
 }

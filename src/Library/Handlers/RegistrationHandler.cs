@@ -29,20 +29,13 @@ namespace ClassLibrary
                     }else
                     {
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text.ToLower()); //Agrego /registrarse al diccionario
-                        response = "Registrarse como Empresa o como Emprendedor\n/Empresa\n/Emprendedor o cancela con /cancel ";
+                        response = "Registrarse como Empresa o como Emprendedor\n/Empresa\n/Emprendedor\no cancela con /cancel ";
                         return true;
                     }
             }
             
             if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1 && Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/registrarse") )
             {
-                if(message.Text.ToLower().Equals("/cancel") )
-                {
-                    Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
-                    response = "Se cancela el proceso actual";
-                    return true;
-                }
-            
                 if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/registrarse"))
                 {
                    
@@ -104,13 +97,15 @@ namespace ClassLibrary
                                 Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(Singleton<DataManager>.Instance.areaofwork[Int32.Parse(message.Text)].Name);
                                 
                                 Singleton<DataManager>.Instance.AddCompany(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.UserId][3],Singleton<TelegramUserData>.Instance.userdata[message.UserId][4],Singleton<TelegramUserData>.Instance.userdata[message.UserId][5],Singleton<TelegramUserData>.Instance.userdata[message.UserId][6],Singleton<TelegramUserData>.Instance.userdata[message.UserId][7],Singleton<TelegramUserData>.Instance.userdata[message.UserId][8]);
-                                response = $"Se creó la Empresa correctamente\n Las siguientes acciones posibles son: \n /publicar_oferta \n /vermisdatos \n /materialtype \n /habilitaciones";
+                                response = $"Se creó la Empresa correctamente\n Para ver las siguientes acciones posibles ingrese: \n /publicar_oferta \n /vermisdatos \n /materialtype \n /habilitaciones";
                                 Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
                                 return true;
                         
-                        }
+                            }
+
                         }
                                  
+
             
                     if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/emprendedor"))
                     {
@@ -155,7 +150,7 @@ namespace ClassLibrary
                             case 9:
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(Singleton<DataManager>.Instance.permissions[Int32.Parse(message.Text)].Name);
                             Singleton<DataManager>.Instance.AddEntrepreneur(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],Singleton<TelegramUserData>.Instance.userdata[message.UserId][3],Singleton<TelegramUserData>.Instance.userdata[message.UserId][4],Singleton<TelegramUserData>.Instance.userdata[message.UserId][5],Singleton<TelegramUserData>.Instance.userdata[message.UserId][6],Singleton<TelegramUserData>.Instance.userdata[message.UserId][7],Singleton<TelegramUserData>.Instance.userdata[message.UserId][8],Singleton<TelegramUserData>.Instance.userdata[message.UserId][9]);
-                            response = "Se creó el Emprendedor correctamente\n Las siguientes acciones posibles son:\n/help";
+                            response = "Se creó el Emprendedor correctamente\n Para ver las siguientes acciones posibles ingrese:\n/help";
                             Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);                                
                             return true;
                         

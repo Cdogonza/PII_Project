@@ -1,11 +1,13 @@
 using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
     /// <summary>
     /// Esta clase representa los tipos de materiales
     /// </summary>
-    public class MaterialType
+    public class MaterialType : IJsonConvertible
     {
 
         /// <summary>
@@ -31,8 +33,27 @@ namespace ClassLibrary
             this.Name = name;
             this.Description = description;
         }
+        
+        [JsonConstructor]
+        public MaterialType()
+        {
 
+        }
 
+        public string ConvertToJsonCompany()
+        {return null;}
+        public string ConvertToJsonEntrepreneur()
+        {return null;}
+        public string ConvertToJsonOffer()
+        {return null;}
+        public string ConvertToJsonPermissions()
+        {return null;}
+        public string ConvertToJsonMaterialTypes()
+        {
+            return JsonSerializer.Serialize(this);
+        }
+        public string ConvertToJsonAreaOfWork()
+        {return null;}
     }
 
 

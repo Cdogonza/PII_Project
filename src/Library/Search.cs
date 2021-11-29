@@ -19,7 +19,7 @@ namespace ClassLibrary
         /// </summary>
         public Search()
         {
-             Singleton<OfferManager>.Instance.LoadFromJsonOffer();
+            Singleton<OfferManager>.Instance.LoadFromJsonOffer();
             
         }
         /// <summary>
@@ -45,7 +45,7 @@ namespace ClassLibrary
             return data;
         }
 
-               /// <summary>
+        /// <summary>
         /// Metodo para filtrar las ofertas que estan dentro de un rango de distancia entre la oferta y el emprendedor 
         /// </summary>
         /// <param name="entrepreneur"></param>
@@ -79,22 +79,28 @@ namespace ClassLibrary
         /// <returns>Retorna un string con una lista de ofertas</returns>
         public string GetOfferByWord(string word)
         {
-            List<Offer> byWord = new List<Offer>();
+            this.catalog = Singleton<OfferManager>.Instance.catalog;
+            string title = $"Las ofertas filtradas por la palabra clave {word} son:\n";         
+            string data="";
 
-            string data = $"Las ofertas con estas palabras clave son: \n";
-
-            foreach (Offer offer in catalog)
+            foreach (Offer offer in this.catalog)
             {
-                if (offer.Tags.Contains(word))
-                {
-                    data = data + $"ID: {offer.Idd} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
-                    byWord.Add(offer);
-                }
-            }
-            return data;
-
+                if (offer.Tags.Contains(word.ToLower()))
+                { 
+                    data += $"{offer.Idd}) Oferta:{offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}";
+                }               
+            }         
+           if(data =="")
+           {
+               data ="No hay ofertas para la palabra clave ingresada /help";
+               return data;        
+           }else 
+           {
+               return title + data;
+           }
         }
-       
+
+            
         /// <summary>
         /// Filtra el catálogo de ofertas según su categoria (tipo de material)
         /// </summary>
@@ -136,43 +142,162 @@ namespace ClassLibrary
             return data;
         }
         
+        
         /// <summary>
         /// Filtra el catálogo de búsquedas que compró un emprendedor
         /// </summary>
         /// <param name="entrepreneur"></param>
         /// <returns>Retorna un string con una lista de ofertas</returns>
-        // public string GetOfferByEntrepreneur(Entrepreneur entrepreneur)
-        // {
-        //     string data = $"Las compras de este emprendedor son: \n";
+        public string GetMyOffersByEntrepreneur(string entrepreneur, string CompanyId)
+        {
+            this.catalog = Singleton<OfferManager>.Instance.catalog;
 
-        //     foreach (Offer offer in catalog)
-        //     {
-        //         if(offer.Entrepreneur == entrepreneur)
-        //         {
-        //             data = data + $"ID: {offer.Idd} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
-        //         }
-        //     }
-        //     return data;
-        // }
+            string title = $"Sus ofertas adquiridas por el emprendimiento {entrepreneur} son: \n";
+            string data = "";
+            int cont = 0;
+
+            foreach (Offer offer in this.catalog)
+            {
+                if (offer.Company.Id == CompanyId)
+                {
+                    if (offer.Entrepreneur != null && offer.Entrepreneur.Name == entrepreneur)
+                    {
+                        data += $"{offer.Idd}) Oferta: {offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}";
+                        cont ++;
+                    }
+                }
+                
+            }
+
+            if (data == "")
+            {
+                data = $"No tienes ofertas adquiridas por el emprendimiento {entrepreneur}\n/help";
+                return data;
+            }else{
+                return title + data;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entrepreneurId"></param>
+        /// <returns></returns>
+        public string GetOfferByEntrepreneur(string entrepreneurId)
+        {
+            this.catalog = Singleton<OfferManager>.Instance.catalog;
+
+            string title = $"Sus ofertas adquiridas son: \n";
+            string data = "";
+            int cont = 0;
+
+            foreach (Offer offer in this.catalog)
+            {
+                if (offer.Entrepreneur != null && offer.Entrepreneur.Id == entrepreneurId)
+                {
+                    data += $"{offer.Idd}) Oferta:{offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}";
+                    cont ++;
+                }
+            }
+
+            if (data == "")
+            {
+                data = $"No tiene ofertas adquiridas";
+                return data;
+            }else
+            {
+                return title + data;
+            }
+            
+        }
+
         /// <summary>
         /// Filtra el catálogo de búsquedas que publicó una empresa
         /// </summary>
         /// <param name="company"></param>
         /// <returns>Retorna un string con una lista de ofertas</returns>
-        public string GetOfferByCompany(Company company)
+        public string GetOfferByCompany(string companyId)
         {
+            this.catalog = Singleton<OfferManager>.Instance.catalog;
 
-            string data = $"Las ofertas de la empresa son: \n";
+            string title = $"Sus ofertas son: \n";
+            string data = "";
+            int cont = 0;
 
-            foreach (Offer offer in catalog)
+            foreach (Offer offer in this.catalog)
             {
-                if(offer.Company == company)
+                if (offer.Company.Id == companyId)
                 {
-                    data = data + $"ID: {offer.Idd} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+                    data += $"{offer.Idd}) Oferta:{offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}";
+                    cont ++;
                 }
             }
-            return data;
+
+            if (data == "")
+            {
+                data = $"No tiene ofertas";
+                return data;
+            }else
+            {
+                return title + data;
+            }
+            
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="company"></param>
+        /// <returns></returns>
+        public string GetOffersPublicatedByCompany(string company)
+        {
+            this.catalog = Singleton<OfferManager>.Instance.catalog;
+
+            string title = $"Las ofertas publicadas por la empresa {company} son: \n";
+            string data = "";
+
+            foreach (Offer offer in this.catalog)
+            {
+                if (offer.Company.Name.ToLower() == company.ToLower())
+                {
+                    data += $"{offer.Idd}) Oferta: {offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}";
+                }
+            }
+
+            if (data == "")
+            {
+                data = $"La empresa {company} no tiene ofertas publicadas\n/help";
+                return data;
+            }else{
+                return title + data;
+            }   
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public string GetOffers()
+        {
+            this.catalog = Singleton<OfferManager>.Instance.catalog;
+
+            string title = $"Las ofertas publicadas son: \n";
+            string data = "";
+
+            foreach (Offer offer in this.catalog)
+            {
+                data += $"{offer.Idd}) Oferta: {offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}\n\n";
+            }
+
+            if (data == "")
+            {
+                data = $"No hay ofertas publicadas en este momento\n/help";
+                return data;
+            }else{
+                return title + data;
+            }   
+        }
+        
 
 
         /// <summary>
