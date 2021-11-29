@@ -55,7 +55,7 @@ namespace Tests
             this.searcher =  new Search();
             LocatioCompany =Loc.GetLocation("Berro 1231","Montevideo","Montevideo");
             this.company = new Company("1","compania1","098239334",LocatioCompany,"Construcción");
-             ArrayList tags  = new ArrayList();
+            List<string> tags  = new List<string>();
             tags.Add("tag1");
             tags.Add("tag");              
             DateTime publicationDate = new DateTime(2008, 3, 1, 7, 0, 0);

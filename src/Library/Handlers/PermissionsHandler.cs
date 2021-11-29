@@ -55,7 +55,6 @@ namespace ClassLibrary
                     }
                     if(message.Text.ToUpper().Equals("Y"))
                     {
-                        //Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                         response = "Ingrese el nombre de la nueva habilitacion";
                         return true;
                     }
@@ -69,19 +68,11 @@ namespace ClassLibrary
                             responsetemp.Append($"{Singleton<TelegramUserData>.Instance.userdata[message.UserId][i]}\n");
                         }
                         Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
-                        //Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId,new Collection<string>());
                         response = $"{responsetemp}";
                         return true;
                     }
                 }
             }
-               /* if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 1)
-                {
-                    Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                    response = "Desea ingresar otra Habilitacion Y/N";
-                    return true;
-                }        
-                */
             response = String.Empty ;
             return false;  
                  

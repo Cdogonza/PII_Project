@@ -69,7 +69,7 @@ namespace Tests
             this.dataManager.AddPermission("Materiales Peligrosos");
             //AGREGA A LA COMPANIA UN PERMISO
             this.company.AddPermission(dataManager.GetPermissions()[0]);
-            ArrayList tags  = new ArrayList();
+            List<string> tags  = new List<string>();
             tags.Add("tag1");
             tags.Add("tag");              
             DateTime publicationDate = new DateTime(2008, 3, 1, 7, 0, 0);
