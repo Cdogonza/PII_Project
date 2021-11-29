@@ -59,7 +59,8 @@ namespace ClassLibrary
                                         response=Singleton<Search>.Instance.GetMyOffersByEntrepreneur(message.Text, message.UserId);                             
                                         return true;
 
-                                    }else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/mis_ofertas"))
+                                    }
+                                    else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/mis_ofertas"))
                                     {
                                         if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
                                         {
@@ -69,6 +70,30 @@ namespace ClassLibrary
                                             
                                         }
                                     }
+                                    else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/remover_oferta"))
+                                    {
+                                        if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
+                                        {
+                                            Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                                            Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();
+                                            response=$"Ingrese la oferta a remover \n{Singleton<Search>.Instance.GetOfferByCompany(message.UserId)}";       
+                                            return true;                                            
+                                        }
+                                        if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 3)
+                                        {
+                                            if(Singleton<OfferManager>.Instance.Remove(long.Parse(message.Text)))
+                                            {
+                                                response = $"Se removió la oferta con exito";
+                                                return true;
+                                            }
+                                            else
+                                            {
+                                                response = $"No se encontró la oferta con Id: {message.Text}";
+                                                return true;
+                                            }
+                                        }      
+                                    }
+
                                 }
 
                                 if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)

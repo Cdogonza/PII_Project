@@ -104,7 +104,7 @@ namespace ClassLibrary
             {
                 if (item.Id == userid)
                 {
-                   datos =$" {item.Name}\n {item.Phone}\n{item.Location.FormattedAddress}\n{item.Specialization}\n{item.Permissions}\n";
+                   datos =$"Nombre: {item.Name}\nTelefono: {item.Phone}\nDireccion:{item.Location.FormattedAddress}\nEspecializacion:{item.Specialization}\nPermisos: {item.Permissions}\n";
                    return datos;
                 }
                 
@@ -122,7 +122,7 @@ namespace ClassLibrary
             {
                 if (item.Id == userid)
                 {
-                   datos =$" {item.Name}\n {item.Phone}\n{item.Location.FormattedAddress}\n";
+                   datos =$"Nombre: {item.Name}\nTelefono: {item.Phone}\nDireccion: {item.Location.FormattedAddress}\nRubro: {item.AreaOfWork.Name}\n ";
                    return datos;
                 }
                     
@@ -170,6 +170,12 @@ namespace ClassLibrary
         {
             this.LoadFromJsonPermission();
             return this.permissions[indice];
+        }
+
+        public string GetPermissionByIndexText(int indice)
+        {
+            this.LoadFromJsonPermission();
+            return this.permissions[indice].Name;
         }
 
         /// <summary>

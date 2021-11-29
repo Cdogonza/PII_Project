@@ -55,6 +55,18 @@ namespace ClassLibrary
             offer.Availability = false;
         }
 
+        public bool Remove(long id)
+        {
+            foreach (Offer offer in this.catalog)
+            {
+                if (offer.Idd == id)
+                {
+                    this.catalog.Remove(offer);
+                    return true;
+                }
+            }
+            return false; 
+        }
         /// <summary>
         /// Este metodo retorna las ofertas del catalogo que estan habilitadas
         /// </summary>

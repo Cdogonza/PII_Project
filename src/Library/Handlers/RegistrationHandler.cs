@@ -10,6 +10,7 @@ namespace ClassLibrary
     public class RegistrationHandler: BaseHandler
     {
         private StringBuilder responsetemp = new StringBuilder();
+        private string permiso {get; set;}
         public RegistrationHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/registrarse"};
@@ -22,7 +23,8 @@ namespace ClassLibrary
             }    
             
             if(message.Text.ToLower().Equals("/registrarse") )
-            {
+            {   
+                var _mypermissions = Singleton<TelegramUserData>.Instance.permissionsDict;
                 if (Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null | Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                 {
                     response = "Usted ya se encuentra registrad@";
@@ -161,36 +163,88 @@ namespace ClassLibrary
                                 response = "Dato mal ingresado, ingrese un numero de la lista";
                                 return true;
                             }
-                            
+
                             case 8:
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                            response = $"Ingrese un permiso \n{Singleton<DataManager>.Instance.GetTextToPrintPermission()}";
+                            response = $"Como emprendedor tiene algún permiso especial? Si/No";
                             return true;
+                            
 
                             case 9:
-                            if(Singleton<DataManager>.Instance.CheckPermission(Int16.Parse(message.Text)))
-                            {
-                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(Singleton<DataManager>.Instance.permissions[Int32.Parse(message.Text)].Name);
-                                Singleton<DataManager>.Instance.AddEntrepreneur(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],Singleton<TelegramUserData>.Instance.userdata[message.UserId][3],Singleton<TelegramUserData>.Instance.userdata[message.UserId][4],Singleton<TelegramUserData>.Instance.userdata[message.UserId][5],Singleton<TelegramUserData>.Instance.userdata[message.UserId][6],Singleton<TelegramUserData>.Instance.userdata[message.UserId][7],Singleton<TelegramUserData>.Instance.userdata[message.UserId][8],Singleton<TelegramUserData>.Instance.userdata[message.UserId][9]);
-                                response = "Se creó el Emprendedor correctamente\n Para ver las siguientes acciones posibles ingrese:\n/help";
-                                Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);                                
+                            if(message.Text.ToUpper().Equals("SI"))
+                            {   
+                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                                response = $"Ingrese un permiso \n{Singleton<DataManager>.Instance.GetTextToPrintPermission()}";
                                 return true;
                             }
+                            else if(message.Text.ToUpper().Equals("NO"))
+                            {
+                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                                response = "No se agregan permisos especiales, /continuar";   
+                            }    
                             else
                             {
-                                response = "Dato mal ingresado, ingrese un numero de la lista";
-                                return true;
+                                response = "Debe ingresar Si/No";
+                                
+                            }                 
+                            return true; 
+                   
+                            case 10:
+
+                            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][9].ToLower().Equals("no"))
+                            {   
+                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                                this.permiso = $"{String.Empty}";
                             }
+                            else if (Singleton<TelegramUserData>.Instance.userdata[message.UserId][9].ToLower().Equals("si"))
+                            {
+                                if (Singleton<DataManager>.Instance.CheckPermission(Int16.Parse(message.Text)))
+                                {   
+                                    Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                                    Console.WriteLine($"{Singleton<DataManager>.Instance.GetPermissionByIndexText(Int16.Parse(message.Text))}");
+                                    this.permiso = Singleton<DataManager>.Instance.GetPermissionByIndexText(Int16.Parse(message.Text));
+                                }
+                            }
+                          
+                            Console.WriteLine($"0 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][0]}");
+                            Console.WriteLine($"1 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][1]}");
+                            Console.WriteLine($"2 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][2]}");
+                            Console.WriteLine($"3 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]}");
+                            Console.WriteLine($"4 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][4]}");
+                            Console.WriteLine($"5 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][5]}");
+                            Console.WriteLine($"6 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][6]}");
+                            Console.WriteLine($"7 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][7]}");
+                            Console.WriteLine($"8 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][8]}");
+                            Console.WriteLine($"9 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][9]}");
+
+                            //Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(Singleton<DataManager>.Instance.permissions[Int32.Parse(message.Text)].Name);
+                            Singleton<DataManager>.Instance.AddEntrepreneur(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],Singleton<TelegramUserData>.Instance.userdata[message.UserId][3],Singleton<TelegramUserData>.Instance.userdata[message.UserId][4],Singleton<TelegramUserData>.Instance.userdata[message.UserId][5],Singleton<TelegramUserData>.Instance.userdata[message.UserId][6],Singleton<TelegramUserData>.Instance.userdata[message.UserId][7],Singleton<TelegramUserData>.Instance.userdata[message.UserId][8],this.permiso);
+                            response = "Se creó el Emprendedor correctamente\n Para ver las siguientes acciones posibles ingrese:\n/help";
+                            Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);                                
+                            return true;
+                            
+                            }/*
+                            Console.WriteLine($"0 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][0]}");
+                            Console.WriteLine($"1 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][1]}");
+                            Console.WriteLine($"2 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][2]}");
+                            Console.WriteLine($"3 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]}");
+                            Console.WriteLine($"4 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][4]}");
+                            Console.WriteLine($"5 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][5]}");
+                            Console.WriteLine($"6 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][6]}");
+                            Console.WriteLine($"7 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][7]}");
+                            Console.WriteLine($"8 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][8]}");
+                            Console.WriteLine($"9 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][9]}");
+                            //Console.WriteLine($"10 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][0]}");
+
+*/
                         }
 
                     }
+                    response = String.Empty ;
+                    return false;
                 } 
-              
-            response = String.Empty ;
-            return false;
 
         }
-    }
 }
 
 
