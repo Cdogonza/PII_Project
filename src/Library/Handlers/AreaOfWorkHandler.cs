@@ -64,27 +64,35 @@ namespace ClassLibrary
 
                 if (Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/agregar_rubros"))
                 {
-                    Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                    StringBuilder responsetemp = new StringBuilder();
-                    responsetemp.Append("Se agregaron los siguientes rubros: \n");
-                    for (int i = 1; i < Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count; i++)
+                    if(!message.Text.ToUpper().Equals("SI") && !message.Text.ToUpper().Equals("NO") )
                     {
-                        Singleton<DataManager>.Instance.AddAreaOfWork(Singleton<TelegramUserData>.Instance.userdata[message.UserId][i]);
-                        responsetemp.Append($"{Singleton<TelegramUserData>.Instance.userdata[message.UserId][i]}\n");
+                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                        response = "Desea ingresar otro Rubro? Si/No";
+                        return true;                    
                     }
-                    Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
-                
-                    response = $"{responsetemp}";
-                    return true;
-                }
-                
-            }
+                    if(message.Text.ToUpper().Equals("SI"))
+                    {
+                        response = "Ingrese el nombre del nuevo Rubro";
+                        return true;
+                    }
+                    else if(message.Text.ToUpper().Equals("NO"))
+                    {
+                        StringBuilder responsetemp = new StringBuilder();
+                        responsetemp.Append("Se agregaron los siguientes rubros: \n");
+                        for (int i = 2; i < Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count; i++)
+                        {
+                            Singleton<DataManager>.Instance.AddAreaOfWork(Singleton<TelegramUserData>.Instance.userdata[message.UserId][i]);
+                            responsetemp.Append($"{Singleton<TelegramUserData>.Instance.userdata[message.UserId][i]}\n");
+                        }
+                        Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
+                    
+                        response = $"{responsetemp}";
+                        return true;
+                    }    
+                }                 
+            }  
             response = String.Empty ;
-            return false;  
-                 
+            return false;                 
         }
-               
-                       
     }
-          
 }
