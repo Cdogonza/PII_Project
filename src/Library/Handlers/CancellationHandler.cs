@@ -19,6 +19,8 @@ namespace ClassLibrary
             if(message.Text.ToLower().Equals("/cancel"))
             {  
                     Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
+                    Singleton<TelegramUserData>.Instance.materialtypeDict.Remove(message.UserId);
+                    Singleton<TelegramUserData>.Instance.permissionsDict.Remove(message.UserId);
                     response = "Se cancela el proceso actual, Escribe /help para ver los comandos disponibles";
                     return true;
             }

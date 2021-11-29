@@ -157,7 +157,6 @@ namespace ClassLibrary
         /// <returns></returns> 
         public Permission GetPermissionByIndex(int indice)
         {
-            indice-=1;
             return this.permissions[indice];
         }
 
@@ -256,9 +255,11 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="item"></param>
        
-       public void AddMaterialType(string name, string description)
+       public MaterialType AddMaterialType(string name, string description)
        {
-           this.materialsType.Add(new MaterialType(name, description));
+           MaterialType newmaterialtype = new MaterialType(name, description);
+           this.materialsType.Add(newmaterialtype);
+           return newmaterialtype;
        }
        /* public void AddMaterialType(MaterialType item)
         {
@@ -273,9 +274,9 @@ namespace ClassLibrary
         /// <param name="type"></param>
         /// <param name="quantity"></param>
         /// <returns>newmaterial</returns>
-        public Material AddMaterial (string name, MaterialType type, string quantity)
+        public Material AddMaterial (string name, MaterialType type, string unit)
         {
-            Material newmaterial = new Material(name,type,quantity);
+            Material newmaterial = new Material(name,type,unit);
             this.materials.Add(newmaterial);
             return newmaterial;
         }
@@ -306,7 +307,7 @@ namespace ClassLibrary
         /// <returns>Retorna True si el Tipo de Material existe en la lista, sino existe devuelve False</returns>
         public bool CheckMaterialType(int indice)
         {
-            if (indice <= this.materialsType.Count )
+            if (indice <= this.materialsType.Count-1 )
             {
                 return true;
             }
@@ -323,7 +324,6 @@ namespace ClassLibrary
         /// <returns></returns>
         public MaterialType GetMaterialTypeByIndex(int indice)
         {
-            indice-=1;
             return this.materialsType[indice];
         }
         

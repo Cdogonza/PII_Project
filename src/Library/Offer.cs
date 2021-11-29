@@ -17,6 +17,11 @@ namespace ClassLibrary
         /// <value></value>
         public string Name {get;set;}
         /// <summary>
+        /// Cantidad de unidades a ofrecer 
+        /// </summary>
+        /// <value></value>
+        public int Quantity {get; set;}
+        /// <summary>
         /// Costo en caso de que tenga
         /// </summary>
         /// <value></value>
@@ -71,7 +76,7 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam List="Permission"></typeparam>
         /// <returns></returns>
-        public List<Permission> offerpermissions = new List<Permission>();
+        public List<Permission> Offerpermissions = new List<Permission>();
         /// <summary>
         /// El id lo utilizamos para identificar cada oferta en el catalogo
         /// </summary>
@@ -95,13 +100,15 @@ namespace ClassLibrary
          {
 
          }
-         public Offer(long id,string name, Material material, Location location, double cost, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
+         public Offer(long id,string name, Material material, int quantity, double cost, Location location, List<Permission> offerpermissions, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
         {
             this.Idd = id;
             this.Name = name;
             this.Material = material;
             this.Location = location;
+            this.Quantity = quantity;
             this.Cost = cost;
+            this.Offerpermissions = offerpermissions;
             this.Availability = true;
             this.Tags = tags;
             this.DeliveryDate = deliverydate;
@@ -116,7 +123,7 @@ namespace ClassLibrary
         public void AddPermission(string permission)
         {
             Permission newPermission = new Permission(permission);
-            offerpermissions.Add(newPermission);
+            Offerpermissions.Add(newPermission);
         }
         /// <summary>
         /// Metodo que retorna los datos de la empresa para ser enviados al emprendedor que compro la oferta
