@@ -158,6 +158,8 @@ namespace ClassLibrary
 
         public string ConvertToJsonPermissions()
         {return null;}
+        public string ConvertToJsonMaterialTypes()
+        {return null;}
 
     }
 

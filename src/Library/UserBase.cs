@@ -127,5 +127,10 @@ namespace ClassLibrary
         {
             return JsonSerializer.Serialize(this);
         }
+
+        public string ConvertToJsonMaterialTypes()
+        {
+            return JsonSerializer.Serialize(this);
+        }
     }
 }
