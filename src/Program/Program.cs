@@ -62,8 +62,6 @@ namespace ClassLibrary
                 cts.Token
             );
 
-            Console.WriteLine($"Ingrese /Start para Ingresar al Bot");
-
             // Esperamos a que el usuario aprete Enter en la consola para terminar el bot.
             Console.ReadLine();
 

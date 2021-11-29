@@ -84,10 +84,8 @@ namespace ClassLibrary
 
             foreach (Offer offer in this.catalog)
             {
-                Console.WriteLine("for");
                 if (offer.Tags.Contains(word.ToLower()))
-                {               
-                    Console.WriteLine("if");   
+                { 
                     data += $"{offer.Idd}) Oferta:{offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}";
                 }               
             }         
