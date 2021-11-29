@@ -162,9 +162,15 @@ namespace ClassLibrary
                                 responsetemp.Append("Se agregan los siguientes permisos \n");
                                 for (int i = 0; i < _mypermissions[message.UserId].Count; i++)
                                 {
+                                    if (!offerpermissions.Contains(Singleton<DataManager>.Instance.GetPermissionByIndex(Int32.Parse(_mypermissions[message.UserId][i]))))
+                                    {
                                     this.offerpermissions.Add(Singleton<DataManager>.Instance.GetPermissionByIndex(Int32.Parse(_mypermissions[message.UserId][i])));
                                     responsetemp.Append($"- {Singleton<DataManager>.Instance.GetPermissionByIndex(Int32.Parse(_mypermissions[message.UserId][i])).Name}\n");
-                                    
+                                    }else
+                                    {
+                                        response = "La oferta ya tiene ese permiso";
+                                        return true;
+                                    }
                                 }
                                     responsetemp.Append($"Presione /continuar");
                                     response = $"{responsetemp}";

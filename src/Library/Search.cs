@@ -28,21 +28,29 @@ namespace ClassLibrary
         /// <param name="department"></param>
         /// <returns>Retorna un string con una lista de ofertas</returns>
         public string GetOfferByDepartment(string department)
-        {          
+        {
+            purchased.Clear();   
             this.catalog = Singleton<OfferManager>.Instance.catalog;          
-            string data="";           
+            string data="";
+            string footer = "Para obtener una oferta ingrese /obtener_oferta";
             foreach (Offer offer in this.catalog)
-            {                 
-                if (offer.Location.Locality == department)
-                {                  
-                    data += $"{offer.Idd}- Oferta:{offer.Name}-\n Material: {offer.Material.Name}-\nCosto: {offer.Cost}-\nFecha Publicacion{offer.PublicationDate}-\nDireccion: {offer.Location.FormattedAddress}\n - /obtener_oferta  \n";
-                }               
+            {
+                if(offer.Availability)
+                {          
+                    if (offer.Location.Locality.ToLower() == department.ToLower())
+                    {                  
+                        data += $"{offer.Idd}) Oferta:{offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}\n\n";
+                        purchased.Add(offer);
+                    }
+                }
             }         
            if(data =="")
            {
-               data ="No hay Ofertas por el departamento ingresado /help";          
+               data ="No hay Ofertas por el departamento ingresado /help";
+               return data;         
+           }else{
+               return data + footer;
            }
-            return data;
         }
 
         /// <summary>
@@ -79,16 +87,21 @@ namespace ClassLibrary
         /// <returns>Retorna un string con una lista de ofertas</returns>
         public string GetOfferByWord(string word)
         {
+            purchased.Clear();
             this.catalog = Singleton<OfferManager>.Instance.catalog;
             string title = $"Las ofertas filtradas por la palabra clave {word} son:\n";         
             string data="";
-
+            string footer = "Para obtener una oferta ingrese /obtener_oferta";
             foreach (Offer offer in this.catalog)
             {
-                if (offer.Tags.Contains(word.ToLower()))
-                { 
-                    data += $"{offer.Idd}) Oferta:{offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}";
-                }               
+                if(offer.Availability)
+                {
+                    if (offer.Tags.Contains(word.ToLower()))
+                    { 
+                        data += $"{offer.Idd}) Oferta:{offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}\n\n";
+                        purchased.Add(offer);
+                    }
+                }              
             }         
            if(data =="")
            {
@@ -96,7 +109,7 @@ namespace ClassLibrary
                return data;        
            }else 
            {
-               return title + data;
+               return title + data + footer;
            }
         }
 
@@ -111,8 +124,8 @@ namespace ClassLibrary
         {
             purchased.Clear();
             this.catalog = Singleton<OfferManager>.Instance.catalog;  
-           string dat="";
-           string data = $"";
+            string dat="";
+            string data = $"";
             foreach (Offer offer1 in this.catalog)
             {
                 if (offer1.Idd== id)
@@ -123,8 +136,8 @@ namespace ClassLibrary
                         if(offer.Availability)
                         {
                         if(offer.Material.Type.Name.Equals(dat))
-                        {     Console.WriteLine(offer.Material.Type.Name);                      
-                            data += $"{offer.Idd}- Oferta:{offer.Name}-\n Material: {offer.Material.Name}-\nCosto: {offer.Cost}-\nFecha Publicacion{offer.PublicationDate}-\nDireccion: {offer.Location.FormattedAddress}";
+                        {                   
+                            data += $"{offer.Idd}) Oferta: {offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}\n";
                             purchased.Add(offer);
                         }
                         }
@@ -138,7 +151,7 @@ namespace ClassLibrary
                 }
            }
 
-            data+="\n/obtener_oferta";         
+            data+="\nPara obtener una oferta ingrese /obtener_oferta";        
             return data;
         }
         
@@ -154,7 +167,6 @@ namespace ClassLibrary
 
             string title = $"Sus ofertas adquiridas por el emprendimiento {entrepreneur} son: \n";
             string data = "";
-            int cont = 0;
 
             foreach (Offer offer in this.catalog)
             {
@@ -163,7 +175,7 @@ namespace ClassLibrary
                     if (offer.Entrepreneur != null && offer.Entrepreneur== entrepreneur)
                     {
                         data += $"{offer.Idd}) Oferta: {offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}";
-                        cont ++;
+
                     }
                 }
                 
@@ -183,34 +195,34 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="entrepreneurId"></param>
         /// <returns></returns>
-        // public string GetOfferByEntrepreneur(string entrepreneurId)
-        // {
-        //     this.catalog = Singleton<OfferManager>.Instance.catalog;
+         public string GetOfferByEntrepreneur(string entrepreneurId)
+         {
+             this.catalog = Singleton<OfferManager>.Instance.catalog;
 
-        //     string title = $"Sus ofertas adquiridas son: \n";
-        //     string data = "";
-        //     int cont = 0;
+             string title = $"Sus ofertas adquiridas son: \n";
+             string data = "";
+             int cont = 0;
 
-        //     foreach (Offer offer in this.catalog)
-        //     {
-        //         if (offer.Entrepreneur != null && offer.Entrepreneur == entrepreneurId)
-        //         {
+             foreach (Offer offer in this.catalog)
+             {
+                 if (offer.Entrepreneur != null && offer.Entrepreneur == entrepreneurId)
+                 {
                     
-        //             data += $"{offer.Idd}) Oferta:{offer.Nadme}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}";
-        //             cont ++;
-        //         }
-        //     }
+                     data += $"{offer.Idd}) Oferta:{offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}\n\n";
+                     cont ++;
+                 }
+             }
 
-        //     if (data == "")
-        //     {
-        //         data = $"No tiene ofertas adquiridas";
-        //         return data;
-        //     }else
-        //     {
-        //         return title + data;
-        //     }
+             if (data == "")
+             {
+                 data = $"No tiene ofertas adquiridas";
+                 return data;
+             }else
+             {
+                 return title + data ;
+             }
             
-        // }
+         }
 
         /// <summary>
         /// Filtra el catálogo de búsquedas que publicó una empresa
@@ -223,14 +235,12 @@ namespace ClassLibrary
 
             string title = $"Sus ofertas son: \n";
             string data = "";
-            int cont = 0;
 
             foreach (Offer offer in this.catalog)
             {
                 if (offer.Company.Id == companyId)
                 {
                     data += $"{offer.Idd}) Oferta:{offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}";
-                    cont ++;
                 }
             }
 
@@ -252,16 +262,21 @@ namespace ClassLibrary
         /// <returns></returns>
         public string GetOffersPublicatedByCompany(string company)
         {
+            purchased.Clear();
             this.catalog = Singleton<OfferManager>.Instance.catalog;
 
             string title = $"Las ofertas publicadas por la empresa {company} son: \n";
             string data = "";
-
+            string footer = "Para obtener una oferta ingrese /obtener_oferta";
             foreach (Offer offer in this.catalog)
             {
-                if (offer.Company.Name.ToLower() == company.ToLower())
+                if(offer.Availability)
                 {
-                    data += $"{offer.Idd}) Oferta: {offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}";
+                    if (offer.Company.Name.ToLower() == company.ToLower())
+                    {
+                        data += $"{offer.Idd}) Oferta: {offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}\n\n";
+                        purchased.Add(offer);
+                    }
                 }
             }
 
@@ -270,7 +285,7 @@ namespace ClassLibrary
                 data = $"La empresa {company} no tiene ofertas publicadas\n/help";
                 return data;
             }else{
-                return title + data;
+                return title + data + footer;
             }   
         }
 
@@ -280,14 +295,19 @@ namespace ClassLibrary
         /// <returns></returns>
         public string GetOffers()
         {
+            purchased.Clear();
             this.catalog = Singleton<OfferManager>.Instance.catalog;
 
             string title = $"Las ofertas publicadas son: \n";
             string data = "";
-
+            string footer = "Para obtener una oferta ingrese /obtener_oferta";
             foreach (Offer offer in this.catalog)
             {
-                data += $"{offer.Idd}) Oferta: {offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}\n\n";
+                if(offer.Availability)
+                {
+                    data += $"{offer.Idd}) Oferta: {offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}\n\n";
+                    purchased.Add(offer);
+                }
             }
 
             if (data == "")
@@ -295,7 +315,7 @@ namespace ClassLibrary
                 data = $"No hay ofertas publicadas en este momento\n/help";
                 return data;
             }else{
-                return title + data;
+                return title + data + footer;
             }   
         }
         

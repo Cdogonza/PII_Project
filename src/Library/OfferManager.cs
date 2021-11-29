@@ -102,7 +102,6 @@ namespace ClassLibrary
                     foreach (var item2 in this.buyers)
                     {
                         if(item2.Id == buyer){
-                        Console.WriteLine("Entre al buyer");
                             item.Entrepreneur=buyer;
                         }
                     }
