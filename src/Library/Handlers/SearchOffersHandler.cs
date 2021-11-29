@@ -5,11 +5,14 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Text;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace ClassLibrary
 {
     public class SearchOffersHandler : BaseHandler
     {
+        
+        List<Offer> matVacia = new List<Offer>();
         public SearchOffersHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/buscar_oferta","/todas_las_ofertas","/oferta_por_palabra","/oferta_por_departamento","oferta_por_distancia","/oferta_por_categoria","/oferta_por_emprendedor","/oferta_por_company","/mis_ofertas"};
@@ -35,6 +38,7 @@ namespace ClassLibrary
                     {
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);   
                         response = "Como Entrepreneur tienes las siguientes opciones\n /todas_las_ofertas\n /oferta_por_palabra\n/oferta_por_departamento\n/oferta_por_distancia\n/oferta_por_categoria\n/oferta_por_emprendedor\n/oferta_por_company";                     
+                         
                         return true; 
                     }
                 }
@@ -46,7 +50,7 @@ namespace ClassLibrary
 
                             if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/oferta_por_emprendedor"))
                                 {
-                                    //codigo para buscar ofertas por emprendedor
+                                    //codigo para buscar ofertas por emprendedorBELENNNN
                                     response = "";
                                     return true;
                                 }                               
@@ -58,6 +62,7 @@ namespace ClassLibrary
                                 } 
                              if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Trim().Contains("/oferta_por_palabra"))
                             {
+                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();
                                 //codigo para buscar ofertas por palabra
                                 response = "";
                                 return true;
@@ -68,8 +73,9 @@ namespace ClassLibrary
                                 response = "Ingrese el departamento";
                                 return true;
                                }                                 
-                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                                response=Singleton<Search>.Instance.GetOfferByDepartment(message.Text);                             
+                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);                              
+                                response=Singleton<Search>.Instance.GetOfferByDepartment(message.Text);
+                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();                             
                                 return true;
                                                           
                             }
@@ -81,8 +87,26 @@ namespace ClassLibrary
                             }
                              else  if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/oferta_por_categoria"))
                             {
-                                //codigo para buscar ofertas por categoria
-                                response = "";
+                                                              
+                                if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
+                               {
+                                string datosMaterial="";
+                                Singleton<OfferManager>.Instance.LoadFromJsonOffer();
+                                List<Offer> mat = Singleton<OfferManager>.Instance.catalog;
+                                foreach (Offer item in mat  )
+                                {
+                                    datosMaterial += $"{item.Material.Type.Name}\n";
+                                    
+                                }
+                                mat = matVacia;
+                                response= $"Seleccione una Categoria\n{datosMaterial}";
+
+                                return true;
+                               }
+                                //Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text); obtengo la cat qeu el user quiere                              
+                                response=Singleton<Search>.Instance.GetOfferByCategory(message.Text);   
+                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();               
+                                
                                 return true;
                             }
                             else  if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/oferta_por_emprendedor"))
@@ -93,7 +117,7 @@ namespace ClassLibrary
                                 }
                                 else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/oferta_por_company"))
                                 {   
-                                    //codigo para buscar ofertas por company
+                                    //codigo para buscar ofertas por company BELNNN
                                      response = "";
                                      return true;
                                 }
