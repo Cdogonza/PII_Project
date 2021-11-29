@@ -46,7 +46,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="search"></param>
         /// <param name="entrepreneur"></param>
-        void PrintOffersByEntrepreneur(Search search, string entrepreneur);
+        void PrintOffersByEntrepreneur(Search search, string entrepreneurId);
         
         /// <summary>
         /// Este metodo imprime todas las ofertas de una companía
