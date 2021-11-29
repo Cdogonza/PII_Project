@@ -122,5 +122,10 @@ namespace ClassLibrary
         {
             return JsonSerializer.Serialize(this);
         }
+
+        public string ConvertToJsonPermissions()
+        {
+            return JsonSerializer.Serialize(this);
+        }
     }
 }

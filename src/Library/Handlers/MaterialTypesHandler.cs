@@ -47,7 +47,6 @@ namespace ClassLibrary
             {
                 if(message.Text.ToLower().Equals("/cancel") )
                 {
-                    //Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                     Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
                     response = "Se cancela el proceso actual";
                     return true;
@@ -57,7 +56,6 @@ namespace ClassLibrary
                     {
                         if(message.Text.ToLower().Equals("/listar") )
                         {
-                        //Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                         response = $"{Singleton<DataManager>.Instance.GetTextToPrintMaterialType()}";
 
                         return true;
@@ -65,14 +63,10 @@ namespace ClassLibrary
                         
                         if(message.Text.ToLower().Equals("/agregar_tipodemateriales") )
                         {
-                            Console.WriteLine("Entre a agregar tipo de materiales");
                             if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null )
                             {
                     
-                                Console.WriteLine("matcheo");
                                 Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                                Console.WriteLine($"0 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][0]}");
-                                Console.WriteLine($"Count - {Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count}");
                                 response = "Ingrese el nombre del Tipo de Material";
                                 return true;
                             }
@@ -101,15 +95,12 @@ namespace ClassLibrary
                             }
                         }
                     }
-
                 }
-
             }
-                response = String.Empty ;
-                return false;         
-            }
-          
-        }
+            response = String.Empty ;
+            return false;         
+        }  
+    }
 }
 
 

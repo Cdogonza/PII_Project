@@ -17,9 +17,11 @@ namespace ClassLibrary
         public bool regularoffer;   
  
         private StringBuilder responsetemp = new StringBuilder();
-        private ArrayList tags = new ArrayList();
+        //private ArrayList tags = new ArrayList();
         private List<Permission> offerpermissions = new List<Permission>();
         private List<MaterialType> materialtypes = new List<MaterialType>();
+
+        private List<string> tags = new List<string> ();
         public PublicationHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/publicar_oferta"};
@@ -29,6 +31,7 @@ namespace ClassLibrary
             var _myuserdata = Singleton<TelegramUserData>.Instance.userdata;
             var _mymaterialtype = Singleton<TelegramUserData>.Instance.materialtypeDict;
             var _mypermissions = Singleton<TelegramUserData>.Instance.permissionsDict;
+            var _mytags = Singleton<TelegramUserData>.Instance.tagsDict;
             if(!_myuserdata.ContainsKey(message.UserId))
             {
                 _myuserdata.Add(message.UserId,new Collection<string>());                
@@ -41,6 +44,7 @@ namespace ClassLibrary
                 //1
                     _mypermissions.Add(message.UserId,new Collection<string>());
                     _mymaterialtype.Add(message.UserId,new Collection<string>());
+                    _mytags.Add(message.UserId,new Collection<string>());
                     _myuserdata[message.UserId].Add(message.Text.ToLower());
                     response = "Ingrese el nombre de la oferta";                  
                     return true;
@@ -115,11 +119,11 @@ namespace ClassLibrary
             
                         case 6:  //9
                         _myuserdata[message.UserId].Add(message.Text);
-                        response = "Ingrese el costo de su oferta";
+                        response = "Ingrese el costo de su oferta en $(Ej $100):";
                         return true;
 
                         case 7:  //6
-                        _myuserdata[message.UserId].Add(message.Text);
+                        _myuserdata[message.UserId].Add(message.Text.Replace("$",""));
                         response = "Ingrese calle y número de puerta";
                         return true;
 
@@ -198,7 +202,7 @@ namespace ClassLibrary
                         }
                         else
                         {
-                            _myuserdata[message.UserId][11].ToUpper().Contains("NO");
+                            _mypermissions[message.UserId].Add(message.Text);
                             _myuserdata[message.UserId].Add(message.Text);
                             response = "Su compra es una oferta regular? Si/No";
                             return true;     
@@ -217,7 +221,7 @@ namespace ClassLibrary
                             regularoffer = true;
                         }
                         _myuserdata[message.UserId].Add(message.Text);
-                        response = "Desea agregar tags a su oferta? Si/No";
+                        response = "Desea agregar palabras clave a su oferta? Si/No";
                         return true;
 
                         case 14:  //12
@@ -225,13 +229,13 @@ namespace ClassLibrary
                         if(message.Text.ToUpper() == "NO")
                         {
                             _myuserdata[message.UserId].Add(message.Text);
-                            response = "no se agregan tags a la oferta \n \n presione /OK para finalizar";
+                            response = "no se agregan palabras clave a la oferta \n \n presione /OK para finalizar";
                             return true;
                         }
                         else if(message.Text.ToUpper() == "SI")
                         {
                             _myuserdata[message.UserId].Add(message.Text);
-                            response = "Para Finalizar, agregue sus tags separados por '-' ";
+                            response = "Para Finalizar, agregue sus palabras clave separados por '-' ";
                             return true;
                         }
                         else
@@ -245,7 +249,13 @@ namespace ClassLibrary
                         if (_myuserdata[message.UserId][14].ToUpper().Equals("SI"))
                         {
                             _myuserdata[message.UserId].Add(message.Text);
-                            tags.AddRange(message.Text.Split('-'));
+                            this.tags.AddRange(message.Text.Split('-').ToList());
+                            foreach (var tag in this.tags)
+                            {
+                                _mytags[message.UserId].Add($"{tag}");
+                            }
+
+                            //tags.AddRange(message.Text.Split('-'));
                         }
                         else if (_myuserdata[message.UserId][14].ToUpper().Equals("NO"))
                         {
@@ -265,35 +275,18 @@ namespace ClassLibrary
                         DateTime publicationdate = DateTime.Now;
                         DateTime deliverydate = new DateTime();
                                             
-                      
-
-                        Console.WriteLine($"0 - {_myuserdata[message.UserId][0]}");
-                        Console.WriteLine($"1 - {_myuserdata[message.UserId][1]}");
-                        Console.WriteLine($"2 - {_myuserdata[message.UserId][2]}");
-                        Console.WriteLine($"3 - {_myuserdata[message.UserId][3]}");
-                        Console.WriteLine($"4 - {_myuserdata[message.UserId][4]}"); // 
-                        Console.WriteLine($"5 - {_myuserdata[message.UserId][5]}"); // unidad
-                        Console.WriteLine($"6 - {_myuserdata[message.UserId][6]}"); // cantidad
-                        Console.WriteLine($"7 - {_myuserdata[message.UserId][7]}"); // costo
-                        Console.WriteLine($"8 - {_myuserdata[message.UserId][8]}"); // calle
-                        Console.WriteLine($"9 - {_myuserdata[message.UserId][9]}"); // montevideo
-                        Console.WriteLine($"10 - {_myuserdata[message.UserId][10]}"); // montevideo
-                        Console.WriteLine($"11 - {_myuserdata[message.UserId][11]}"); // permission dicc
-                        Console.WriteLine($"12 - {_myuserdata[message.UserId][12]}"); // 
-                        //Console.WriteLine($"13 - {_myuserdata[message.UserId][13]}"); // si 
-                        //Console.WriteLine($"14 - {_myuserdata[message.UserId][14]}"); // si 
-                       // Console.WriteLine($"15 - {_myuserdata[message.UserId][15]}"); // TAGS                                       
+                        this.tags = _mytags[message.UserId].ToList();
 
                         if(_myuserdata[message.UserId][3].ToLower().Equals("/otro_materialtype"))
                         {
                             string typename = _mymaterialtype[message.UserId][0];
                             string typedesc = _mymaterialtype[message.UserId][1];
-                            Singleton<OfferManager>.Instance.AddOffer(name,Singleton<DataManager>.Instance.AddMaterial(namematerial,Singleton<DataManager>.Instance.AddMaterialType(typename,typedesc),unit), quantity, cost,street, city, department, this.offerpermissions, regularoffer, tags, deliverydate, publicationdate, company);
+                            Singleton<OfferManager>.Instance.AddOffer(name,Singleton<DataManager>.Instance.AddMaterial(namematerial,Singleton<DataManager>.Instance.AddMaterialType(typename,typedesc),unit), quantity, cost,street, city, department, this.offerpermissions, regularoffer, this.tags, deliverydate, publicationdate, company);
                         }
                         else
                         //Ingresando por la lista desplegada
                         {   
-                           Singleton<OfferManager>.Instance.AddOffer(name,Singleton<DataManager>.Instance.AddMaterial(namematerial,Singleton<DataManager>.Instance.GetMaterialTypeByIndex(Int32.Parse(_myuserdata[message.UserId][3])),unit), quantity, cost,street, city, department, this.offerpermissions, regularoffer, tags, deliverydate, publicationdate, company);
+                           Singleton<OfferManager>.Instance.AddOffer(name,Singleton<DataManager>.Instance.AddMaterial(namematerial,Singleton<DataManager>.Instance.GetMaterialTypeByIndex(Int32.Parse(_myuserdata[message.UserId][3])),unit), quantity, cost,street, city, department, this.offerpermissions, regularoffer, this.tags, deliverydate, publicationdate, company);
                              
                         }
                    

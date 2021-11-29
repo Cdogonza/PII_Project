@@ -101,7 +101,7 @@ namespace ClassLibrary
         /// <param name="deliverydate"></param>
         /// <param name="publicationdate"></param>
         /// <param name="offer"></param>
-        public void AddOffer (string name, Material material, int quantity, double cost, string street, string city , string department ,List<Permission> offerpermissions, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company company)
+        public void AddOffer (string name, Material material, int quantity, double cost, string street, string city , string department ,List<Permission> offerpermissions, bool regularoffers, List<string> tags, DateTime deliverydate, DateTime publicationdate, Company company)
         {
             LocationApiClient Loc = new LocationApiClient();
             Location locationoffer = Loc.GetLocation(street,city,department);
@@ -153,7 +153,10 @@ namespace ClassLibrary
         }
         public string ConvertToJsonEntrepreneur()
         {return null;}
-          public string ConvertToJsonCompany()
+        public string ConvertToJsonCompany()
+        {return null;}
+
+        public string ConvertToJsonPermissions()
         {return null;}
 
     }
