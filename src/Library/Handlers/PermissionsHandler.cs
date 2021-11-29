@@ -61,12 +61,10 @@ namespace ClassLibrary
                     }
                     else if(message.Text.ToUpper().Equals("N"))
                     {
-                        Console.WriteLine("Entre en el elseIF N");
                         StringBuilder responsetemp = new StringBuilder();
                         responsetemp.Append("Se agregaron las siguientes habilitaciones: \n");
                         for (int i = 1; i < Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count; i++)
                         {
-                            Console.WriteLine($"{Singleton<TelegramUserData>.Instance.userdata[message.UserId][i]}");
                             Singleton<DataManager>.Instance.AddPermission(Singleton<TelegramUserData>.Instance.userdata[message.UserId][i]);
                             responsetemp.Append($"{Singleton<TelegramUserData>.Instance.userdata[message.UserId][i]}\n");
                         }

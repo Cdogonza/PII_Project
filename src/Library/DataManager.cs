@@ -4,6 +4,9 @@ using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System;
+using System.ComponentModel;
+using System.Collections.Immutable;
+
 namespace ClassLibrary
 {
     /// <summary>
@@ -19,6 +22,7 @@ namespace ClassLibrary
         {
             this.companies = new List<Company>();
             this.entrepreneurs = new List<Entrepreneur>();
+            this.permissions = new List<Permission>();
         }
        
         public List <string> data = new List<string>();  
@@ -52,8 +56,9 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam List="Permission"></typeparam>
         /// <returns></returns>
-        public List<Permission> permissions = new List<Permission>(){new Permission("Materiales Peligrosos"), new Permission("Residuos Medicos"), new Permission("Materiales Organicos"), new Permission("Materiales Inflamables")};
-
+        [JsonInclude]
+        public List<Permission> permissions = new List<Permission>(); // {AddPermission("Materiales Peligrosos"), new Permission("Residuos Medicos"), new Permission("Materiales Organicos"), new Permission("Materiales Inflamables")};
+        
 
         public List<Company>  DataCompany()
         {
@@ -68,7 +73,8 @@ namespace ClassLibrary
         
         public void AddPermission(string permission)
         {
-            this.permissions.Add(new Permission (permission));           
+            this.permissions.Add(new Permission (permission)); 
+            this.ConvertToJsonPermissions();          
         }
 
         public List<Entrepreneur>  DataEntrepeneur()
@@ -167,6 +173,7 @@ namespace ClassLibrary
         /// <returns>data</returns> Texto que obtiene ConsolePrinter para imprimir
         public string GetTextToPrintPermission()
         {
+            this.LoadFromJsonPermission();
             int contador=0;
             string data = $"La lista de Permisos existentes son: \n";
             foreach (Permission item in this.permissions)
@@ -183,6 +190,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public List<Permission> GetPermissions()
         {
+            this.LoadFromJsonPermission();
             return this.permissions;
         }
         
@@ -436,7 +444,48 @@ namespace ClassLibrary
             }
         }
 
-        
+        public string ConvertToJsonPermissions()
+        {
+            string result = "{\"Items\":[";
+
+            foreach (Permission item in this.permissions)
+            {
+                result = result + item.ConvertToJsonPermissions() + ",";
+            }
+
+            result = result.Remove(result.Length - 1);
+            result = result + "]}";
+
+            string temp = JsonSerializer.Serialize(this.permissions);
+            File.WriteAllText(@"Permissions.json", temp);
+            return result;
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };
+
+            return JsonSerializer.Serialize(this.permissions, options);            
+        }
+
+        public void LoadFromJsonPermission()
+        {
+            
+            string json = File.ReadAllText(@"Permissions.json");
+            if(json!="")
+            {
+
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };
+
+            this.permissions = JsonSerializer.Deserialize<List<Permission>>(json, options);
+           
+            }
+        }
+     
     }
 
 }

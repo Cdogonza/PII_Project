@@ -3,6 +3,8 @@ using System.Collections;
 using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Telegram.Bot.Requests;
+
 namespace ClassLibrary
 {
     /// <summary>
@@ -45,7 +47,7 @@ namespace ClassLibrary
         /// Palabras claves para darle la facilidad al emprendedor de encontrar la oferta
         /// </summary>
         /// <value></value>
-        public ArrayList Tags{get;set;}
+        public List<String> Tags{get;set;}
         /// <summary>
         /// Fecha de compra de la oferta
         /// </summary>
@@ -76,7 +78,7 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam List="Permission"></typeparam>
         /// <returns></returns>
-        public List<Permission> Offerpermissions = new List<Permission>();
+        public List<Permission> Offerpermissions {get;set;}
         /// <summary>
         /// El id lo utilizamos para identificar cada oferta en el catalogo
         /// </summary>
@@ -100,7 +102,7 @@ namespace ClassLibrary
          {
 
          }
-         public Offer(long id,string name, Material material, int quantity, double cost, Location location, List<Permission> offerpermissions, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
+         public Offer(long id,string name, Material material, int quantity, double cost, Location location, List<Permission> offerpermissions, bool regularoffers, List<string> tags, DateTime deliverydate, DateTime publicationdate, Company offer)
         {
             this.Idd = id;
             this.Name = name;
@@ -152,6 +154,7 @@ namespace ClassLibrary
         {
            return JsonSerializer.Serialize(this);
         }
-        
+        public string ConvertToJsonPermissions()
+        {return null;}
     }
 }
