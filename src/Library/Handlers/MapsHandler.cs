@@ -1,8 +1,10 @@
 using System.IO;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
+using System.Collections.ObjectModel;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.InputFiles;
 using Nito.AsyncEx;
@@ -36,6 +38,11 @@ namespace ClassLibrary
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
+            if(!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
+                {
+                    Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId,new Collection<string>());
+                    
+                }
             if(message.Text.ToLower().Equals("/help"))
             {
                 if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null )
@@ -60,20 +67,37 @@ namespace ClassLibrary
             {
                 if(message.Text.ToLower().Equals("/mostrar_ruta"))
                 {
+
                     if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                     {
+                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);//agrego /mostrar_mapa
 
-                        double ll=0;
-                        double llo=0;
-                        string ent =Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId);
+                        Singleton<OfferManager>.Instance.LoadFromJsonOffer();
                         foreach (Offer item in Singleton<OfferManager>.Instance.getLista())
                         {
-                            if(item.Entrepreneur==ent)
+                        response=$"Ingrese numero de oferta para ver ruta\n{item.Idd}- {item.Name}";
+                        return true;                                             
+                        }
+                    }
+                    if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].Contains("/mostrar_ruta"))
+                    {                   
+                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                      
+                        if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count>=1)
+                        {
+                            foreach (var item in collection)
                             {
+                                
+                            }
+                            double ll=0;
+                            double llo=0;
+                            string ent =Singleton<OfferManager>.Instance.getLista();
+                            if(ent.Contains(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1]))
+                            {
+                                
                                 ll = item.Location.Latitude;
                                 llo= item.Location.Longitude;
                             }
-                        }
 
                         LocationApiClient loc = new LocationApiClient();
                         double lat=0;
@@ -92,6 +116,8 @@ namespace ClassLibrary
                         return true;
                     }
                 }
+                    }
+            }  
                 else
                 {
                     if (this.CanHandle(message))

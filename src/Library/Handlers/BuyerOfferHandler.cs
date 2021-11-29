@@ -74,7 +74,7 @@ namespace ClassLibrary
                                 Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();
                                 
                             
-                                response=$"Felicitaciones! Su compra ha sido realizada con exito\n/help para continuar";
+                                response=$"Felicitaciones! Su compra ha sido realizada con exito\n/help para continuar o\n /mostrar_ruta para btener \nindicaciones en el mapa";
                                 return true;
                             }else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2].ToLower().Equals("no"))
                             {
