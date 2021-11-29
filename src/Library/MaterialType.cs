@@ -52,7 +52,8 @@ namespace ClassLibrary
         {
             return JsonSerializer.Serialize(this);
         }
-
+        public string ConvertToJsonAreaOfWork()
+        {return null;}
     }
 
 

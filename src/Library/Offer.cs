@@ -158,5 +158,7 @@ namespace ClassLibrary
         {return null;}
         public string ConvertToJsonMaterialTypes()
         {return null;}
+        public string ConvertToJsonAreaOfWork()
+        {return null;}
     }
 }
