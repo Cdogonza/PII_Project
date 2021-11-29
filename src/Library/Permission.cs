@@ -46,6 +46,7 @@ namespace ClassLibrary
         {
             return JsonSerializer.Serialize(this);
         }
-    
+        public string ConvertToJsonMaterialTypes()
+        {return null;}
     }
 }

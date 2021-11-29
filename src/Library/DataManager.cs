@@ -42,7 +42,8 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam List="MaterialType"></typeparam>
         /// <returns></returns>
-        public List<MaterialType> materialsType = new List<MaterialType>(){new MaterialType("plastico","Descripcion plastico"),new MaterialType("papel","Descripcion papel"),new MaterialType("organico", "Descripcion organico")};
+        [JsonInclude]
+        public List<MaterialType> materialsType = new List<MaterialType>();//{new MaterialType("plastico","Descripcion plastico"),new MaterialType("papel","Descripcion papel"),new MaterialType("organico", "Descripcion organico")};
 
         /// <summary>
         /// Lista de Material donde se almacenan los materiales
@@ -146,6 +147,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public bool CheckPermission(int indice)
         {
+            this.LoadFromJsonPermission();
             if (indice <= this.permissions.Count ){
                 return true;
             }
@@ -163,6 +165,7 @@ namespace ClassLibrary
         /// <returns></returns> 
         public Permission GetPermissionByIndex(int indice)
         {
+            this.LoadFromJsonPermission();
             return this.permissions[indice];
         }
 
@@ -267,6 +270,7 @@ namespace ClassLibrary
        {
            MaterialType newmaterialtype = new MaterialType(name, description);
            this.materialsType.Add(newmaterialtype);
+           this.ConvertToJsonMaterialTypes();
            return newmaterialtype;
        }
        /* public void AddMaterialType(MaterialType item)
@@ -315,6 +319,7 @@ namespace ClassLibrary
         /// <returns>Retorna True si el Tipo de Material existe en la lista, sino existe devuelve False</returns>
         public bool CheckMaterialType(int indice)
         {
+            this.LoadFromJsonMaterialTypes();
             if (indice <= this.materialsType.Count-1 )
             {
                 return true;
@@ -332,6 +337,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public MaterialType GetMaterialTypeByIndex(int indice)
         {
+            this.LoadFromJsonMaterialTypes();
             return this.materialsType[indice];
         }
         
@@ -341,6 +347,7 @@ namespace ClassLibrary
         /// </summary>
         public string GetTextToPrintMaterialType()
         {
+            this.LoadFromJsonMaterialTypes();
             string data = $"La lista de Materiales existentes son: \n";
             int contador=0;
             foreach (MaterialType item in this.materialsType)
@@ -486,6 +493,48 @@ namespace ClassLibrary
             }
         }
      
+
+        public string ConvertToJsonMaterialTypes()
+        {
+            string result = "{\"Items\":[";
+
+            foreach (MaterialType item in this.materialsType)
+            {
+                result = result + item.ConvertToJsonMaterialTypes() + ",";
+            }
+
+            result = result.Remove(result.Length - 1);
+            result = result + "]}";
+
+            string temp = JsonSerializer.Serialize(this.materialsType);
+            File.WriteAllText(@"MaterialTypes.json", temp);
+            return result;
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };
+
+            return JsonSerializer.Serialize(this.permissions, options);            
+        }
+
+        public void LoadFromJsonMaterialTypes()
+        {
+            
+            string json = File.ReadAllText(@"MaterialTypes.json");
+            if(json!="")
+            {
+
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };
+
+            this.permissions = JsonSerializer.Deserialize<List<Permission>>(json, options);
+           
+            }
+        }
     }
 
 }
