@@ -12,6 +12,12 @@ namespace ClassLibrary
     public class Offer : IJsonConvertible
     {
         /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="Offer"></typeparam>
+        /// <returns></returns>
+        public List<Offer> catalog = new List<Offer>();
+        /// <summary>
         /// Nombre de la oferta
         /// </summary>
         /// <value></value>
@@ -60,7 +66,7 @@ namespace ClassLibrary
         /// Este parametro esta vacio hasta un emprendedor adquiere la oferta
         /// </summary>
         /// <value></value>
-        public Entrepreneur Entrepreneur {get;set;}
+        //public Entrepreneur Entrepreneur {get;set;}
         /// <summary>
         /// Establece el material de la oferta
         /// </summary>
@@ -77,6 +83,7 @@ namespace ClassLibrary
         /// </summary>
         /// <value></value>
         public long Idd {get;set;}
+        public string Entrepreneur{get;set;}
         /// <summary>
         /// Este es el constructor de la oferta que recibe los parametros para crear la misma
         /// </summary>
@@ -103,16 +110,14 @@ namespace ClassLibrary
             this.Location = location;
             this.Cost = cost;
             this.Availability = true;
+            this.Entrepreneur="";
             this.Tags = tags;
             this.DeliveryDate = deliverydate;
             this.PublicationDate = publicationdate;
             this.Company =  offer;
             this.RegularOffers = regularoffers;
         }
-        /// <summary>
-        /// Permite agregar permisos a la oferta
-        /// </summary>
-        /// <param name="permission"></param>
+      
         public void AddPermission(string permission)
         {
             Permission newPermission = new Permission(permission);
@@ -127,10 +132,12 @@ namespace ClassLibrary
         /// <returns></returns>
         public List<string> getOffer(Entrepreneur entrepreneur)
         {
-             this.catalog = Singleton<OfferManager>.Instance.catalog; 
+            Console.WriteLine("Entre al Get Offer");
+            Singleton<OfferManager>.Instance.LoadFromJsonOffer();
+            this.catalog = Singleton<OfferManager>.Instance.catalog; 
             if (this.Availability)
             {
-                this.Entrepreneur = entrepreneur;
+               // this.Entrepreneur = entrepreneur;
                 this.Availability = false;          
             }
             return null;

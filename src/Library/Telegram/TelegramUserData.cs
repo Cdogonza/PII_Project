@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
-
+using System;
 namespace ClassLibrary{
 
     public class TelegramUserData{
@@ -9,6 +9,18 @@ namespace ClassLibrary{
         public TelegramUserData()
         {
 
+        }
+        public string user()
+        {
+            string key = "";
+            foreach(var pair in userdata)
+            {
+                
+                    key = pair.Key;
+                    Console.WriteLine(key);
+                
+            }
+            return key;
         }
     }
 }

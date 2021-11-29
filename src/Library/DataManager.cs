@@ -60,7 +60,7 @@ namespace ClassLibrary
             
             return companies;
         }
-        public Entrepreneur  DataEnt(string id)
+        public string  DataEnt(string id)
         {
            
            
@@ -69,7 +69,7 @@ namespace ClassLibrary
             {
               if(item.Id==id)
               {
-                   return item;
+                   return item.Id;
                }  
             }
   

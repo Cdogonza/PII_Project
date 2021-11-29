@@ -13,6 +13,7 @@ namespace ClassLibrary
         /// Crea una lista de ofertas vacía
         /// </summary>
         public List<Offer> catalog = new List<Offer>();
+        public List<Offer> purchased = new List<Offer>();
         /// <summary>
         /// Carga una copia del catalogo de ofertas a la lista
         /// </summary>
@@ -102,27 +103,36 @@ namespace ClassLibrary
 
         public string GetOfferByID(long id)
         {
+            purchased.Clear();
             this.catalog = Singleton<OfferManager>.Instance.catalog;  
            string dat="";
-            string data = $"";
+           string data = $"";
             foreach (Offer offer1 in this.catalog)
             {
                 if (offer1.Idd== id)
                 {
-                    dat = offer1.Material.Name;
+                    dat = offer1.Material.Type.Name;
                     foreach (Offer offer  in this.catalog)
                     {
-                        
-                        if(offer.Material.Name.Equals(dat))
+                        if(offer.Availability)
                         {
-                            
-                            data += $"{offer.Idd}- Oferta:{offer.Name}-\n Material: {offer.Material.Name}-\nCosto: {offer.Cost}-\nFecha Publicacion{offer.PublicationDate}-\nDireccion: {offer.Location.FormattedAddress}\n - /obtener_oferta\n";
+                        if(offer.Material.Type.Name.Equals(dat))
+                        {     Console.WriteLine(offer.Material.Type.Name);                      
+                            data += $"{offer.Idd}- Oferta:{offer.Name}-\n Material: {offer.Material.Name}-\nCosto: {offer.Cost}-\nFecha Publicacion{offer.PublicationDate}-\nDireccion: {offer.Location.FormattedAddress}";
+                            purchased.Add(offer);
                         }
-                    }
-                    
-   
+                        }
+
+                        }  
+                        if(data=="")
+                        {
+                            data = "No hay ofertas habilitadas de esa categoria";
+                            return data;
+                        }
                 }
-           }         
+           }
+
+            data+="\n/obtener_oferta";         
             return data;
         }
         
@@ -131,19 +141,19 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="entrepreneur"></param>
         /// <returns>Retorna un string con una lista de ofertas</returns>
-        public string GetOfferByEntrepreneur(Entrepreneur entrepreneur)
-        {
-            string data = $"Las compras de este emprendedor son: \n";
+        // public string GetOfferByEntrepreneur(Entrepreneur entrepreneur)
+        // {
+        //     string data = $"Las compras de este emprendedor son: \n";
 
-            foreach (Offer offer in catalog)
-            {
-                if(offer.Entrepreneur == entrepreneur)
-                {
-                    data = data + $"ID: {offer.Idd} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
-                }
-            }
-            return data;
-        }
+        //     foreach (Offer offer in catalog)
+        //     {
+        //         if(offer.Entrepreneur == entrepreneur)
+        //         {
+        //             data = data + $"ID: {offer.Idd} Name: {offer.Name} - Material: {offer.Material.Name} - Cost: {offer.Cost}  Fecha y hora de publicacion {offer.PublicationDate} \n";
+        //         }
+        //     }
+        //     return data;
+        // }
         /// <summary>
         /// Filtra el catálogo de búsquedas que publicó una empresa
         /// </summary>

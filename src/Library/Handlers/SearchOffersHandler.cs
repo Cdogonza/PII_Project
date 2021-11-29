@@ -1,7 +1,6 @@
 using System.Collections.ObjectModel;
 using System;
 using Telegram.Bot.Types;
-using System.Collections.ObjectModel;
 using System.Data;
 using System.Text;
 using System.Collections;
@@ -15,7 +14,7 @@ namespace ClassLibrary
         List<Offer> matVacia = new List<Offer>();
         public SearchOffersHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"/buscar_oferta","/todas_las_ofertas","/oferta_por_palabra","/oferta_por_departamento","oferta_por_distancia","/oferta_por_categoria","/oferta_por_emprendedor","/oferta_por_company","/mis_ofertas"};
+            this.Keywords = new string[] {"/todas_las_ofertas","/oferta_por_palabra","/oferta_por_departamento","oferta_por_distancia","/oferta_por_categoria","/oferta_por_emprendedor","/oferta_por_company","/mis_ofertas"};
         }
             protected override bool InternalHandle(IMessage message, out string response)
             {
@@ -27,16 +26,16 @@ namespace ClassLibrary
                 if(message.Text.ToLower().Equals("/buscar_oferta"))
                 {
                     
-                    //Agrego /buscar_oferta
+                    
                     if(Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                     {
-                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text); 
+                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text); //Agrego /buscar_oferta
                         response = "Como Company tienes las siguientes opciones\n /oferta_por_emprendedor\n/mis_ofertas";
                         return true;
                     }
                     if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                     {
-                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);   
+                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);   //Agrego /buscar_oferta
                         response = "Como Entrepreneur tienes las siguientes opciones\n /todas_las_ofertas\n /oferta_por_palabra\n/oferta_por_departamento\n/oferta_por_distancia\n/oferta_por_categoria\n/oferta_por_emprendedor\n/oferta_por_company";                     
                          
                         return true; 
@@ -62,7 +61,7 @@ namespace ClassLibrary
                                 } 
                              if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Trim().Contains("/oferta_por_palabra"))
                             {
-                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();
+                                
                                 //codigo para buscar ofertas por palabra
                                 response = "";
                                 return true;
@@ -73,8 +72,7 @@ namespace ClassLibrary
                                 response = "Ingrese el departamento";
                                 return true;
                                }                                 
-                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);  
-                                                            
+                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);                                                             
                                 response=Singleton<Search>.Instance.GetOfferByDepartment(message.Text);
                                 Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();                             
                                 return true;
@@ -110,7 +108,7 @@ namespace ClassLibrary
                                 if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
                                {
                                 Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text); //obtengo la cat qeu el user quiere      
-                               response="";
+                                response="";
                                                                                            
                                 return true;
                                }
@@ -146,30 +144,14 @@ namespace ClassLibrary
                                     response = "";
                                     return true;
                                     }
-                            if(message.Text.Equals("/Obtener_Oferta"))
-                            {
-                               response ="Ingrese el numero de la oferta que desea adquirir";
-                               Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);//Agrego /obtener oferta
-                               return true;
-                            }
-                            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
-                            {
-                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);//agrego el id de la oferta
-                                
-                                Singleton<OfferManager>.Instance.BuyOffer(Singleton<DataManager>.Instance.DataEnt("1262655798"),3);
-                            }
                             
-                            }
                         
 
-                    
-                    
-             response = String.Empty ;
+                }    
+                        }        
+            response = String.Empty ;
             return false;
-                 }
-                            
-            
-           
-        }
-
+     }        
     }
+
+}
