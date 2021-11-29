@@ -165,7 +165,8 @@ namespace ClassLibrary
         public bool CheckPermission(int indice)
         {
             this.LoadFromJsonPermission();
-            if (indice <= this.permissions.Count ){
+            if (indice <= this.permissions.Count-1 )
+            {
                 return true;
             }
             else
@@ -232,7 +233,7 @@ namespace ClassLibrary
         public bool CheckAreaOfWork(int indice)
         {
             this.LoadFromJsonAreaOfWork();
-            if (indice <= this.areaofwork.Count )
+            if (indice <= this.areaofwork.Count-1)
             {
                 return true;
             }
