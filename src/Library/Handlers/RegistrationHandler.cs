@@ -101,9 +101,11 @@ namespace ClassLibrary
                                 Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
                                 return true;
                         
-                        }
+                            }
+
                         }
                                  
+
             
                     if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/emprendedor"))
                     {

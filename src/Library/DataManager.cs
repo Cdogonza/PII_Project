@@ -157,7 +157,6 @@ namespace ClassLibrary
         /// <returns></returns> 
         public Permission GetPermissionByIndex(int indice)
         {
-            indice-=1;
             return this.permissions[indice];
         }
 
@@ -308,7 +307,7 @@ namespace ClassLibrary
         /// <returns>Retorna True si el Tipo de Material existe en la lista, sino existe devuelve False</returns>
         public bool CheckMaterialType(int indice)
         {
-            if (indice <= this.materialsType.Count )
+            if (indice <= this.materialsType.Count-1 )
             {
                 return true;
             }
