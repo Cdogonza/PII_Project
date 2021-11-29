@@ -9,6 +9,7 @@ namespace ClassLibrary
     /// </summary>
     public class RegistrationHandler: BaseHandler
     {
+        private StringBuilder responsetemp = new StringBuilder();
         public RegistrationHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/registrarse"};
@@ -90,16 +91,27 @@ namespace ClassLibrary
 
                                 case 7:                  
                                 Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                                response = $"{Singleton<DataManager>.Instance.GetTextToPrintAreaOfWork()}";
+                                responsetemp.Append("Ingrese el rubro de la empresa\n");
+                                responsetemp.Append($"{Singleton<DataManager>.Instance.GetTextToPrintAreaOfWork()}");
+                                response = $"{responsetemp}";
+                                responsetemp.Clear();
                                 return true;
                     
                                 case 8:
-                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(Singleton<DataManager>.Instance.areaofwork[Int32.Parse(message.Text)].Name);
-                                
-                                Singleton<DataManager>.Instance.AddCompany(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.UserId][3],Singleton<TelegramUserData>.Instance.userdata[message.UserId][4],Singleton<TelegramUserData>.Instance.userdata[message.UserId][5],Singleton<TelegramUserData>.Instance.userdata[message.UserId][6],Singleton<TelegramUserData>.Instance.userdata[message.UserId][7],Singleton<TelegramUserData>.Instance.userdata[message.UserId][8]);
-                                response = $"Se creó la Empresa correctamente\n Para ver las siguientes acciones posibles ingrese: \n /publicar_oferta \n /vermisdatos \n /materialtype \n /habilitaciones";
-                                Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
-                                return true;
+                                if(Singleton<DataManager>.Instance.CheckAreaOfWork(Int16.Parse(message.Text)))
+                                {
+                                    Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(Singleton<DataManager>.Instance.areaofwork[Int32.Parse(message.Text)].Name);
+                                    Singleton<DataManager>.Instance.AddCompany(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.UserId][3],Singleton<TelegramUserData>.Instance.userdata[message.UserId][4],Singleton<TelegramUserData>.Instance.userdata[message.UserId][5],Singleton<TelegramUserData>.Instance.userdata[message.UserId][6],Singleton<TelegramUserData>.Instance.userdata[message.UserId][7],Singleton<TelegramUserData>.Instance.userdata[message.UserId][8]);
+                                    response = $"Se creó la Empresa correctamente\n \nPara ver las siguientes acciones posibles ingrese: \n /publicar_oferta \n /vermisdatos \n /materialtype \n /habilitaciones";
+                                    Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
+                                    return true;
+                                }
+                                else
+                                {
+                                    response = "Dato Mal ingresado, ingrese un numero de la lista";
+                                    return true;
+                                }
+
                         
                             }
 
@@ -138,22 +150,37 @@ namespace ClassLibrary
                             return true;
                                                         
                             case 7:
-                            Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(Singleton<DataManager>.Instance.areaofwork[Int32.Parse(message.Text)].Name);
-                            response = "Ingrese una especialización de su Emprendimiento";
-                            return true;
-
+                            if(Singleton<DataManager>.Instance.CheckAreaOfWork(Int16.Parse(message.Text)))
+                            {
+                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(Singleton<DataManager>.Instance.areaofwork[Int32.Parse(message.Text)].Name);
+                                response = "Ingrese una especialización de su Emprendimiento";
+                                return true;
+                            }
+                            else
+                            {
+                                response = "Dato mal ingresado, ingrese un numero de la lista";
+                                return true;
+                            }
+                            
                             case 8:
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                             response = $"Ingrese un permiso \n{Singleton<DataManager>.Instance.GetTextToPrintPermission()}";
                             return true;
 
                             case 9:
-                            Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(Singleton<DataManager>.Instance.permissions[Int32.Parse(message.Text)].Name);
-                            Singleton<DataManager>.Instance.AddEntrepreneur(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],Singleton<TelegramUserData>.Instance.userdata[message.UserId][3],Singleton<TelegramUserData>.Instance.userdata[message.UserId][4],Singleton<TelegramUserData>.Instance.userdata[message.UserId][5],Singleton<TelegramUserData>.Instance.userdata[message.UserId][6],Singleton<TelegramUserData>.Instance.userdata[message.UserId][7],Singleton<TelegramUserData>.Instance.userdata[message.UserId][8],Singleton<TelegramUserData>.Instance.userdata[message.UserId][9]);
-                            response = "Se creó el Emprendedor correctamente\n Para ver las siguientes acciones posibles ingrese:\n/help";
-                            Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);                                
-                            return true;
-                        
+                            if(Singleton<DataManager>.Instance.CheckPermission(Int16.Parse(message.Text)))
+                            {
+                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(Singleton<DataManager>.Instance.permissions[Int32.Parse(message.Text)].Name);
+                                Singleton<DataManager>.Instance.AddEntrepreneur(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],Singleton<TelegramUserData>.Instance.userdata[message.UserId][3],Singleton<TelegramUserData>.Instance.userdata[message.UserId][4],Singleton<TelegramUserData>.Instance.userdata[message.UserId][5],Singleton<TelegramUserData>.Instance.userdata[message.UserId][6],Singleton<TelegramUserData>.Instance.userdata[message.UserId][7],Singleton<TelegramUserData>.Instance.userdata[message.UserId][8],Singleton<TelegramUserData>.Instance.userdata[message.UserId][9]);
+                                response = "Se creó el Emprendedor correctamente\n Para ver las siguientes acciones posibles ingrese:\n/help";
+                                Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);                                
+                                return true;
+                            }
+                            else
+                            {
+                                response = "Dato mal ingresado, ingrese un numero de la lista";
+                                return true;
+                            }
                         }
 
                     }
