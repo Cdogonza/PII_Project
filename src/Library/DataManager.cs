@@ -67,16 +67,7 @@ namespace ClassLibrary
             return companies;
         }
         
-        /// <summary>
-        /// Metodo para agregar permisos al listado de permisos
-        /// </summary>
-        /// <param name="item"></param>
-        
-        public void AddPermission(string permission)
-        {
-            this.permissions.Add(new Permission (permission)); 
-            this.ConvertToJsonPermissions();          
-        }
+
 
         public List<Entrepreneur>  DataEntrepeneur()
         {
@@ -140,6 +131,17 @@ namespace ClassLibrary
              
         }
     
+
+        /// <summary>
+        /// Metodo para agregar permisos al listado de permisos
+        /// </summary>
+        /// <param name="item"></param>
+        public void AddPermission(string permission)
+        {
+            this.permissions.Add(new Permission (permission)); 
+            this.ConvertToJsonPermissions();          
+        }
+
         /// <summary>
         /// Metodo que chequea si el permiso ingresado por el usuario existe en la lista de Permisos del sistema. 
         /// /// </summary>
@@ -204,7 +206,7 @@ namespace ClassLibrary
         public void AddAreaOfWork(string areaOfWork)
         {
             this.areaofwork.Add(new AreaOfWork (areaOfWork)); 
-            this.ConvertToJsonPermissions();          
+            this.ConvertToJsonAreaOfWork();          
         }
 
         /// <summary>
@@ -214,6 +216,7 @@ namespace ClassLibrary
         /// <returns>Retorna True si existe, sino retorna False</returns>        
         public bool CheckAreaOfWork(int indice)
         {
+            this.LoadFromJsonAreaOfWork();
             if (indice <= this.areaofwork.Count )
             {
                 return true;
@@ -232,7 +235,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public AreaOfWork GetAreaOfWorkByIndex(int indice)
         {
-            indice-=1;
+            this.LoadFromJsonAreaOfWork();
             return this.areaofwork[indice];
         }
 
@@ -243,6 +246,7 @@ namespace ClassLibrary
         /// <returns>data</returns> Texto que obtiene ConsolePrinter para imprimir
         public string GetTextToPrintAreaOfWork()
         {
+            this.LoadFromJsonAreaOfWork();
             string data = $"La lista de Rubros existentes son: \n";
             int contador=0;
             foreach (AreaOfWork item in this.areaofwork)
@@ -259,6 +263,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public List<AreaOfWork> GetAreasOfWork()
         {
+            this.LoadFromJsonAreaOfWork();
             return this.areaofwork;
         }
       
@@ -300,7 +305,6 @@ namespace ClassLibrary
         /// <param name="userid"></param>
         /// <returns></returns>
         public Company GetCompanyInstance(string userid)
-
         {
             foreach (Company item in this.companies)
             {
@@ -365,6 +369,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public List<MaterialType> GetMaterialsType()
         {
+            this.LoadFromJsonMaterialTypes();
             return this.materialsType;
         }
         public string ConvertToJsonCompany()
@@ -516,7 +521,7 @@ namespace ClassLibrary
                 WriteIndented = true
             };
 
-            return JsonSerializer.Serialize(this.permissions, options);            
+            return JsonSerializer.Serialize(this.materialsType, options);            
         }
 
         public void LoadFromJsonMaterialTypes()
@@ -532,7 +537,49 @@ namespace ClassLibrary
                 WriteIndented = true
             };
 
-            this.permissions = JsonSerializer.Deserialize<List<Permission>>(json, options);
+            this.materialsType = JsonSerializer.Deserialize<List<MaterialType>>(json, options);
+           
+            }
+        }
+
+        public string ConvertToJsonAreaOfWork()
+        {
+            string result = "{\"Items\":[";
+
+            foreach (AreaOfWork item in this.areaofwork)
+            {
+                result = result + item.ConvertToJsonAreaOfWork() + ",";
+            }
+
+            result = result.Remove(result.Length - 1);
+            result = result + "]}";
+
+            string temp = JsonSerializer.Serialize(this.areaofwork);
+            File.WriteAllText(@"AreaOfWork.json", temp);
+            return result;
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };
+
+            return JsonSerializer.Serialize(this.areaofwork, options);            
+        }
+
+        public void LoadFromJsonAreaOfWork()
+        {
+            
+            string json = File.ReadAllText(@"AreaOfWork.json");
+            if(json!="")
+            {
+
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };
+
+            this.areaofwork = JsonSerializer.Deserialize<List<AreaOfWork>>(json, options);
            
             }
         }

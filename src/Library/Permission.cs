@@ -11,6 +11,21 @@ namespace ClassLibrary
     /// </summary>
     public class Permission : IJsonConvertible
     {
+
+        [JsonConstructor]
+        public Permission()
+        {
+
+        }
+
+
+        /// <summary>
+        /// String con el nombre del permiso
+        /// </summary>
+        /// <value></value>
+        public string Name { get ; set; }
+        
+
         /// <summary>
         /// Constructor de la clase
         /// </summary>
@@ -20,18 +35,6 @@ namespace ClassLibrary
             this.Name = name;
         }
 
-        [JsonConstructor]
-        public Permission()
-        {
-
-        }
-
-        /// <summary>
-        /// String con el nombre del permiso
-        /// </summary>
-        /// <value></value>
-        public string Name { get ; set; }
-        
 
 
         public string ConvertToJsonCompany()
@@ -47,6 +50,8 @@ namespace ClassLibrary
             return JsonSerializer.Serialize(this);
         }
         public string ConvertToJsonMaterialTypes()
+        {return null;}
+        public string ConvertToJsonAreaOfWork()
         {return null;}
     }
 }
