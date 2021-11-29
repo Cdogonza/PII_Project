@@ -60,6 +60,21 @@ namespace ClassLibrary
             
             return companies;
         }
+        public Entrepreneur  DataEnt(string id)
+        {
+           
+           
+            this.LoadFromJsonEntrepreneur();
+            foreach (Entrepreneur item in this.entrepreneurs)
+            {
+              if(item.Id==id)
+              {
+                   return item;
+               }  
+            }
+  
+           return null;
+        }
         
         /// <summary>
         /// Metodo para agregar permisos al listado de permisos

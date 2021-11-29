@@ -127,6 +127,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public List<string> getOffer(Entrepreneur entrepreneur)
         {
+             this.catalog = Singleton<OfferManager>.Instance.catalog; 
             if (this.Availability)
             {
                 this.Entrepreneur = entrepreneur;

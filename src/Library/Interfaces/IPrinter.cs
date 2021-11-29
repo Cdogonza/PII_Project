@@ -39,7 +39,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="search"></param>
         /// <param name="category"></param>
-        void PrintOffersByCategory(Search search, string category);
+        void PrintOffersByID(Search search, long id);
 
         /// <summary>
         /// Este metodo imprime las ofertas de un emprendedor

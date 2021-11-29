@@ -81,10 +81,11 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="buyer"></param>
         /// <param name="index"></param>
-        public void BuyOffer(Entrepreneur buyer,int index)
+        public string BuyOffer(Entrepreneur buyer,int index)
         {
-            catalog[index].getOffer(buyer);
-
+            this.catalog = Singleton<OfferManager>.Instance.catalog; 
+            this.catalog[index].getOffer(buyer);
+        return "La oferta ha sido adquirida correctamente";
         }
 
         /// <summary>
@@ -107,7 +108,6 @@ namespace ClassLibrary
             Location locationoffer = Loc.GetLocation(street,city,department);
             Singleton<OfferManager>.Instance.LoadFromJsonOffer();
             long valorUltimoId = this.catalog.Count+1;
-            Console.WriteLine(valorUltimoId);
             this.catalog.Add(new Offer(valorUltimoId,name,material,locationoffer,cost,regularoffers,tags,deliverydate,publicationdate,offer));
             this.ConvertToJsonOffer();
         }

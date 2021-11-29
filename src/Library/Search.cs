@@ -34,7 +34,7 @@ namespace ClassLibrary
             {                 
                 if (offer.Location.Locality == department)
                 {                  
-                    data += $"{offer.Idd}- Oferta:{offer.Name}-\n Material: {offer.Material.Name}-\nCosto: {offer.Cost}-\nFecha Publicacion{offer.PublicationDate}-\nDireccion: {offer.Location.FormattedAddress}\n - /Obtener_Oferta";
+                    data += $"{offer.Idd}- Oferta:{offer.Name}-\n Material: {offer.Material.Name}-\nCosto: {offer.Cost}-\nFecha Publicacion{offer.PublicationDate}-\nDireccion: {offer.Location.FormattedAddress}\n - /obtener_oferta  \n";
                 }               
             }         
            if(data =="")
@@ -99,21 +99,30 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="category"></param>
         /// <returns></returns>
-        public string GetOfferByCategory(string category)
-        {
-            string data = $"";
 
-            foreach (Offer offer in catalog)
+        public string GetOfferByID(long id)
+        {
+            this.catalog = Singleton<OfferManager>.Instance.catalog;  
+           string dat="";
+            string data = $"";
+            foreach (Offer offer1 in this.catalog)
             {
-                if (offer.Material.Type.Name == category)
+                if (offer1.Idd== id)
                 {
-                    data += $"{offer.Idd}- Oferta:{offer.Name}-\n Material: {offer.Material.Name}-\nCosto: {offer.Cost}-\nFecha Publicacion{offer.PublicationDate}-\nDireccion: {offer.Location.FormattedAddress}\n - /Obtener_Oferta";
+                    dat = offer1.Material.Name;
+                    foreach (Offer offer  in this.catalog)
+                    {
+                        
+                        if(offer.Material.Name.Equals(dat))
+                        {
+                            
+                            data += $"{offer.Idd}- Oferta:{offer.Name}-\n Material: {offer.Material.Name}-\nCosto: {offer.Cost}-\nFecha Publicacion{offer.PublicationDate}-\nDireccion: {offer.Location.FormattedAddress}\n - /obtener_oferta\n";
+                        }
+                    }
+                    
+   
                 }
            }         
-           if(data ==" ")
-           {
-               data ="La categoria ingresada no es correcta /help";          
-           }
             return data;
         }
         
