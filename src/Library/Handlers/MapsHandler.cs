@@ -62,6 +62,14 @@ namespace ClassLibrary
                 {
                     if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                     {
+
+                        
+                        string ent =Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId);
+                        foreach (Offer item in Singleton<OfferManager>.Instance.getLista())
+                        {
+                            
+                        }
+
                         LocationApiClient loc = new LocationApiClient();
                         double lat=0;
                         double log=0;                
