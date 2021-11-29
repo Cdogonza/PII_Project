@@ -66,6 +66,21 @@ namespace ClassLibrary
             
             return companies;
         }
+        public string  DataEnt(string id)
+        {
+           
+           
+            this.LoadFromJsonEntrepreneur();
+            foreach (Entrepreneur item in this.entrepreneurs)
+            {
+              if(item.Id==id)
+              {
+                   return item.Id;
+               }  
+            }
+  
+           return null;
+        }
         
 
 
