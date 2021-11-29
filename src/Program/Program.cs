@@ -27,8 +27,8 @@ namespace ClassLibrary
         // Para probar este ejemplo, crea un bot nuevo y eeemplaza este token por el de tu bot.
         //private static string Token = "2133513418:AAHIE7L6s-OQSi6BroKBheNa-JGIXAlsMR0";
         //private static string Token = "2099808385:AAGebOzNFY6kA5hwEY2XJbOJxZBzWAIM8U0";
-         private static string Token = "2133499409:AAFKS9VqLu7UXqQccvTHFFzcIvxwEoCGtkM"; //
-       // private static string Token = "2105636402:AAG6BbtW--SQ0pVOOpRKcHQQJTl7rwFWRxA";       // Belu
+        //private static string Token = "2133499409:AAFKS9VqLu7UXqQccvTHFFzcIvxwEoCGtkM"; //
+        private static string Token = "2105636402:AAG6BbtW--SQ0pVOOpRKcHQQJTl7rwFWRxA";       // Belu
         private static IHandler firstHandler;
 
         /// <summary>
@@ -45,10 +45,11 @@ namespace ClassLibrary
                 new DataManagerHandler(
                 new MaterialTypesHandler(
                 new PublicationHandler(
-                 new PermissionsHandler(  
+                new PermissionsHandler(
+                new AreaOfWorkHandler(  
                 new SearchOffersHandler(  
                 new CloseSessionHandler(                             
-                new MapsHandler(Bot,null))))))))));
+                new MapsHandler(Bot,null)))))))))));
             Message message = new Message();
            
 
@@ -61,8 +62,6 @@ namespace ClassLibrary
                 new DefaultUpdateHandler(HandleUpdateAsync, HandleErrorAsync),
                 cts.Token
             );
-
-            Console.WriteLine($"Ingrese /Start para Ingresar al Bot");
 
             // Esperamos a que el usuario aprete Enter en la consola para terminar el bot.
             Console.ReadLine();

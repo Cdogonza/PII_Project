@@ -107,7 +107,6 @@ namespace ClassLibrary
             Location locationoffer = Loc.GetLocation(street,city,department);
             Singleton<OfferManager>.Instance.LoadFromJsonOffer();
             long valorUltimoId = this.catalog.Count+1;
-            Console.WriteLine(valorUltimoId);
             this.catalog.Add(new Offer(valorUltimoId, name, material, quantity, cost, locationoffer, offerpermissions, regularoffers, tags, deliverydate, publicationdate, company));
             this.ConvertToJsonOffer();
         }

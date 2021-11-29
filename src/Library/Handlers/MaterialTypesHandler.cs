@@ -12,18 +12,16 @@ namespace ClassLibrary
     {
         public MaterialTypesHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"/materialtype", "/listar", "/agregar_tipodemateriales"};
+            this.Keywords = new string[] {"/tipo_de_material", "/listar", "/agregar_tipodemateriales"};
         }
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            
-            
             if(!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
             {       
-                    Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId,new Collection<string>());    
+                Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId,new Collection<string>());    
             }
 
-            if(message.Text.ToLower().Equals("/materialtype"))
+            if(message.Text.ToLower().Equals("/tipo_de_material"))
             {  
 
                 if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null )
@@ -36,14 +34,12 @@ namespace ClassLibrary
                 if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                 {
                     Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                    Console.WriteLine($"0 - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][0]}");
-                    Console.WriteLine($"Count - {Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count}");
-                    response = "Usted puede listar los tipos de materiales /listar o \n agregar tipos de materiales /agregar_tipodemateriales";
+                    response = "Usted puede listar los tipos de materiales /listar o \nagregar tipos de materiales /agregar_tipodemateriales";
                     return true;
                 }
             }
             
-            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1 &&Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/materialtype"))
+            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1 &&Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/tipo_de_material"))
             {
                 if(message.Text.ToLower().Equals("/cancel") )
                 {
@@ -52,7 +48,7 @@ namespace ClassLibrary
                     return true;
                 }
                 else{    
-                    if (Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Trim().Contains("/materialtype") )
+                    if (Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Trim().Contains("/tipo_de_material") )
                     {
                         if(message.Text.ToLower().Equals("/listar") )
                         {
@@ -89,7 +85,7 @@ namespace ClassLibrary
                             {
                                 Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                                 Singleton<DataManager>.Instance.AddMaterialType(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]);
-                                response = $"Se creo el Tipo de material con exito - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][2]} - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]} ";
+                                response = $"Se creó el tipo de material con éxito - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][2]} - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]} \n /help para seguir";
                                 Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
                                 return true;
                             }

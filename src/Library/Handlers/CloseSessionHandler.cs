@@ -10,18 +10,18 @@ namespace ClassLibrary
   
         public CloseSessionHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"/cerrar_session"};
+            this.Keywords = new string[] {"/cerrar_sesion"};
         }
         protected override bool InternalHandle(IMessage message, out string response)
         {
             
-            if(message.Text.ToLower().Equals("/cerrar_session"))
+            if(message.Text.ToLower().Equals("/cerrar_sesion"))
             {
         
                 if (Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
                 {
             
-                    response = $"Cerrando Session";
+                    response = $"Cerrando Sesión";
 
                    // Singleton<DataManager>.Instance.CloseSession();
                     Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
