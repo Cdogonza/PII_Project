@@ -12,6 +12,7 @@ namespace ClassLibrary
     {
         
         List<Offer> matVacia = new List<Offer>();
+        List<Entrepreneur> entVacia = new List<Entrepreneur>();
         public SearchOffersHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/buscar_oferta","/todas_las_ofertas","/ofertas_por_palabra","/oferta_por_departamento","/oferta_por_distancia","/oferta_por_categoria","/mis_ofertas_adquiridas","/ofertas_por_empresa","/mis_ofertas","/mis_ofertas_por_emprendimiento"};
@@ -55,7 +56,20 @@ namespace ClassLibrary
                                         }                                 
                                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();
-                                        response=Singleton<Search>.Instance.GetMyOffersByEntrepreneur(message.Text, message.UserId);                             
+
+
+                                string check="";
+                                
+                                Singleton<DataManager>.Instance.LoadFromJsonEntrepreneur();
+                                List<Entrepreneur> ent = Singleton<DataManager>.Instance.entrepreneurs;
+                                foreach (Entrepreneur item in ent )
+                                {
+                                    if(item.Name.Contains(message.Text))
+                                    {
+                                        check = item.Id;
+                                    }
+                                }
+                                     response=Singleton<Search>.Instance.GetMyOffersByEntrepreneur(check, message.UserId);                             
                                         return true;
                                 } 
                              if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Trim().Contains("/oferta_por_palabra"))

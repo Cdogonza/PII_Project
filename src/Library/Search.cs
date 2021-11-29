@@ -160,7 +160,7 @@ namespace ClassLibrary
             {
                 if (offer.Company.Id == CompanyId)
                 {
-                    if (offer.Entrepreneur != null && offer.Entrepreneur.Name == entrepreneur)
+                    if (offer.Entrepreneur != null && offer.Entrepreneur== entrepreneur)
                     {
                         data += $"{offer.Idd}) Oferta: {offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}";
                         cont ++;
@@ -183,33 +183,34 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="entrepreneurId"></param>
         /// <returns></returns>
-        public string GetOfferByEntrepreneur(string entrepreneurId)
-        {
-            this.catalog = Singleton<OfferManager>.Instance.catalog;
+        // public string GetOfferByEntrepreneur(string entrepreneurId)
+        // {
+        //     this.catalog = Singleton<OfferManager>.Instance.catalog;
 
-            string title = $"Sus ofertas adquiridas son: \n";
-            string data = "";
-            int cont = 0;
+        //     string title = $"Sus ofertas adquiridas son: \n";
+        //     string data = "";
+        //     int cont = 0;
 
-            foreach (Offer offer in this.catalog)
-            {
-                if (offer.Entrepreneur != null && offer.Entrepreneur.Id == entrepreneurId)
-                {
-                    data += $"{offer.Idd}) Oferta:{offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}";
-                    cont ++;
-                }
-            }
+        //     foreach (Offer offer in this.catalog)
+        //     {
+        //         if (offer.Entrepreneur != null && offer.Entrepreneur == entrepreneurId)
+        //         {
+                    
+        //             data += $"{offer.Idd}) Oferta:{offer.Nadme}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}";
+        //             cont ++;
+        //         }
+        //     }
 
-            if (data == "")
-            {
-                data = $"No tiene ofertas adquiridas";
-                return data;
-            }else
-            {
-                return title + data;
-            }
+        //     if (data == "")
+        //     {
+        //         data = $"No tiene ofertas adquiridas";
+        //         return data;
+        //     }else
+        //     {
+        //         return title + data;
+        //     }
             
-        }
+        // }
 
         /// <summary>
         /// Filtra el catálogo de búsquedas que publicó una empresa
