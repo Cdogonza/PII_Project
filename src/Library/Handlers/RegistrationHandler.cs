@@ -93,7 +93,8 @@ namespace ClassLibrary
                                 return true;
                         
                         }
-                    }else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 1 && message.Text.ToLower().Trim().Equals("/emprendedor"))
+                    }
+                    else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 1 && message.Text.ToLower().Trim().Equals("/emprendedor"))
                     {
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text); /// agrego texto /emprendendor
                         response = "Ingrese nombre de su emprendimiento";

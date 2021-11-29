@@ -76,7 +76,7 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam List="Permission"></typeparam>
         /// <returns></returns>
-        public List<Permission> offerpermissions = new List<Permission>();
+        public List<Permission> Offerpermissions = new List<Permission>();
         /// <summary>
         /// El id lo utilizamos para identificar cada oferta en el catalogo
         /// </summary>
@@ -100,7 +100,7 @@ namespace ClassLibrary
          {
 
          }
-         public Offer(long id,string name, Material material, Location location, int quantity, double cost, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
+         public Offer(long id,string name, Material material, int quantity, double cost, Location location, List<Permission> offerpermissions, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
         {
             this.Idd = id;
             this.Name = name;
@@ -108,6 +108,7 @@ namespace ClassLibrary
             this.Location = location;
             this.Quantity = quantity;
             this.Cost = cost;
+            this.Offerpermissions = offerpermissions;
             this.Availability = true;
             this.Tags = tags;
             this.DeliveryDate = deliverydate;
@@ -122,7 +123,7 @@ namespace ClassLibrary
         public void AddPermission(string permission)
         {
             Permission newPermission = new Permission(permission);
-            offerpermissions.Add(newPermission);
+            Offerpermissions.Add(newPermission);
         }
         /// <summary>
         /// Metodo que retorna los datos de la empresa para ser enviados al emprendedor que compro la oferta

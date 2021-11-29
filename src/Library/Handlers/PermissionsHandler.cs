@@ -29,7 +29,6 @@ namespace ClassLibrary
             if(message.Text.ToLower().Equals("/habilitaciones"))
             {
 
-
                 if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null )
                 {
                     Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
@@ -44,7 +43,7 @@ namespace ClassLibrary
                     return true;
                 }
             }
-            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1  &&Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/habilitaciones") )
+            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1  && Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/habilitaciones") )
             {
                 if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Trim().Contains("/habilitaciones") )
                 {

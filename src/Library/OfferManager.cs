@@ -101,14 +101,14 @@ namespace ClassLibrary
         /// <param name="deliverydate"></param>
         /// <param name="publicationdate"></param>
         /// <param name="offer"></param>
-        public void AddOffer (string name, Material material, string street, string city , string department ,int quantity, double cost, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company offer)
+        public void AddOffer (string name, Material material, int quantity, double cost, string street, string city , string department ,List<Permission> offerpermissions, bool regularoffers, ArrayList tags, DateTime deliverydate, DateTime publicationdate, Company company)
         {
             LocationApiClient Loc = new LocationApiClient();
             Location locationoffer = Loc.GetLocation(street,city,department);
             Singleton<OfferManager>.Instance.LoadFromJsonOffer();
             long valorUltimoId = this.catalog.Count+1;
             Console.WriteLine(valorUltimoId);
-            this.catalog.Add(new Offer(valorUltimoId,name,material,locationoffer,quantity,cost,regularoffers,tags,deliverydate,publicationdate,offer));
+            this.catalog.Add(new Offer(valorUltimoId, name, material, quantity, cost, locationoffer, offerpermissions, regularoffers, tags, deliverydate, publicationdate, company));
             this.ConvertToJsonOffer();
         }
         public string ConvertToJsonOffer()

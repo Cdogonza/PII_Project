@@ -6,6 +6,8 @@ namespace ClassLibrary{
     public class TelegramUserData{
 
         public Dictionary<string,Collection<string>> userdata = new Dictionary<string,Collection<string>>();
+        public Dictionary<string,Collection<string>> materialtypeDict = new Dictionary<string,Collection<string>>();
+        public Dictionary<string,Collection<string>> permissionsDict = new Dictionary<string,Collection<string>>();  
         public TelegramUserData()
         {
 
