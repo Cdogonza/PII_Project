@@ -45,7 +45,6 @@ namespace ClassLibrary
             {
                 if(message.Text.ToLower().Equals("/cancel") )
                 {
-                    //Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                     Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
                     response = "Se cancela el proceso actual";
                     return true;
@@ -64,6 +63,7 @@ namespace ClassLibrary
                         {
                             if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null )
                             {
+                    
                                 Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                                 response = "Ingrese el nombre del Tipo de Material";
                                 return true;
@@ -93,15 +93,12 @@ namespace ClassLibrary
                             }
                         }
                     }
-
                 }
-
             }
-                response = String.Empty ;
-                return false;         
-            }
-          
-        }
+            response = String.Empty ;
+            return false;         
+        }  
+    }
 }
 
 

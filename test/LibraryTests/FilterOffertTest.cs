@@ -8,6 +8,7 @@ using ClassLibrary;
 using NUnit.Framework;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Tests
 {
@@ -42,6 +43,7 @@ namespace Tests
         private Location LocationOffer;
         private Location LocatioCompany;
         private Location LocatioEntrepreneur;
+        private List<Permission> Offerpermissions;
 
         /// <summary>
         /// Crea las intancias utiilzadas en los test
@@ -53,32 +55,29 @@ namespace Tests
             this.offerAdmin =  new OfferManager();
             this.searcher =  new Search();
             LocatioCompany =Loc.GetLocation("Berro 1231","Montevideo","Montevideo");
-            this.company = new Company(2,"compania1","098239334",LocatioCompany,"Construcción");
-            Permission permissionA = new Permission("Materiales inflamables");
-            Permission permissionB = new Permission("Residuos medicos");
-
+            this.company = new Company("2","compania1","098239334",LocatioCompany,"Construcción");
             DataManager dataManager  = new DataManager();
-            dataManager.AddPermission(permissionA);
-            dataManager.AddPermission(permissionB);
+            dataManager.AddPermission("Materiales inflamables");
+            dataManager.AddPermission("Residuos medicos");
             
             this.company.AddPermission(dataManager.GetPermissions()[0]);
             
-                
 
-            ArrayList tags  = new ArrayList();
+            List<string> tags  = new List<string>();
             tags.Add("tag1");
             tags.Add("tag");              
             DateTime publicationDate = new DateTime(2008, 3, 1, 7, 0, 0);
             DateTime deliverydate = new DateTime();
             MaterialType materialType  =  new MaterialType("Tela", "Recortes de tela de 1x1");
-            this.material =  new Material("Tela",materialType,"200",100,"Berro 1231");
+            this.material =  new Material("Tela",materialType,"200");
             LocationOffer =Loc.GetLocation("Berro 1231","Montevideo","Montevideo");
-            this.offer = new Offer("Promoción de verano",this.material,LocationOffer,200.00,true,tags,deliverydate,publicationDate,this.company);
+            Offerpermissions.Add(new Permission("Materiales Peligrosos"));
+            this.offer = new Offer(7,"Promocion de verano",this.material,1,100,LocationOffer,Offerpermissions,true,tags,deliverydate,publicationDate,this.company);
             Singleton<OfferManager>.Instance.SaveOffer(this.offer);
             LocatioEntrepreneur =Loc.GetLocation("Colorado 2326","Montevideo","Montevideo");
             Permission permissionC = new Permission("Materiales inflamables");
             
-            this.entrepreneur = new Entrepreneur(1,"Empre2","091234567",LocatioEntrepreneur,"Construcción","Trabajo en altura");
+            this.entrepreneur = new Entrepreneur("3","Empre2","091234567",LocatioEntrepreneur,"Construcción","Trabajo en altura","especializacion");
             Singleton<OfferManager>.Instance.BuyOffer(this.entrepreneur,0);
         }
 
