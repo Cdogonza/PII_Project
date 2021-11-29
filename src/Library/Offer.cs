@@ -76,7 +76,7 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam List="Permission"></typeparam>
         /// <returns></returns>
-        public List<Permission> Offerpermissions = new List<Permission>();
+        public List<Permission> Offerpermissions {get;set;}
         /// <summary>
         /// El id lo utilizamos para identificar cada oferta en el catalogo
         /// </summary>
