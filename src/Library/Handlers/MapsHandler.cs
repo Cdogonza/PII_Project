@@ -63,11 +63,16 @@ namespace ClassLibrary
                     if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                     {
 
-                        
+                        double ll=0;
+                        double llo=0;
                         string ent =Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId);
                         foreach (Offer item in Singleton<OfferManager>.Instance.getLista())
                         {
-                            
+                            if(item.Entrepreneur==ent)
+                            {
+                                ll = item.Location.Latitude;
+                                llo= item.Location.Longitude;
+                            }
                         }
 
                         LocationApiClient loc = new LocationApiClient();
@@ -82,7 +87,7 @@ namespace ClassLibrary
                             log=item.Location.Longitude;
                         }
                         response = $"";
-                        loc.DownloadRoute(lat,log,-34.88064073732325, -56.14675630747833,path);             
+                        loc.DownloadRoute(lat,log,ll, llo,path);             
                         AsyncContext.Run(() => SendProfileImageRout(message));                    
                         return true;
                     }
