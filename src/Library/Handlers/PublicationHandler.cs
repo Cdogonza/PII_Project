@@ -53,89 +53,88 @@ namespace ClassLibrary
                 {
                     switch(_myuserdata[message.UserId].Count)
                     {
-                        case 1:  //2
+                        case 1:
                         _myuserdata[message.UserId].Add(message.Text);
                         response = "Ingrese el material que desea publicar";
                         return true;
 
-                        case 2:  //3
+                        case 2:
                         _myuserdata[message.UserId].Add(message.Text);
                        
-                        //StringBuilder responsetemp = new StringBuilder();
                         responsetemp.Append("Ingrese el tipo de material \n");
                         responsetemp.Append($"{Singleton<DataManager>.Instance.GetTextToPrintMaterialType()}\n");
-                        responsetemp.Append($"\nSi no encuentra el tipo de material en la lista ingrese /otro_materialtype");
+                        responsetemp.Append($"\nSi no encuentra el tipo de material en la lista ingrese /otro_tipo_de_material");
                         response = $"{responsetemp}";
                         return true;
 
-                        case 3:  //4
-                        if(message.Text.ToLower().Equals("/otro_materialtype") )
+                        case 3:
+                        if(message.Text.ToLower().Equals("/otro_tipo_de_material") )
                         {
                             _myuserdata[message.UserId].Add(message.Text);;
-                            response = "Ingrese el nombre del Tipo de Material";
+                            response = "Ingrese el nombre del tipo de material";
                             return true;    
                         }
                         else if(Singleton<DataManager>.Instance.CheckMaterialType(Int32.Parse(message.Text)))
                         {
                             _myuserdata[message.UserId].Add(message.Text);
-                            response = "Se agrego el tipo de material, /continuar";         
+                            response = "Se agregó el tipo de material /continuar";         
                             return true;
                         }
                         else
                         {
-                            response = "Opcion incorrecta, debe elegir nuevamente:";
+                            response = "Opción incorrecta, debe elegir nuevamente";
                             return true;
                         }
 
-                        case 4:  //5
-                        if(_myuserdata[message.UserId][3].ToLower().Equals("/otro_materialtype") && _mymaterialtype[message.UserId].Count == 0)
+                        case 4:
+                        if(_myuserdata[message.UserId][3].ToLower().Equals("/otro_tipo_de_material") && _mymaterialtype[message.UserId].Count == 0)
                         {
                             _mymaterialtype[message.UserId].Add(message.Text);
                             response = "Ingrese una breve descripción del tipo de material";
                             return true;
                         }
-                        else if(_myuserdata[message.UserId][3].ToLower().Equals("/otro_materialtype") && _mymaterialtype[message.UserId].Count == 1)
+                        else if(_myuserdata[message.UserId][3].ToLower().Equals("/otro_tipo_de_material") && _mymaterialtype[message.UserId].Count == 1)
                         {
                             _myuserdata[message.UserId].Add("/continuar");
                             _mymaterialtype[message.UserId].Add(message.Text);
-                            response = "Ingrese la unidad del Material (Ej: Pallet)";
+                            response = "Ingrese la unidad del material (Ej: Pallet)";
                             return true;
                         }
                         else
                         {
                             _myuserdata[message.UserId].Add(message.Text);
-                            response = "Ingrese la unidad del Material (Ej: Pallet)";
+                            response = "Ingrese la unidad del material (Ej: Pallet)";
                             return true;
                         }
 
-                        case 5:  //9
+                        case 5:
                         _myuserdata[message.UserId].Add(message.Text);
                         response = "Ingrese la cantidad a ofrecer(Ej: 1) :";
                         return true;
             
-                        case 6:  //9
+                        case 6:
                         _myuserdata[message.UserId].Add(message.Text);
                         response = "Ingrese el costo de su oferta";
                         return true;
 
-                        case 7:  //6
+                        case 7:
                         _myuserdata[message.UserId].Add(message.Text);
                         response = "Ingrese calle y número de puerta";
                         return true;
 
-                        case 8:  //7
+                        case 8:
                         _myuserdata[message.UserId].Add(message.Text);
                         response = "Ingrese la ciudad";
                         return true;
 
-                        case 9:  //8
+                        case 9:
                         _myuserdata[message.UserId].Add(message.Text);
                         response = "Ingrese el departamento";
                         return true;
 
                         case 10:
                         _myuserdata[message.UserId].Add(message.Text);
-                        response = $"La oferta requiere algun permiso especial? Si/No";
+                        response = $"La oferta requiere algún permiso especial? Si/No";
                         
                         return true;
                         
@@ -143,11 +142,6 @@ namespace ClassLibrary
                         
                         if(message.Text.ToUpper().Equals("SI"))
                         {
-                            // Si el diccionario de permisos esta vacio le agrego key del userID con un Collection<String>
-                            //if(this.permissionsDict[message.UserId].Count == 0)
-                            //{
-                            //    this.permissionsDict.Add(message.UserId,new Collection<string>());
-                            //}
                             _myuserdata[message.UserId].Add($"permiso = {message.Text}");
                             responsetemp.Clear();                    
                             responsetemp.Append("Ingrese el permiso necesario para la oferta \n");
@@ -164,8 +158,6 @@ namespace ClassLibrary
                                 responsetemp.Append("Se agregan los siguientes permisos \n");
                                 for (int i = 0; i < _mypermissions[message.UserId].Count; i++)
                                 {
-                                    Console.WriteLine($"{Singleton<DataManager>.Instance.GetPermissionByIndex(Int32.Parse(_mypermissions[message.UserId][i])).Name}");
-                                    //Singleton<DataManager>.Instance.AddPermission(Singleton<TelegramUserData>.Instance.userdata[message.UserId][i]);
                                     this.offerpermissions.Add(Singleton<DataManager>.Instance.GetPermissionByIndex(Int32.Parse(_mypermissions[message.UserId][i])));
                                     responsetemp.Append($"- {Singleton<DataManager>.Instance.GetPermissionByIndex(Int32.Parse(_mypermissions[message.UserId][i])).Name}\n");
                                     
@@ -176,8 +168,7 @@ namespace ClassLibrary
                             }    
                             else
                             {
-                                //_myuserdata[message.UserId].Add($"permiso = {message.Text}");
-                                response = "no se agregan permisos especiales, /continuar";
+                                response = "No se agregan permisos especiales, /continuar";
                                 
                             }                 
                             return true; 
@@ -188,7 +179,7 @@ namespace ClassLibrary
                             return true; 
                         }
 
-                        case 12:  //10
+                        case 12:
                         if(_myuserdata[message.UserId][11].ToUpper().Contains("SI"))
                         {  
                             _mypermissions[message.UserId].Add(message.Text);
@@ -203,11 +194,8 @@ namespace ClassLibrary
                             response = "Su compra es una oferta regular? Si/No";
                             return true;     
                         }
-
-                        //case
    
                         case 13:
-                          //11
                         if(message.Text.ToUpper() == "NO")
                         {
                             regularoffer = false;
@@ -220,7 +208,7 @@ namespace ClassLibrary
                         response = "Desea agregar tags a su oferta? Si/No";
                         return true;
 
-                        case 14:  //12
+                        case 14:
 
                         if(message.Text.ToUpper() == "NO")
                         {
@@ -231,7 +219,7 @@ namespace ClassLibrary
                         else if(message.Text.ToUpper() == "SI")
                         {
                             _myuserdata[message.UserId].Add(message.Text);
-                            response = "Para Finalizar, agregue sus tags separados por '-' ";
+                            response = "Para finalizar, agregue sus tags separados por '-' ";
                             return true;
                         }
                         else
@@ -240,8 +228,7 @@ namespace ClassLibrary
                             return true;
                         }
 
-                        case 15: //13
-                        Console.WriteLine("Entre aca caso 12");
+                        case 15:
                         if (_myuserdata[message.UserId][14].ToUpper().Equals("SI"))
                         {
                             _myuserdata[message.UserId].Add(message.Text);
@@ -250,7 +237,6 @@ namespace ClassLibrary
                         else if (_myuserdata[message.UserId][14].ToUpper().Equals("NO"))
                         {
                             _myuserdata[message.UserId].Add(message.Text);
-                            Console.WriteLine("Entre aca aca if caso 12");
                         }
                         
                         string name = _myuserdata[message.UserId][1];
@@ -264,27 +250,8 @@ namespace ClassLibrary
                         Company company = Singleton<DataManager>.Instance.GetCompanyInstance(message.UserId);
                         DateTime publicationdate = DateTime.Now;
                         DateTime deliverydate = new DateTime();
-                                            
-                      
-
-                        Console.WriteLine($"0 - {_myuserdata[message.UserId][0]}");
-                        Console.WriteLine($"1 - {_myuserdata[message.UserId][1]}");
-                        Console.WriteLine($"2 - {_myuserdata[message.UserId][2]}");
-                        Console.WriteLine($"3 - {_myuserdata[message.UserId][3]}");
-                        Console.WriteLine($"4 - {_myuserdata[message.UserId][4]}"); // 
-                        Console.WriteLine($"5 - {_myuserdata[message.UserId][5]}"); // unidad
-                        Console.WriteLine($"6 - {_myuserdata[message.UserId][6]}"); // cantidad
-                        Console.WriteLine($"7 - {_myuserdata[message.UserId][7]}"); // costo
-                        Console.WriteLine($"8 - {_myuserdata[message.UserId][8]}"); // calle
-                        Console.WriteLine($"9 - {_myuserdata[message.UserId][9]}"); // montevideo
-                        Console.WriteLine($"10 - {_myuserdata[message.UserId][10]}"); // montevideo
-                        Console.WriteLine($"11 - {_myuserdata[message.UserId][11]}"); // permission dicc
-                        Console.WriteLine($"12 - {_myuserdata[message.UserId][12]}"); // 
-                        //Console.WriteLine($"13 - {_myuserdata[message.UserId][13]}"); // si 
-                        //Console.WriteLine($"14 - {_myuserdata[message.UserId][14]}"); // si 
-                       // Console.WriteLine($"15 - {_myuserdata[message.UserId][15]}"); // TAGS                                       
-
-                        if(_myuserdata[message.UserId][3].ToLower().Equals("/otro_materialtype"))
+                        
+                        if(_myuserdata[message.UserId][3].ToLower().Equals("/otro_tipo_de_material"))
                         {
                             string typename = _mymaterialtype[message.UserId][0];
                             string typedesc = _mymaterialtype[message.UserId][1];

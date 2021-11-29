@@ -32,14 +32,14 @@ namespace ClassLibrary
                 if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null )
                 {
                     Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                    response = "Usted No tiene privilegios para agregar habilitaciones al sistema";
+                    response = "Usted no tiene privilegios para agregar habilitaciones al sistema";
                     return true;
                 }
 
                 if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                 {
                     Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                    response = "Ingrese el nombre de la habilitacion a agregar al sistema";
+                    response = "Ingrese el nombre de la habilitación a agregar al sistema";
                     return true;
                 }
             }
@@ -47,43 +47,32 @@ namespace ClassLibrary
             {
                 if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Trim().Contains("/habilitaciones") )
                 {
-                    if(!message.Text.ToUpper().Equals("Y") && !message.Text.ToUpper().Equals("N") )
+                    if(!message.Text.ToUpper().Equals("SI") && !message.Text.ToUpper().Equals("NO") )
                     {
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                        response = "Desea ingresar otra Habilitacion Y/N";
+                        response = "Desea ingresar otra Habilitación? Si/No";
                         return true;                    
                     }
-                    if(message.Text.ToUpper().Equals("Y"))
+                    if(message.Text.ToUpper().Equals("SI"))
                     {
-                        //Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                         response = "Ingrese el nombre de la nueva habilitacion";
                         return true;
                     }
-                    else if(message.Text.ToUpper().Equals("N"))
+                    else if(message.Text.ToUpper().Equals("NO"))
                     {
-                        Console.WriteLine("Entre en el elseIF N");
                         StringBuilder responsetemp = new StringBuilder();
                         responsetemp.Append("Se agregaron las siguientes habilitaciones: \n");
                         for (int i = 1; i < Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count; i++)
                         {
-                            Console.WriteLine($"{Singleton<TelegramUserData>.Instance.userdata[message.UserId][i]}");
                             Singleton<DataManager>.Instance.AddPermission(Singleton<TelegramUserData>.Instance.userdata[message.UserId][i]);
                             responsetemp.Append($"{Singleton<TelegramUserData>.Instance.userdata[message.UserId][i]}\n");
                         }
                         Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
-                        //Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId,new Collection<string>());
                         response = $"{responsetemp}";
                         return true;
                     }
                 }
             }
-               /* if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 1)
-                {
-                    Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                    response = "Desea ingresar otra Habilitacion Y/N";
-                    return true;
-                }        
-                */
             response = String.Empty ;
             return false;  
                  
