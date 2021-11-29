@@ -198,9 +198,10 @@ namespace ClassLibrary
         /// Metodo para agregar Rubros a la lista de Rubros
         /// </summary>
         /// <param name="item"></param>
-        public void AddAreaOfWork(AreaOfWork item)
+        public void AddAreaOfWork(string areaOfWork)
         {
-            this.areaofwork.Add(item);           
+            this.areaofwork.Add(new AreaOfWork (areaOfWork)); 
+            this.ConvertToJsonPermissions();          
         }
 
         /// <summary>

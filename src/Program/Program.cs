@@ -45,10 +45,11 @@ namespace ClassLibrary
                 new DataManagerHandler(
                 new MaterialTypesHandler(
                 new PublicationHandler(
-                new PermissionsHandler(  
+                new PermissionsHandler(
+                new AreaOfWorkHandler(  
                 new SearchOffersHandler(  
                 new CloseSessionHandler(                             
-                new MapsHandler(Bot,null))))))))));
+                new MapsHandler(Bot,null)))))))))));
             Message message = new Message();
            
 

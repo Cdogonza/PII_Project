@@ -16,11 +16,9 @@ namespace ClassLibrary
         }
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            
-            
             if(!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
             {       
-                    Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId,new Collection<string>());    
+                Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId,new Collection<string>());    
             }
 
             if(message.Text.ToLower().Equals("/tipo_de_material"))
