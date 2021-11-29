@@ -18,6 +18,7 @@ namespace ClassLibrary
         string ConvertToJsonOffer();
         string ConvertToJsonPermissions();
         string ConvertToJsonMaterialTypes();
+        string ConvertToJsonAreaOfWork();
         
     }
 }

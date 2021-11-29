@@ -23,8 +23,8 @@ namespace ClassLibrary
         /// <summary>
         /// Este es el constructor de la clase
         /// </summary>
-           [JsonConstructor] 
-           public OfferManager()
+        [JsonConstructor] 
+        public OfferManager()
         {
             this.catalog = new List<Offer>();
         }
@@ -154,12 +154,12 @@ namespace ClassLibrary
         {return null;}
         public string ConvertToJsonCompany()
         {return null;}
-
         public string ConvertToJsonPermissions()
         {return null;}
         public string ConvertToJsonMaterialTypes()
         {return null;}
-
+        public string ConvertToJsonAreaOfWork()
+        {return null;}
     }
 
 }
