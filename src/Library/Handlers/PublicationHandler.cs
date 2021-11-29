@@ -115,11 +115,11 @@ namespace ClassLibrary
             
                         case 6:  //9
                         _myuserdata[message.UserId].Add(message.Text);
-                        response = "Ingrese el costo de su oferta";
+                        response = "Ingrese el costo de su oferta en $(Ej $100):";
                         return true;
 
                         case 7:  //6
-                        _myuserdata[message.UserId].Add(message.Text);
+                        _myuserdata[message.UserId].Add(message.Text.Replace("$",""));
                         response = "Ingrese calle y número de puerta";
                         return true;
 
