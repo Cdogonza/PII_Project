@@ -102,7 +102,7 @@ namespace ClassLibrary
                                 {
                                     Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(Singleton<DataManager>.Instance.areaofwork[Int32.Parse(message.Text)].Name);
                                     Singleton<DataManager>.Instance.AddCompany(message.UserId,Singleton<TelegramUserData>.Instance.userdata[message.UserId][3],Singleton<TelegramUserData>.Instance.userdata[message.UserId][4],Singleton<TelegramUserData>.Instance.userdata[message.UserId][5],Singleton<TelegramUserData>.Instance.userdata[message.UserId][6],Singleton<TelegramUserData>.Instance.userdata[message.UserId][7],Singleton<TelegramUserData>.Instance.userdata[message.UserId][8]);
-                                    response = $"Se creó la Empresa correctamente\n \nPara ver las siguientes acciones posibles ingrese: \n /publicar_oferta \n /vermisdatos \n /materialtype \n /habilitaciones";
+                                    response = $"Se creó la Empresa correctamente\n \nPara ver las siguientes acciones posibles ingrese: \n /help";
                                     Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
                                     return true;
                                 }
@@ -146,7 +146,7 @@ namespace ClassLibrary
                         
                             case 6:                      
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                            response = $"{Singleton<DataManager>.Instance.GetTextToPrintAreaOfWork()}";
+                            response = $"Ingrese un rubro\n{Singleton<DataManager>.Instance.GetTextToPrintAreaOfWork()}";
                             return true;
                                                         
                             case 7:

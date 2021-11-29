@@ -59,8 +59,7 @@ namespace ClassLibrary
                                     return true;
                                 }
                             }
-                            response=$"Confirma que desea obtener esta oferta?\n {data} Si/No";
-                            Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();
+                            response=$"Confirma que desea obtener esta oferta?\n {data}\n\n Si/No";
                             return true;
                         }
                     }
@@ -75,7 +74,7 @@ namespace ClassLibrary
                                 Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();
                                 
                             
-                                response=$"Felicitaciones! \n/help para continuar";
+                                response=$"Felicitaciones! Su compra ha sido realizada con exito\n/help para continuar";
                                 return true;
                             }else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2].ToLower().Equals("no"))
                             {
