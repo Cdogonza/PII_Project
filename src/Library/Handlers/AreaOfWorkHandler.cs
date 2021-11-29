@@ -44,7 +44,6 @@ namespace ClassLibrary
             {
                 if(message.Text.ToLower().Equals("/listar_rubros"))
                 {
-                    Console.WriteLine("Hola");
                     Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
                     response = Singleton<DataManager>.Instance.GetTextToPrintAreaOfWork();
                     return true;
