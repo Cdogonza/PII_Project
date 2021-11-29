@@ -101,8 +101,8 @@ namespace ClassLibrary
                         data += $"{offer.Idd}) Oferta:{offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}\n\n";
                         purchased.Add(offer);
                     }
-                }              
-            }         
+                }
+            }
            if(data =="")
            {
                data ="No hay ofertas para la palabra clave ingresada /help";
