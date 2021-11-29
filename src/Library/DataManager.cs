@@ -31,7 +31,7 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam List="string"></typeparam>
         /// <returns></returns>        
-        public List<AreaOfWork> areaofwork = new List<AreaOfWork>(){new AreaOfWork("construccion"),new AreaOfWork("cocina"),new AreaOfWork("industria")};
+        public List<AreaOfWork> areaofwork = new List<AreaOfWork>();
         [JsonInclude]
         public List<Entrepreneur> entrepreneurs = new List<Entrepreneur>();
         [JsonInclude]
@@ -397,7 +397,10 @@ namespace ClassLibrary
         }
          public void LoadFromJsonCompany()
         {
-            
+            if(!File.Exists(@"Companies.json"))
+            {
+                File.AppendAllText(@"Companies.json", "");
+            }                        
             string json = File.ReadAllText(@"Companies.json");
             if(json!="")
             {
@@ -441,7 +444,10 @@ namespace ClassLibrary
      
         public void LoadFromJsonEntrepreneur()
         {
-            
+            if(!File.Exists(@"Entrepreneur.json"))
+            {
+                File.AppendAllText(@"Entrepreneur.json", "");
+            }            
             string json = File.ReadAllText(@"Entrepreneur.json");
             if(json!="")
             {
@@ -483,7 +489,10 @@ namespace ClassLibrary
 
         public void LoadFromJsonPermission()
         {
-            
+            if(!File.Exists(@"Permissions.json"))
+            {
+                File.AppendAllText(@"Permissions.json", "");
+            }
             string json = File.ReadAllText(@"Permissions.json");
             if(json!="")
             {
@@ -526,7 +535,10 @@ namespace ClassLibrary
 
         public void LoadFromJsonMaterialTypes()
         {
-            
+            if(!File.Exists(@"MaterialTypes.json"))
+            {
+                File.AppendAllText(@"MaterialTypes.json", "");
+            }
             string json = File.ReadAllText(@"MaterialTypes.json");
             if(json!="")
             {
@@ -568,7 +580,10 @@ namespace ClassLibrary
 
         public void LoadFromJsonAreaOfWork()
         {
-            
+            if(!File.Exists(@"AreaOfWork.json"))
+            {
+                File.AppendAllText(@"AreaOfWork.json", "");
+            }
             string json = File.ReadAllText(@"AreaOfWork.json");
             if(json!="")
             {
