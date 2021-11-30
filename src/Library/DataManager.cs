@@ -17,10 +17,7 @@ namespace ClassLibrary
     public class DataManager : IJsonConvertible
 
     {
-        /// <summary>
-        /// Contructor de la persistencia de AreaOfWork
-        /// </summary>
-        [JsonConstructor]  
+        [JsonConstructor]        
         public DataManager()
         {
             this.companies = new List<Company>();
@@ -28,11 +25,6 @@ namespace ClassLibrary
             this.permissions = new List<Permission>();
         }
        
-       /// <summary>
-       /// lista de informacion temporal del usuario
-       /// </summary>
-       /// <typeparam name="string"></typeparam>
-       /// <returns></returns>
         public List <string> data = new List<string>();  
         /// <summary>
         /// Lista de String donde se almacenan los rubros
@@ -41,18 +33,8 @@ namespace ClassLibrary
         /// <returns></returns>        
         public List<AreaOfWork> areaofwork = new List<AreaOfWork>();
         [JsonInclude]
-        /// <summary>
-        /// Lista de String donde se almacenan los emprendedores
-        /// </summary>
-        /// <typeparam name="Entrepreneur"></typeparam>
-        /// <returns></returns>
         public List<Entrepreneur> entrepreneurs = new List<Entrepreneur>();
         [JsonInclude]
-        /// <summary>
-        /// Lista de String donde se almacenan las companias
-        /// </summary>
-        /// <typeparam name="Company"></typeparam>
-        /// <returns></returns>
         public List<Company> companies = new List<Company>();
 
         /// <summary>
@@ -81,10 +63,24 @@ namespace ClassLibrary
             
             return companies;
         }
-        /// <summary>
-        /// Lista que devuelve los datos del emprendedor
-        /// </summary>
-        /// <returns></returns>
+        public string  DataEnt(string id)
+        {
+           
+           
+            this.LoadFromJsonEntrepreneur();
+            foreach (Entrepreneur item in this.entrepreneurs)
+            {
+              if(item.Id==id)
+              {
+                   return item.Id;
+               }  
+            }
+  
+           return null;
+        }
+        
+
+
         public List<Entrepreneur>  DataEntrepeneur()
         {
             
@@ -102,19 +98,8 @@ namespace ClassLibrary
             LocationApiClient Loc = new LocationApiClient();
             Location location = Loc.GetLocation(calle,ciudad,departamento);
             this.entrepreneurs.Add(new Entrepreneur(id,name,phone,location,area,specialization,permission));
-            this.ConvertToJsonEntrepreneur();
+             this.ConvertToJsonEntrepreneur();
         }
-
-        /// <summary>
-        /// Metodo que crea una instancia de company y lo mete en la persistencia
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="name"></param>
-        /// <param name="phone"></param>
-        /// <param name="calle"></param>
-        /// <param name="ciudad"></param>
-        /// <param name="departamento"></param>
-        /// <param name="area"></param>
         public void AddCompany(string id ,string name,string phone,string calle,string ciudad,string departamento,string area)
         {
             LocationApiClient Loc = new LocationApiClient();
@@ -123,11 +108,6 @@ namespace ClassLibrary
             this.ConvertToJsonCompany();
         }
 
-        /// <summary>
-        /// Carga los datos de la persistencia y devuelve informacion relacionada al emprendedor
-        /// </summary>
-        /// <param name="userid"></param>
-        /// <returns></returns>
         public string GetEntrepreneur(string userid)
         {
             this.LoadFromJsonEntrepreneur();
@@ -143,11 +123,6 @@ namespace ClassLibrary
             return null;
         }
         
-        /// <summary>
-        /// Carga los datos de la persistencia y devuelve informacion relacionada a la empresa
-        /// </summary>
-        /// <param name="userid"></param>
-        /// <returns></returns>
         public string GetCompany(string userid)
         {
             
@@ -168,7 +143,7 @@ namespace ClassLibrary
         /// <summary>
         /// Metodo para agregar permisos al listado de permisos
         /// </summary>
-        /// <param name="permission"></param>
+        /// <param name="item"></param>
         public void AddPermission(string permission)
         {
             this.permissions.Add(new Permission (permission)); 
@@ -177,7 +152,7 @@ namespace ClassLibrary
 
         /// <summary>
         /// Metodo que chequea si el permiso ingresado por el usuario existe en la lista de Permisos del sistema. 
-        /// </summary>
+        /// /// </summary>
         /// <param name="indice"></param>
         /// <returns></returns>
         public bool CheckPermission(int indice)
@@ -233,7 +208,7 @@ namespace ClassLibrary
         /// <summary>
         ///  Retorna la lista de Permisos almacenados en el sistema
         /// </summary>
-        /// <returns>this.permissions</returns>
+        /// <returns></returns>
         public List<Permission> GetPermissions()
         {
             this.LoadFromJsonPermission();
@@ -243,7 +218,7 @@ namespace ClassLibrary
         /// <summary>
         /// Metodo para agregar Rubros a la lista de Rubros
         /// </summary>
-        /// <param name="areaOfWork"></param>
+        /// <param name="item"></param>
         public void AddAreaOfWork(string areaOfWork)
         {
             this.areaofwork.Add(new AreaOfWork (areaOfWork)); 
@@ -272,7 +247,7 @@ namespace ClassLibrary
         /// Metodo que retorna el Rubro segun el lugar ingresado de la lista
         /// </summary>
         /// <param name="indice"></param>
-        /// <returns>this.areaofwork[indice]</returns>
+        /// <returns></returns>
         public AreaOfWork GetAreaOfWorkByIndex(int indice)
         {
             this.LoadFromJsonAreaOfWork();
@@ -298,6 +273,16 @@ namespace ClassLibrary
         }
 
         /// <summary>
+        /// Retorna la lista de Rubros almacenados en el sistema
+        /// </summary>
+        /// <returns></returns>
+        public List<AreaOfWork> GetAreasOfWork()
+        {
+            this.LoadFromJsonAreaOfWork();
+            return this.areaofwork;
+        }
+      
+        /// <summary>
         /// Agrega un tipo de Material a la lista de MaterialTypes
         /// </summary>
         /// <param name="item"></param>
@@ -309,13 +294,18 @@ namespace ClassLibrary
            this.ConvertToJsonMaterialTypes();
            return newmaterialtype;
        }
+       /* public void AddMaterialType(MaterialType item)
+        {
+            this.materialsType.Add(item);           
+        }
+       */
        
         /// <summary>
         /// El metodo crea una instacia de Material y la agrega al catalogo.
         /// </summary>
         /// <param name="name"></param>
         /// <param name="type"></param>
-        /// <param name="unit"></param>
+        /// <param name="quantity"></param>
         /// <returns>newmaterial</returns>
         public Material AddMaterial (string name, MaterialType type, string unit)
         {
@@ -391,7 +381,7 @@ namespace ClassLibrary
         /// <summary>
         /// Retorna la lista de Materiales almacenados en el sistema
         /// </summary>
-        /// <returns>this.materialsType</returns>
+        /// <returns></returns>
         public List<MaterialType> GetMaterialsType()
         {
             this.LoadFromJsonMaterialTypes();
