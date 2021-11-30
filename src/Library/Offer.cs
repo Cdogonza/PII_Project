@@ -139,18 +139,6 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="entrepreneur"></param>
         /// <returns></returns>
-        public List<string> getOffer(Entrepreneur entrepreneur)
-        {
-            Singleton<OfferManager>.Instance.LoadFromJsonOffer();
-            this.catalog = Singleton<OfferManager>.Instance.catalog; 
-            if (this.Availability)
-            {
-               // this.Entrepreneur = entrepreneur;
-                this.Availability = false;          
-            }
-            return null;
-           
-        }
         public string ConvertToJsonCompany()
         {
             return null;

@@ -402,6 +402,7 @@ namespace ClassLibrary
             string temp = JsonSerializer.Serialize(this.companies);
              File.WriteAllText(@"Companies.json", temp);
             return result;
+            
             JsonSerializerOptions options = new()
             {
                 ReferenceHandler = MyReferenceHandler.Instance,

@@ -105,7 +105,10 @@ namespace ClassLibrary
         {
             LoadFromJsonOffer();
             Singleton<DataManager>.Instance.LoadFromJsonEntrepreneur();
-            this.buyers= Singleton<DataManager>.Instance.entrepreneurs;
+            this.buyers= Singleton<DataManager>.Instance.entrepreneurs;           
+            DateTime date2 = DateTime.UtcNow;
+     
+            
             foreach (Offer item in this.catalog)
             {
                 if(item.Idd == index)
@@ -116,6 +119,8 @@ namespace ClassLibrary
                         if(item2.Id == buyer)
                         {
                             item.Entrepreneur=buyer;
+                            item.DeliveryDate = date2;
+
                         }
                     }
                    //  item.Entrepreneur = new Entrepreneur buyer;
