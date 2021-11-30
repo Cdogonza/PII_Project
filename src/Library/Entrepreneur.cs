@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 namespace ClassLibrary
 {
-        /// <summary>
-        ///  Esta clase representa al emprendedor el cual hereda metodos y atributos de la clase UserBase
-        /// </summary>
+    /// <summary>
+    ///  Esta clase representa al emprendedor el cual hereda metodos y atributos de la clase UserBase
+    /// </summary>
     public class Entrepreneur : UserBase
     {
         /// <summary>
@@ -30,15 +30,15 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// Constructor de Entrepreneur
+        /// Constructor de la clase Entrepreneur
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="name"></param>
-        /// <param name="phone"></param>
-        /// <param name="location"></param>
-        /// <param name="area"></param>
-        /// <param name="specialization"></param>
-        /// <param name="permission"></param>
+        /// <param name="id">Id del Emprendedor, obtenido del UserId de Telegram</param>
+        /// <param name="name">Nombre del Emprendedor</param>
+        /// <param name="phone">Telefono del Emprendedor</param>
+        /// <param name="location">Ubicacion del Emprendedor, de tipo Location</param>
+        /// <param name="area">Rubro al cual Pertenece el emprendedor</param>
+        /// <param name="specialization">Espacializacion del emprendedor</param>
+        /// <param name="permission">Lista de permisos que posee el empdendedor</param>
         /// <returns></returns>
         public Entrepreneur(string id,string name,string phone,Location location,string area,string specialization, List<Permission> permission) : base (id,name,phone,location,area)
         {

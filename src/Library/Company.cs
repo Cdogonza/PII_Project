@@ -21,11 +21,11 @@ namespace ClassLibrary
         /// <summary>
         /// Constructor de company
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="name"></param>
-        /// <param name="phone"></param>
-        /// <param name="location"></param>
-        /// <param name="area"></param>
+        /// <param name="id">Id de la Compania, obetenido del UserId de Telegram</param>
+        /// <param name="name">Nombre de la Compania</param>
+        /// <param name="phone">Telefono de la Compania</param>
+        /// <param name="location">Ubicacion de la Compania, de tipo Location</param>
+        /// <param name="area">Rubro al cual pertenece la Compania</param>
         /// <returns></returns>
 /// 
         public Company(string id ,string name,string phone,Location location,string area) : base (id,name,phone,location,area)
