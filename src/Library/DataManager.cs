@@ -43,8 +43,7 @@ namespace ClassLibrary
         /// <typeparam List="MaterialType"></typeparam>
         /// <returns></returns>
         [JsonInclude]
-        public List<MaterialType> materialsType = new List<MaterialType>();//{new MaterialType("plastico","Descripcion plastico"),new MaterialType("papel","Descripcion papel"),new MaterialType("organico", "Descripcion organico")};
-
+        public List<MaterialType> materialsType = new List<MaterialType>();
         /// <summary>
         /// Lista de Material donde se almacenan los materiales
         /// </summary>
@@ -58,9 +57,7 @@ namespace ClassLibrary
         /// <typeparam List="Permission"></typeparam>
         /// <returns></returns>
         [JsonInclude]
-        public List<Permission> permissions = new List<Permission>(); // {AddPermission("Materiales Peligrosos"), new Permission("Residuos Medicos"), new Permission("Materiales Organicos"), new Permission("Materiales Inflamables")};
-        
-
+        public List<Permission> permissions = new List<Permission>(); 
         public List<Company>  DataCompany()
         {
             
@@ -96,7 +93,7 @@ namespace ClassLibrary
             entrepreneurs = vacia;
             this.companies = vacia2;
         }
-        public void AddEntrepreneur(string id ,string name,string phone,string calle,string ciudad,string departamento,string area, string specialization, string permission )
+        public void AddEntrepreneur(string id ,string name,string phone,string calle,string ciudad,string departamento,string area, string specialization, List<Permission> permission )
         {
             LocationApiClient Loc = new LocationApiClient();
             Location location = Loc.GetLocation(calle,ciudad,departamento);
@@ -119,11 +116,9 @@ namespace ClassLibrary
             {
                 if (item.Id == userid)
                 {
-                   datos =$" {item.Name}\n {item.Phone}\n{item.Location.FormattedAddress}\n{item.Specialization}\n{item.Permissions}\n";
+                   datos =$"Nombre: {item.Name}\nTelefono: {item.Phone}\nDireccion:{item.Location.FormattedAddress}\nEspecializacion:{item.Specialization}\nPermisos: {item.Permissions}\n";
                    return datos;
-                }
-                
-                 
+                }  
             }
             return null;
         }
@@ -137,13 +132,11 @@ namespace ClassLibrary
             {
                 if (item.Id == userid)
                 {
-                   datos =$" {item.Name}\n {item.Phone}\n{item.Location.FormattedAddress}\n";
+                   datos =$"Nombre: {item.Name}\nTelefono: {item.Phone}\nDireccion: {item.Location.FormattedAddress}\nRubro: {item.AreaOfWork.Name}\n ";
                    return datos;
-                }
-                    
+                }       
             }
-            return null;
-             
+            return null; 
         }
     
 
@@ -185,6 +178,13 @@ namespace ClassLibrary
         {
             this.LoadFromJsonPermission();
             return this.permissions[indice];
+        }
+
+        public string GetPermissionByIndexText(int indice)
+        {
+            this.LoadFromJsonPermission();
+            Console.WriteLine($"This-Permission {this.permissions[indice].Name}");
+            return this.permissions[indice].Name;
         }
 
         /// <summary>
@@ -241,7 +241,6 @@ namespace ClassLibrary
             {
                 return false;
             } 
-
         }
 
         /// <summary>
