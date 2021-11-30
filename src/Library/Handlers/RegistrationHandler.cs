@@ -34,6 +34,13 @@ namespace ClassLibrary
         {
             this.Keywords = new string[] {"/registrarse"};
         }
+
+        /// <summary>
+        /// Este metodo es el encargado de procesar el mensaje que le llega de telegram y enviar una respuesta
+        /// </summary>
+        /// <param name="message"> El mensage que llega para procesar</param>
+        /// <param name="response">La respuesta del mensaje procesado </param>
+        /// <returns></returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {           
             var _myuserdata = Singleton<TelegramUserData>.Instance.userdata;

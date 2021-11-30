@@ -50,9 +50,8 @@ namespace ClassLibrary
                 new BuyerOfferHandler(                                
                 new PermissionsHandler(
                 new AreaOfWorkHandler(  
-                new SearchOffersHandler(  
-                new CloseSessionHandler(                             
-                new MapsHandler(Bot,null))))))))))));
+                new SearchOffersHandler(                               
+                new MapsHandler(Bot,null)))))))))));
             Message message = new Message();
            
 

@@ -10,6 +10,7 @@ namespace ClassLibrary
 {
     /// <summary>
     /// Este handler implementa el patrón Chain of Responsability y es el encargado de manejar los comandos /rubros, /listar_rubros y /agregar_rubros
+    /// Permite a las companias agregar rubros nuevos y listarlos, y los emprendedores a listar los rubros existentes en el sistema 
     /// </summary>
     public class AreaOfWorkHandler: BaseHandler
     {
@@ -26,8 +27,8 @@ namespace ClassLibrary
         /// <summary>
         /// Este metodo es el encargado de procesar el mensaje que le llega de telegram y enviar una respuesta
         /// </summary>
-        /// <param name="message"> mensage que llega del usuario de telegram</param>
-        /// <param name="response">respuesta del Bot hacia el usuario de telegram </param>
+        /// <param name="message"> El mensage que llega para procesar</param>
+        /// <param name="response">La respuesta del mensaje procesado </param>
         /// <returns></returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {   

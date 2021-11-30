@@ -26,8 +26,8 @@ namespace ClassLibrary
         /// <summary>
         /// Este metodo es el encargado de procesar el mensaje que le llega de telegram y enviar una respuesta
         /// </summary>
-        /// <param name="message"> mensage que llega del usuario de telegram</param>
-        /// <param name="response">respuesta del Bot hacia el usuario de telegram </param>
+        /// <param name="message"> El mensage que llega para procesar</param>
+        /// <param name="response">La respuesta del mensaje procesado </param>
         /// <returns></returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
