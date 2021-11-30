@@ -28,13 +28,11 @@ namespace ClassLibrary
         public string Unit{get;set;}
 
         /// <summary>
-        /// Constructor de la clase
+        /// Constructor de Material
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="type"></param>
-        /// <param name="quantity"></param>
-        /// <param name="cost"></param>
-        /// <param name="location"></param>
+        /// <param name="name">Nombre del Material</param>
+        /// <param name="type">Tipo de Material, del tipo MaterialType</param>
+        /// <param name="unit">Unidad que representa al material</param>
         public Material(string name, MaterialType type, string unit)
         {
             this.Name = name;

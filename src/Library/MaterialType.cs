@@ -26,34 +26,66 @@ namespace ClassLibrary
         /// <summary>
         /// Constructor de la clase MaterialType
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="description"></param>
+        /// <param name="name">Nombre del tipo de material</param>
+        /// <param name="description">Descripcion del tipo de material</param>
         public MaterialType(string name, string description)
         {
             this.Name = name;
             this.Description = description;
         }
+        /// <summary>
+        /// Contructor de la persistencia de Material Type
+        /// </summary>
         
         [JsonConstructor]
         public MaterialType()
         {
 
         }
-
+        /// <summary>
+        /// Metodo de agregado de la interfaz IJsonConvertible que no lleva implementacion para esta clase
+        /// </summary>
+        /// <returns></returns>
         public string ConvertToJsonCompany()
         {return null;}
+        
+        /// <summary>
+        /// Metodo de agregado de la interfaz IJsonConvertible que no lleva implementacion para esta clase
+        /// </summary>
+        /// <returns></returns>
         public string ConvertToJsonEntrepreneur()
         {return null;}
+        
+        /// <summary>
+        /// Metodo de agregado de la interfaz IJsonConvertible que no lleva implementacion para esta clase
+        /// </summary>
+        /// <returns></returns>
         public string ConvertToJsonOffer()
         {return null;}
+        
+        /// <summary>
+        /// Metodo de agregado de la interfaz IJsonConvertible que no lleva implementacion para esta clase
+        /// </summary>
+        /// <returns></returns>
         public string ConvertToJsonPermissions()
         {return null;}
+
+        /// <summary>
+        /// Metodo de agregado de la interfaz IJsonConvertible que no lleva implementacion para esta clase
+        /// </summary>
+        /// <returns></returns>
+        public string ConvertToJsonAreaOfWork()
+        {return null;}
+        
+        /// <summary>
+        /// Metodo de agregado de la interfaz IJsonConvertible que serializa los datos de la clase MaterialTypes
+        /// </summary>
+        /// <returns></returns>
         public string ConvertToJsonMaterialTypes()
         {
             return JsonSerializer.Serialize(this);
         }
-        public string ConvertToJsonAreaOfWork()
-        {return null;}
+
     }
 
 

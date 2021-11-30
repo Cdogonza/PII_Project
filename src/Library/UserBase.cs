@@ -10,6 +10,9 @@ namespace ClassLibrary
     /// </summary>
     public abstract class UserBase : IJsonConvertible
     { 
+        /// <summary>
+        /// Contructor de la persistencia del usuario
+        /// </summary>
         [JsonConstructor]
 
         public UserBase()
@@ -20,10 +23,14 @@ namespace ClassLibrary
         /// Propiedad Nombre del usuario
         /// </summary>
         public string Name { get;  set; }
+        /// <summary>
+        /// Propiedad de la Id del usuario
+        /// </summary>
+        /// <value></value>
         public string Id { get;  set; }
 
         /// <summary>
-        /// Propiedad ubicaciÃ³n de la empresa
+        /// Instancia Location de la empresa que representa su ubicacion
         /// </summary>
         public Location Location{get; set;}
 
@@ -42,12 +49,12 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam list="Permission"></typeparam>
         /// <returns></returns>
-        private List<Permission> permissions = new List<Permission>();
-
+        public List<Permission> permissions {get;set;}
 
         /// <summary>
         /// Permite crear instancias de los usuarios del programa
         /// </summary>
+        /// <param name="id"></param>
         /// <param name="name"></param>
         /// <param name="phone"></param>
         /// <param name="location"></param>
@@ -80,16 +87,13 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        ///Permite agregar permisios a un usuario
+        /// Permite agregar permisios a un usuario
         /// </summary>
+        /// <param name="permission"></param>
         public void AddPermission(Permission permission)
         {
             permissions.Add(permission);
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="index"></param>
 
         /// <summary>
         /// Permite eliminar un permiso de un usuario

@@ -9,18 +9,30 @@ using Microsoft.VisualBasic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// El handler inicial, el cual modifica el estado del pedido según lo necesitado.
+    /// Este handler implementa el patrón Chain of Responsability y es el encargado de manejar el comando /habilitaciones
+    /// Permite agregar a las companias habilitaciones al sistema, para ser ingrersados en la oferta o ser usados por los emprendedores.
     /// </summary>
     public class PermissionsHandler: BaseHandler
     {
+
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="PermissionsHandler"/>.
+        /// Procesa el mensaje /habilitaciones
+        /// </summary>
+        /// <param name="next">El próximo "handler".</param>
         public PermissionsHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/habilitaciones"};
         }
+        
+        /// <summary>
+        /// Este metodo es el encargado de procesar el mensaje que le llega de telegram y enviar una respuesta
+        /// </summary>
+        /// <param name="message"> El mensaje que llega para procesar</param>
+        /// <param name="response">La respuesta del mensaje procesado </param>
+        /// <returns></returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
-       
-            
             if(!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
             {
                 Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId,new Collection<string>());    

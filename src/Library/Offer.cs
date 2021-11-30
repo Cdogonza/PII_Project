@@ -8,7 +8,7 @@ using Telegram.Bot.Requests;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase esteblece los parametros necesarios para la creacion de la oferta/.
+    /// Esta clase esteblece los parametros necesarios para la creacion de la oferta.
     /// Implementa el patron SRP ya que tiene una unica razon de cambio
     /// /// EXPERT :  Esta clase es una clase base del programa que contiene toda la información y metodos de las ofertas por lo que se justifica con el principio expert.
     /// </summary>
@@ -92,24 +92,27 @@ namespace ClassLibrary
         /// <value></value>
         public long Idd {get;set;}
         public string Entrepreneur{get;set;}
-        /// <summary>
-        /// Este es el constructor de la oferta que recibe los parametros para crear la misma
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="material"></param>
-        /// <param name="location"></param>
-        /// <param name="cost"></param>
-        /// <param name="regularoffers"></param>
-        /// <param name="tags"></param>
-        /// <param name="deliverydate"></param>
-        /// <param name="publicationdate"></param>
-        /// <param name="offer"></param>
         
          [JsonConstructor]
          public Offer()
          {
 
          }
+         /// <summary>
+         /// Este es el constructor de la oferta que recibe los parametros para crear la misma
+         /// </summary>
+         /// <param name="id"></param>
+         /// <param name="name"></param>
+         /// <param name="material"></param>
+         /// <param name="quantity"></param>
+         /// <param name="cost"></param>
+         /// <param name="location"></param>
+         /// <param name="offerpermissions"></param>
+         /// <param name="regularoffers"></param>
+         /// <param name="tags"></param>
+         /// <param name="deliverydate"></param>
+         /// <param name="publicationdate"></param>
+         /// <param name="offer"></param>
          public Offer(long id,string name, Material material, int quantity, double cost, Location location, List<Permission> offerpermissions, bool regularoffers, List<string> tags, DateTime deliverydate, DateTime publicationdate, Company offer)
         {
             this.Idd = id;
@@ -133,13 +136,6 @@ namespace ClassLibrary
             Permission newPermission = new Permission(permission);
             Offerpermissions.Add(newPermission);
         }
-        /// <summary>
-        /// Metodo que retorna los datos de la empresa para ser enviados al emprendedor que compro la oferta
-        /// A su vez deja como no disponible la oferta en el catalogo
-        /// y coloca el nombre del emprendedor a la oferta
-        /// </summary>
-        /// <param name="entrepreneur"></param>
-        /// <returns></returns>
         public string ConvertToJsonCompany()
         {
             return null;

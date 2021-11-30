@@ -6,6 +6,7 @@ using System.Text.Json.Serialization;
 using System;
 using System.ComponentModel;
 using System.Collections.Immutable;
+using System.Linq;
 
 namespace ClassLibrary
 {
@@ -118,8 +119,13 @@ namespace ClassLibrary
             {
                 if (item.Id == userid)
                 {
-                   datos =$"Nombre: {item.Name}\nTelefono: {item.Phone}\nDireccion:{item.Location.FormattedAddress}\nEspecializacion:{item.Specialization}\nPermisos: {item.Permissions}\n";
-                   return datos;
+                   // List<string> listapermisos = new List<string> ();
+                   // foreach (Permission permission in item.permissions)
+                   // {
+                   //     Console.WriteLine($"{permission.Name}"); 
+                   // } 
+                    datos =$"Nombre: {item.Name}\nTelefono: {item.Phone}\nDireccion:{item.Location.FormattedAddress}\nEspecializacion:{item.Specialization}\nPermisos: {item.Permissions[0].Name}\n";
+                    return datos;
                 }  
             }
             return null;

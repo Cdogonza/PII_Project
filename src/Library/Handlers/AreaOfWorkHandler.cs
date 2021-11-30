@@ -9,16 +9,30 @@ using Microsoft.VisualBasic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// 
+    /// Este handler implementa el patrón Chain of Responsability y es el encargado de manejar los comandos /rubros, /listar_rubros y /agregar_rubros
+    /// Permite a las companias agregar rubros nuevos y listarlos, y los emprendedores a listar los rubros existentes en el sistema 
     /// </summary>
     public class AreaOfWorkHandler: BaseHandler
     {
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="AreaOfWorkHandler"/>.
+        /// Procesa los mensajes /rubros, /listar_rubros, /agregar_rubros
+        /// </summary>
+        /// <param name="next">El próximo "handler".</param>
         public AreaOfWorkHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/rubros", "/listar_rubros", "/agregar_rubros"};
         }
+        
+        /// <summary>
+        /// Este metodo es el encargado de procesar el mensaje que le llega de telegram y enviar una respuesta
+        /// </summary>
+        /// <param name="message"> El mensaje que llega para procesar</param>
+        /// <param name="response">La respuesta del mensaje procesado </param>
+        /// <returns></returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {   
+            
             if(!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
             {
                 Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId,new Collection<string>());    

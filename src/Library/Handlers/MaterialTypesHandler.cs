@@ -6,14 +6,27 @@ using System.Text;
 namespace ClassLibrary
 {
     /// <summary>
-    /// El handler inicial, el cual modifica el estado del pedido según lo necesitado.
+    /// Este handler implementa el patrón Chain of Responsability y es el encargado de manejar los comandos /tipo_de_material, /listar_tipodemateriales y /agregar_tipodemateriales
+    /// Permite a las companias agregar nuevos tipos de material, y listar los tipos de materiales, a los emprendedores se les permite solamente listar los tipos de materiales.
     /// </summary>
     public class MaterialTypesHandler: BaseHandler
     {
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="MaterialTypesHandler"/>.
+        /// Procesa los mensajes /rubros, /listar_rubros, /agregar_rubros
+        /// </summary>
+        /// <param name="next">El próximo "handler".</param>
         public MaterialTypesHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"/tipo_de_material", "/listar", "/agregar_tipodemateriales"};
+            this.Keywords = new string[] {"/tipo_de_material", "/listar_tipodemateriales", "/agregar_tipodemateriales"};
         }
+
+        /// <summary>
+        /// Este metodo es el encargado de procesar el mensaje que le llega de telegram y enviar una respuesta
+        /// </summary>
+        /// <param name="message"> El mensaje que llega para procesar</param>
+        /// <param name="response">La respuesta del mensaje procesado </param>
+        /// <returns></returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
             if(!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
@@ -27,14 +40,14 @@ namespace ClassLibrary
                 if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null )
                 {
                     Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                    response = "Usted puede listar los tipos de materiales /listar";
+                    response = "Usted puede listar los tipos de materiales /listar_tipodemateriales";
                     return true;
                 }
 
                 if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                 {
                     Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                    response = "Usted puede listar los tipos de materiales /listar o \nagregar tipos de materiales /agregar_tipodemateriales";
+                    response = "Usted puede listar los tipos de materiales /listar_tipodemateriales o \nagregar tipos de materiales /agregar_tipodemateriales";
                     return true;
                 }
             }
@@ -50,7 +63,7 @@ namespace ClassLibrary
                 else{    
                     if (Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Trim().Contains("/tipo_de_material") )
                     {
-                        if(message.Text.ToLower().Equals("/listar") )
+                        if(message.Text.ToLower().Equals("/listar_tipodemateriales") )
                         {
                         response = $"{Singleton<DataManager>.Instance.GetTextToPrintMaterialType()}";
 
