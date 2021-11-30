@@ -43,7 +43,8 @@ namespace ClassLibrary
                         purchased.Add(offer);
                     }
                 }
-            }         
+            }  
+                  
            if(data == "")
            {
                data ="No hay Ofertas por el departamento ingresado /help";
@@ -188,7 +189,7 @@ namespace ClassLibrary
             }
             else
             {
-                return title + data;
+                return title + data + "/como_ir";
             }
         }
 
@@ -221,7 +222,7 @@ namespace ClassLibrary
              }
              else
              {
-                 return title + data ;
+                 return title + data+"/como_ir" ;
              }
          }
 

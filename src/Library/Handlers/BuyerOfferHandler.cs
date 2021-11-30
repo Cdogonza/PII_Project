@@ -11,7 +11,7 @@ namespace ClassLibrary
     public class BuyerOfferHandler : BaseHandler
     {
         
-        List<Offer> matVacia = new List<Offer>();
+        List<Offer> listaVacia = new List<Offer>();
         public BuyerOfferHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/obtener_oferta"};
@@ -24,7 +24,11 @@ namespace ClassLibrary
                 }
                 if(message.Text.ToLower().Equals("/obtener_oferta"))
                 {
-                                       
+                    if(Singleton<Search>.Instance.purchased.Count==0)
+                    {
+                        response = "Debes listar las ofertas para comprarlas utiliza\n /buscar_oferta";
+                        return true;
+                    }                  
                     if(Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                     {
                         
@@ -60,6 +64,7 @@ namespace ClassLibrary
                                 }
                             }
                             response=$"Confirma que desea obtener esta oferta?\n {data}\n\n Si/No";
+                            Singleton<Search>.Instance.purchased = listaVacia;
                             return true;
                         }
                     }
