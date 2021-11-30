@@ -72,7 +72,7 @@ namespace ClassLibrary
                             {                                                            
                                 Singleton<OfferManager>.Instance.BuyOffer(Singleton<TelegramUserData>.Instance.user(),Convert.ToInt64(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1])); 
                                 Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();
-                                response=$"Felicitaciones! Su compra ha sido realizada con exito\n/help para continuar";
+                                response=$"Felicitaciones! Su compra ha sido realizada con exito\n/help para continuar\n /como_ir para mostrar mapa";
                                 return true;
                             }
                             else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2].ToLower().Equals("no"))

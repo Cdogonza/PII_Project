@@ -87,11 +87,25 @@ namespace ClassLibrary
                                     {
                                         if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 3)
                                         {
-                                            response = "Ingrese la palabra";
+                                            Singleton<OfferManager>.Instance.LoadFromJsonOffer();
+                                            string tags="";
+                                            int cont=0;
+                                            foreach (Offer item in Singleton<OfferManager>.Instance.getLista())
+                                            {
+                                                if(item.Availability)
+                                                {
+                                                foreach (var item2 in item.Tags)
+                                                {
+                                                   tags+=$"{cont}-{item2}\n";
+                                                   cont++;  
+                                                }
+                                                } 
+                                            }
+                                            response = $"Aqui tiene algunas palabras posibles:\n"+tags;
                                             return true;
                                         }                                 
                                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);                              
-                                        response=$"{Singleton<Search>.Instance.GetOfferByWord(message.Text)}";
+                                        response=$"{Singleton<Search>.Instance.GetOfferByWord(message.Text.ToLower())}";
                                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();                             
                                         return true;
 

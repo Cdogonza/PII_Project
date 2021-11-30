@@ -90,6 +90,7 @@ namespace ClassLibrary
         public string GetOfferByWord(string word)
         {
             purchased.Clear();
+            Singleton<OfferManager>.Instance.LoadFromJsonOffer();
             this.catalog = Singleton<OfferManager>.Instance.catalog;
             string title = $"Las ofertas filtradas por la palabra clave {word} son:\n";         
             string data="";
@@ -98,6 +99,7 @@ namespace ClassLibrary
             {
                 if(offer.Availability)
                 {
+                    
                     if (offer.Tags.Contains(word.ToLower()))
                     { 
                         data += $"{offer.Idd}) Oferta:{offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}\n\n";
