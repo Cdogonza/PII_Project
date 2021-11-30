@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -27,17 +26,28 @@ namespace ClassLibrary
             this.entrepreneurs = new List<Entrepreneur>();
             this.permissions = new List<Permission>();
         }
-       
-        public List <string> data = new List<string>();  
+        
         /// <summary>
-        /// Lista de String donde se almacenan los rubros
+        /// Lista de AreaOfWork vacía
         /// </summary>
-        /// <typeparam List="string"></typeparam>
-        /// <returns></returns>        
+        /// <typeparam name="AreaOfWork"></typeparam>
+        /// <returns></returns>       
         public List<AreaOfWork> areaofwork = new List<AreaOfWork>();
         [JsonInclude]
+
+        /// <summary>
+        /// Lista de Entrepreneur vacía
+        /// </summary>
+        /// <typeparam name="Entrepreneur"></typeparam>
+        /// <returns></returns>
         public List<Entrepreneur> entrepreneurs = new List<Entrepreneur>();
         [JsonInclude]
+        
+        /// <summary>
+        /// Lista de Company vacía
+        /// </summary>
+        /// <typeparam name="Company"></typeparam>
+        /// <returns></returns>
         public List<Company> companies = new List<Company>();
 
         /// <summary>
@@ -47,6 +57,7 @@ namespace ClassLibrary
         /// <returns></returns>
         [JsonInclude]
         public List<MaterialType> materialsType = new List<MaterialType>();
+
         /// <summary>
         /// Lista de Material donde se almacenan los materiales
         /// </summary>
@@ -60,42 +71,40 @@ namespace ClassLibrary
         /// <typeparam List="Permission"></typeparam>
         /// <returns></returns>
         [JsonInclude]
-        public List<Permission> permissions = new List<Permission>(); 
+        public List<Permission> permissions = new List<Permission>();
+
+        /// <summary>
+        /// devuelve la lista de companias
+        /// </summary>
+        /// <returns></returns>//  
         public List<Company>  DataCompany()
         {
             
             return companies;
         }
-        public string  DataEnt(string id)
-        {
-           
-           
-            this.LoadFromJsonEntrepreneur();
-            foreach (Entrepreneur item in this.entrepreneurs)
-            {
-              if(item.Id==id)
-              {
-                   return item.Id;
-               }  
-            }
-  
-           return null;
-        }
         
-
-
+        /// <summary>
+        /// Devuelve la lista de entrepreneur
+        /// </summary>
+        /// <returns></returns>
         public List<Entrepreneur>  DataEntrepeneur()
         {
             
             return entrepreneurs;
         }
-        public void CloseSession()
-        {
-            List<Entrepreneur>  vacia = new List<Entrepreneur>();
-            List<Company>  vacia2 = new List<Company>();
-            entrepreneurs = vacia;
-            this.companies = vacia2;
-        }
+
+        /// <summary>
+        /// Agrega emprendedores a la lista
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="phone"></param>
+        /// <param name="calle"></param>
+        /// <param name="ciudad"></param>
+        /// <param name="departamento"></param>
+        /// <param name="area"></param>
+        /// <param name="specialization"></param>
+        /// <param name="permission"></param>
         public void AddEntrepreneur(string id ,string name,string phone,string calle,string ciudad,string departamento,string area, string specialization, List<Permission> permission )
         {
             LocationApiClient Loc = new LocationApiClient();
@@ -103,6 +112,17 @@ namespace ClassLibrary
             this.entrepreneurs.Add(new Entrepreneur(id,name,phone,location,area,specialization,permission));
              this.ConvertToJsonEntrepreneur();
         }
+
+        /// <summary>
+        /// Agrega empresas a la lista
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="phone"></param>
+        /// <param name="calle"></param>
+        /// <param name="ciudad"></param>
+        /// <param name="departamento"></param>
+        /// <param name="area"></param>
         public void AddCompany(string id ,string name,string phone,string calle,string ciudad,string departamento,string area)
         {
             LocationApiClient Loc = new LocationApiClient();
@@ -111,6 +131,11 @@ namespace ClassLibrary
             this.ConvertToJsonCompany();
         }
 
+        /// <summary>
+        /// Devuelve los datos de un emprendedor
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <returns></returns>
         public string GetEntrepreneur(string userid)
         {
             this.LoadFromJsonEntrepreneur();
@@ -119,21 +144,20 @@ namespace ClassLibrary
             {
                 if (item.Id == userid)
                 {
-                   // List<string> listapermisos = new List<string> ();
-                   // foreach (Permission permission in item.permissions)
-                   // {
-                   //     Console.WriteLine($"{permission.Name}"); 
-                   // } 
                     datos =$"Nombre: {item.Name}\nTelefono: {item.Phone}\nDireccion:{item.Location.FormattedAddress}\nEspecializacion:{item.Specialization}\nPermisos: {item.Permissions[0].Name}\n";
                     return datos;
                 }  
             }
             return null;
         }
-        
+
+        /// <summary>
+        /// Devuelve los datos de una empresa
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <returns></returns>
         public string GetCompany(string userid)
         {
-            
             this.LoadFromJsonCompany();
             string datos = $"Los datos de su Company son: \n";
             foreach (Company item in this.companies)
@@ -188,13 +212,6 @@ namespace ClassLibrary
             return this.permissions[indice];
         }
 
-        public string GetPermissionByIndexText(int indice)
-        {
-            this.LoadFromJsonPermission();
-            Console.WriteLine($"This-Permission {this.permissions[indice].Name}");
-            return this.permissions[indice].Name;
-        }
-
         /// <summary>
         ///  Metodo utilizado para obtener todos los permisos de la lista y restornarlos como texto,
         ///  Para que ConsolePrinter pueda obtener ese texto e imprimirlo en pantalla.
@@ -211,16 +228,6 @@ namespace ClassLibrary
                contador+=1;
             }
             return data;
-        }
-
-        /// <summary>
-        ///  Retorna la lista de Permisos almacenados en el sistema
-        /// </summary>
-        /// <returns></returns>
-        public List<Permission> GetPermissions()
-        {
-            this.LoadFromJsonPermission();
-            return this.permissions;
         }
         
         /// <summary>
@@ -252,17 +259,6 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// Metodo que retorna el Rubro segun el lugar ingresado de la lista
-        /// </summary>
-        /// <param name="indice"></param>
-        /// <returns></returns>
-        public AreaOfWork GetAreaOfWorkByIndex(int indice)
-        {
-            this.LoadFromJsonAreaOfWork();
-            return this.areaofwork[indice];
-        }
-
-        /// <summary>
         ///  Metodo utilizado para obtener todos los rubros de la lista y retornarlos como texto,
         ///  Para que ConsolePrinter pueda obtener ese texto e imprimirlo en pantalla. 
         /// </summary>
@@ -279,16 +275,6 @@ namespace ClassLibrary
             }
             return data;
         }
-
-        /// <summary>
-        /// Retorna la lista de Rubros almacenados en el sistema
-        /// </summary>
-        /// <returns></returns>
-        public List<AreaOfWork> GetAreasOfWork()
-        {
-            this.LoadFromJsonAreaOfWork();
-            return this.areaofwork;
-        }
       
         /// <summary>
         /// Agrega un tipo de Material a la lista de MaterialTypes
@@ -302,11 +288,6 @@ namespace ClassLibrary
            this.ConvertToJsonMaterialTypes();
            return newmaterialtype;
        }
-       /* public void AddMaterialType(MaterialType item)
-        {
-            this.materialsType.Add(item);           
-        }
-       */
        
         /// <summary>
         /// El metodo crea una instacia de Material y la agrega al catalogo.
@@ -387,14 +368,9 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// Retorna la lista de Materiales almacenados en el sistema
+        /// Convierte los datos de Company a formato json
         /// </summary>
         /// <returns></returns>
-        public List<MaterialType> GetMaterialsType()
-        {
-            this.LoadFromJsonMaterialTypes();
-            return this.materialsType;
-        }
         public string ConvertToJsonCompany()
         {
             string result = "{\"Items\":[";
@@ -419,6 +395,10 @@ namespace ClassLibrary
 
             return JsonSerializer.Serialize(this.companies, options);            
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
          public void LoadFromJsonCompany()
         {
             if(!File.Exists(@"Companies.json"))
@@ -428,8 +408,6 @@ namespace ClassLibrary
             string json = File.ReadAllText(@"Companies.json");
             if(json!="")
             {
-            //this.Initialize();
-            //this.companies = JsonSerializer.Deserialize<Company>(json);
             JsonSerializerOptions options = new()
             {
                 ReferenceHandler = MyReferenceHandler.Instance,
@@ -440,8 +418,18 @@ namespace ClassLibrary
            
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string ConvertToJsonOffer()
         {return null;}
+
+        /// <summary>
+        /// Convierte los datos de Entrepreneur a Json
+        /// </summary>
+        /// <returns></returns>
         public string ConvertToJsonEntrepreneur()
         {
             string result = "{\"Items\":[";
@@ -465,7 +453,10 @@ namespace ClassLibrary
 
             return JsonSerializer.Serialize(this.entrepreneurs, options);            
         }
-     
+
+        /// <summary>
+        /// 
+        /// </summary>     
         public void LoadFromJsonEntrepreneur()
         {
             if(!File.Exists(@"Entrepreneur.json"))
@@ -487,6 +478,10 @@ namespace ClassLibrary
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string ConvertToJsonPermissions()
         {
             string result = "{\"Items\":[";
@@ -511,6 +506,9 @@ namespace ClassLibrary
             return JsonSerializer.Serialize(this.permissions, options);            
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void LoadFromJsonPermission()
         {
             if(!File.Exists(@"Permissions.json"))
@@ -532,7 +530,10 @@ namespace ClassLibrary
             }
         }
      
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string ConvertToJsonMaterialTypes()
         {
             string result = "{\"Items\":[";
@@ -557,6 +558,9 @@ namespace ClassLibrary
             return JsonSerializer.Serialize(this.materialsType, options);            
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void LoadFromJsonMaterialTypes()
         {
             if(!File.Exists(@"MaterialTypes.json"))
@@ -578,6 +582,10 @@ namespace ClassLibrary
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string ConvertToJsonAreaOfWork()
         {
             string result = "{\"Items\":[";
@@ -602,6 +610,9 @@ namespace ClassLibrary
             return JsonSerializer.Serialize(this.areaofwork, options);            
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void LoadFromJsonAreaOfWork()
         {
             if(!File.Exists(@"AreaOfWork.json"))
@@ -623,6 +634,4 @@ namespace ClassLibrary
             }
         }
     }
-
 }
-

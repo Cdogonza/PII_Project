@@ -22,7 +22,7 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// Este metodo es el encargado de procesar el mensaje que le llega de telegram y enviar una respuesta
+        /// Este método es el encargado de procesar el mensaje que le llega de telegram y enviar una respuesta
         /// </summary>
         /// <param name="message"> El mensaje que llega para procesar</param>
         /// <param name="response">La respuesta del mensaje procesado </param>
@@ -53,58 +53,50 @@ namespace ClassLibrary
             }
             
             if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1 &&Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/tipo_de_material"))
-            {
-                if(message.Text.ToLower().Equals("/cancel") )
+            {   
+                if (Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Trim().Contains("/tipo_de_material") )
                 {
-                    Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
-                    response = "Se cancela el proceso actual";
-                    return true;
-                }
-                else{    
-                    if (Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Trim().Contains("/tipo_de_material") )
+                    if(message.Text.ToLower().Equals("/listar_tipodemateriales") )
                     {
-                        if(message.Text.ToLower().Equals("/listar_tipodemateriales") )
-                        {
                         response = $"{Singleton<DataManager>.Instance.GetTextToPrintMaterialType()}";
-
                         return true;
-                        }                   
-                        
-                        if(message.Text.ToLower().Equals("/agregar_tipodemateriales") )
-                        {
-                            if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null )
-                            {
+                    }                   
                     
-                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                                response = "Ingrese el nombre del Tipo de Material";
-                                return true;
-                            }
-                            else
-                            {
-                                response = "No tiene privilegios suficientes para agregar materiales, Solo las empresas pueden agregar materiales ";
-                                return true;
-                            }
-                        }
-
-                        if (Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/agregar_tipodemateriales"))
+                    if(message.Text.ToLower().Equals("/agregar_tipodemateriales") )
+                    {
+                        if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null )
                         {
-                            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
-                            {
+                
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                            response = "Ingrese la descripcion del Tipo de Material:";
+                            response = "Ingrese el nombre del Tipo de Material";
                             return true;
-                            }
-                            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 3)
-                            {
-                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                                Singleton<DataManager>.Instance.AddMaterialType(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]);
-                                response = $"Se creó el tipo de material con éxito - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][2]} - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]} \n /help para seguir";
-                                Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
-                                return true;
-                            }
+                        }
+                        else
+                        {
+                            response = "No tiene privilegios suficientes para agregar materiales, Solo las empresas pueden agregar materiales ";
+                            return true;
+                        }
+                    }
+
+                    if (Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/agregar_tipodemateriales"))
+                    {
+                        if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
+                        {
+                            Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                            response = "Ingrese la descripción del tipo de material:";
+                            return true;
+                        }
+                        if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 3)
+                        {
+                            Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                            Singleton<DataManager>.Instance.AddMaterialType(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]);
+                            response = $"Se creó el tipo de material con éxito - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][2]} - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]} \n /help para seguir";
+                            Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
+                            return true;
                         }
                     }
                 }
+                
             }
             response = String.Empty ;
             return false;         

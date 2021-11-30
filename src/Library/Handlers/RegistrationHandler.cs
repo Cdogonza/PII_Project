@@ -133,13 +133,13 @@ namespace ClassLibrary
                             {
                                 _myuserdata[message.UserId].Add(Singleton<DataManager>.Instance.areaofwork[Int32.Parse(message.Text)].Name);
                                 Singleton<DataManager>.Instance.AddCompany(message.UserId,_myuserdata[message.UserId][3],_myuserdata[message.UserId][4],_myuserdata[message.UserId][5],_myuserdata[message.UserId][6],_myuserdata[message.UserId][7],_myuserdata[message.UserId][8]);
-                                response = $"Se creó la Empresa correctamente\n \nPara ver las siguientes acciones posibles ingrese: \n /publicar_oferta \n /vermisdatos \n /materialtype \n /habilitaciones";
+                                response = $"Se creó la Empresa correctamente\n \nPara ver las siguientes acciones posibles ingrese /help";
                                 _myuserdata.Remove(message.UserId);
                                 return true;
                             }
                             else
                             {
-                                response = "Dato Mal ingresado, ingrese un numero de la lista";
+                                response = "Dato Mal ingresado, ingrese un número de la lista";
                                 return true;
                             }
                         }
@@ -183,7 +183,7 @@ namespace ClassLibrary
                             }
                             else
                             {
-                                response = "Dato mal ingresado, ingrese un numero de la lista";
+                                response = "Dato mal ingresado, ingrese un número de la lista";
                                 return true;
                             }
 
@@ -221,14 +221,14 @@ namespace ClassLibrary
                                 }    
                                 else
                                 {
-                                    response = "No se agregan permisos especiales, /continuar";
+                                    response = "No se agregan permisos especiales /continuar";
                                     
                                 }                 
                                 return true; 
                             }
                             else
                             {
-                                response = "Dato mal ingresado debe ingresar Si/No";
+                                response = "Dato mal ingresado debe ingresar Si o No";
                                 return true; 
                             }
                 
@@ -260,7 +260,7 @@ namespace ClassLibrary
                             case 11:
 
                             Singleton<DataManager>.Instance.AddEntrepreneur(message.UserId,_myuserdata[message.UserId][2],_myuserdata[message.UserId][3],_myuserdata[message.UserId][4],_myuserdata[message.UserId][5],_myuserdata[message.UserId][6],_myuserdata[message.UserId][7],_myuserdata[message.UserId][8],this.userpermissions);
-                            response = "Se creó el Emprendedor correctamente\n Para ver las siguientes acciones posibles ingrese:\n/help";
+                            response = "Se creó el Emprendedor correctamente\n Para ver las siguientes acciones posibles ingrese /help";
                             _myuserdata.Remove(message.UserId);
                             _mypermissions.Remove(message.UserId);                                
                             return true;

@@ -20,16 +20,8 @@ namespace ClassLibrary
     {
         // La instancia del bot.
         private static TelegramBotClient Bot;
-
-        // El token provisto por Telegram al crear el bot.
-        //
-        // *Importante*:
-        // Para probar este ejemplo, crea un bot nuevo y eeemplaza este token por el de tu bot.
-        //private static string Token = "2133513418:AAHIE7L6s-OQSi6BroKBheNa-JGIXAlsMR0";
-        //private static string Token = "2099808385:AAGebOzNFY6kA5hwEY2XJbOJxZBzWAIM8U0";
-        private static string Token = "2133499409:AAFKS9VqLu7UXqQccvTHFFzcIvxwEoCGtkM"; //
-        //private static string Token = "2105636402:AAG6BbtW--SQ0pVOOpRKcHQQJTl7rwFWRxA";    
-        //private static string Token = "2143110246:AAFxnNCvWemFWzsitJkRwkVE63yHdJDgI_k";
+   
+        private static string Token = "2143110246:AAFxnNCvWemFWzsitJkRwkVE63yHdJDgI_k";
 
         private static IHandler firstHandler;
 

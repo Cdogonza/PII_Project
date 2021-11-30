@@ -34,7 +34,6 @@ namespace ClassLibrary
             {
              if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                 {
-                   
                     response= Singleton<DataManager>.Instance.GetCompany(message.UserId);
                     return true;
                 }
@@ -42,7 +41,6 @@ namespace ClassLibrary
                 {
                     if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                     {
-                        
                         response= Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId);
                         return true;
                      }
@@ -51,5 +49,5 @@ namespace ClassLibrary
             response= String.Empty ;
             return false;
         }
-}
+    }
 }

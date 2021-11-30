@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase es la responsable en las busquedas dentro del catalogo de ofertas de la aplicacion
+    /// Esta clase es la responsable de las busquedas dentro del catalogo de ofertas de la aplicacion
     /// </summary>
     
     public class Search
@@ -13,9 +13,12 @@ namespace ClassLibrary
         /// Crea una lista de ofertas vacía
         /// </summary>
         public List<Offer> catalog = new List<Offer>();
+        /// <summary>
+        /// Crea una lista de ofertas vacía
+        /// </summary>
         public List<Offer> purchased = new List<Offer>();
         /// <summary>
-        /// Carga una copia del catalogo de ofertas a la lista
+        /// 
         /// </summary>
         public Search()
         {
