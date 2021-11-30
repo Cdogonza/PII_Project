@@ -5,6 +5,9 @@ namespace ClassLibrary
     
     /// <summary>
     /// 
+    // COR: En este caso aplicamos el patrón COR(Chain of Responsabilities), definidiendo una interfaz con todos los metodos de las clases(hanlders) que forman para de nuestra cadena.
+    // OCP: El patron ocp se respeta ya que de esta manera si se quiere extender el
+    // el comportamiento no será necesario que se modifiquen las clases, sino que se creen nuevos handlers que implementen esta interfaz.
     /// </summary>
     public interface IHandler
     {

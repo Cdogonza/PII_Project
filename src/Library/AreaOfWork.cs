@@ -7,6 +7,7 @@ namespace ClassLibrary
 {   
     /// <summary>
     /// Representa una categoria de una empresa
+    /// EXPERT :  Esta clase es una clase base del programa que contiene toda la información y metodos de los  area de trabajo de las compañias por lo que se justifica con el principio expert.
     /// </summary>
     public  class AreaOfWork : IJsonConvertible
     {

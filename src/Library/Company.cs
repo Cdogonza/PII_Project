@@ -7,6 +7,7 @@ namespace ClassLibrary
 {   
     /// <summary>
     /// Clase que representa a un usuario del tipo compania dentro del programa
+    /// EXPERT :  Esta clase es una clase base del programa que contiene toda la información y metodos de las compañías por lo que se justifica con el principio expert..
     /// </summary>
     public class Company : UserBase
     {

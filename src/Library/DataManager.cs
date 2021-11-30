@@ -12,9 +12,11 @@ namespace ClassLibrary
 {
     /// <summary>
     /// /// Esta clase es la encargada de manejar los datos de AreaOfWork(Rubros) MaterialsTypes y Permissions(Habilitaciones)
-    /// Se implementa utilizando singleton con el fin de utilizar una unica instancia, 
-    /// ya que no queremos que hayan multiples listas de Rubros, Permisos y Tipos de materiales
+    /// Se implementa utilizando singleton con el fin de utilizar una única instancia,
+    /// ya que no queremos que hayan múltiples listas de Rubros, Permisos y Tipos de materiales
+    /// CREATOR: Esta clase cumple con el patrón creator, ya que contiene, agrega y guarda instancias de otra clase además de ser el responsable de la carcón de las mismas.
     /// </summary>
+    /// 
     public class DataManager : IJsonConvertible
 
     {
