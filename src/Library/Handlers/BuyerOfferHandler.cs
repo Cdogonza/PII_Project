@@ -35,7 +35,6 @@ namespace ClassLibrary
                     {
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);   //Agrego /buscar_oferta
                         response = "Ingrese el número de compra que desea obtener";                       
-
                         return true; 
                     }
                 }
@@ -61,7 +60,6 @@ namespace ClassLibrary
                                 }
                             }
                             response=$"Confirma que desea obtener esta oferta?\n {data}\n\n Si/No";
-
                             return true;
                         }
                     }

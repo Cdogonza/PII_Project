@@ -129,7 +129,6 @@ namespace ClassLibrary
             this.catalog = Singleton<OfferManager>.Instance.catalog;  
             string dat="";
             string data = $"";
-
             foreach (Offer offer1 in this.catalog)
             {
                 if (offer1.Idd== id)
@@ -223,7 +222,6 @@ namespace ClassLibrary
                  return title + data ;
              }
          }
-
 
         /// <summary>
         /// Filtra el catálogo de búsquedas que publicó una empresa

@@ -38,6 +38,12 @@ namespace ClassLibrary
         {   
             catalog.Add(offer);
         }
+        
+        public List<Offer> getLista()
+        {
+            this.LoadFromJsonOffer();
+            return this.catalog;
+        }
         /// <summary>
         /// Este metodo se utiliza para re publicar ofertas que son priodicas 
         /// </summary>
