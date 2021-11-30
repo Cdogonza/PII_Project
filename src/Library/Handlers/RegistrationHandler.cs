@@ -5,16 +5,42 @@ using System.Text;
 namespace ClassLibrary
 {
     /// <summary>
-    /// 
+    /// Este handler implementa el patrón Chain of Responsability y es el encargado de manejar el comando /registrarse
+    /// En caso de que el usuario ingrese la opción empresa se le desplegan las opciones para registrarse como empresa.
+    /// En cambio si el usuario ingresa la opción emprendedor se le despegan las opciones para registrarse como emprendedor.
+    /// Cuando se finaliza de pedir los datos al usuario, se agrega el usuario al sistema.
     /// </summary>
     public class RegistrationHandler: BaseHandler
     {
+        /// <summary>
+        /// String temporal para concatenar una respuesta al usuario
+        /// </summary>
+        /// <returns></returns>
         private StringBuilder responsetemp = new StringBuilder();
+        
+        /// <summary>
+        /// Lista que maneja los permisos que se van agregando al emprendedor
+        /// </summary>
+        /// <typeparam name="Permission">Campo del tipo Permission</typeparam>
+        /// <returns></returns>
         private List<Permission> userpermissions = new List<Permission>();
+
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="RegistrationHandler"/>.
+        /// Procesa el mensaje /registrarse
+        /// </summary>
+        /// <param name="next">El próximo "handler".</param>
         public RegistrationHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/registrarse"};
         }
+
+        /// <summary>
+        /// Este metodo es el encargado de procesar el mensaje que le llega de telegram y enviar una respuesta
+        /// </summary>
+        /// <param name="message"> El mensage que llega para procesar</param>
+        /// <param name="response">La respuesta del mensaje procesado </param>
+        /// <returns></returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {           
             var _myuserdata = Singleton<TelegramUserData>.Instance.userdata;
@@ -34,7 +60,7 @@ namespace ClassLibrary
                     }
                     else
                     {
-                        _myuserdata[message.UserId].Add(message.Text.ToLower()); //Agrego /registrarse al diccionario
+                        _myuserdata[message.UserId].Add(message.Text.ToLower());
                         response = "Registrarse como Empresa o como Emprendedor\n/Empresa\n/Emprendedor\no cancela con /cancel ";
                         return true;
                     }
@@ -47,13 +73,13 @@ namespace ClassLibrary
                     
                     if(_myuserdata[message.UserId].Count >= 1 && message.Text.ToLower().Contains("/empresa"))
                     {
-                       _myuserdata[message.UserId].Add(message.Text.ToLower()); /// agrego texto /empresa
+                       _myuserdata[message.UserId].Add(message.Text.ToLower()); 
                         response = "Ingrese el código de invitación";
                         return true;
                     }
                     if(_myuserdata[message.UserId].Count == 1 && message.Text.ToLower().Equals("/emprendedor"))
                     {
-                        _myuserdata[message.UserId].Add(message.Text); /// agrego texto /emprendendor
+                        _myuserdata[message.UserId].Add(message.Text); 
                         response = "Ingrese nombre de su emprendimiento";
                         return true;                   
                     }
@@ -233,7 +259,6 @@ namespace ClassLibrary
     
                             case 11:
 
-                            //_myuserdata[message.UserId].Add(Singleton<DataManager>.Instance.permissions[Int32.Parse(message.Text)].Name);
                             Singleton<DataManager>.Instance.AddEntrepreneur(message.UserId,_myuserdata[message.UserId][2],_myuserdata[message.UserId][3],_myuserdata[message.UserId][4],_myuserdata[message.UserId][5],_myuserdata[message.UserId][6],_myuserdata[message.UserId][7],_myuserdata[message.UserId][8],this.userpermissions);
                             response = "Se creó el Emprendedor correctamente\n Para ver las siguientes acciones posibles ingrese:\n/help";
                             _myuserdata.Remove(message.UserId);

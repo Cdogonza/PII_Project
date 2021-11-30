@@ -18,7 +18,6 @@ namespace ClassLibrary
 
         }
 
-
         /// <summary>
         /// String con el nombre del permiso
         /// </summary>

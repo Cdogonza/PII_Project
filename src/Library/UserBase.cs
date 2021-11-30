@@ -40,8 +40,7 @@ namespace ClassLibrary
         /// </summary>
         /// <typeparam list="Permission"></typeparam>
         /// <returns></returns>
-        private List<Permission> permissions = new List<Permission>();
-
+        public List<Permission> permissions {get;set;}
 
         /// <summary>
         /// Permite crear instancias de los usuarios del programa
