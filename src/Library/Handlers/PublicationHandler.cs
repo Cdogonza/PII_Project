@@ -18,8 +18,6 @@ namespace ClassLibrary
  
         private StringBuilder responsetemp = new StringBuilder();
         private List<Permission> offerpermissions = new List<Permission>();
-        private List<MaterialType> materialtypes = new List<MaterialType>();
-
         private List<string> tags = new List<string> ();
         public PublicationHandler(BaseHandler next) : base(next)
         {
@@ -48,7 +46,6 @@ namespace ClassLibrary
                     response = "Ingrese el nombre de la oferta";                  
                     return true;
                 }
-           
             }
             if(_myuserdata[message.UserId].Count >= 1 && _myuserdata[message.UserId][0].ToLower().Contains("/publicar_oferta") )
             {
@@ -63,7 +60,6 @@ namespace ClassLibrary
 
                         case 2:
                         _myuserdata[message.UserId].Add(message.Text);
-                       
                         responsetemp.Append("Ingrese el tipo de material \n");
                         responsetemp.Append($"{Singleton<DataManager>.Instance.GetTextToPrintMaterialType()}\n");
                         responsetemp.Append($"\nSi no encuentra el tipo de material en la lista ingrese /otro_tipo_de_material");
@@ -161,19 +157,12 @@ namespace ClassLibrary
                                 responsetemp.Append("Se agregan los siguientes permisos \n");
                                 for (int i = 0; i < _mypermissions[message.UserId].Count; i++)
                                 {
-                                    if (!offerpermissions.Contains(Singleton<DataManager>.Instance.GetPermissionByIndex(Int32.Parse(_mypermissions[message.UserId][i]))))
-                                    {
                                     this.offerpermissions.Add(Singleton<DataManager>.Instance.GetPermissionByIndex(Int32.Parse(_mypermissions[message.UserId][i])));
                                     responsetemp.Append($"- {Singleton<DataManager>.Instance.GetPermissionByIndex(Int32.Parse(_mypermissions[message.UserId][i])).Name}\n");
-                                    }else
-                                    {
-                                        response = "La oferta ya tiene ese permiso";
-                                        return true;
-                                    }
                                 }
-                                    responsetemp.Append($"Presione /continuar");
-                                    response = $"{responsetemp}";
-                                    responsetemp.Clear();   
+                                responsetemp.Append($"Presione /continuar");
+                                response = $"{responsetemp}";
+                                responsetemp.Clear();   
                             }    
                             else
                             {
@@ -190,11 +179,20 @@ namespace ClassLibrary
 
                         case 12:
                         if(_myuserdata[message.UserId][11].ToUpper().Contains("SI"))
-                        {  
-                            _mypermissions[message.UserId].Add(message.Text);
-                            _myuserdata[message.UserId].RemoveAt(11);
-                            response = "Desea Agregar otro Permiso? Si/No";
-                            return true;
+                        {
+                            if (!_mypermissions[message.UserId].Contains(message.Text))
+                            {  
+                                _mypermissions[message.UserId].Add(message.Text);
+                                _myuserdata[message.UserId].RemoveAt(11);
+                                response = "Desea Agregar otro Permiso? Si/No";
+                                return true;
+                            }
+                            else
+                            {
+                                _myuserdata[message.UserId].RemoveAt(9);
+                                response = "Esta Oferta ya tiene este Permiso asociado \nDesea Agregar otro Permiso? Si/No";
+                                return true;
+                            }
                         }
                         else
                         {
@@ -285,7 +283,6 @@ namespace ClassLibrary
                         _mypermissions.Remove(message.UserId);
                         _mymaterialtype.Remove(message.UserId);
                         tags.Clear();
-                    
                         response = "Se publicó la oferta correctamente!";
                         return true;
                    

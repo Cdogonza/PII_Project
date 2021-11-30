@@ -205,25 +205,7 @@ namespace ClassLibrary
                                 response = "Dato mal ingresado debe ingresar Si/No";
                                 return true; 
                             }
-                    /*
-                            if(message.Text.ToUpper().Equals("SI"))
-                            {   
-                               _myuserdata[message.UserId].Add(message.Text);
-                                response = $"Ingrese un permiso \n{Singleton<DataManager>.Instance.GetTextToPrintPermission()}";
-                                return true;
-                            }
-                            else if(message.Text.ToUpper().Equals("NO"))
-                            {
-                               _myuserdata[message.UserId].Add(message.Text);
-                                response = "No se agregan permisos especiales, /continuar";   
-                            }    
-                            else
-                            {
-                                response = "Debe ingresar Si/No";
-                                
-                            }                 
-                            return true; 
-                   */
+                
                             case 10:
                             if(_myuserdata[message.UserId][9].ToUpper().Contains("SI"))
                             {  
