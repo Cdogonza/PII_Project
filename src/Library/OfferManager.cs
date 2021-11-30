@@ -8,9 +8,10 @@ namespace ClassLibrary
 {   
     
     /// <summary>
-    /// En esta clase se puede ver el uso del patron Expert, y aque es experto en el manejo
-    /// de las ofertas de la aplicacion, incluso cuando se instancia esta clase la instanciamos
-    /// a traves de singleton de modo de manejar una unica instancia.
+    /// En esta clase se puede ver el uso del patrona Expert, y que es experto en el manejo
+    /// de las ofertas de la aplicación, incluso cuando se instancia esta clase la instanciamos
+    /// a través de singleton de modo de manejar una única instancia.
+    /// CREATOR: Esta clase cumple con el patrón creator, ya que contiene, agrega y guarda instancias de otra clase además de ser el responsable de la carcón de las mismas.
     /// </summary>
     public class OfferManager : IJsonConvertible
     {

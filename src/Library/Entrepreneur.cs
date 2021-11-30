@@ -2,9 +2,10 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 namespace ClassLibrary
 {
-    /// <summary>
-    ///  Esta clase representa al emprendedor el cual hereda metodos y atributos de la clase UserBase
-    /// </summary>
+        /// <summary>
+        ///  Esta clase representa al emprendedor el cual hereda metodos y atributos de la clase UserBase
+        /// EXPERT :  Esta clase es una clase base del programa que contiene toda la información y metodos de los emprendedores por lo que se justifica con el principio expert..
+        /// </summary>
     public class Entrepreneur : UserBase
     {
         /// <summary>
