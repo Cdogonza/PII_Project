@@ -62,7 +62,6 @@ namespace ClassLibrary
         /// <returns></returns>
         [JsonInclude]
         public List<MaterialType> materialsType = new List<MaterialType>();
-
         /// <summary>
         /// Lista de Material donde se almacenan los materiales
         /// </summary>
@@ -76,12 +75,7 @@ namespace ClassLibrary
         /// <typeparam List="Permission"></typeparam>
         /// <returns></returns>
         [JsonInclude]
-        public List<Permission> permissions = new List<Permission>(); // {AddPermission("Materiales Peligrosos"), new Permission("Residuos Medicos"), new Permission("Materiales Organicos"), new Permission("Materiales Inflamables")};
-        
-        /// <summary>
-        /// Lista que devuelve los datos de la compania
-        /// </summary>
-        /// <returns></returns>
+        public List<Permission> permissions = new List<Permission>(); 
         public List<Company>  DataCompany()
         {
             
@@ -96,19 +90,14 @@ namespace ClassLibrary
             
             return entrepreneurs;
         }
-        /// <summary>
-        /// Metodo que crea una instancia de entrepreneur y lo mete en la persistencia
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="name"></param>
-        /// <param name="phone"></param>
-        /// <param name="calle"></param>
-        /// <param name="ciudad"></param>
-        /// <param name="departamento"></param>
-        /// <param name="area"></param>
-        /// <param name="specialization"></param>
-        /// <param name="permission"></param>
-        public void AddEntrepreneur(string id ,string name,string phone,string calle,string ciudad,string departamento,string area, string specialization, string permission )
+        public void CloseSession()
+        {
+            List<Entrepreneur>  vacia = new List<Entrepreneur>();
+            List<Company>  vacia2 = new List<Company>();
+            entrepreneurs = vacia;
+            this.companies = vacia2;
+        }
+        public void AddEntrepreneur(string id ,string name,string phone,string calle,string ciudad,string departamento,string area, string specialization, List<Permission> permission )
         {
             LocationApiClient Loc = new LocationApiClient();
             Location location = Loc.GetLocation(calle,ciudad,departamento);
@@ -147,10 +136,9 @@ namespace ClassLibrary
             {
                 if (item.Id == userid)
                 {
-                   datos =$" {item.Name}\n {item.Phone}\n{item.Location.FormattedAddress}\n{item.Specialization}\n{item.Permissions}\n";
+                   datos =$"Nombre: {item.Name}\nTelefono: {item.Phone}\nDireccion:{item.Location.FormattedAddress}\nEspecializacion:{item.Specialization}\nPermisos: {item.Permissions}\n";
                    return datos;
-                }
-                
+                }  
             }
             return null;
         }
@@ -169,13 +157,11 @@ namespace ClassLibrary
             {
                 if (item.Id == userid)
                 {
-                   datos =$" {item.Name}\n {item.Phone}\n{item.Location.FormattedAddress}\n";
+                   datos =$"Nombre: {item.Name}\nTelefono: {item.Phone}\nDireccion: {item.Location.FormattedAddress}\nRubro: {item.AreaOfWork.Name}\n ";
                    return datos;
-                }
-                    
+                }       
             }
-            return null;
-             
+            return null; 
         }
     
 
@@ -217,6 +203,13 @@ namespace ClassLibrary
         {
             this.LoadFromJsonPermission();
             return this.permissions[indice];
+        }
+
+        public string GetPermissionByIndexText(int indice)
+        {
+            this.LoadFromJsonPermission();
+            Console.WriteLine($"This-Permission {this.permissions[indice].Name}");
+            return this.permissions[indice].Name;
         }
 
         /// <summary>
@@ -273,7 +266,6 @@ namespace ClassLibrary
             {
                 return false;
             } 
-
         }
 
         /// <summary>
@@ -420,6 +412,7 @@ namespace ClassLibrary
             string temp = JsonSerializer.Serialize(this.companies);
              File.WriteAllText(@"Companies.json", temp);
             return result;
+            
             JsonSerializerOptions options = new()
             {
                 ReferenceHandler = MyReferenceHandler.Instance,

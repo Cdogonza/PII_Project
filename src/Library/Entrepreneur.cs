@@ -12,9 +12,7 @@ namespace ClassLibrary
         /// </summary>
         /// <value></value>]
         public string Specialization {get; set;}
-        public string Permissions {get; set;}
-
-
+        public List<Permission> Permissions {get; set;}
 
         /// <param name="name"></param>
         /// <param name="phone"></param>
@@ -28,9 +26,10 @@ namespace ClassLibrary
         {
 
         }
-        public Entrepreneur(string id,string name,string phone,Location location,string area,string specialization, string permission) : base (id,name,phone,location,area)
+        public Entrepreneur(string id,string name,string phone,Location location,string area,string specialization, List<Permission> permission) : base (id,name,phone,location,area)
         {
             this.Specialization = specialization;
+            this.Permissions = permission;
         }
     }
 
