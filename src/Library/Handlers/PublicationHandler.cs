@@ -17,7 +17,6 @@ namespace ClassLibrary
         public bool regularoffer;   
  
         private StringBuilder responsetemp = new StringBuilder();
-        //private ArrayList tags = new ArrayList();
         private List<Permission> offerpermissions = new List<Permission>();
         private List<MaterialType> materialtypes = new List<MaterialType>();
 

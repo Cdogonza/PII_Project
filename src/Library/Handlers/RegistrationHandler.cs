@@ -72,59 +72,55 @@ namespace ClassLibrary
                             return true;
                         }
 
-                            switch(_myuserdata[message.UserId].Count)
+                        switch(_myuserdata[message.UserId].Count)
+                        {
+                            case 3:                
+                            response = "Ingrese su teléfono";
+                            _myuserdata[message.UserId].Add(message.Text);
+                            return true;
+
+                            case 4:
+                            _myuserdata[message.UserId].Add(message.Text);
+                            response = "Ingrese Calle y Numero de puerta";
+                            return true;
+
+                            case 5:
+                            _myuserdata[message.UserId].Add(message.Text);
+                            response = "Ingrese Ciudad";                                
+                            return true;
+
+                            case 6:
+                            _myuserdata[message.UserId].Add(message.Text);
+                            response = "Ingrese Departamento";                                
+                            return true;
+
+                            case 7:                  
+                            _myuserdata[message.UserId].Add(message.Text);
+                            responsetemp.Append("Ingrese el rubro de la empresa\n");
+                            responsetemp.Append($"{Singleton<DataManager>.Instance.GetTextToPrintAreaOfWork()}");
+                            response = $"{responsetemp}";
+                            responsetemp.Clear();
+                            return true;
+                
+                            case 8:
+                            if(Singleton<DataManager>.Instance.CheckAreaOfWork(Int16.Parse(message.Text)))
                             {
-                                case 3:                
-                                response = "Ingrese su teléfono";
-                               _myuserdata[message.UserId].Add(message.Text);
+                                _myuserdata[message.UserId].Add(Singleton<DataManager>.Instance.areaofwork[Int32.Parse(message.Text)].Name);
+                                Singleton<DataManager>.Instance.AddCompany(message.UserId,_myuserdata[message.UserId][3],_myuserdata[message.UserId][4],_myuserdata[message.UserId][5],_myuserdata[message.UserId][6],_myuserdata[message.UserId][7],_myuserdata[message.UserId][8]);
+                                response = $"Se creó la Empresa correctamente\n \nPara ver las siguientes acciones posibles ingrese: \n /publicar_oferta \n /vermisdatos \n /materialtype \n /habilitaciones";
+                                _myuserdata.Remove(message.UserId);
                                 return true;
-
-                                case 4:
-                               _myuserdata[message.UserId].Add(message.Text);
-                                response = "Ingrese Calle y Numero de puerta";
-                                return true;
-
-                                case 5:
-                               _myuserdata[message.UserId].Add(message.Text);
-                                response = "Ingrese Ciudad";                                
-                                return true;
-
-                                case 6:
-                               _myuserdata[message.UserId].Add(message.Text);
-                                response = "Ingrese Departamento";                                
-                                return true;
-
-                                case 7:                  
-                               _myuserdata[message.UserId].Add(message.Text);
-                                responsetemp.Append("Ingrese el rubro de la empresa\n");
-                                responsetemp.Append($"{Singleton<DataManager>.Instance.GetTextToPrintAreaOfWork()}");
-                                response = $"{responsetemp}";
-                                responsetemp.Clear();
-                                return true;
-                    
-                                case 8:
-                                if(Singleton<DataManager>.Instance.CheckAreaOfWork(Int16.Parse(message.Text)))
-                                {
-                                   _myuserdata[message.UserId].Add(Singleton<DataManager>.Instance.areaofwork[Int32.Parse(message.Text)].Name);
-                                    Singleton<DataManager>.Instance.AddCompany(message.UserId,_myuserdata[message.UserId][3],_myuserdata[message.UserId][4],_myuserdata[message.UserId][5],_myuserdata[message.UserId][6],_myuserdata[message.UserId][7],_myuserdata[message.UserId][8]);
-                                    response = $"Se creó la Empresa correctamente\n \nPara ver las siguientes acciones posibles ingrese: \n /publicar_oferta \n /vermisdatos \n /materialtype \n /habilitaciones";
-                                   _myuserdata.Remove(message.UserId);
-                                    return true;
-                                }
-                                else
-                                {
-                                    response = "Dato Mal ingresado, ingrese un numero de la lista";
-                                    return true;
-                                }
-
-                        
                             }
-
+                            else
+                            {
+                                response = "Dato Mal ingresado, ingrese un numero de la lista";
+                                return true;
+                            }
                         }
+                    }
             
                     if(_myuserdata[message.UserId][1].ToLower().Contains("/emprendedor"))
                     {
-                        
                         switch(_myuserdata[message.UserId].Count)
                         {
                             case 2:                    
@@ -170,7 +166,6 @@ namespace ClassLibrary
                             response = $"Como emprendedor tiene algún permiso especial? Si/No";
                             return true;
                             
-
                             case 9:
                             if(message.Text.ToUpper().Equals("SI"))
                             {
@@ -245,7 +240,6 @@ namespace ClassLibrary
                                 return true;     
                             }
     
-                            
                             case 11:
 
                             //_myuserdata[message.UserId].Add(Singleton<DataManager>.Instance.permissions[Int32.Parse(message.Text)].Name);
@@ -255,15 +249,13 @@ namespace ClassLibrary
                             _mypermissions.Remove(message.UserId);                                
                             return true;
                             
-                            }
                         }
-
                     }
-                    response = String.Empty ;
-                    return false;
-                } 
-
-        }
+                }
+            response = String.Empty ;
+            return false;
+        } 
+    }
 }
 
 
