@@ -1,9 +1,3 @@
-//--------------------------------------------------------------------------------
-// <copyright file="TrainTests.cs" company="Universidad Católica del Uruguay">
-//     Copyright (c) Programación II. Derechos reservados.
-// </copyright>
-//--------------------------------------------------------------------------------
-
 using ClassLibrary;
 using NUnit.Framework;
 using System;
@@ -90,21 +84,9 @@ namespace Tests
         }
 
         /// <summary>
-        /// Test Filtrado por distancia
+        /// Test de filtrado por palabra clave
         /// </summary>
-        // [Test]
-        // public void FilterByDistance()
-        // {
-        //     Assert.That(Singleton<Search>.Instance.GetOfferByDistance(Singleton<DataManager>.Instance.entrepreneurs[0],500),Contains.Substring("Montevideo"));
-
-        //     // Assert.That(this.searcher.GetOfferByDistance(this.entrepreneur,10) ,Contains.Substring("Tela"));
-           
-        //     // Assert.AreEqual(Singleton<OfferManager>.Instance.catalog[0].Entrepreneur,this.entrepreneur);
-        // }
-
-        /// <summary>
-        /// Prueba de filtrado por palabra (tag)
-        /// </summary>
+        
         [Test]
         public void FilterByWord()
         {
