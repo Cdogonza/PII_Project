@@ -141,7 +141,6 @@ namespace ClassLibrary
         /// <returns></returns>
         public List<string> getOffer(Entrepreneur entrepreneur)
         {
-            Console.WriteLine("Entre al Get Offer");
             Singleton<OfferManager>.Instance.LoadFromJsonOffer();
             this.catalog = Singleton<OfferManager>.Instance.catalog; 
             if (this.Availability)

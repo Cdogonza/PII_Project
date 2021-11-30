@@ -44,8 +44,9 @@ namespace ClassLibrary
             {
                 if(message.Text.ToLower().Equals("/listar_rubros"))
                 {
+                    Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
                     response = Singleton<DataManager>.Instance.GetTextToPrintAreaOfWork();
-                    return true;                  
+                    return true;
                 }
 
                 if(message.Text.ToLower().Equals("/agregar_rubros"))
