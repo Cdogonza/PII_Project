@@ -44,11 +44,13 @@ namespace ClassLibrary
                     }
                 }
             }         
-           if(data =="")
+           if(data == "")
            {
                data ="No hay Ofertas por el departamento ingresado /help";
                return data;         
-           }else{
+           }
+           else
+           {
                return data + footer;
            }
         }
@@ -103,11 +105,12 @@ namespace ClassLibrary
                     }
                 }
             }
-           if(data =="")
+           if(data == "")
            {
                data ="No hay ofertas para la palabra clave ingresada /help";
                return data;        
-           }else 
+           }
+           else 
            {
                return title + data + footer;
            }
@@ -135,26 +138,24 @@ namespace ClassLibrary
                     {
                         if(offer.Availability)
                         {
-                        if(offer.Material.Type.Name.Equals(dat))
-                        {                   
-                            data += $"{offer.Idd}) Oferta: {offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}\n";
-                            purchased.Add(offer);
-                        }
+                            if(offer.Material.Type.Name.Equals(dat))
+                            {                   
+                                data += $"{offer.Idd}) Oferta: {offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}\n";
+                                purchased.Add(offer);
+                            }
                         }
 
                         }  
-                        if(data=="")
+                        if(data == "")
                         {
                             data = "No hay ofertas habilitadas de esa categoria";
                             return data;
                         }
                 }
            }
-
             data+="\nPara obtener una oferta ingrese /obtener_oferta";        
             return data;
         }
-        
         
         /// <summary>
         /// Filtra el catálogo de búsquedas que compró un emprendedor
@@ -164,10 +165,8 @@ namespace ClassLibrary
         public string GetMyOffersByEntrepreneur(string entrepreneur, string CompanyId)
         {
             this.catalog = Singleton<OfferManager>.Instance.catalog;
-
             string title = $"Sus ofertas adquiridas por el emprendimiento {entrepreneur} son: \n";
             string data = "";
-
             foreach (Offer offer in this.catalog)
             {
                 if (offer.Company.Id == CompanyId)
@@ -175,7 +174,6 @@ namespace ClassLibrary
                     if (offer.Entrepreneur != null && offer.Entrepreneur== entrepreneur)
                     {
                         data += $"{offer.Idd}) Oferta: {offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}";
-
                     }
                 }
                 
@@ -185,7 +183,9 @@ namespace ClassLibrary
             {
                 data = $"No tienes ofertas adquiridas por el emprendimiento {entrepreneur}\n/help";
                 return data;
-            }else{
+            }
+            else
+            {
                 return title + data;
             }
         }
@@ -207,7 +207,6 @@ namespace ClassLibrary
              {
                  if (offer.Entrepreneur != null && offer.Entrepreneur == entrepreneurId)
                  {
-                    
                      data += $"{offer.Idd}) Oferta:{offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}\n\n";
                      cont ++;
                  }
@@ -217,11 +216,11 @@ namespace ClassLibrary
              {
                  data = $"No tiene ofertas adquiridas";
                  return data;
-             }else
+             }
+             else
              {
                  return title + data ;
              }
-            
          }
 
         /// <summary>
@@ -232,7 +231,6 @@ namespace ClassLibrary
         public string GetOfferByCompany(string companyId)
         {
             this.catalog = Singleton<OfferManager>.Instance.catalog;
-
             string title = $"Sus ofertas son: \n";
             string data = "";
 
@@ -248,7 +246,8 @@ namespace ClassLibrary
             {
                 data = $"No tiene ofertas";
                 return data;
-            }else
+            }
+            else
             {
                 return title + data;
             }
@@ -284,7 +283,9 @@ namespace ClassLibrary
             {
                 data = $"La empresa {company} no tiene ofertas publicadas\n/help";
                 return data;
-            }else{
+            }
+            else
+            {
                 return title + data + footer;
             }   
         }
@@ -314,7 +315,9 @@ namespace ClassLibrary
             {
                 data = $"No hay ofertas publicadas en este momento\n/help";
                 return data;
-            }else{
+            }
+            else
+            {
                 return title + data + footer;
             }   
         }
@@ -329,7 +332,6 @@ namespace ClassLibrary
         /// <returns>Retorna un string con una lista de ofertas</returns>
         public string GetAvailableOffersByCompany(Company company)
         {
-
             string data = $"Las ofertas habilitadas para la empresa son: \n";
 
             foreach (Offer offer in catalog)

@@ -101,19 +101,15 @@ namespace ClassLibrary
                     item.Availability = false;
                     foreach (var item2 in this.buyers)
                     {
-                        if(item2.Id == buyer){
+                        if(item2.Id == buyer)
+                        {
                             item.Entrepreneur=buyer;
                         }
                     }
-                {   
-                    }
-                  //  item.Entrepreneur = new Entrepreneur buyer;
+                   //  item.Entrepreneur = new Entrepreneur buyer;
                    ConvertToJsonOffer();
                 }
             }
-            
-            
-        
         }
 
         /// <summary>
@@ -159,7 +155,6 @@ namespace ClassLibrary
                 ReferenceHandler = MyReferenceHandler.Instance,
                 WriteIndented = true
             };
-
             return JsonSerializer.Serialize(this.catalog, options);            
         }
         public void LoadFromJsonOffer()
@@ -176,7 +171,6 @@ namespace ClassLibrary
             };
 
             this.catalog = JsonSerializer.Deserialize<List<Offer>>(json, options);
-           
             }
         }
         public string ConvertToJsonEntrepreneur()
