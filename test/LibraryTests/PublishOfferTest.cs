@@ -27,8 +27,24 @@ namespace Tests
         /// </summary>
         private Material material;
         /// <summary>
+        /// Id de compania para test
+        /// </summary>
+        private string CompanyId = "12345";
+        
+        /// <summary>
+        /// Id de emprendedor para test
+        /// </summary>
+        /// <summary>
+        /// lista de permisos para pruebas
+        /// </summary>
+        private List<Permission> Offerpermissions;
+        private string EntrepreneurId = "67890";
+
+        private List<Offer> Catalogo;
+        /// <summary>
         /// Compania para la empresa
         /// </summary>
+        /// 
         private Company company;
 
         /// <summary>
@@ -39,7 +55,6 @@ namespace Tests
         private Location LocationOffer;
         private Location LocatioCompany;
         private Location LocatioEntrepreneur;
-        private List<Permission> Offerpermissions;
 
         /// <summary>
         /// Crea las intancias utiilzadas en los test
@@ -48,20 +63,26 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
+            
+            //COMPANIA
+            Singleton<DataManager>.Instance.AddCompany(this.CompanyId,"compania 1", "098239339","Burdeos 2728","Montevideo","Montevideo","Construcción");
+            //OFERTA
             LocationApiClient Loc = new LocationApiClient();
-            this.offerAdmin =  new OfferManager();
-            this.searcher =  new Search();
-            LocatioCompany =Loc.GetLocation("Bulevar del Bicentenario 318","Canelones","Canelones");
-            this.company = new Company("1","compania1","098239334",LocatioCompany,"Construcción");
             List<string> tags  = new List<string>();
             tags.Add("tag1");
             tags.Add("tag");              
+            
             DateTime publicationDate = new DateTime(2008, 3, 1, 7, 0, 0);
             DateTime deliverydate = new DateTime();
-            MaterialType materialType  =  new MaterialType("Tela", "Recortes de tela de 1x1");
-            LocationOffer =Loc.GetLocation("Berro 1231","Montevideo","Montevideo");
-            this.material =  new Material("Tela",materialType,"200");
-            this.offer = new Offer(7,"Promocion de verano",this.material,1,100,LocationOffer,Offerpermissions,true,tags,deliverydate,publicationDate,this.company);
+            
+            
+            this.Offerpermissions  =  new List<Permission>();
+            this.Offerpermissions.Add(new Permission("Materiales Peligrosos"));
+            Singleton<OfferManager>.Instance.AddOffer("Promocion de tablas",new Material("Maderas",Singleton<DataManager>.Instance.GetMaterialTypeByIndex(0),"kg"), 100, 1200,"Burdeos 2728", "Montevideo", "Montevideo", this.Offerpermissions, false, tags,deliverydate, publicationDate, company);
+            Singleton<OfferManager>.Instance.PublishOffer(0);
+            
+            this.Catalogo = Singleton<OfferManager>.Instance.catalog;
+
         }
 
         /// <summary>
@@ -70,10 +91,9 @@ namespace Tests
         [Test]
         public void CompanyTest()
         {
-            Assert.AreEqual(this.company.Name,"compania1");
-            Assert.That(this.company.Location.FormattedAddress, Contains.Substring("Canelones"));
-            Assert.AreEqual(this.company.Phone,"098239334");
-            Assert.AreEqual(this.company.AreaOfWork.Name,"Construcción");
+            Assert.AreEqual(Singleton<DataManager>.Instance.GetCompanyInstance(this.CompanyId).Name,"compania 1");
+            Assert.That(Singleton<DataManager>.Instance.GetCompanyInstance(this.CompanyId).Location.FormattedAddress, Contains.Substring("Montevideo"));
+            Assert.AreEqual(Singleton<DataManager>.Instance.GetCompanyInstance(this.CompanyId).Phone,"098239339");
         }
 
         /// <summary>
@@ -82,33 +102,17 @@ namespace Tests
         [Test]
         public void OfferTest()
         {
-
-            Assert.That(this.offer.Location.AddresLine, Contains.Substring("Berro 1231"));
-            Assert.AreEqual(this.offer.Cost,200.00);
-            Assert.AreEqual(this.offer.Availability,true);
-            Assert.AreEqual(this.offer.Name,"Promocion de verano");
-
-            
-            Assert.AreEqual(this.offer.Material,this.material);
+            Assert.That(this.Catalogo[0].Location.AddresLine, Contains.Substring("Burdeos 2728"));
+            Assert.AreEqual(this.Catalogo[0].Cost,1200);
+            Assert.AreEqual(this.Catalogo[0].Availability,true);
+            Assert.AreEqual(this.Catalogo[0].Name,"Promocion de tablas");
             ArrayList tags  = new ArrayList();
             tags.Add("tag1");
-            tags.Add("tag");               
-            Assert.AreEqual(this.offer.Tags,tags);
-            Assert.AreEqual(this.offer.Company.Name,this.company.Name);
-
+            tags.Add("tag");              
+            Assert.AreEqual(this.Catalogo[0].Tags,tags);
         }
 
 
-        /// <summary>
-        /// Prueba de publicación de oferta
-        /// </summary>
-        [Test]
-        public void PublishTest()
-        {
-
-            this.offerAdmin.SaveOffer(this.offer);
-            Assert.AreEqual(this.offerAdmin.catalog[0],this.offer);
-        }
 
     }
 } 
