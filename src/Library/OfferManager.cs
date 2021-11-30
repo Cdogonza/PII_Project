@@ -107,10 +107,11 @@ namespace ClassLibrary
             Singleton<DataManager>.Instance.LoadFromJsonEntrepreneur();
             this.buyers= Singleton<DataManager>.Instance.entrepreneurs;           
             DateTime date2 = DateTime.UtcNow;
-     
-            
+            int coont=0;
+            List<Permission> permisosBuyer = new List<Permission>();
             foreach (Offer item in this.catalog)
             {
+                             
                 if(item.Idd == index)
                 {                   
                     item.Availability = false;
