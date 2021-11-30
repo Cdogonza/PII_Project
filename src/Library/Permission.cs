@@ -11,13 +11,15 @@ namespace ClassLibrary
     /// </summary>
     public class Permission : IJsonConvertible
     {
+        /// <summary>
+        /// Contructor de la persistencia de Permissions
+        /// </summary>
 
         [JsonConstructor]
         public Permission()
         {
 
         }
-
 
         /// <summary>
         /// String con el nombre del permiso
@@ -27,7 +29,7 @@ namespace ClassLibrary
         
 
         /// <summary>
-        /// Constructor de la clase
+        /// Constructor de la clase Permission
         /// </summary>
         /// <param name="name"></param>
         public Permission(string name)

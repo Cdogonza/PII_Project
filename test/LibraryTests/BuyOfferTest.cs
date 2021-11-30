@@ -18,6 +18,7 @@ namespace Tests
     [TestFixture]
     public class BuyOffer
     {
+        
         /// <summary>
         /// emprededor para pruebas
         /// </summary>
@@ -31,17 +32,31 @@ namespace Tests
         /// </summary>
         private Material material;
         /// <summary>
-        /// Compania para la empresa
+        /// Compania para test
         /// </summary>
         private Company company;
-        private Location LocationOffer;
-        private Location LocatioCompany;
+        /// <summary>
+        /// Id de comapania para test
+        /// </summary>
+        private string CompanyId = "12345";
+        /// <summary>
+        /// Id de emprendedor para test
+        /// </summary>
+        private string EntrepreneurId = "67890";
+        /// <summary>
+        /// Lista de ofertas para test
+        /// </summary>
+        private List<Offer> Catalogo;
+        
         private Location LocatioEntrepreneur;
         /// <summary>
-        /// Buscador para pruebas
+        /// Lista de permisos de un emprendedor para pruebas
         /// </summary>
-        private Search searcher ;
-        private Offer offer ;
+        private List<Permission> EntrepreneurPermission;
+
+        /// <summary>
+        /// Lista de permisos de una  oferta para pruebas
+        /// </summary>
         private List<Permission> Offerpermissions;
 
         /// <summary>
@@ -50,24 +65,29 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
+            
+            
+           //COMPANIA
+            Singleton<DataManager>.Instance.AddCompany(this.CompanyId,"compania 1", "098239339","Burdeos 2728","Montevideo","Montevideo","Construcción");
+            //EMPRENDEDOR
+            this.EntrepreneurPermission  =  new List<Permission>();
+            this.EntrepreneurPermission.Add(new Permission("Materiales Peligrosos"));
+            Singleton<DataManager>.Instance.AddEntrepreneur(this.EntrepreneurId,"Emprendimiento dummy","091239339","Grecias 1412","Montevideo","Montevideo","Construccion","Construccion sustentable",EntrepreneurPermission);
+            
+            
+            //OFERTA
             LocationApiClient Loc = new LocationApiClient();
-            this.offerAdmin =  new OfferManager();
-            this.searcher =  new Search();
-            LocatioCompany =Loc.GetLocation("Berro 1231","Montevideo","Montevideo");
-            this.company = new Company("1","compania1","098239334",LocatioCompany,"Construcción");
             List<string> tags  = new List<string>();
             tags.Add("tag1");
             tags.Add("tag");              
+            
             DateTime publicationDate = new DateTime(2008, 3, 1, 7, 0, 0);
             DateTime deliverydate = new DateTime();
-            MaterialType materialType  =  new MaterialType("Tela", "Recortes de tela de 1x1");
-            Offerpermissions.Add(new Permission("Materiales Peligrosos"));
-            this.material =  new Material("Tela",materialType,"200");
-            LocationOffer =Loc.GetLocation("Berro 1231","Montevideo","Montevideo");
-            this.offer = new Offer(7,"Promocion de verano",this.material,1,100,LocationOffer,Offerpermissions,true,tags,deliverydate,publicationDate,this.company);
-            this.offerAdmin.SaveOffer(this.offer);
-            LocatioEntrepreneur =Loc.GetLocation("Colorado 2326","Montevideo","Montevideo");
-            this.entrepreneur = new Entrepreneur("3","Empre2","091234567",LocatioEntrepreneur,"Construcción","Trabajo en altura","especializacion");
+            
+            
+            this.Offerpermissions  =  new List<Permission>();
+            this.Offerpermissions.Add(new Permission("Materiales Peligrosos"));
+            Singleton<OfferManager>.Instance.AddOffer("Promocion de tablas",new Material("Maderas",Singleton<DataManager>.Instance.GetMaterialTypeByIndex(0),"kg"), 100, 1200,"Burdeos 2728", "Montevideo", "Montevideo", this.Offerpermissions, false, tags,deliverydate, publicationDate, company);
         }
 
         /// <summary>
@@ -76,8 +96,11 @@ namespace Tests
         [Test]
         public void Buy()
         {
-            this.offerAdmin.BuyOffer(this.entrepreneur,0);
-            Assert.AreEqual(this.offerAdmin.catalog[0].Entrepreneur,this.entrepreneur);
+            // GetOfferByEntrepreneur(string entrepreneurId);
+            this.Catalogo = Singleton<OfferManager>.Instance.catalog;
+            Singleton<OfferManager>.Instance.BuyOffer(this.EntrepreneurId,1);
+            Console.WriteLine(this.Catalogo[0].Entrepreneur);
+            Assert.AreEqual(this.Catalogo[0].Entrepreneur,this.EntrepreneurId);
         }
     }
 } 

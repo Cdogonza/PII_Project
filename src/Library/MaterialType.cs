@@ -33,13 +33,15 @@ namespace ClassLibrary
             this.Name = name;
             this.Description = description;
         }
+        /// <summary>
+        /// Contructor de la persistencia de Material Type
+        /// </summary>
         
         [JsonConstructor]
         public MaterialType()
         {
 
         }
-
         public string ConvertToJsonCompany()
         {return null;}
         public string ConvertToJsonEntrepreneur()

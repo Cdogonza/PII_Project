@@ -10,16 +10,23 @@ namespace ClassLibrary
     /// </summary>
     public  class AreaOfWork : IJsonConvertible
     {
-
+        /// <summary>
+        /// Contructor de la persistencia de AreaOfWork
+        /// </summary>
         [JsonConstructor]
         public AreaOfWork()
         {
 
         }
+        /// <summary>
+        /// String del nombre del rubro
+        /// </summary>
+        /// <value></value>
         public string Name{get;set;}
         /// <summary>
-        /// Crea instancias de este tipo
+        /// Crea instancias de este tipo AreaOfWork
         /// </summary>
+        /// <param name="name"></param>
         public AreaOfWork(string name)
         {
             if (String.IsNullOrWhiteSpace(name))
@@ -29,19 +36,42 @@ namespace ClassLibrary
             this.Name = name;
         }
     
+        /// <summary>
+        /// Metodo de agregado de la interfaz que no lleva implementacion para esta clase
+        /// </summary>
+        /// <returns></returns>
         public string ConvertToJsonCompany()
         {
             return null;
         }
+        /// <summary>
+        /// Metodo de agregado de la interfaz que no lleva implementacion para esta clase
+        /// </summary>
+        /// <returns></returns>
         public string ConvertToJsonEntrepreneur()
         {return null;}
+        /// <summary>
+        /// Metodo de agregado de la interfaz que no lleva implementacion para esta clase
+        /// </summary>
+        /// <returns></returns>
         public string ConvertToJsonOffer()
         {return null;}
+        /// <summary>
+        /// Metodo de agregado de la interfaz que no lleva implementacion para esta clase
+        /// </summary>
+        /// <returns></returns>
         public string ConvertToJsonPermissions()
         {return null;}
+        /// <summary>
+        /// Metodo de agregado de la interfaz que no lleva implementacion para esta clase
+        /// </summary>
+        /// <returns></returns>
         public string ConvertToJsonMaterialTypes()
         {return null;}
-
+        /// <summary>
+        /// Metodo de agregado de la interfaz que no lleva implementacion para esta clase
+        /// </summary>
+        /// <returns></returns>
         public string ConvertToJsonAreaOfWork()
         {
             return JsonSerializer.Serialize(this);
