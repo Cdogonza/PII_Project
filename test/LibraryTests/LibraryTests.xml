@@ -26,12 +26,32 @@
         </member>
         <member name="F:Tests.BuyOffer.company">
             <summary>
-            Compania para la empresa
+            Compania para test
             </summary>
         </member>
-        <member name="F:Tests.BuyOffer.searcher">
+        <member name="F:Tests.BuyOffer.CompanyId">
             <summary>
-            Buscador para pruebas
+            Id de comapania para test
+            </summary>
+        </member>
+        <member name="F:Tests.BuyOffer.EntrepreneurId">
+            <summary>
+            Id de emprendedor para test
+            </summary>
+        </member>
+        <member name="F:Tests.BuyOffer.Catalogo">
+            <summary>
+            Lista de ofertas para test
+            </summary>
+        </member>
+        <member name="F:Tests.BuyOffer.EntrepreneurPermission">
+            <summary>
+            Lista de permisos de un emprendedor para pruebas
+            </summary>
+        </member>
+        <member name="F:Tests.BuyOffer.Offerpermissions">
+            <summary>
+            Lista de permisos de una  oferta para pruebas
             </summary>
         </member>
         <member name="M:Tests.BuyOffer.Setup">
@@ -69,9 +89,24 @@
             Compania para la empresa
             </summary>
         </member>
-        <member name="F:Tests.SearchTest.searcher">
+        <member name="F:Tests.SearchTest.CompanyId">
             <summary>
-            Buscador para pruebas
+            Id de compania para test
+            </summary>
+        </member>
+        <member name="F:Tests.SearchTest.EntrepreneurId">
+            <summary>
+            Id de emprendedor para test
+            </summary>
+        </member>
+        <member name="F:Tests.SearchTest.Offerpermissions">
+            <summary>
+            lista de permisos para pruebas
+            </summary>
+        </member>
+        <member name="F:Tests.SearchTest.Catalogo">
+            <summary>
+            Catalago para pruebas
             </summary>
         </member>
         <member name="M:Tests.SearchTest.Setup">
@@ -82,11 +117,6 @@
         <member name="M:Tests.SearchTest.FilterByLocation">
             <summary>
             Prueba de filtrado por ubicación
-            </summary>
-        </member>
-        <member name="M:Tests.SearchTest.FilterByDistance">
-            <summary>
-            Test Filtrado por distancia
             </summary>
         </member>
         <member name="M:Tests.SearchTest.FilterByWord">
@@ -120,9 +150,24 @@
             Compania para la empresa
             </summary>
         </member>
-        <member name="F:Tests.PerrmissionTest.searcher">
+        <member name="F:Tests.PerrmissionTest.CompanyId">
             <summary>
-            Buscador para pruebas
+            Id de compania para test
+            </summary>
+        </member>
+        <member name="F:Tests.PerrmissionTest.EntrepreneurId">
+            <summary>
+            Id de emprendedor para test
+            </summary>
+        </member>
+        <member name="F:Tests.PerrmissionTest.Offerpermissions">
+            <summary>
+            Lista de permisos de una oferta para test
+            </summary>
+        </member>
+        <member name="F:Tests.PerrmissionTest.Catalogo">
+            <summary>
+            Lista de ofertas para test
             </summary>
         </member>
         <member name="M:Tests.PerrmissionTest.Setup">
@@ -150,10 +195,24 @@
             Material para pruebas
             </summary>
         </member>
+        <member name="F:Tests.PublishOffer.CompanyId">
+            <summary>
+            Id de compania para test
+            </summary>
+        </member>
+        <member name="F:Tests.PublishOffer.Offerpermissions">
+            <summary>
+            Id de emprendedor para test
+            </summary>
+            <summary>
+            lista de permisos para pruebas
+            </summary>
+        </member>
         <member name="F:Tests.PublishOffer.company">
             <summary>
             Compania para la empresa
             </summary>
+            
         </member>
         <member name="F:Tests.PublishOffer.searcher">
             <summary>
@@ -173,11 +232,6 @@
         <member name="M:Tests.PublishOffer.OfferTest">
              <summary>
              Prueba de creación de oferta
-            </summary>
-        </member>
-        <member name="M:Tests.PublishOffer.PublishTest">
-            <summary>
-            Prueba de publicación de oferta
             </summary>
         </member>
     </members>

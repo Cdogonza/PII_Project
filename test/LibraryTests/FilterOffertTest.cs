@@ -30,20 +30,28 @@ namespace Tests
         /// Material para pruebas
         /// </summary>
         private Material material;
+
         /// <summary>
         /// Compania para la empresa
         /// </summary>
         private Company company;
 
-        /// <summary>
-        /// Buscador para pruebas
+         /// <summary>
+        /// Id de compania para test
         /// </summary>
-        private Search searcher ;
-        private Offer offer ;
-        private Location LocationOffer;
-        private Location LocatioCompany;
-        private Location LocatioEntrepreneur;
+        private string CompanyId = "12345";
+        /// <summary>
+        /// Id de emprendedor para test
+        /// </summary>
+        private string EntrepreneurId = "67890";
+        /// <summary>
+        /// lista de permisos para pruebas
+        /// </summary>
         private List<Permission> Offerpermissions;
+        /// <summary>
+        /// Catalago para pruebas
+        /// </summary>
+        private List<Offer> Catalogo;
 
         /// <summary>
         /// Crea las intancias utiilzadas en los test
@@ -51,57 +59,48 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
+            //COMPANIA
+            Singleton<DataManager>.Instance.AddCompany(this.CompanyId,"compania 1", "098239339","Burdeos 2728","Montevideo","Montevideo","Construcción");
+            //OFERTA
             LocationApiClient Loc = new LocationApiClient();
-            this.offerAdmin =  new OfferManager();
-            this.searcher =  new Search();
-            LocatioCompany =Loc.GetLocation("Berro 1231","Montevideo","Montevideo");
-            this.company = new Company("2","compania1","098239334",LocatioCompany,"Construcción");
-            DataManager dataManager  = new DataManager();
-            dataManager.AddPermission("Materiales inflamables");
-            dataManager.AddPermission("Residuos medicos");
-            
-            this.company.AddPermission(dataManager.GetPermissions()[0]);
-            
-
             List<string> tags  = new List<string>();
             tags.Add("tag1");
             tags.Add("tag");              
+            
             DateTime publicationDate = new DateTime(2008, 3, 1, 7, 0, 0);
             DateTime deliverydate = new DateTime();
-            MaterialType materialType  =  new MaterialType("Tela", "Recortes de tela de 1x1");
-            this.material =  new Material("Tela",materialType,"200");
-            LocationOffer =Loc.GetLocation("Berro 1231","Montevideo","Montevideo");
-            Offerpermissions.Add(new Permission("Materiales Peligrosos"));
-            this.offer = new Offer(7,"Promocion de verano",this.material,1,100,LocationOffer,Offerpermissions,true,tags,deliverydate,publicationDate,this.company);
-            Singleton<OfferManager>.Instance.SaveOffer(this.offer);
-            LocatioEntrepreneur =Loc.GetLocation("Colorado 2326","Montevideo","Montevideo");
-            Permission permissionC = new Permission("Materiales inflamables");
             
-            this.entrepreneur = new Entrepreneur("3","Empre2","091234567",LocatioEntrepreneur,"Construcción","Trabajo en altura","especializacion");
-            Singleton<OfferManager>.Instance.BuyOffer(this.entrepreneur,0);
+            
+            this.Offerpermissions  =  new List<Permission>();
+            this.Offerpermissions.Add(new Permission("Materiales Peligrosos"));
+            Singleton<OfferManager>.Instance.AddOffer("Promocion de tablas",new Material("Maderas",Singleton<DataManager>.Instance.GetMaterialTypeByIndex(0),"kg"), 100, 1200,"Burdeos 2728", "Montevideo", "Montevideo", this.Offerpermissions, false, tags,deliverydate, publicationDate, company);
+            Singleton<OfferManager>.Instance.PublishOffer(0);
+            
+            this.Catalogo = Singleton<OfferManager>.Instance.catalog;
         }
 
         /// <summary>
         /// Prueba de filtrado por ubicación
         /// </summary>
         [Test]
-        public void FilterByLocation()
-        {
-            Assert.That(this.searcher.GetOfferByDepartment("Montevideo") ,Contains.Substring("Montevideo"));
+        public void FilterByLocation(){
+            
+            Assert.That(Singleton<Search>.Instance.GetOfferByDepartment("Montevideo"),Contains.Substring("Montevideo"));
            
-            // Assert.AreEqual(Singleton<OfferManager>.Instance.catalog[0].Entrepreneur,this.entrepreneur);
         }
 
         /// <summary>
         /// Test Filtrado por distancia
         /// </summary>
-        [Test]
-        public void FilterByDistance()
-        {
-            Assert.That(this.searcher.GetOfferByDistance(this.entrepreneur,10) ,Contains.Substring("Tela"));
+        // [Test]
+        // public void FilterByDistance()
+        // {
+        //     Assert.That(Singleton<Search>.Instance.GetOfferByDistance(Singleton<DataManager>.Instance.entrepreneurs[0],500),Contains.Substring("Montevideo"));
+
+        //     // Assert.That(this.searcher.GetOfferByDistance(this.entrepreneur,10) ,Contains.Substring("Tela"));
            
-            // Assert.AreEqual(Singleton<OfferManager>.Instance.catalog[0].Entrepreneur,this.entrepreneur);
-        }
+        //     // Assert.AreEqual(Singleton<OfferManager>.Instance.catalog[0].Entrepreneur,this.entrepreneur);
+        // }
 
         /// <summary>
         /// Prueba de filtrado por palabra (tag)
@@ -109,9 +108,9 @@ namespace Tests
         [Test]
         public void FilterByWord()
         {
-            Assert.That(this.searcher.GetOfferByWord("tag1"),Contains.Substring("Promoción de verano"));
+            Assert.That(Singleton<Search>.Instance.GetOfferByWord("tag1"),Contains.Substring("Promocion de tablas"));
             
-            // Assert.AreEqual(Singleton<OfferManager>.Instance.catalog[0].Entrepreneur,this.entrepreneur);
+            Assert.AreEqual(Singleton<OfferManager>.Instance.catalog[0].Entrepreneur,this.EntrepreneurId);
         }
 
     }
