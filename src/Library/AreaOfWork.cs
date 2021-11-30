@@ -18,11 +18,13 @@ namespace ClassLibrary
         {
 
         }
+
         /// <summary>
         /// String del nombre del rubro
         /// </summary>
         /// <value></value>
         public string Name{get;set;}
+        
         /// <summary>
         /// Crea instancias de este tipo AreaOfWork
         /// </summary>
@@ -37,39 +39,42 @@ namespace ClassLibrary
         }
     
         /// <summary>
-        /// Metodo de agregado de la interfaz que no lleva implementacion para esta clase
+        /// Metodo de agregado de la interfaz IJsonConvertible que no lleva implementacion para esta clase
         /// </summary>
         /// <returns></returns>
         public string ConvertToJsonCompany()
-        {
-            return null;
-        }
+        {return null;}
+        
         /// <summary>
-        /// Metodo de agregado de la interfaz que no lleva implementacion para esta clase
+        /// Metodo de agregado de la interfaz IJsonConvertible que no lleva implementacion para esta clase
         /// </summary>
         /// <returns></returns>
         public string ConvertToJsonEntrepreneur()
         {return null;}
+        
         /// <summary>
-        /// Metodo de agregado de la interfaz que no lleva implementacion para esta clase
+        /// Metodo de agregado de la interfaz IJsonConvertible que no lleva implementacion para esta clase
         /// </summary>
         /// <returns></returns>
         public string ConvertToJsonOffer()
         {return null;}
+        
         /// <summary>
-        /// Metodo de agregado de la interfaz que no lleva implementacion para esta clase
+        /// Metodo de agregado de la interfaz IJsonConvertible que no lleva implementacion para esta clase
         /// </summary>
         /// <returns></returns>
         public string ConvertToJsonPermissions()
         {return null;}
+        
         /// <summary>
-        /// Metodo de agregado de la interfaz que no lleva implementacion para esta clase
+        /// Metodo de agregado de la interfaz IJsonConvertible que no lleva implementacion para esta clase
         /// </summary>
         /// <returns></returns>
         public string ConvertToJsonMaterialTypes()
         {return null;}
+
         /// <summary>
-        /// Metodo de agregado de la interfaz que no lleva implementacion para esta clase
+        /// Metodo de agregado de la interfaz IJsonConvertible que serializa los datos de la clase AreaOfWork
         /// </summary>
         /// <returns></returns>
         public string ConvertToJsonAreaOfWork()
