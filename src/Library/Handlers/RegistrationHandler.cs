@@ -145,7 +145,7 @@ namespace ClassLibrary
                         
                             case 6:                      
                             _myuserdata[message.UserId].Add(message.Text);
-                            response = $"{Singleton<DataManager>.Instance.GetTextToPrintAreaOfWork()}";
+                            response = $"Ingrese un rubro\n{Singleton<DataManager>.Instance.GetTextToPrintAreaOfWork()}";
                             return true;
                                                         
                             case 7:
@@ -227,10 +227,19 @@ namespace ClassLibrary
                             case 10:
                             if(_myuserdata[message.UserId][9].ToUpper().Contains("SI"))
                             {  
-                                _mypermissions[message.UserId].Add(message.Text);
-                                _myuserdata[message.UserId].RemoveAt(9);
-                                response = "Desea Agregar otro Permiso? Si/No";
-                                return true;
+                                if (!_mypermissions[message.UserId].Contains(message.Text))
+                                {
+                                    _mypermissions[message.UserId].Add(message.Text);
+                                    _myuserdata[message.UserId].RemoveAt(9);
+                                    response = "Desea Agregar otro Permiso? Si/No";
+                                    return true;
+                                }
+                                else
+                                {
+                                    _myuserdata[message.UserId].RemoveAt(9);
+                                    response = "Ya tiene este permiso asignado \nDesea Agregar otro Permiso? Si/No";
+                                    return true;
+                                }
                             }
                             else
                             {

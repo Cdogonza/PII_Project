@@ -1,8 +1,10 @@
 using System.IO;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
+using System.Collections.ObjectModel;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.InputFiles;
 using Nito.AsyncEx;
@@ -36,17 +38,22 @@ namespace ClassLibrary
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
+            if(!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
+                {
+                    Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId,new Collection<string>());
+                    
+                }
             if(message.Text.ToLower().Equals("/help"))
             {
                 if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null )
                 {
-                    response = "Los comandos disponibles para las empresas son\n/buscar_oferta\n/vermisdatos\n/registrarse\n/tipo_de_material\n/ver_mapa\n/publicar_oferta\n/habilitaciones\n/rubros\n/cerrar_sesion";
+                    response = "Los comandos disponibles para las empresas son\n/buscar_oferta\n/vermisdatos\n/registrarse\n/tipo_de_material\n/ver_mapa\n/publicar_oferta\n/rubros\n/cerrar_sesion";
                     return true;
                 }else
                 {
                     if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                     {
-                        response = "Los comandos disponibles para los emprendedores son\n/buscar_oferta\n/registrarse\n/vermisdatos\n/ver_mapa\n/mostrar_ruta\n/cerrar_sesion";
+                        response = "Los comandos disponibles para los emprendedores son\n/buscar_oferta\n/registrarse\n/vermisdatos\n/rubros\n/ver_mapa\n/mostrar_ruta\n/cerrar_sesion";
                         return true;
                     }else
                     {
@@ -60,8 +67,35 @@ namespace ClassLibrary
             {
                 if(message.Text.ToLower().Equals("/mostrar_ruta"))
                 {
+
                     if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                     {
+                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);//agrego /mostrar_mapa
+
+                        Singleton<OfferManager>.Instance.LoadFromJsonOffer();
+                        foreach (Offer item in Singleton<OfferManager>.Instance.getLista())
+                        {
+                        response=$"Ingrese numero de oferta para ver ruta\n{item.Idd}- {item.Name}";
+                        return true;                                             
+                        }
+                    }
+                    if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].Contains("/mostrar_ruta"))
+                    {                   
+                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
+                      
+                        if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count>=1)
+                        {
+                            double ll=0;
+                            double llo=0;
+                            foreach (Offer item in Singleton<OfferManager>.Instance.getLista())
+                            {
+                                if(item.Idd==Convert.ToDouble(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1]) )
+                                {
+                                    ll = item.Location.Latitude;
+                                    llo= item.Location.Longitude;
+
+                                }
+                            }
                         LocationApiClient loc = new LocationApiClient();
                         double lat=0;
                         double log=0;                
@@ -74,12 +108,12 @@ namespace ClassLibrary
                             log=item.Location.Longitude;
                         }
                         response = $"";
-                        loc.DownloadRoute(lat,log,-34.88064073732325, -56.14675630747833,path);             
+                        loc.DownloadRoute(lat,log,ll, llo,path);             
                         AsyncContext.Run(() => SendProfileImageRout(message));                    
                         return true;
                     }
                 }
-                else
+                    }else
                 {
                     if (this.CanHandle(message))
                     {

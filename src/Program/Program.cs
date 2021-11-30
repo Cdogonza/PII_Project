@@ -27,8 +27,10 @@ namespace ClassLibrary
         // Para probar este ejemplo, crea un bot nuevo y eeemplaza este token por el de tu bot.
         //private static string Token = "2133513418:AAHIE7L6s-OQSi6BroKBheNa-JGIXAlsMR0";
         //private static string Token = "2099808385:AAGebOzNFY6kA5hwEY2XJbOJxZBzWAIM8U0";
-        //private static string Token = "2133499409:AAFKS9VqLu7UXqQccvTHFFzcIvxwEoCGtkM"; //
-        private static string Token = "2105636402:AAG6BbtW--SQ0pVOOpRKcHQQJTl7rwFWRxA";       // Belu
+        private static string Token = "2133499409:AAFKS9VqLu7UXqQccvTHFFzcIvxwEoCGtkM"; //
+        //private static string Token = "2105636402:AAG6BbtW--SQ0pVOOpRKcHQQJTl7rwFWRxA";    
+        //private static string Token = "2143110246:AAFxnNCvWemFWzsitJkRwkVE63yHdJDgI_k";
+
         private static IHandler firstHandler;
 
         /// <summary>
@@ -45,11 +47,12 @@ namespace ClassLibrary
                 new DataManagerHandler(
                 new MaterialTypesHandler(
                 new PublicationHandler(
+                new BuyerOfferHandler(                                
                 new PermissionsHandler(
                 new AreaOfWorkHandler(  
                 new SearchOffersHandler(  
                 new CloseSessionHandler(                             
-                new MapsHandler(Bot,null)))))))))));
+                new MapsHandler(Bot,null))))))))))));
             Message message = new Message();
            
 

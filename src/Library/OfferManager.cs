@@ -6,6 +6,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 namespace ClassLibrary
 {   
+    
     /// <summary>
     /// En esta clase se puede ver el uso del patron Expert, y aque es experto en el manejo
     /// de las ofertas de la aplicacion, incluso cuando se instancia esta clase la instanciamos
@@ -13,6 +14,7 @@ namespace ClassLibrary
     /// </summary>
     public class OfferManager : IJsonConvertible
     {
+        public List<Entrepreneur> buyers = new List<Entrepreneur>();
         /// <summary>
         /// Catalogo de ofertas de nuestra aplicacion
         /// </summary>
@@ -35,6 +37,12 @@ namespace ClassLibrary
        public void SaveOffer(Offer offer)
         {   
             catalog.Add(offer);
+        }
+        
+        public List<Offer> getLista()
+        {
+            this.LoadFromJsonOffer();
+            return this.catalog;
         }
         /// <summary>
         /// Este metodo se utiliza para re publicar ofertas que son priodicas 
@@ -93,10 +101,27 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="buyer"></param>
         /// <param name="index"></param>
-        public void BuyOffer(Entrepreneur buyer,int index)
+        public void BuyOffer(string buyer,long index)
         {
-            catalog[index].getOffer(buyer);
-
+            LoadFromJsonOffer();
+            Singleton<DataManager>.Instance.LoadFromJsonEntrepreneur();
+            this.buyers= Singleton<DataManager>.Instance.entrepreneurs;
+            foreach (Offer item in this.catalog)
+            {
+                if(item.Idd == index)
+                {                   
+                    item.Availability = false;
+                    foreach (var item2 in this.buyers)
+                    {
+                        if(item2.Id == buyer)
+                        {
+                            item.Entrepreneur=buyer;
+                        }
+                    }
+                   //  item.Entrepreneur = new Entrepreneur buyer;
+                   ConvertToJsonOffer();
+                }
+            }
         }
 
         /// <summary>
@@ -142,7 +167,6 @@ namespace ClassLibrary
                 ReferenceHandler = MyReferenceHandler.Instance,
                 WriteIndented = true
             };
-
             return JsonSerializer.Serialize(this.catalog, options);            
         }
         public void LoadFromJsonOffer()
@@ -159,7 +183,6 @@ namespace ClassLibrary
             };
 
             this.catalog = JsonSerializer.Deserialize<List<Offer>>(json, options);
-           
             }
         }
         public string ConvertToJsonEntrepreneur()
