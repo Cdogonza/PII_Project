@@ -27,7 +27,7 @@ namespace ClassLibrary
         /// <param name="location"></param>
         /// <param name="area"></param>
         /// <returns></returns>
-
+/// 
         public Company(string id ,string name,string phone,Location location,string area) : base (id,name,phone,location,area)
         {
 
