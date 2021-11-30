@@ -34,13 +34,13 @@ namespace ClassLibrary
                     }
                     else
                     {
-                       _myuserdata[message.UserId].Add(message.Text.ToLower()); //Agrego /registrarse al diccionario
+                        _myuserdata[message.UserId].Add(message.Text.ToLower()); //Agrego /registrarse al diccionario
                         response = "Registrarse como Empresa o como Emprendedor\n/Empresa\n/Emprendedor\no cancela con /cancel ";
                         return true;
                     }
             }
             
-            if(_myuserdata[message.UserId].Count >= 1 &&_myuserdata[message.UserId][0].ToLower().Contains("/registrarse") )
+            if(_myuserdata[message.UserId].Count >= 1 && _myuserdata[message.UserId][0].ToLower().Contains("/registrarse") )
             {
                 if(_myuserdata[message.UserId][0].ToLower().Contains("/registrarse"))
                 {
@@ -53,20 +53,20 @@ namespace ClassLibrary
                     }
                     if(_myuserdata[message.UserId].Count == 1 && message.Text.ToLower().Equals("/emprendedor"))
                     {
-                       _myuserdata[message.UserId].Add(message.Text); /// agrego texto /emprendendor
+                        _myuserdata[message.UserId].Add(message.Text); /// agrego texto /emprendendor
                         response = "Ingrese nombre de su emprendimiento";
                         return true;                   
                     }
                 }
                     if(_myuserdata[message.UserId][1].ToLower().Contains("/empresa"))
                     {  
-                    if(message.Text.ToLower().Equals( "1234") &&_myuserdata[message.UserId].Count == 2)
+                    if(message.Text.ToLower().Equals( "1234") && _myuserdata[message.UserId].Count == 2)
                         {
                            _myuserdata[message.UserId].Add(message.Text.ToLower());
                             response = "Ingrese el nombre de la empresa";
                             return true;
                         }
-                        if(!message.Text.ToLower().Equals( "1234") &&_myuserdata[message.UserId].Count == 2) { 
+                        if(!message.Text.ToLower().Equals( "1234") && _myuserdata[message.UserId].Count == 2) { 
 
                             response = "Código incorrecto, intente nuevamente";
                             return true;
