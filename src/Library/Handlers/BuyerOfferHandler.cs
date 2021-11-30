@@ -35,6 +35,7 @@ namespace ClassLibrary
                     {
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);   //Agrego /buscar_oferta
                         response = "Ingrese el número de compra que desea obtener";                       
+
                         return true; 
                     }
                 }
@@ -60,6 +61,7 @@ namespace ClassLibrary
                                 }
                             }
                             response=$"Confirma que desea obtener esta oferta?\n {data}\n\n Si/No";
+
                             return true;
                         }
                     }
@@ -72,26 +74,17 @@ namespace ClassLibrary
                             {                                                            
                                 Singleton<OfferManager>.Instance.BuyOffer(Singleton<TelegramUserData>.Instance.user(),Convert.ToInt64(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1])); 
                                 Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();
-                                
-                            
                                 response=$"Felicitaciones! Su compra ha sido realizada con exito\n/help para continuar";
                                 return true;
-                            }else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2].ToLower().Equals("no"))
+                            }
+                            else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2].ToLower().Equals("no"))
                             {
                                 response=$"Operación Cancelada";
                                 Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();
                                 return true;
                             }
-                        
                             }
-                                              
-                    
 
-
-
-
-
-                     
             response = String.Empty ;
             return false;
         }
