@@ -65,7 +65,7 @@ namespace ClassLibrary
         /// <param name="entrepreneur"></param>
         public void PrintOffersByEntrepreneur(Search search, string entrepreneurId)
         {
-            //Console.WriteLine(search.GetOfferByEntrepreneur(entrepreneur));
+
         }
         
         /// <summary>

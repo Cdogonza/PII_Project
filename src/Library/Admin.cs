@@ -15,6 +15,7 @@ namespace ClassLibrary
         /// <summary>
         /// Constructor de la clase Admin
         /// </summary>
+        /// <param name="name"></param>
         public Admin(string name)
         {
             if (String.IsNullOrWhiteSpace(name))
