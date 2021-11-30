@@ -38,6 +38,12 @@ namespace ClassLibrary
         {   
             catalog.Add(offer);
         }
+        
+        public List<Offer> getLista()
+        {
+            this.LoadFromJsonOffer();
+            return this.catalog;
+        }
         /// <summary>
         /// Este metodo se utiliza para re publicar ofertas que son priodicas 
         /// </summary>
@@ -95,20 +101,15 @@ namespace ClassLibrary
                     item.Availability = false;
                     foreach (var item2 in this.buyers)
                     {
-                        if(item2.Id == buyer){
-                        Console.WriteLine("Entre al buyer");
+                        if(item2.Id == buyer)
+                        {
                             item.Entrepreneur=buyer;
                         }
                     }
-                {   
-                    }
-                  //  item.Entrepreneur = new Entrepreneur buyer;
+                   //  item.Entrepreneur = new Entrepreneur buyer;
                    ConvertToJsonOffer();
                 }
             }
-            
-            
-        
         }
 
         /// <summary>
@@ -154,7 +155,6 @@ namespace ClassLibrary
                 ReferenceHandler = MyReferenceHandler.Instance,
                 WriteIndented = true
             };
-
             return JsonSerializer.Serialize(this.catalog, options);            
         }
         public void LoadFromJsonOffer()
@@ -171,7 +171,6 @@ namespace ClassLibrary
             };
 
             this.catalog = JsonSerializer.Deserialize<List<Offer>>(json, options);
-           
             }
         }
         public string ConvertToJsonEntrepreneur()

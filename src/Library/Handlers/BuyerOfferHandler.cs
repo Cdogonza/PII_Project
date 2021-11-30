@@ -34,7 +34,7 @@ namespace ClassLibrary
                     if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                     {
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);   //Agrego /buscar_oferta
-                        response = "Ingrese el Numero de compra que desea obtener";                       
+                        response = "Ingrese el número de compra que desea obtener";                       
                         return true; 
                     }
                 }
@@ -44,20 +44,22 @@ namespace ClassLibrary
                         if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/obtener_oferta"))
                         {                          
                             string data = $"";
+                            int cont = 0;
                             foreach (Offer offer in Singleton<Search>.Instance.purchased)
                             {
-                                if (offer.Idd==Int32.Parse(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1]))
-                                {
+                                cont ++;
                                 
-                                 data += $"{offer.Idd}- Oferta:{offer.Name}-\n Material: {offer.Material.Name}-\nCosto: {offer.Cost}-\nFecha Publicacion{offer.PublicationDate}-\nDireccion: {offer.Location.FormattedAddress}";
-                                                                
-                                }else{response=$"No encuentro el numero ingresado /buscar_oferta";
-                                Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();
-                                return true;
+                                if (offer.Idd==Convert.ToInt64(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1]))
+                                {
+                                    data += $"{offer.Idd}- Oferta:{offer.Name}-\n Material: {offer.Material.Name}-\nCosto: {offer.Cost}-\nFecha Publicacion{offer.PublicationDate}-\nDireccion: {offer.Location.FormattedAddress}";
+                                }else if (cont == Singleton<Search>.Instance.purchased.Count)
+                                {
+                                    response=$"No encuentro el número ingresado /buscar_oferta";
+                                    Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();
+                                    return true;
                                 }
                             }
-                            response=$"Confirma que desea obtener la esta oferta?\n {data} S/N";
-                            Console.WriteLine(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1]);
+                            response=$"Confirma que desea obtener esta oferta?\n {data}\n\n Si/No";
                             return true;
                         }
                     }
@@ -66,30 +68,21 @@ namespace ClassLibrary
                              
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text.ToLower());
                             
-                            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2].ToLower().Contains("s") )
+                            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2].ToLower().Contains("si") )
                             {                                                            
                                 Singleton<OfferManager>.Instance.BuyOffer(Singleton<TelegramUserData>.Instance.user(),Convert.ToInt64(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1])); 
                                 Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();
-                                
-                            
-                                response=$"Felicitaciones";
+                                response=$"Felicitaciones! Su compra ha sido realizada con exito\n/help para continuar";
                                 return true;
-                            }else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2].ToLower().Equals("n"))
+                            }
+                            else if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2].ToLower().Equals("no"))
                             {
-                                response=$"Operacion Cancelada";
+                                response=$"Operación Cancelada";
                                 Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();
                                 return true;
                             }
-                        
                             }
-                                              
-                    
 
-
-
-
-
-                     
             response = String.Empty ;
             return false;
         }
