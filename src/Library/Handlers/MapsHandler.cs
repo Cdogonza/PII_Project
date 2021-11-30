@@ -85,20 +85,17 @@ namespace ClassLibrary
                       
                         if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count>=1)
                         {
-                            foreach (var item in collection)
-                            {
-                                
-                            }
                             double ll=0;
                             double llo=0;
-                            string ent =Singleton<OfferManager>.Instance.getLista();
-                            if(ent.Contains(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1]))
+                            foreach (Offer item in Singleton<OfferManager>.Instance.getLista())
                             {
-                                
-                                ll = item.Location.Latitude;
-                                llo= item.Location.Longitude;
-                            }
+                                if(item.Idd==Convert.ToDouble(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1]) )
+                                {
+                                    ll = item.Location.Latitude;
+                                    llo= item.Location.Longitude;
 
+                                }
+                            }
                         LocationApiClient loc = new LocationApiClient();
                         double lat=0;
                         double log=0;                
@@ -116,9 +113,7 @@ namespace ClassLibrary
                         return true;
                     }
                 }
-                    }
-            }  
-                else
+                    }else
                 {
                     if (this.CanHandle(message))
                     {
