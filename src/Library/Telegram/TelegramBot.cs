@@ -10,6 +10,7 @@ namespace ClassLibrary
 {
     /// <summary>
     /// Una clase que implementa un bot de Telegram.
+    /// SRP : Existe solamente para manejar el comportamiento y el estado del bot.
     /// </summary>
     public class TelegramBot
     {

@@ -10,6 +10,7 @@ namespace ClassLibrary
     /// <summary>
     /// Esta clase esteblece los parametros necesarios para la creacion de la oferta/.
     /// Implementa el patron SRP ya que tiene una unica razon de cambio
+    /// /// EXPERT :  Esta clase es una clase base del programa que contiene toda la información y metodos de las ofertas por lo que se justifica con el principio expert.
     /// </summary>
     public class Offer : IJsonConvertible
     {

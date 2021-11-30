@@ -8,6 +8,8 @@ namespace ClassLibrary
 {
     /// <summary>
     /// Esta clase representa los permisos de las empresas, ofertas y emprendedores
+    /// EXPERT : Esta clase es una clase base del programa que contiene toda la información y metodos de los permisos de las compañías por lo que se justifica con el principio expert.
+    /// 
     /// </summary>
     public class Permission : IJsonConvertible
     {

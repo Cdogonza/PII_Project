@@ -4,7 +4,9 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 namespace ClassLibrary
 {   /// <summary>
-    /// Esta clase define las propiedas y comportamiento que comparten los diferentes usuarios de la empresa
+    /// Esta clase define las propiedades y comportamiento que comparten los diferentes usuarios de la empresa
+    /// EXPERT : Esta clase es una clase base del programa que contiene toda la información y metodos de los  área de trabajo de los diferentes usuarios por lo que se justifica con el principio expert.
+    /// también se decidió utilizar una clase asbtrascta ya que existen diferentes tipos de usuarios en este programa, que comparten sus características pero realizan diferentes acciones dentro del programa por lo que es necesario modificar su comportamiento base.
     /// </summary>
     public abstract class UserBase : IJsonConvertible
     { 
