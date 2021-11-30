@@ -12,17 +12,55 @@ using System.Linq;
 
 namespace ClassLibrary
 {
+
+    /// <summary>
+    /// Este handler implementa el patrón Chain of Responsability y es el encargado de manejar el comando /publicar_oferta
+    /// Permite a las companias agregar ofertas nuevas al sistema. 
+    /// </summary>
     public class PublicationHandler : BaseHandler
     {
+        /// <summary>
+        /// booleano utilzado para identificar si es una oferta recurrente
+        /// True si es recurrente, False en caso contrario.
+        /// </summary>
         public bool regularoffer;   
  
+        /// <summary>
+        /// String temporal para concatenar una respuesta al usuario
+        /// </summary>
+        /// <returns></returns>
         private StringBuilder responsetemp = new StringBuilder();
+        
+        /// <summary>
+        /// Lista que maneja los permisos que se van agregando a la oferta
+        /// </summary>
+        /// <typeparam name="Permission">Campo del tipo Permission</typeparam>
+        /// <returns></returns>
         private List<Permission> offerpermissions = new List<Permission>();
+
+        /// <summary>
+        /// Lista que maneja los tags que se van agregando a la oferta
+        /// </summary>
+        /// <typeparam name="string"></typeparam>
+        /// <returns></returns>
         private List<string> tags = new List<string> ();
+
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="PublicationHandler"/>.
+        /// Procesa el mensaje /publicar_oferta
+        /// </summary>
+        /// <param name="next">El próximo "handler".</param>
         public PublicationHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/publicar_oferta"};
         }
+
+        /// <summary>
+        /// Este metodo es el encargado de procesar el mensaje que le llega de telegram y enviar una respuesta
+        /// </summary>
+        /// <param name="message"> El mensage que llega para procesar</param>
+        /// <param name="response">La respuesta del mensaje procesado </param>
+        /// <returns></returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
             var _myuserdata = Singleton<TelegramUserData>.Instance.userdata;
@@ -38,7 +76,6 @@ namespace ClassLibrary
             {
                 if(Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                 {
-                //1
                     _mypermissions.Add(message.UserId,new Collection<string>());
                     _mymaterialtype.Add(message.UserId,new Collection<string>());
                     _mytags.Add(message.UserId,new Collection<string>());
@@ -244,8 +281,6 @@ namespace ClassLibrary
                             {
                                 _mytags[message.UserId].Add($"{tag}");
                             }
-
-                            //tags.AddRange(message.Text.Split('-'));
                         }
                         else if (_myuserdata[message.UserId][14].ToUpper().Equals("NO"))
                         {
@@ -262,8 +297,7 @@ namespace ClassLibrary
                         double cost = Convert.ToDouble(_myuserdata[message.UserId][7]);
                         Company company = Singleton<DataManager>.Instance.GetCompanyInstance(message.UserId);
                         DateTime publicationdate = DateTime.Now;
-                        DateTime deliverydate = new DateTime();
-                                            
+                        DateTime deliverydate = new DateTime();                      
                         this.tags = _mytags[message.UserId].ToList();
 
                         if(_myuserdata[message.UserId][3].ToLower().Equals("/otro_tipo_de_material"))
@@ -273,19 +307,15 @@ namespace ClassLibrary
                             Singleton<OfferManager>.Instance.AddOffer(name,Singleton<DataManager>.Instance.AddMaterial(namematerial,Singleton<DataManager>.Instance.AddMaterialType(typename,typedesc),unit), quantity, cost,street, city, department, this.offerpermissions, regularoffer, this.tags, deliverydate, publicationdate, company);
                         }
                         else
-                        //Ingresando por la lista desplegada
                         {   
                            Singleton<OfferManager>.Instance.AddOffer(name,Singleton<DataManager>.Instance.AddMaterial(namematerial,Singleton<DataManager>.Instance.GetMaterialTypeByIndex(Int32.Parse(_myuserdata[message.UserId][3])),unit), quantity, cost,street, city, department, this.offerpermissions, regularoffer, this.tags, deliverydate, publicationdate, company);
-                             
                         }
-                   
                         _myuserdata.Remove(message.UserId);
                         _mypermissions.Remove(message.UserId);
                         _mymaterialtype.Remove(message.UserId);
                         tags.Clear();
                         response = "Se publicó la oferta correctamente!";
                         return true;
-                   
                     }
                 }
             }
