@@ -5,8 +5,4 @@ namespace ClassLibrary
         void SendMessage(long id, string message);
     }
 
-
-
-
-
-    }
+}

@@ -13,17 +13,17 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "foto".
+    /// Un "handler" del patrón Chain of Responsibility que implementa los comandos /ver_mapa, /mostrar_ruta y /help.
     /// </summary>
     public class MapsHandler : BaseHandler
     {
         private TelegramBotClient bot;
 
         /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="MapsHandler"/>. Esta clase procesa el mensaje "foto".
+        /// Inicializa una nueva instancia de la clase <see cref="MapsHandler"/>.
         /// </summary>
         /// <param name="next">El próximo "handler".</param>
-        /// <param name="bot">El bot para enviar la foto.</param>
+        /// <param name="bot">El bot para enviar el mapa</param>
         public MapsHandler(TelegramBotClient bot, BaseHandler next)
             : base(new string[] { "/ver_mapa","/help","/mostrar_ruta" }, next)
         {
@@ -31,11 +31,11 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// Procesa el mensaje "foto" y retorna true; retorna false en caso contrario.
+        /// Procesa el mensaje /help y devuelve una lista de comandos.
+        /// Procesa los mensajes detallados anteriormentes y devuelve el mapa correspondiente
         /// </summary>
         /// <param name="message">El mensaje a procesar.</param>
         /// <param name="response">La respuesta al mensaje procesado.</param>
-        /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
             if(!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
@@ -47,17 +47,17 @@ namespace ClassLibrary
             {
                 if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null )
                 {
-                    response = "Los comandos disponibles para las empresas son\n\n/buscar_oferta\n\n/vermisdatos\n\n/registrarse\n\n/tipo_de_material\n\n/ver_mapa\n\n/publicar_oferta\n\n/rubros\n\n/cerrar_sesion";
+                    response = "Los comandos disponibles para las empresas son\n\n/buscar_oferta\n\n/vermisdatos\n\n/registrarse\n\n/tipo_de_material\n\n/ver_mapa\n\n/publicar_oferta\n\n/rubros";
                     return true;
                 }else
                 {
                     if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                     {
-                        response = "Los comandos disponibles para los emprendedores son\n\n/buscar_oferta\n\n/registrarse\n\n/vermisdatos\n\n/rubros\n\n/ver_mapa\n\n/como_ir\n\n/cerrar_sesion";
+                        response = "Los comandos disponibles para los emprendedores son\n\n/buscar_oferta\n\n/registrarse\n\n/vermisdatos\n\n/rubros\n\n/ver_mapa\n\n/como_ir";
                         return true;
                     }else
                     {
-                        response = "Para comenzar indeque el comando /start";
+                        response = "Para comenzar indique el comando /start";
                         return true;
                     }
                  
@@ -78,7 +78,7 @@ namespace ClassLibrary
                         answer+=$"{item.Idd}- {item.Name}\n";
                                                                      
                         }
-                        response=$"Ingrese numero de oferta para ver ruta\n "+answer;
+                        response=$"Ingrese número de oferta para ver ruta\n "+answer;
                         return true;
                     }
                 }
@@ -103,25 +103,25 @@ namespace ClassLibrary
 
                                 }
                             }
-                        LocationApiClient loc = new LocationApiClient();
-                        double lat=0;
-                        double log=0;                
-                        string path=@"route.png";
-                        List<Entrepreneur>  lista = new List<Entrepreneur>();
-                        Singleton<DataManager>.Instance.LoadFromJsonEntrepreneur();
-                        lista = Singleton<DataManager>.Instance.DataEntrepeneur();
-                        foreach (var item in lista)
-                        {                     
-                            lat =item.Location.Latitude;
-                            log=item.Location.Longitude;
+                            LocationApiClient loc = new LocationApiClient();
+                            double lat=0;
+                            double log=0;                
+                            string path=@"route.png";
+                            List<Entrepreneur>  list = new List<Entrepreneur>();
+                            Singleton<DataManager>.Instance.LoadFromJsonEntrepreneur();
+                            list = Singleton<DataManager>.Instance.DataEntrepeneur();
+                            foreach (var item in list)
+                            {                     
+                                lat =item.Location.Latitude;
+                                log=item.Location.Longitude;
+                            }
+                            response = $"";
+                            loc.DownloadRoute(lat,log,ll, llo,path);             
+                            AsyncContext.Run(() => SendProfileImageRout(message));   
+                            Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();                 
+                            return true;
                         }
-                        response = $"";
-                        loc.DownloadRoute(lat,log,ll, llo,path);             
-                        AsyncContext.Run(() => SendProfileImageRout(message));   
-                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();                 
-                        return true;
                     }
-                }
                 else
                 {
                     if (this.CanHandle(message))
@@ -133,9 +133,9 @@ namespace ClassLibrary
                             double log=0;
                             int zoomLevel = 15;
                             string path=@"map.png";
-                            List<Company> lista = new List<Company>();
-                            lista = Singleton<DataManager>.Instance.DataCompany();
-                            foreach (var item in lista)
+                            List<Company> list = new List<Company>();
+                            list = Singleton<DataManager>.Instance.DataCompany();
+                            foreach (var item in list)
                             {   
                                 lat =item.Location.Latitude;
                                 log=item.Location.Longitude;
@@ -154,17 +154,17 @@ namespace ClassLibrary
                                 double log=0;
                                 int zoomLevel = 15;
                                 string path=@"map.png";
-                                List<Entrepreneur>  lista = new List<Entrepreneur>();
-                                lista = Singleton<DataManager>.Instance.DataEntrepeneur();
-                                foreach (var item in lista)
+                                List<Entrepreneur>  list = new List<Entrepreneur>();
+                                list = Singleton<DataManager>.Instance.DataEntrepeneur();
+                                foreach (var item in list)
                                 {                     
                                     lat =item.Location.Latitude;
                                     log=item.Location.Longitude;
                                 }
-                            response = $"";
-                            loc.DownloadMap(lat,log,path,zoomLevel);                              
-                            AsyncContext.Run(() => SendProfileImage(message));                    
-                            return true;
+                                response = $"";
+                                loc.DownloadMap(lat,log,path,zoomLevel);                              
+                                AsyncContext.Run(() => SendProfileImage(message));                    
+                                return true;
                             }
                         }
                         response = string.Empty;
@@ -177,8 +177,10 @@ namespace ClassLibrary
         }
             
         /// <summary>
-        /// Envía una imagen como respuesta al mensaje recibido. Como ejemplo enviamos siempre la misma foto.
+        /// Envía una imágen con la dirección de la empresa
         /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         private async Task SendProfileImage(IMessage message)
         {
             // Can be null during testing
@@ -188,12 +190,17 @@ namespace ClassLibrary
                 const string filePath = @"map.png";
                 using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
                 var fileName = filePath.Split(Path.DirectorySeparatorChar).Last();
-                await bot.SendPhotoAsync(chatId: message.ChatId,photo: new InputOnlineFile(fileStream, fileName),caption: $"Direccion de la Empresa");
+                await bot.SendPhotoAsync(chatId: message.ChatId,photo: new InputOnlineFile(fileStream, fileName),caption: $"Direccin de la Empresa");
             }
         }
+
+        /// <summary>
+        /// Envía una imágen con la ruta a la empresa
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         private async Task SendProfileImageRout(IMessage message)
         {
-            // Can be null during testing
             if (bot != null)
             {   
                 await bot.SendChatActionAsync(message.ChatId, ChatAction.UploadPhoto);

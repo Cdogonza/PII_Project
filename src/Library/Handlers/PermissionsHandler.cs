@@ -14,7 +14,6 @@ namespace ClassLibrary
     /// </summary>
     public class PermissionsHandler: BaseHandler
     {
-
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="PermissionsHandler"/>.
         /// Procesa el mensaje /habilitaciones
@@ -67,7 +66,7 @@ namespace ClassLibrary
                     }
                     if(message.Text.ToUpper().Equals("SI"))
                     {
-                        response = "Ingrese el nombre de la nueva habilitacion";
+                        response = "Ingrese el nombre de la nueva habilitación";
                         return true;
                     }
                     else if(message.Text.ToUpper().Equals("NO"))
@@ -88,9 +87,7 @@ namespace ClassLibrary
             response = String.Empty ;
             return false;  
                  
-        }
-               
-                       
+        }               
     }
           
 }

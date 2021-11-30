@@ -133,19 +133,19 @@ namespace ClassLibrary
                         {
                             _myuserdata[message.UserId].Add("/continuar");
                             _mymaterialtype[message.UserId].Add(message.Text);
-                            response = "Ingrese la unidad del material (Ej: Pallet)";
+                            response = "Ingrese la unidad del material";
                             return true;
                         }
                         else
                         {
                             _myuserdata[message.UserId].Add(message.Text);
-                            response = "Ingrese la unidad del material (Ej: Pallet)";
+                            response = "Ingrese la unidad del material";
                             return true;
                         }
 
                         case 5:
                         _myuserdata[message.UserId].Add(message.Text);
-                        response = "Ingrese la cantidad a ofrecer(Ej: 1) :";
+                        response = "Ingrese la cantidad a ofrecer(Ej: 1):";
                         return true;
             
                         case 6:
@@ -203,14 +203,13 @@ namespace ClassLibrary
                             }    
                             else
                             {
-                                response = "No se agregan permisos especiales, /continuar";
-                                
+                                response = "No se agregan permisos especiales /continuar";
                             }                 
                             return true; 
                         }
                         else
                         {
-                            response = "Dato mal ingresado debe ingresar Si/No";
+                            response = "Dato mal ingresado debe ingresar Si o No";
                             return true; 
                         }
 
@@ -221,7 +220,7 @@ namespace ClassLibrary
                             {  
                                 _mypermissions[message.UserId].Add(message.Text);
                                 _myuserdata[message.UserId].RemoveAt(11);
-                                response = "Desea Agregar otro Permiso? Si/No";
+                                response = "Desea agregar otro Permiso? Si/No";
                                 return true;
                             }
                             else
@@ -257,13 +256,13 @@ namespace ClassLibrary
                         if(message.Text.ToUpper() == "NO")
                         {
                             _myuserdata[message.UserId].Add(message.Text);
-                            response = "no se agregan palabras clave a la oferta \n \n presione /OK para finalizar";
+                            response = "No se agregan palabras clave a la oferta \n \n presione /OK para finalizar";
                             return true;
                         }
                         else if(message.Text.ToUpper() == "SI")
                         {
                             _myuserdata[message.UserId].Add(message.Text);
-                            response = "Para Finalizar, agregue sus palabras clave separados por '-' ";
+                            response = "Para Finalizar, agregue sus palabras clave separadas por '-' ";
                             return true;
                         }
                         else
