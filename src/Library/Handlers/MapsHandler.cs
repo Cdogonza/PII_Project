@@ -47,13 +47,13 @@ namespace ClassLibrary
             {
                 if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null )
                 {
-                    response = "Los comandos disponibles para las empresas son\n/buscar_oferta\n/vermisdatos\n/registrarse\n/tipo_de_material\n/ver_mapa\n/publicar_oferta\n/rubros\n/cerrar_sesion";
+                    response = "Los comandos disponibles para las empresas son\n\n/buscar_oferta\n\n/vermisdatos\n\n/registrarse\n\n/tipo_de_material\n\n/ver_mapa\n\n/publicar_oferta\n\n/rubros\n\n/cerrar_sesion";
                     return true;
                 }else
                 {
                     if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                     {
-                        response = "Los comandos disponibles para los emprendedores son\n/buscar_oferta\n/registrarse\n/vermisdatos\n/rubros\n/ver_mapa\n/mostrar_ruta\n/cerrar_sesion";
+                        response = "Los comandos disponibles para los emprendedores son\n\n/buscar_oferta\n\n/registrarse\n\n/vermisdatos\n\n/rubros\n\n/ver_mapa\n\n/como_ir\n\n/cerrar_sesion";
                         return true;
                     }else
                     {
@@ -65,21 +65,24 @@ namespace ClassLibrary
                           
             }else
             {
-                if(message.Text.ToLower().Equals("/mostrar_ruta"))
+                if(message.Text.ToLower().Equals("/como_ir"))
                 {
 
                     if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                     {
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);//agrego /mostrar_mapa
-
+                        string answer="";
                         Singleton<OfferManager>.Instance.LoadFromJsonOffer();
                         foreach (Offer item in Singleton<OfferManager>.Instance.getLista())
                         {
-                        response=$"Ingrese numero de oferta para ver ruta\n{item.Idd}- {item.Name}";
-                        return true;                                             
+                        answer+=$"{item.Idd}- {item.Name}\n";
+                                                                     
                         }
+                        response=$"Ingrese numero de oferta para ver ruta\n "+answer;
+                        return true;
                     }
-                    if(Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].Contains("/mostrar_ruta"))
+                }
+                    if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count>=1)
                     {                   
                         Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                       
@@ -87,10 +90,14 @@ namespace ClassLibrary
                         {
                             double ll=0;
                             double llo=0;
+                            Singleton<OfferManager>.Instance.LoadFromJsonOffer();
                             foreach (Offer item in Singleton<OfferManager>.Instance.getLista())
                             {
+                                 Console.WriteLine("Entre al for");
                                 if(item.Idd==Convert.ToDouble(Singleton<TelegramUserData>.Instance.userdata[message.UserId][1]) )
                                 {
+                                    Console.WriteLine("Entre al if");
+                                   
                                     ll = item.Location.Latitude;
                                     llo= item.Location.Longitude;
 
@@ -101,6 +108,7 @@ namespace ClassLibrary
                         double log=0;                
                         string path=@"route.png";
                         List<Entrepreneur>  lista = new List<Entrepreneur>();
+                        Singleton<DataManager>.Instance.LoadFromJsonEntrepreneur();
                         lista = Singleton<DataManager>.Instance.DataEntrepeneur();
                         foreach (var item in lista)
                         {                     
@@ -109,11 +117,12 @@ namespace ClassLibrary
                         }
                         response = $"";
                         loc.DownloadRoute(lat,log,ll, llo,path);             
-                        AsyncContext.Run(() => SendProfileImageRout(message));                    
+                        AsyncContext.Run(() => SendProfileImageRout(message));   
+                        Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();                 
                         return true;
                     }
                 }
-                    }else
+                else
                 {
                     if (this.CanHandle(message))
                     {
