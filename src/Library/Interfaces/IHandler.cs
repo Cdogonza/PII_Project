@@ -2,7 +2,7 @@ using Telegram.Bot.Types;
 
 namespace ClassLibrary
 {
-    
+
     /// <summary>
     /// 
     // COR: En este caso aplicamos el patrón COR(Chain of Responsabilities), definidiendo una interfaz con todos los metodos de las clases(hanlders) que forman para de nuestra cadena.

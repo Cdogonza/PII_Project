@@ -27,8 +27,8 @@ namespace ClassLibrary
         /// String con el nombre del permiso
         /// </summary>
         /// <value></value>
-        public string Name { get ; set; }
-        
+        public string Name { get; set; }
+
 
         /// <summary>
         /// Constructor de la clase Permission
@@ -46,16 +46,16 @@ namespace ClassLibrary
             return null;
         }
         public string ConvertToJsonEntrepreneur()
-        {return null;}
+        { return null; }
         public string ConvertToJsonOffer()
-        {return null;}
+        { return null; }
         public string ConvertToJsonPermissions()
         {
             return JsonSerializer.Serialize(this);
         }
         public string ConvertToJsonMaterialTypes()
-        {return null;}
+        { return null; }
         public string ConvertToJsonAreaOfWork()
-        {return null;}
+        { return null; }
     }
 }

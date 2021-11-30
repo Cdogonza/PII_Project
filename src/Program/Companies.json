@@ -1,1 +1,27 @@
-[{"Name":"Google SA","Id":"12626557998","Location":{"Found":true,"AddresLine":"Calle Colorado 2326","CountryRegion":"Uruguay","FormattedAddress":"Calle Colorado 2326, Montevideo, 11800","Locality":"Montevideo","PostalCode":"11800","Latitude":-34.87832,"Longitude":-56.16779},"Phone":"4324546","AreaOfWork":{"Name":"construccion"}},{"Name":"Belen SA","Id":"15725245178","Location":{"Found":true,"AddresLine":"Calle Belgrano 2854","CountryRegion":"Uruguay","FormattedAddress":"Calle Belgrano 2854, Montevideo, 11600","Locality":"Montevideo","PostalCode":"11600","Latitude":-34.89009,"Longitude":-56.15441},"Phone":"098765432","AreaOfWork":{"Name":"cocina"}},{"Name":"Maderas del cerro S.A","Id":"2086164283","Location":{"Found":true,"AddresLine":"Calle Burdeos 2728","CountryRegion":"Uruguay","FormattedAddress":"Calle Burdeos 2728, Montevideo, 12800","Locality":"Montevideo","PostalCode":"12800","Latitude":-34.88066,"Longitude":-56.27149},"Phone":"098239339","AreaOfWork":{"Name":"construccion"}},{"Name":"Belen","Id":"1572524517","Location":{"Found":true,"AddresLine":"Calle Belgrano 2854","CountryRegion":"Uruguay","FormattedAddress":"Calle Belgrano 2854, Montevideo, 11600","Locality":"Montevideo","PostalCode":"11600","Latitude":-34.89009,"Longitude":-56.15441},"Phone":"069852147","AreaOfWork":{"Name":"comercio"}}]
+{
+  "$id": "1",
+  "$values": [
+    {
+      "$id": "2",
+      "Name": "Nachoempresa",
+      "Id": "1368172749",
+      "Location": {
+        "$id": "3",
+        "Found": true,
+        "AddresLine": "Calle Colorado 2020",
+        "CountryRegion": "Uruguay",
+        "FormattedAddress": "Calle Colorado 2020, Montevideo, 11800",
+        "Locality": "Montevideo",
+        "PostalCode": "11800",
+        "Latitude": -34.87882,
+        "Longitude": -56.17537
+      },
+      "Phone": "099999",
+      "AreaOfWork": {
+        "$id": "4",
+        "Name": "agro"
+      },
+      "permissions": null
+    }
+  ]
+}

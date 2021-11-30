@@ -1,14 +1,14 @@
 using Telegram.Bot.Types;
 
 namespace ClassLibrary
-{   
+{
     /// Esta clase se justifica con el patron adapter ya que implementa la interfaz que permite a la aplicación manejar diferentes clases de mensajes independiente de que canal vengan.
 
     public class TelegramMsgAdapter : IMessage
     {
         private string userId;
         private string chatId;
-        private  Message message;
+        private Message message;
         public TelegramMsgAdapter(Message message)
         {
             this.message = message;
@@ -22,9 +22,9 @@ namespace ClassLibrary
             {
                 return this.message.Text;
             }
-            set{}
+            set { }
         }
-    
+
         public string ChatId
         {
             get
@@ -40,7 +40,7 @@ namespace ClassLibrary
                 return this.message.From.Id.ToString();
             }
         }
-         public string FirstName
+        public string FirstName
         {
             get
             {
@@ -51,4 +51,4 @@ namespace ClassLibrary
     }
 
 
-} 
+}

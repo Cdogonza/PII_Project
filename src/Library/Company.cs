@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace ClassLibrary
-{   
+{
     /// <summary>
     /// Clase que representa a un usuario del tipo compania dentro del programa
     /// EXPERT :  Esta clase es una clase base del programa que contiene toda la información y metodos de las compañías por lo que se justifica con el principio expert..
@@ -28,8 +28,8 @@ namespace ClassLibrary
         /// <param name="location">Ubicacion de la Compania, de tipo Location</param>
         /// <param name="area">Rubro al cual pertenece la Compania</param>
         /// <returns></returns>
-/// 
-        public Company(string id ,string name,string phone,Location location,string area) : base (id,name,phone,location,area)
+        /// 
+        public Company(string id, string name, string phone, Location location, string area) : base(id, name, phone, location, area)
         {
 
         }

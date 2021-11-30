@@ -9,7 +9,7 @@ namespace ClassLibrary
     /// también se decidió utilizar una clase asbtrascta ya que existen diferentes tipos de usuarios en este programa, que comparten sus características pero realizan diferentes acciones dentro del programa por lo que es necesario modificar su comportamiento base.
     /// </summary>
     public abstract class UserBase : IJsonConvertible
-    { 
+    {
         /// <summary>
         /// Contructor de la persistencia del usuario
         /// </summary>
@@ -22,34 +22,34 @@ namespace ClassLibrary
         /// <summary>
         /// Propiedad Nombre del usuario
         /// </summary>
-        public string Name { get;  set; }
+        public string Name { get; set; }
         /// <summary>
         /// Propiedad de la Id del usuario
         /// </summary>
         /// <value></value>
-        public string Id { get;  set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Instancia Location de la empresa que representa su ubicacion
         /// </summary>
-        public Location Location{get; set;}
+        public Location Location { get; set; }
 
         /// <summary>
         /// Propiedad telefono del usuario
         /// </summary>
-        public string Phone { get; set;}  
+        public string Phone { get; set; }
 
         /// <summary>
         /// Instancia de clase AreaOfWork que representa una categoria de la empresa
         /// </summary>
-        public AreaOfWork AreaOfWork {get; set;}
-        
+        public AreaOfWork AreaOfWork { get; set; }
+
         /// <summary>
         /// Lista de habilitaciones que posee un usario
         /// </summary>
         /// <typeparam list="Permission"></typeparam>
         /// <returns></returns>
-        public List<Permission> permissions {get;set;}
+        public List<Permission> permissions { get; set; }
 
         /// <summary>
         /// Permite crear instancias de los usuarios del programa
@@ -60,7 +60,7 @@ namespace ClassLibrary
         /// <param name="location"></param>
         /// <param name="area"></param>
 
-        protected UserBase(string id,string name, string phone, Location location, string area)
+        protected UserBase(string id, string name, string phone, Location location, string area)
         {
             if (String.IsNullOrWhiteSpace(name))
             {
@@ -78,7 +78,7 @@ namespace ClassLibrary
             this.Id = id;
 
             this.Name = name;
-            
+
             this.Phone = phone;
 
             this.Location = location;
@@ -121,7 +121,7 @@ namespace ClassLibrary
         {
             return JsonSerializer.Serialize(this);
         }
-         public string ConvertToJsonEntrepreneur()
+        public string ConvertToJsonEntrepreneur()
         {
             return JsonSerializer.Serialize(this);
         }

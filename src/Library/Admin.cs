@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System;
 namespace ClassLibrary
-{   
+{
     /// <summary>
     /// Esta clase representa al administrador del Bot
     /// </summary>
@@ -10,8 +10,8 @@ namespace ClassLibrary
         /// <summary>
         /// Propiedad nombre del Administrador
         /// </summary>
-        public string Name{get;set;}
-        
+        public string Name { get; set; }
+
         /// <summary>
         /// Constructor de la clase Admin
         /// </summary>
@@ -30,7 +30,7 @@ namespace ClassLibrary
         /// <param name="company"></param>
         public void InviteCompany(string company)
         {
-            
+
         }
     }
 }
