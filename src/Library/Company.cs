@@ -20,7 +20,7 @@ namespace ClassLibrary
 
         }
         /// <summary>
-        /// Constructor de company
+        /// Constructor de la clase Company
         /// </summary>
         /// <param name="id">Id de la Compania, obetenido del UserId de Telegram</param>
         /// <param name="name">Nombre de la Compania</param>
