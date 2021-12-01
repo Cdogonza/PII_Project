@@ -98,9 +98,9 @@ namespace Tests
         {
             // GetOfferByEntrepreneur(string entrepreneurId);
             this.Catalogo = Singleton<OfferManager>.Instance.catalog;
-            Singleton<OfferManager>.Instance.BuyOffer(this.EntrepreneurId,1);
+            Singleton<OfferManager>.Instance.BuyOffer(this.EntrepreneurId,0);
             Console.WriteLine(this.Catalogo[0].Entrepreneur);
-            Assert.AreEqual(this.Catalogo[0].Entrepreneur,this.EntrepreneurId);
+            Assert.AreEqual(this.EntrepreneurId,this.Catalogo[0].Entrepreneur);
         }
     }
 } 

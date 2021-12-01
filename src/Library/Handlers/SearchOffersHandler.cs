@@ -85,21 +85,19 @@ namespace ClassLibrary
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();
                             string check = "";
-                            Console.WriteLine("hola");
                             Singleton<DataManager>.Instance.LoadFromJsonEntrepreneur();
                             List<Entrepreneur> ent = Singleton<DataManager>.Instance.entrepreneurs;
-                            if(ent.Count >= 1)
+                            if (ent.Count >= 1)
                             {
-                            foreach (Entrepreneur item in ent)
-                            {
-                                Console.WriteLine("mierda");
-                                if (item.Name.Contains(message.Text))
+                                foreach (Entrepreneur item in ent)
                                 {
-                                    Console.WriteLine("gfhd");
-                                    check = item.Id;
+                                    if (item.Name.Contains(message.Text))
+                                    {
+                                        check = item.Id;
+                                    }
                                 }
                             }
-                            }else
+                            else
                             {
                                 response = "Ningun emprendedor ha comprado ofertas se su empresa";
                                 return true;

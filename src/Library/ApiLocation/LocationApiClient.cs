@@ -70,8 +70,8 @@ namespace ClassLibrary
         /// <returns>Las coordenadas de la dirección.</returns>
         public async Task<Location> GetLocationAsync(
              string address,
-            string city ,
-            string department ,
+            string city,
+            string department,
             string country = "Uruguay")
         {
             var parameters = new Dictionary<string, string>
@@ -117,7 +117,7 @@ namespace ClassLibrary
         /// <param name="from">La coordenada de origen.</param>
         /// <param name="to">La coordenada de destino.</param>
         /// <returns>La distancia entre las dos coordenadas.</returns>
-        public async Task<Distance> GetDistanceAsync(Location from,  Location to)
+        public async Task<Distance> GetDistanceAsync(Location from, Location to)
         {
             var parameters = new Dictionary<string, string>
             {
@@ -145,7 +145,7 @@ namespace ClassLibrary
         /// <remarks>
         /// Versión sincrónica.
         /// </remarks>
-        public Distance GetDistance( Location from, Location to)
+        public Distance GetDistance(Location from, Location to)
         {
             return AsyncContext.Run(() => this.GetDistanceAsync(from, to));
         }
@@ -156,7 +156,7 @@ namespace ClassLibrary
         /// <param name="from">La dirección de origen.</param>
         /// <param name="to">La dirección de destino.</param>
         /// <returns>La distancia entre las dos direcciones.</returns>
-        public async Task<Distance> GetDistanceAsync( string from,  string to)
+        public async Task<Distance> GetDistanceAsync(string from, string to)
         {
             var parameters = new Dictionary<string, string>
             {
@@ -180,7 +180,7 @@ namespace ClassLibrary
         /// <remarks>
         /// Versión sincrónica.
         /// </remarks>
-        public Distance GetDistance( string from,  string to)
+        public Distance GetDistance(string from, string to)
         {
             return AsyncContext.Run(() => this.GetDistanceAsync(from, to));
         }
@@ -196,7 +196,7 @@ namespace ClassLibrary
         /// <returns>
         /// Una tarea que representa la operación asincrónica.
         /// </returns>
-        public async Task DownloadMapAsync(double latitude, double longitude,  string path, int zoomLevel = 15)
+        public async Task DownloadMapAsync(double latitude, double longitude, string path, int zoomLevel = 15)
         {
             var parameters = new Dictionary<string, string>
             {

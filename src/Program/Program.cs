@@ -20,7 +20,7 @@ namespace ClassLibrary
     {
         // La instancia del bot.
         private static TelegramBotClient Bot;
-   
+
         private static string Token = "2143110246:AAFxnNCvWemFWzsitJkRwkVE63yHdJDgI_k";
 
         private static IHandler firstHandler;
@@ -35,17 +35,17 @@ namespace ClassLibrary
             firstHandler =
                 new WelcomeHandler(
                 new CancellationHandler(
-                new RegistrationHandler(              
+                new RegistrationHandler(
                 new DataManagerHandler(
                 new MaterialTypesHandler(
                 new PublicationHandler(
-                new BuyerOfferHandler(                                
+                new BuyerOfferHandler(
                 new PermissionsHandler(
-                new AreaOfWorkHandler(  
-                new SearchOffersHandler(                               
-                new MapsHandler(Bot,null)))))))))));
+                new AreaOfWorkHandler(
+                new SearchOffersHandler(
+                new MapsHandler(Bot, null)))))))))));
             Message message = new Message();
-           
+
 
             var cts = new CancellationTokenSource();
 
@@ -78,7 +78,7 @@ namespace ClassLibrary
                     await HandleMessageReceived(new TelegramMsgAdapter(update.Message));
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 await HandleErrorAsync(e, cancellationToken);
             }
@@ -116,4 +116,4 @@ namespace ClassLibrary
             return Task.CompletedTask;
         }
     }
- }
+}

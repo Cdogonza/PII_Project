@@ -121,7 +121,7 @@
         </member>
         <member name="M:Tests.SearchTest.FilterByWord">
             <summary>
-            Prueba de filtrado por palabra (tag)
+            Test de filtrado por palabra clave
             </summary>
         </member>
         <member name="T:Tests.PerrmissionTest">

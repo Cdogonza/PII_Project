@@ -49,6 +49,6 @@ namespace ClassLibrary
         /// </summary>
         /// <returns>El objeto AreaOfWork convertido a texto en formato Json.</returns>
         string ConvertToJsonAreaOfWork();
-        
+
     }
 }
