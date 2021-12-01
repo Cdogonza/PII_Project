@@ -9,7 +9,7 @@ namespace ClassLibrary
     /// Este handler implementa el patrón Chain of Responsability y es el encargado de manejar los comandos /tipo_de_material, /listar_tipodemateriales y /agregar_tipodemateriales
     /// Permite a las companias agregar nuevos tipos de material, y listar los tipos de materiales, a los emprendedores se les permite solamente listar los tipos de materiales.
     /// </summary>
-    public class MaterialTypesHandler: BaseHandler
+    public class MaterialTypesHandler : BaseHandler
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="MaterialTypesHandler"/>.
@@ -18,7 +18,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public MaterialTypesHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"/tipo_de_material", "/listar_tipodemateriales", "/agregar_tipodemateriales"};
+            this.Keywords = new string[] { "/tipo_de_material", "/listar_tipodemateriales", "/agregar_tipodemateriales" };
         }
 
         /// <summary>
@@ -29,15 +29,15 @@ namespace ClassLibrary
         /// <returns></returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            if(!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
-            {       
-                Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId,new Collection<string>());    
+            if (!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
+            {
+                Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId, new Collection<string>());
             }
 
-            if(message.Text.ToLower().Equals("/tipo_de_material"))
-            {  
+            if (message.Text.ToLower().Equals("/tipo_de_material"))
+            {
 
-                if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null )
+                if (Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                 {
                     Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                     response = "Usted puede listar los tipos de materiales /listar_tipodemateriales";
@@ -51,22 +51,22 @@ namespace ClassLibrary
                     return true;
                 }
             }
-            
-            if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1 &&Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Contains("/tipo_de_material"))
-            {   
-                if (Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Trim().Contains("/tipo_de_material") )
+
+            if (Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count >= 1)
+            {
+                if (Singleton<TelegramUserData>.Instance.userdata[message.UserId][0].ToLower().Trim().Contains("/tipo_de_material"))
                 {
-                    if(message.Text.ToLower().Equals("/listar_tipodemateriales") )
+                    if (message.Text.ToLower().Equals("/listar_tipodemateriales"))
                     {
                         response = $"{Singleton<DataManager>.Instance.GetTextToPrintMaterialType()}";
                         return true;
-                    }                   
-                    
-                    if(message.Text.ToLower().Equals("/agregar_tipodemateriales") )
+                    }
+
+                    if (message.Text.ToLower().Equals("/agregar_tipodemateriales"))
                     {
-                        if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null )
+                        if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                         {
-                
+
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                             response = "Ingrese el nombre del Tipo de Material";
                             return true;
@@ -80,27 +80,27 @@ namespace ClassLibrary
 
                     if (Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/agregar_tipodemateriales"))
                     {
-                        if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
+                        if (Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
                         {
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                             response = "Ingrese la descripción del tipo de material:";
                             return true;
                         }
-                        if(Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 3)
+                        if (Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 3)
                         {
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                            Singleton<DataManager>.Instance.AddMaterialType(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2],Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]);
+                            Singleton<DataManager>.Instance.AddMaterialType(Singleton<TelegramUserData>.Instance.userdata[message.UserId][2], Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]);
                             response = $"Se creó el tipo de material con éxito - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][2]} - {Singleton<TelegramUserData>.Instance.userdata[message.UserId][3]} \n /help para seguir";
                             Singleton<TelegramUserData>.Instance.userdata.Remove(message.UserId);
                             return true;
                         }
                     }
                 }
-                
+
             }
-            response = String.Empty ;
-            return false;         
-        }  
+            response = String.Empty;
+            return false;
+        }
     }
 }
 

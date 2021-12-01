@@ -9,7 +9,7 @@ namespace ClassLibrary
     /// En caso de que el usuario sea del Tipo Compania, despliega los datos del usuario asociados a este tipo,
     /// Si es del Tipo Emprendedor, despliega los datos del emprendedor asociados a este tipo
     /// </summary>
-    public class DataManagerHandler: BaseHandler
+    public class DataManagerHandler : BaseHandler
     {
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param> 
         public DataManagerHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"/vermisdatos"};
+            this.Keywords = new string[] { "/vermisdatos" };
         }
 
         /// <summary>
@@ -30,23 +30,23 @@ namespace ClassLibrary
         /// <returns></returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            if(message.Text.ToLower().Equals("/vermisdatos"))
+            if (message.Text.ToLower().Equals("/vermisdatos"))
             {
-             if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
+                if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                 {
-                    response= Singleton<DataManager>.Instance.GetCompany(message.UserId);
+                    response = Singleton<DataManager>.Instance.GetCompany(message.UserId);
                     return true;
                 }
                 else
                 {
-                    if(Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
+                    if (Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                     {
-                        response= Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId);
+                        response = Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId);
                         return true;
-                     }
-                }         
+                    }
+                }
             }
-            response= String.Empty ;
+            response = String.Empty;
             return false;
         }
     }

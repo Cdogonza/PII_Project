@@ -10,7 +10,7 @@ namespace ClassLibrary
     /// En caso de que el usuario este registrado, devuelve /help para que obtenga sus comandos disponibles.
     /// Si el usuario no esta registrado le devuelve /registrarse para que acceda al menu de registrarse.
     /// </summary>
- 
+
     public class WelcomeHandler : BaseHandler
     {
         /// <summary>
@@ -20,7 +20,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public WelcomeHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"/start"};
+            this.Keywords = new string[] { "/start" };
         }
 
         /// <summary>
@@ -31,22 +31,22 @@ namespace ClassLibrary
         /// <returns></returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            
-            if(message.Text.ToLower().Equals( "/start"))
+
+            if (message.Text.ToLower().Equals("/start"))
             {
-                if(!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
+                if (!Singleton<TelegramUserData>.Instance.userdata.ContainsKey(message.UserId))
                 {
-                    Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId,new Collection<string>());    
-                }    
+                    Singleton<TelegramUserData>.Instance.userdata.Add(message.UserId, new Collection<string>());
+                }
                 if (Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null | Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                 {
                     response = "Bienvenido a la Aplicación Equipo15\n Indique /help para ver los comandos disponibles";
                     return true;
                 }
                 else
-                {    
+                {
                     response = "Bienvenido a la Aplicación Equipo15\n Indique /registrarse si desea registrarse en nuestra plataforma";
-                    return true;  
+                    return true;
                 }
             }
             else
@@ -54,7 +54,7 @@ namespace ClassLibrary
                 response = String.Empty;
                 return false;
             }
-             
+
         }
     }
 }

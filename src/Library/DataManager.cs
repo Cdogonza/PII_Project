@@ -19,14 +19,14 @@ namespace ClassLibrary
     public class DataManager : IJsonConvertible
 
     {
-        [JsonConstructor]        
+        [JsonConstructor]
         public DataManager()
         {
             this.companies = new List<Company>();
             this.entrepreneurs = new List<Entrepreneur>();
             this.permissions = new List<Permission>();
         }
-        
+
         /// <summary>
         /// Lista de AreaOfWork vacía
         /// </summary>
@@ -42,7 +42,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public List<Entrepreneur> entrepreneurs = new List<Entrepreneur>();
         [JsonInclude]
-        
+
         /// <summary>
         /// Lista de Company vacía
         /// </summary>
@@ -77,19 +77,19 @@ namespace ClassLibrary
         /// devuelve la lista de companias
         /// </summary>
         /// <returns></returns>//  
-        public List<Company>  DataCompany()
+        public List<Company> DataCompany()
         {
-            
+
             return companies;
         }
-        
+
         /// <summary>
         /// Devuelve la lista de entrepreneur
         /// </summary>
         /// <returns></returns>
-        public List<Entrepreneur>  DataEntrepeneur()
+        public List<Entrepreneur> DataEntrepeneur()
         {
-            
+
             return entrepreneurs;
         }
 
@@ -105,12 +105,12 @@ namespace ClassLibrary
         /// <param name="area"></param>
         /// <param name="specialization"></param>
         /// <param name="permission"></param>
-        public void AddEntrepreneur(string id ,string name,string phone,string calle,string ciudad,string departamento,string area, string specialization, List<Permission> permission )
+        public void AddEntrepreneur(string id, string name, string phone, string calle, string ciudad, string departamento, string area, string specialization, List<Permission> permission)
         {
             LocationApiClient Loc = new LocationApiClient();
-            Location location = Loc.GetLocation(calle,ciudad,departamento);
-            this.entrepreneurs.Add(new Entrepreneur(id,name,phone,location,area,specialization,permission));
-             this.ConvertToJsonEntrepreneur();
+            Location location = Loc.GetLocation(calle, ciudad, departamento);
+            this.entrepreneurs.Add(new Entrepreneur(id, name, phone, location, area, specialization, permission));
+            this.ConvertToJsonEntrepreneur();
         }
 
         /// <summary>
@@ -123,11 +123,11 @@ namespace ClassLibrary
         /// <param name="ciudad"></param>
         /// <param name="departamento"></param>
         /// <param name="area"></param>
-        public void AddCompany(string id ,string name,string phone,string calle,string ciudad,string departamento,string area)
+        public void AddCompany(string id, string name, string phone, string calle, string ciudad, string departamento, string area)
         {
             LocationApiClient Loc = new LocationApiClient();
-            Location location = Loc.GetLocation(calle,ciudad,departamento);
-            this.companies.Add(new Company(id,name,phone,location,area));
+            Location location = Loc.GetLocation(calle, ciudad, departamento);
+            this.companies.Add(new Company(id, name, phone, location, area));
             this.ConvertToJsonCompany();
         }
 
@@ -144,9 +144,9 @@ namespace ClassLibrary
             {
                 if (item.Id == userid)
                 {
-                    datos =$"Nombre: {item.Name}\nTelefono: {item.Phone}\nDireccion:{item.Location.FormattedAddress}\nEspecializacion:{item.Specialization}\nPermisos: {item.Permissions[0].Name}\n";
+                    datos = $"Nombre: {item.Name}\nTelefono: {item.Phone}\nDireccion:{item.Location.FormattedAddress}\nEspecializacion:{item.Specialization}\nPermisos: {item.Permissions[0].Name}\n";
                     return datos;
-                }  
+                }
             }
             return null;
         }
@@ -164,13 +164,13 @@ namespace ClassLibrary
             {
                 if (item.Id == userid)
                 {
-                   datos =$"Nombre: {item.Name}\nTelefono: {item.Phone}\nDireccion: {item.Location.FormattedAddress}\nRubro: {item.AreaOfWork.Name}\n ";
-                   return datos;
-                }       
+                    datos = $"Nombre: {item.Name}\nTelefono: {item.Phone}\nDireccion: {item.Location.FormattedAddress}\nRubro: {item.AreaOfWork.Name}\n ";
+                    return datos;
+                }
             }
-            return null; 
+            return null;
         }
-    
+
 
         /// <summary>
         /// Metodo para agregar permisos al listado de permisos
@@ -178,8 +178,8 @@ namespace ClassLibrary
         /// <param name="item"></param>
         public void AddPermission(string permission)
         {
-            this.permissions.Add(new Permission (permission)); 
-            this.ConvertToJsonPermissions();          
+            this.permissions.Add(new Permission(permission));
+            this.ConvertToJsonPermissions();
         }
 
         /// <summary>
@@ -190,14 +190,14 @@ namespace ClassLibrary
         public bool CheckPermission(int indice)
         {
             this.LoadFromJsonPermission();
-            if (indice <= this.permissions.Count-1 )
+            if (indice <= this.permissions.Count - 1)
             {
                 return true;
             }
             else
             {
                 return false;
-            } 
+            }
 
         }
 
@@ -220,24 +220,24 @@ namespace ClassLibrary
         public string GetTextToPrintPermission()
         {
             this.LoadFromJsonPermission();
-            int contador=0;
+            int contador = 0;
             string data = $"La lista de Permisos existentes son: \n";
             foreach (Permission item in this.permissions)
             {
-               data = data + $"{contador}- {item.Name}\n"; 
-               contador+=1;
+                data = data + $"{contador}- {item.Name}\n";
+                contador += 1;
             }
             return data;
         }
-        
+
         /// <summary>
         /// Metodo para agregar Rubros a la lista de Rubros
         /// </summary>
         /// <param name="item"></param>
         public void AddAreaOfWork(string areaOfWork)
         {
-            this.areaofwork.Add(new AreaOfWork (areaOfWork)); 
-            this.ConvertToJsonAreaOfWork();          
+            this.areaofwork.Add(new AreaOfWork(areaOfWork));
+            this.ConvertToJsonAreaOfWork();
         }
 
         /// <summary>
@@ -248,14 +248,14 @@ namespace ClassLibrary
         public bool CheckAreaOfWork(int indice)
         {
             this.LoadFromJsonAreaOfWork();
-            if (indice <= this.areaofwork.Count-1)
+            if (indice <= this.areaofwork.Count - 1)
             {
                 return true;
             }
             else
             {
                 return false;
-            } 
+            }
         }
 
         /// <summary>
@@ -267,28 +267,28 @@ namespace ClassLibrary
         {
             this.LoadFromJsonAreaOfWork();
             string data = $"La lista de Rubros existentes son: \n";
-            int contador=0;
+            int contador = 0;
             foreach (AreaOfWork item in this.areaofwork)
             {
-               data = data + $"{contador} - {item.Name}\n";
-               contador+=1;
+                data = data + $"{contador} - {item.Name}\n";
+                contador += 1;
             }
             return data;
         }
-      
+
         /// <summary>
         /// Agrega un tipo de Material a la lista de MaterialTypes
         /// </summary>
         /// <param name="item"></param>
-       
-       public MaterialType AddMaterialType(string name, string description)
-       {
-           MaterialType newmaterialtype = new MaterialType(name, description);
-           this.materialsType.Add(newmaterialtype);
-           this.ConvertToJsonMaterialTypes();
-           return newmaterialtype;
-       }
-       
+
+        public MaterialType AddMaterialType(string name, string description)
+        {
+            MaterialType newmaterialtype = new MaterialType(name, description);
+            this.materialsType.Add(newmaterialtype);
+            this.ConvertToJsonMaterialTypes();
+            return newmaterialtype;
+        }
+
         /// <summary>
         /// El metodo crea una instacia de Material y la agrega al catalogo.
         /// </summary>
@@ -296,9 +296,9 @@ namespace ClassLibrary
         /// <param name="type"></param>
         /// <param name="quantity"></param>
         /// <returns>newmaterial</returns>
-        public Material AddMaterial (string name, MaterialType type, string unit)
+        public Material AddMaterial(string name, MaterialType type, string unit)
         {
-            Material newmaterial = new Material(name,type,unit);
+            Material newmaterial = new Material(name, type, unit);
             this.materials.Add(newmaterial);
             return newmaterial;
         }
@@ -314,7 +314,7 @@ namespace ClassLibrary
             {
                 if (item.Id == userid)
                 {
-                   return item;
+                    return item;
                 }
             }
             return null;
@@ -329,14 +329,14 @@ namespace ClassLibrary
         public bool CheckMaterialType(int indice)
         {
             this.LoadFromJsonMaterialTypes();
-            if (indice <= this.materialsType.Count-1 )
+            if (indice <= this.materialsType.Count - 1)
             {
                 return true;
             }
             else
             {
                 return false;
-            } 
+            }
         }
 
         /// <summary>
@@ -349,7 +349,7 @@ namespace ClassLibrary
             this.LoadFromJsonMaterialTypes();
             return this.materialsType[indice];
         }
-        
+
         /// <summary>
         /// Metodo utilizado para obtener todos los rubros de la lista y retornarlos como texto,
         /// Para que ConsolePrinter pueda obtener ese texto e 
@@ -358,11 +358,11 @@ namespace ClassLibrary
         {
             this.LoadFromJsonMaterialTypes();
             string data = $"La lista de Materiales existentes son: \n";
-            int contador=0;
+            int contador = 0;
             foreach (MaterialType item in this.materialsType)
             {
                 data = data + $"{contador} - {item.Name} - {item.Description}\n";
-                contador+=1;
+                contador += 1;
             }
             return data;
         }
@@ -384,38 +384,38 @@ namespace ClassLibrary
             result = result + "]}";
 
             string temp = JsonSerializer.Serialize(this.companies);
-             File.WriteAllText(@"Companies.json", temp);
+            File.WriteAllText(@"Companies.json", temp);
             return result;
-            
+
             JsonSerializerOptions options = new()
             {
                 ReferenceHandler = MyReferenceHandler.Instance,
                 WriteIndented = true
             };
 
-            return JsonSerializer.Serialize(this.companies, options);            
+            return JsonSerializer.Serialize(this.companies, options);
         }
 
         /// <summary>
         /// 
         /// </summary>
-         public void LoadFromJsonCompany()
+        public void LoadFromJsonCompany()
         {
-            if(!File.Exists(@"Companies.json"))
+            if (!File.Exists(@"Companies.json"))
             {
                 File.AppendAllText(@"Companies.json", "");
-            }                        
+            }
             string json = File.ReadAllText(@"Companies.json");
-            if(json!="")
+            if (json != "")
             {
-            JsonSerializerOptions options = new()
-            {
-                ReferenceHandler = MyReferenceHandler.Instance,
-                WriteIndented = true
-            };
+                JsonSerializerOptions options = new()
+                {
+                    ReferenceHandler = MyReferenceHandler.Instance,
+                    WriteIndented = true
+                };
 
-            this.companies = JsonSerializer.Deserialize<List<Company>>(json, options);
-           
+                this.companies = JsonSerializer.Deserialize<List<Company>>(json, options);
+
             }
         }
 
@@ -424,7 +424,7 @@ namespace ClassLibrary
         /// </summary>
         /// <returns></returns>
         public string ConvertToJsonOffer()
-        {return null;}
+        { return null; }
 
         /// <summary>
         /// Convierte los datos de Entrepreneur a Json
@@ -443,7 +443,7 @@ namespace ClassLibrary
             result = result + "]}";
 
             string temp = JsonSerializer.Serialize(this.entrepreneurs);
-             File.WriteAllText(@"Entrepreneur.json", temp);
+            File.WriteAllText(@"Entrepreneur.json", temp);
             return result;
             JsonSerializerOptions options = new()
             {
@@ -451,7 +451,7 @@ namespace ClassLibrary
                 WriteIndented = true
             };
 
-            return JsonSerializer.Serialize(this.entrepreneurs, options);            
+            return JsonSerializer.Serialize(this.entrepreneurs, options);
         }
 
         /// <summary>
@@ -459,22 +459,22 @@ namespace ClassLibrary
         /// </summary>     
         public void LoadFromJsonEntrepreneur()
         {
-            if(!File.Exists(@"Entrepreneur.json"))
+            if (!File.Exists(@"Entrepreneur.json"))
             {
                 File.AppendAllText(@"Entrepreneur.json", "");
-            }            
+            }
             string json = File.ReadAllText(@"Entrepreneur.json");
-            if(json!="")
+            if (json != "")
             {
 
-            JsonSerializerOptions options = new()
-            {
-                ReferenceHandler = MyReferenceHandler.Instance,
-                WriteIndented = true
-            };
+                JsonSerializerOptions options = new()
+                {
+                    ReferenceHandler = MyReferenceHandler.Instance,
+                    WriteIndented = true
+                };
 
-            this.entrepreneurs = JsonSerializer.Deserialize<List<Entrepreneur>>(json, options);
-           
+                this.entrepreneurs = JsonSerializer.Deserialize<List<Entrepreneur>>(json, options);
+
             }
         }
 
@@ -503,7 +503,7 @@ namespace ClassLibrary
                 WriteIndented = true
             };
 
-            return JsonSerializer.Serialize(this.permissions, options);            
+            return JsonSerializer.Serialize(this.permissions, options);
         }
 
         /// <summary>
@@ -511,25 +511,25 @@ namespace ClassLibrary
         /// </summary>
         public void LoadFromJsonPermission()
         {
-            if(!File.Exists(@"Permissions.json"))
+            if (!File.Exists(@"Permissions.json"))
             {
                 File.AppendAllText(@"Permissions.json", "");
             }
             string json = File.ReadAllText(@"Permissions.json");
-            if(json!="")
+            if (json != "")
             {
 
-            JsonSerializerOptions options = new()
-            {
-                ReferenceHandler = MyReferenceHandler.Instance,
-                WriteIndented = true
-            };
+                JsonSerializerOptions options = new()
+                {
+                    ReferenceHandler = MyReferenceHandler.Instance,
+                    WriteIndented = true
+                };
 
-            this.permissions = JsonSerializer.Deserialize<List<Permission>>(json, options);
-           
+                this.permissions = JsonSerializer.Deserialize<List<Permission>>(json, options);
+
             }
         }
-     
+
         /// <summary>
         /// 
         /// </summary>
@@ -555,7 +555,7 @@ namespace ClassLibrary
                 WriteIndented = true
             };
 
-            return JsonSerializer.Serialize(this.materialsType, options);            
+            return JsonSerializer.Serialize(this.materialsType, options);
         }
 
         /// <summary>
@@ -563,22 +563,22 @@ namespace ClassLibrary
         /// </summary>
         public void LoadFromJsonMaterialTypes()
         {
-            if(!File.Exists(@"MaterialTypes.json"))
+            if (!File.Exists(@"MaterialTypes.json"))
             {
                 File.AppendAllText(@"MaterialTypes.json", "");
             }
             string json = File.ReadAllText(@"MaterialTypes.json");
-            if(json!="")
+            if (json != "")
             {
 
-            JsonSerializerOptions options = new()
-            {
-                ReferenceHandler = MyReferenceHandler.Instance,
-                WriteIndented = true
-            };
+                JsonSerializerOptions options = new()
+                {
+                    ReferenceHandler = MyReferenceHandler.Instance,
+                    WriteIndented = true
+                };
 
-            this.materialsType = JsonSerializer.Deserialize<List<MaterialType>>(json, options);
-           
+                this.materialsType = JsonSerializer.Deserialize<List<MaterialType>>(json, options);
+
             }
         }
 
@@ -607,7 +607,7 @@ namespace ClassLibrary
                 WriteIndented = true
             };
 
-            return JsonSerializer.Serialize(this.areaofwork, options);            
+            return JsonSerializer.Serialize(this.areaofwork, options);
         }
 
         /// <summary>
@@ -615,22 +615,22 @@ namespace ClassLibrary
         /// </summary>
         public void LoadFromJsonAreaOfWork()
         {
-            if(!File.Exists(@"AreaOfWork.json"))
+            if (!File.Exists(@"AreaOfWork.json"))
             {
                 File.AppendAllText(@"AreaOfWork.json", "");
             }
             string json = File.ReadAllText(@"AreaOfWork.json");
-            if(json!="")
+            if (json != "")
             {
 
-            JsonSerializerOptions options = new()
-            {
-                ReferenceHandler = MyReferenceHandler.Instance,
-                WriteIndented = true
-            };
+                JsonSerializerOptions options = new()
+                {
+                    ReferenceHandler = MyReferenceHandler.Instance,
+                    WriteIndented = true
+                };
 
-            this.areaofwork = JsonSerializer.Deserialize<List<AreaOfWork>>(json, options);
-           
+                this.areaofwork = JsonSerializer.Deserialize<List<AreaOfWork>>(json, options);
+
             }
         }
     }

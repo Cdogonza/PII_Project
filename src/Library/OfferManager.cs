@@ -5,8 +5,8 @@ using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 namespace ClassLibrary
-{   
-    
+{
+
     /// <summary>
     /// En esta clase se puede ver el uso del patrona Expert, y que es experto en el manejo
     /// de las ofertas de la aplicación, incluso cuando se instancia esta clase la instanciamos
@@ -26,7 +26,7 @@ namespace ClassLibrary
         /// <summary>
         /// Este es el constructor de la clase
         /// </summary>
-        [JsonConstructor] 
+        [JsonConstructor]
         public OfferManager()
         {
             this.catalog = new List<Offer>();
@@ -35,11 +35,11 @@ namespace ClassLibrary
         /// Este metodo lo que hace es, una vez creada la oferta se guarda en el catalogo de la aplicacion
         /// </summary>
         /// <param name="offer"></param>
-       public void SaveOffer(Offer offer)
-        {   
+        public void SaveOffer(Offer offer)
+        {
             catalog.Add(offer);
         }
-        
+
         public List<Offer> getLista()
         {
             this.LoadFromJsonOffer();
@@ -51,7 +51,7 @@ namespace ClassLibrary
         /// <param name="id"></param>
         public void PublishOffer(int id)
         {
-           Offer offer = catalog[id];
+            Offer offer = catalog[id];
             offer.Availability = true;
         }
         /// <summary>
@@ -60,7 +60,7 @@ namespace ClassLibrary
         /// <param name="id"></param>
         public void DiseableOffer(int id)
         {
-           Offer offer = catalog[id];
+            Offer offer = catalog[id];
             offer.Availability = false;
         }
 
@@ -74,18 +74,18 @@ namespace ClassLibrary
                     return true;
                 }
             }
-            return false; 
+            return false;
         }
         /// <summary>
         /// Este metodo retorna las ofertas del catalogo que estan habilitadas
         /// </summary>
         /// <returns></returns>
-       public string GetOffersAvailability()
+        public string GetOffersAvailability()
         {
             string data = $"Las ofertas habilitadas son: \n";
             foreach (Offer offer in catalog)
             {
-                if(offer.Availability)
+                if (offer.Availability)
                 {
                     data = data + $"{offer.Idd} {offer.Name} Costo {offer.Cost} Fecha y hora de publicacion {offer.PublicationDate} \n";
                 }
@@ -93,7 +93,7 @@ namespace ClassLibrary
                 {
                     data = "No tienes Ofertas habilitadas para mostrar";
                 }
-                
+
             }
             return data;
         }
@@ -102,30 +102,30 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="buyer"></param>
         /// <param name="index"></param>
-        public void BuyOffer(string buyer,long index)
+        public void BuyOffer(string buyer, long index)
         {
             LoadFromJsonOffer();
             Singleton<DataManager>.Instance.LoadFromJsonEntrepreneur();
-            this.buyers= Singleton<DataManager>.Instance.entrepreneurs;           
+            this.buyers = Singleton<DataManager>.Instance.entrepreneurs;
             DateTime date2 = DateTime.UtcNow;
-     
-            
+
+
             foreach (Offer item in this.catalog)
             {
-                if(item.Idd == index)
-                {                   
+                if (item.Idd == index)
+                {
                     item.Availability = false;
                     foreach (var item2 in this.buyers)
                     {
-                        if(item2.Id == buyer)
+                        if (item2.Id == buyer)
                         {
-                            item.Entrepreneur=buyer;
+                            item.Entrepreneur = buyer;
                             item.DeliveryDate = date2;
 
                         }
                     }
-                   //  item.Entrepreneur = new Entrepreneur buyer;
-                   ConvertToJsonOffer();
+                    //  item.Entrepreneur = new Entrepreneur buyer;
+                    ConvertToJsonOffer();
                 }
             }
         }
@@ -144,12 +144,12 @@ namespace ClassLibrary
         /// <param name="deliverydate"></param>
         /// <param name="publicationdate"></param>
         /// <param name="offer"></param>
-        public void AddOffer (string name, Material material, int quantity, double cost, string street, string city , string department ,List<Permission> offerpermissions, bool regularoffers, List<string> tags, DateTime deliverydate, DateTime publicationdate, Company company)
+        public void AddOffer(string name, Material material, int quantity, double cost, string street, string city, string department, List<Permission> offerpermissions, bool regularoffers, List<string> tags, DateTime deliverydate, DateTime publicationdate, Company company)
         {
             LocationApiClient Loc = new LocationApiClient();
-            Location locationoffer = Loc.GetLocation(street,city,department);
+            Location locationoffer = Loc.GetLocation(street, city, department);
             Singleton<OfferManager>.Instance.LoadFromJsonOffer();
-            long valorUltimoId = this.catalog.Count+1;
+            long valorUltimoId = this.catalog.Count + 1;
             this.catalog.Add(new Offer(valorUltimoId, name, material, quantity, cost, locationoffer, offerpermissions, regularoffers, tags, deliverydate, publicationdate, company));
             this.ConvertToJsonOffer();
         }
@@ -166,41 +166,41 @@ namespace ClassLibrary
             result = result + "]}";
 
             string temp = JsonSerializer.Serialize(this.catalog);
-             File.WriteAllText(@"Offer.json", temp);
+            File.WriteAllText(@"Offer.json", temp);
             return result;
             JsonSerializerOptions options = new()
             {
                 ReferenceHandler = MyReferenceHandler.Instance,
                 WriteIndented = true
             };
-            return JsonSerializer.Serialize(this.catalog, options);            
+            return JsonSerializer.Serialize(this.catalog, options);
         }
         public void LoadFromJsonOffer()
         {
-            
+
             string json = File.ReadAllText(@"Offer.json");
-            if(json!="")
+            if (json != "")
             {
 
-            JsonSerializerOptions options = new()
-            {
-                ReferenceHandler = MyReferenceHandler.Instance,
-                WriteIndented = true
-            };
+                JsonSerializerOptions options = new()
+                {
+                    ReferenceHandler = MyReferenceHandler.Instance,
+                    WriteIndented = true
+                };
 
-            this.catalog = JsonSerializer.Deserialize<List<Offer>>(json, options);
+                this.catalog = JsonSerializer.Deserialize<List<Offer>>(json, options);
             }
         }
         public string ConvertToJsonEntrepreneur()
-        {return null;}
+        { return null; }
         public string ConvertToJsonCompany()
-        {return null;}
+        { return null; }
         public string ConvertToJsonPermissions()
-        {return null;}
+        { return null; }
         public string ConvertToJsonMaterialTypes()
-        {return null;}
+        { return null; }
         public string ConvertToJsonAreaOfWork()
-        {return null;}
+        { return null; }
     }
 
 }

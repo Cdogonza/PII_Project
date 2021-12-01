@@ -13,19 +13,19 @@ namespace ClassLibrary
         /// String del nombre del material
         /// </summary>
         /// <value></value>
-        public string Name{get; set;}
+        public string Name { get; set; }
 
         /// <summary>
         /// Instancia de MaterialType que representa el tipo del material
         /// </summary>
         /// <value></value>
-        public MaterialType Type{get;set;}
+        public MaterialType Type { get; set; }
 
         /// <summary>
         /// String de la unidad del material 
         /// </summary>
         /// <value></value>
-        public string Unit{get;set;}
+        public string Unit { get; set; }
 
         /// <summary>
         /// Constructor de Material
