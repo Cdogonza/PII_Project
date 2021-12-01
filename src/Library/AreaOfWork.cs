@@ -29,7 +29,7 @@ namespace ClassLibrary
         /// <summary>
         /// Crea instancias de este tipo AreaOfWork
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="name">Nombre del Rubro</param>
         public AreaOfWork(string name)
         {
             if (String.IsNullOrWhiteSpace(name))

@@ -20,7 +20,7 @@ namespace ClassLibrary
 
         }
         /// <summary>
-        /// Constructor de company
+        /// Constructor de la clase Company
         /// </summary>
         /// <param name="id">Id de la Compania, obetenido del UserId de Telegram</param>
         /// <param name="name">Nombre de la Compania</param>
@@ -28,7 +28,7 @@ namespace ClassLibrary
         /// <param name="location">Ubicacion de la Compania, de tipo Location</param>
         /// <param name="area">Rubro al cual pertenece la Compania</param>
         /// <returns></returns>
-/// 
+        /// 
         public Company(string id ,string name,string phone,Location location,string area) : base (id,name,phone,location,area)
         {
 
