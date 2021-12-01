@@ -36,6 +36,9 @@ namespace ClassLibrary
         /// <param name="name"></param>
         public Permission(string name)
         {
+            if (string.IsNullOrEmpty(name)){
+                throw new Exception("name must not be null or empty.");
+            }
             this.Name = name;
         }
 

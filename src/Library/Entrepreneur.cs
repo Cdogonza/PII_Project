@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using System;
+
 namespace ClassLibrary
 {
         /// <summary>
@@ -27,6 +29,7 @@ namespace ClassLibrary
         [JsonConstructor]
         public Entrepreneur()
         {
+            
 
         }
 
@@ -43,6 +46,21 @@ namespace ClassLibrary
         /// <returns></returns>
         public Entrepreneur(string id,string name,string phone,Location location,string area,string specialization, List<Permission> permission) : base (id,name,phone,location,area)
         {
+            if (string.IsNullOrEmpty(id)){
+                throw new Exception("id must not be null or empty.");
+            }
+            if (string.IsNullOrEmpty(name)){
+                throw new Exception("name must not be null or empty.");
+            }
+            if (string.IsNullOrEmpty(phone)){
+                throw new Exception("phone must not be null or empty.");
+            }
+            if (string.IsNullOrEmpty(area)){
+                throw new Exception("area must not be null or empty.");
+            }
+            if (string.IsNullOrEmpty(specialization)){
+                throw new Exception("specialization must not be null or empty.");
+            }
             this.Specialization = specialization;
             this.Permissions = permission;
         }

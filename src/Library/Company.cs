@@ -31,7 +31,18 @@ namespace ClassLibrary
 /// 
         public Company(string id ,string name,string phone,Location location,string area) : base (id,name,phone,location,area)
         {
-
+            if (string.IsNullOrEmpty(id)){
+                throw new Exception("id must not be null or empty.");
+            }
+            if (string.IsNullOrEmpty(name)){
+                throw new Exception("name must not be null or empty.");
+            }
+            if (string.IsNullOrEmpty(phone)){
+                throw new Exception("phone must not be null or empty.");
+            }
+            if (string.IsNullOrEmpty(area)){
+                throw new Exception("area must not be null or empty.");
+            }
         }
     }
 }

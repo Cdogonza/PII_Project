@@ -30,6 +30,13 @@ namespace ClassLibrary
         /// <param name="description">Descripcion del tipo de material</param>
         public MaterialType(string name, string description)
         {
+            if (String.IsNullOrWhiteSpace(name)){
+                throw new ArgumentNullException(name);
+            }
+            if (String.IsNullOrWhiteSpace(description)){
+                throw new ArgumentNullException(description);
+            }
+
             this.Name = name;
             this.Description = description;
         }

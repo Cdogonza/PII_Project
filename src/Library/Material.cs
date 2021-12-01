@@ -35,6 +35,14 @@ namespace ClassLibrary
         /// <param name="unit">Unidad que representa al material</param>
         public Material(string name, MaterialType type, string unit)
         {
+            if (String.IsNullOrWhiteSpace(name)){
+                throw new ArgumentNullException(name);
+            }
+
+            if (String.IsNullOrWhiteSpace(unit)){
+                throw new ArgumentNullException(unit);
+            }
+
             this.Name = name;
             this.Type = type;
             this.Unit = unit;
