@@ -179,7 +179,6 @@ namespace ClassLibrary
                 {
                     if (offer.Entrepreneur == entrepreneur)
                     {
-                        Console.WriteLine("pip");
                         data += $"{offer.Idd}) Oferta: {offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}";
                     }
                 }

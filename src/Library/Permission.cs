@@ -45,21 +45,21 @@ namespace ClassLibrary
         /// </summary>
         /// <returns></returns>
         public string ConvertToJsonCompany()
-        {return null;}
+        { return null; }
 
         /// <summary>
         /// Metodo de agregado de la interfaz IJsonConvertible que no lleva implementacion para esta clase
         /// </summary>
         /// <returns></returns>
         public string ConvertToJsonEntrepreneur()
-        {return null;}
+        { return null; }
 
         /// <summary>
         /// Metodo de agregado de la interfaz IJsonConvertible que no lleva implementacion para esta clase
         /// </summary>
         /// <returns></returns>
         public string ConvertToJsonOffer()
-        {return null;}
+        { return null; }
 
         /// <summary>
         /// Metodo de agregado de la interfaz IJsonConvertible que serializa los datos de la clase Permissions
@@ -75,7 +75,7 @@ namespace ClassLibrary
         /// </summary>
         /// <returns></returns>
         public string ConvertToJsonMaterialTypes()
-        {return null;}
+        { return null; }
 
         /// <summary>
         /// Metodo de agregado de la interfaz IJsonConvertible que no lleva implementacion para esta clase

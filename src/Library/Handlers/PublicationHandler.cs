@@ -196,7 +196,6 @@ namespace ClassLibrary
                                 _myuserdata[message.UserId].Add($"permiso = {message.Text}");
                                 if (_mypermissions[message.UserId].Count > 0)
                                 {
-                                    Console.WriteLine($"hola{_mypermissions[message.UserId].Count}");
                                     responsetemp.Clear();
                                     responsetemp.Append("Se agregan los siguientes permisos \n");
                                     for (int i = 0; i < _mypermissions[message.UserId].Count; i++)
@@ -210,7 +209,6 @@ namespace ClassLibrary
                                 }
                                 else
                                 {
-                                    Console.WriteLine("hola");
                                     response = "No se agregan permisos especiales /continuar";
                                 }
                                 return true;

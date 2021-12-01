@@ -15,7 +15,7 @@ namespace ClassLibrary
     public class Offer : IJsonConvertible
     {
         /// <summary>
-        /// 
+        /// Lista de ofertas
         /// </summary>
         /// <typeparam name="Offer"></typeparam>
         /// <returns></returns>
