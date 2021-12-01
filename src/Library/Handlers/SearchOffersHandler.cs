@@ -57,13 +57,13 @@ namespace ClassLibrary
                 if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                 {
                     Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                    response = "Como empresa tienes las siguientes opciones\n/mis_ofertas_por_emprendimiento\n/mis_ofertas";
+                    response = "Como empresa tienes las siguientes opciones\n/mis_ofertas_por_emprendimiento\n/mis_ofertas\n\nPara realizar otra búsqueda ingrese /buscar_oferta nuevamente";
                     return true;
                 }
                 if (Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                 {
                     Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
-                    response = "Como emprendimiento tienes las siguientes opciones\n/todas_las_ofertas\n/ofertas_por_palabra\n/oferta_por_departamento\n/oferta_por_categoria\n/mis_ofertas_adquiridas\n/ofertas_por_empresa";
+                    response = "Como emprendimiento tienes las siguientes opciones\n/todas_las_ofertas\n/ofertas_por_palabra\n/oferta_por_departamento\n/oferta_por_categoria\n/mis_ofertas_adquiridas\n/ofertas_por_empresa\n\nPara realizar otra búsqueda ingrese /buscar_oferta nuevamente";
 
                     return true;
                 }
@@ -77,7 +77,7 @@ namespace ClassLibrary
                     {
                         if (Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/mis_ofertas_por_emprendimiento"))
                         {
-                            if (Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
+                            if (Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 3)
                             {
                                 response = "Ingrese el nombre del emprendimiento";
                                 return true;
@@ -85,22 +85,31 @@ namespace ClassLibrary
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Add(message.Text);
                             Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();
                             string check = "";
-
+                            Console.WriteLine("hola");
                             Singleton<DataManager>.Instance.LoadFromJsonEntrepreneur();
                             List<Entrepreneur> ent = Singleton<DataManager>.Instance.entrepreneurs;
+                            if(ent.Count >= 1)
+                            {
                             foreach (Entrepreneur item in ent)
                             {
+                                Console.WriteLine("mierda");
                                 if (item.Name.Contains(message.Text))
                                 {
+                                    Console.WriteLine("gfhd");
                                     check = item.Id;
                                 }
+                            }
+                            }else
+                            {
+                                response = "Ningun emprendedor ha comprado ofertas se su empresa";
+                                return true;
                             }
                             response = Singleton<Search>.Instance.GetMyOffersByEntrepreneur(check, message.UserId);
                             return true;
                         }
                         else if (Singleton<TelegramUserData>.Instance.userdata[message.UserId][1].ToLower().Contains("/mis_ofertas"))
                         {
-                            if (Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 2)
+                            if (Singleton<TelegramUserData>.Instance.userdata[message.UserId].Count == 3)
                             {
                                 Singleton<TelegramUserData>.Instance.userdata[message.UserId].Clear();
                                 response = Singleton<Search>.Instance.GetOfferByCompany(message.UserId);

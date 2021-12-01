@@ -47,14 +47,14 @@ namespace ClassLibrary
             {
                 if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                 {
-                    response = "Los comandos disponibles para las empresas son\n\n/buscar_oferta\n\n/vermisdatos\n\n/registrarse\n\n/tipo_de_material\n\n/ver_mapa\n\n/publicar_oferta\n\n/habilitaciones\n\n/rubros";
+                    response = "Los comandos disponibles para las empresas son\n\n/buscar_oferta\n\n/vermisdatos\n\n/registrarse\n\n/tipo_de_material\n\n/ver_mapa\n\n/publicar_oferta\n\n/habilitaciones\n\n/rubros\n\n/cancel";
                     return true;
                 }
                 else
                 {
                     if (Singleton<DataManager>.Instance.GetEntrepreneur(message.UserId) != null)
                     {
-                        response = "Los comandos disponibles para los emprendedores son\n\n/buscar_oferta\n\n/registrarse\n\n/vermisdatos\n\n/rubros\n\n/ver_mapa\n\n/como_ir";
+                        response = "Los comandos disponibles para los emprendedores son\n\n/buscar_oferta\n\n/registrarse\n\n/vermisdatos\n\n/rubros\n\n/ver_mapa\n\n/como_ir\n\n/cancel";
                         return true;
                     }
                     else
@@ -191,7 +191,7 @@ namespace ClassLibrary
                 const string filePath = @"map.png";
                 using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
                 var fileName = filePath.Split(Path.DirectorySeparatorChar).Last();
-                await bot.SendPhotoAsync(chatId: message.ChatId, photo: new InputOnlineFile(fileStream, fileName), caption: $"Direccin de la Empresa");
+                await bot.SendPhotoAsync(chatId: message.ChatId, photo: new InputOnlineFile(fileStream, fileName), caption: $"Dirección de la Empresa");
             }
         }
 

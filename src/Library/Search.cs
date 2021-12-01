@@ -171,14 +171,15 @@ namespace ClassLibrary
         public string GetMyOffersByEntrepreneur(string entrepreneur, string CompanyId)
         {
             this.catalog = Singleton<OfferManager>.Instance.catalog;
-            string title = $"Sus ofertas adquiridas por el emprendimiento {entrepreneur} son: \n";
+            string title = $"Sus ofertas adquiridas por el emprendimiento son: \n";
             string data = "";
             foreach (Offer offer in this.catalog)
             {
                 if (offer.Company.Id == CompanyId)
                 {
-                    if (offer.Entrepreneur != null && offer.Entrepreneur == entrepreneur)
+                    if (offer.Entrepreneur == entrepreneur)
                     {
+                        Console.WriteLine("pip");
                         data += $"{offer.Idd}) Oferta: {offer.Name}\n  - Material: {offer.Material.Name}\n  - Costo: {offer.Cost}\n  - Fecha de publicación: {offer.PublicationDate}\n  - Dirección: {offer.Location.FormattedAddress}";
                     }
                 }
@@ -187,7 +188,7 @@ namespace ClassLibrary
 
             if (data == "")
             {
-                data = $"No tienes ofertas adquiridas por el emprendimiento {entrepreneur}\n/help";
+                data = $"No tienes ofertas adquiridas por el emprendimiento\n/help";
                 return data;
             }
             else

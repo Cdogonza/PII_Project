@@ -69,22 +69,27 @@ namespace ClassLibrary
             var _mytags = Singleton<TelegramUserData>.Instance.tagsDict;
             if (!_myuserdata.ContainsKey(message.UserId))
             {
+
                 _myuserdata.Add(message.UserId, new Collection<string>());
             }
+
 
             if (message.Text.ToLower().Equals("/publicar_oferta"))
             {
                 if (Singleton<DataManager>.Instance.GetCompany(message.UserId) != null)
                 {
-                    _mypermissions.Add(message.UserId, new Collection<string>());
+                    _mymaterialtype.Remove(message.UserId);
+                    _mytags.Remove(message.UserId);
+                    _mypermissions.Remove(message.UserId);
                     _mymaterialtype.Add(message.UserId, new Collection<string>());
                     _mytags.Add(message.UserId, new Collection<string>());
+                    _mypermissions.Add(message.UserId, new Collection<string>());
                     _myuserdata[message.UserId].Add(message.Text.ToLower());
                     response = "Ingrese el nombre de la oferta";
                     return true;
                 }
             }
-            if (_myuserdata[message.UserId].Count >= 1 && _myuserdata[message.UserId][0].ToLower().Contains("/publicar_oferta"))
+            if (_myuserdata[message.UserId].Count >= 1)
             {
                 if (_myuserdata[message.UserId][0].ToLower().Contains("/publicar_oferta"))
                 {
@@ -101,6 +106,7 @@ namespace ClassLibrary
                             responsetemp.Append($"{Singleton<DataManager>.Instance.GetTextToPrintMaterialType()}\n");
                             responsetemp.Append($"\nSi no encuentra el tipo de material en la lista ingrese /otro_tipo_de_material");
                             response = $"{responsetemp}";
+                            responsetemp.Clear();
                             return true;
 
                         case 3:
@@ -190,6 +196,7 @@ namespace ClassLibrary
                                 _myuserdata[message.UserId].Add($"permiso = {message.Text}");
                                 if (_mypermissions[message.UserId].Count > 0)
                                 {
+                                    Console.WriteLine($"hola{_mypermissions[message.UserId].Count}");
                                     responsetemp.Clear();
                                     responsetemp.Append("Se agregan los siguientes permisos \n");
                                     for (int i = 0; i < _mypermissions[message.UserId].Count; i++)
@@ -203,6 +210,7 @@ namespace ClassLibrary
                                 }
                                 else
                                 {
+                                    Console.WriteLine("hola");
                                     response = "No se agregan permisos especiales /continuar";
                                 }
                                 return true;
