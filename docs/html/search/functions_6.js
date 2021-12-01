@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['getavailableoffersbycompany_233',['GetAvailableOffersByCompany',['../classClassLibrary_1_1Search.html#a31e85f002a230d0c8d7b43d9c6e98af5',1,'ClassLibrary::Search']]],
+  ['getcompany_234',['GetCompany',['../classClassLibrary_1_1DataManager.html#a19a100329752a49825c2376e623268a8',1,'ClassLibrary::DataManager']]],
+  ['getcompanyinstance_235',['GetCompanyInstance',['../classClassLibrary_1_1DataManager.html#a54339b953972b92e3e5efe13f247417f',1,'ClassLibrary::DataManager']]],
+  ['getdistance_236',['GetDistance',['../classClassLibrary_1_1LocationApiClient.html#ac52320907126d76a06a7633ca3a32a24',1,'ClassLibrary.LocationApiClient.GetDistance(Location from, Location to)'],['../classClassLibrary_1_1LocationApiClient.html#a20dfea94fb754766c586513035fd3ee4',1,'ClassLibrary.LocationApiClient.GetDistance(string from, string to)']]],
+  ['getdistanceasync_237',['GetDistanceAsync',['../classClassLibrary_1_1LocationApiClient.html#a7520f59773f85070f67d488917652010',1,'ClassLibrary.LocationApiClient.GetDistanceAsync(Location from, Location to)'],['../classClassLibrary_1_1LocationApiClient.html#a717c5c7c749020b109ed62bb7e4ea94c',1,'ClassLibrary.LocationApiClient.GetDistanceAsync(string from, string to)']]],
+  ['getentrepreneur_238',['GetEntrepreneur',['../classClassLibrary_1_1DataManager.html#ac5b5ad06daa0fb3d4f3b6ab46ea66619',1,'ClassLibrary::DataManager']]],
+  ['getlocation_239',['GetLocation',['../classClassLibrary_1_1LocationApiClient.html#a86e0cc441fb8dc61749885b9df7f0200',1,'ClassLibrary::LocationApiClient']]],
+  ['getlocationasync_240',['GetLocationAsync',['../classClassLibrary_1_1LocationApiClient.html#a4733f71042fc2111abf5a4bfdd881ef1',1,'ClassLibrary::LocationApiClient']]],
+  ['getmaterialtypebyindex_241',['GetMaterialTypeByIndex',['../classClassLibrary_1_1DataManager.html#a55b609b08fa627ca11ce3e76f82b8fae',1,'ClassLibrary::DataManager']]],
+  ['getmyoffersbyentrepreneur_242',['GetMyOffersByEntrepreneur',['../classClassLibrary_1_1Search.html#ad7c668510c1bc9663f6e220787bf4637',1,'ClassLibrary::Search']]],
+  ['getofferbycompany_243',['GetOfferByCompany',['../classClassLibrary_1_1Search.html#a344536c616ba0d3e5533c0ef185e7562',1,'ClassLibrary::Search']]],
+  ['getofferbydepartment_244',['GetOfferByDepartment',['../classClassLibrary_1_1Search.html#af85ec29fd0ad9e2033ee53215cc8b792',1,'ClassLibrary::Search']]],
+  ['getofferbydistance_245',['GetOfferByDistance',['../classClassLibrary_1_1Search.html#ad90a95a447dfb06941a9b025e0e64caf',1,'ClassLibrary::Search']]],
+  ['getofferbyentrepreneur_246',['GetOfferByEntrepreneur',['../classClassLibrary_1_1Search.html#a513207cb28f13ab5cf7546a7bedde04e',1,'ClassLibrary::Search']]],
+  ['getofferbyid_247',['GetOfferByID',['../classClassLibrary_1_1Search.html#a4cb9282e29091ee4adc9c5f848aedebe',1,'ClassLibrary::Search']]],
+  ['getofferbyword_248',['GetOfferByWord',['../classClassLibrary_1_1Search.html#ae11aa8b3d098cfbff026a3c236872b41',1,'ClassLibrary::Search']]],
+  ['getoffers_249',['GetOffers',['../classClassLibrary_1_1Search.html#ab2de4c00ee3dd166a42f08da9d672477',1,'ClassLibrary::Search']]],
+  ['getoffersavailability_250',['GetOffersAvailability',['../classClassLibrary_1_1OfferManager.html#aa4385f3b048a17cb77dd875503f6ba6e',1,'ClassLibrary::OfferManager']]],
+  ['getofferspublicatedbycompany_251',['GetOffersPublicatedByCompany',['../classClassLibrary_1_1Search.html#ae66e302c2fa127ee61e0e07f16bd9d12',1,'ClassLibrary::Search']]],
+  ['getpermissionbyindex_252',['GetPermissionByIndex',['../classClassLibrary_1_1DataManager.html#afcba33f94d3ebfa83656326bac41776a',1,'ClassLibrary::DataManager']]],
+  ['getpermissions_253',['GetPermissions',['../classClassLibrary_1_1UserBase.html#abc8bdc5757659bace2bc6d0b90a193f6',1,'ClassLibrary::UserBase']]],
+  ['gettexttoprintareaofwork_254',['GetTextToPrintAreaOfWork',['../classClassLibrary_1_1DataManager.html#a43f3f87debaf67495ddfc1ebbcac9424',1,'ClassLibrary::DataManager']]],
+  ['gettexttoprintmaterialtype_255',['GetTextToPrintMaterialType',['../classClassLibrary_1_1DataManager.html#a2c25e786e8281c89b8afe75b25ae8f86',1,'ClassLibrary::DataManager']]],
+  ['gettexttoprintpermission_256',['GetTextToPrintPermission',['../classClassLibrary_1_1DataManager.html#a29c3b9269da8edb415265c541a92f329',1,'ClassLibrary::DataManager']]]
+];

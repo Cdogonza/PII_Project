@@ -1,0 +1,17 @@
+digraph "ClassLibrary.DataManager.AddCompany"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="ClassLibrary.DataManager.\lAddCompany",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Agrega empresas a la lista"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ClassLibrary.DataManager.\lConvertToJsonCompany",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1DataManager.html#acc43496c3c29caa9e674bbd0b6be507b",tooltip="Convierte los datos de Company a formato json"];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ClassLibrary.UserBase.Convert\lToJsonCompany",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1UserBase.html#ad93425a90751cb13d1f52885ddccc9e7",tooltip="Convierte el objeto a texto en formato Json. El objeto puede ser reconstruido a partir del texto en f..."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="ClassLibrary.LocationApi\lClient.GetLocation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1LocationApiClient.html#a86e0cc441fb8dc61749885b9df7f0200",tooltip=" "];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="ClassLibrary.LocationApi\lClient.GetLocationAsync",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1LocationApiClient.html#a4733f71042fc2111abf5a4bfdd881ef1",tooltip="Obtiene las coordenadas de una dirección."];
+}

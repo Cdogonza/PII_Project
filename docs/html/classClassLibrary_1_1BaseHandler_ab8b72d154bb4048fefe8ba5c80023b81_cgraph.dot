@@ -1,0 +1,13 @@
+digraph "ClassLibrary.BaseHandler.Cancel"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="ClassLibrary.BaseHandler.\lCancel",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Retorna este \"handler\" al estado inicial. En los \"handler\" sin estado no hace nada...."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ClassLibrary.IHandler.Cancel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceClassLibrary_1_1IHandler.html#abec216c8206760f00da22e6d6dbe25b5",tooltip="Retorna este \"handler\" al estado inicial y cancela el próximo \"handler\" si existe...."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ClassLibrary.BaseHandler.\lInternalCancel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1BaseHandler.html#aab4a153ae1abc73c0a1747bdf6bb66b9",tooltip="Este método puede ser sobreescrito en las clases sucesores que procesan varios mensajes cambiando de ..."];
+}

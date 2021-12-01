@@ -1,0 +1,13 @@
+digraph "ClassLibrary.UserBase.ConvertToJsonEntrepreneur"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="ClassLibrary.UserBase.Convert\lToJsonEntrepreneur",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Convierte el objeto a texto en formato Json. El objeto puede ser reconstruido a partir del texto en f..."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ClassLibrary.DataManager.\lConvertToJsonEntrepreneur",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1DataManager.html#a1f755ee0d63048bcc088ce7a24b5d226",tooltip="Convierte los datos de Entrepreneur a Json"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ClassLibrary.DataManager.\lAddEntrepreneur",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1DataManager.html#a4a6f92c811b5d5830481f906616eca78",tooltip="Agrega emprendedores a la lista"];
+}

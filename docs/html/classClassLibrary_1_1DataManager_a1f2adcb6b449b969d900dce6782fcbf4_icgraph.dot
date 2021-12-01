@@ -1,0 +1,13 @@
+digraph "ClassLibrary.DataManager.LoadFromJsonAreaOfWork"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="ClassLibrary.DataManager.\lLoadFromJsonAreaOfWork",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ClassLibrary.DataManager.\lCheckAreaOfWork",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1DataManager.html#a78bbbd5d62c591a30e963fa6682f01b7",tooltip="Metodo que corrobora si el numero ingresado por el usuario para agregar el rubro en su listado,..."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ClassLibrary.DataManager.\lGetTextToPrintAreaOfWork",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1DataManager.html#a43f3f87debaf67495ddfc1ebbcac9424",tooltip="Metodo utilizado para obtener todos los rubros de la lista y retornarlos como texto,..."];
+}

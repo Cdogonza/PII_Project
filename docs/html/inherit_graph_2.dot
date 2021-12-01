@@ -1,0 +1,33 @@
+digraph "Graphical Class Hierarchy"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="ClassLibrary.IHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceClassLibrary_1_1IHandler.html",tooltip=" "];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="ClassLibrary.BaseHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1BaseHandler.html",tooltip="Clase base para implementar el patrón Chain of Responsibility. En ese patrón se pasa un mensaje a tra..."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ClassLibrary.AreaOfWorkHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1AreaOfWorkHandler.html",tooltip="Este handler implementa el patrón Chain of Responsability y es el encargado de manejar los comandos /..."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ClassLibrary.BuyerOfferHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1BuyerOfferHandler.html",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="ClassLibrary.Cancellation\lHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1CancellationHandler.html",tooltip="Este handler implementa el patrón Chain of Responsability y es el encargado de manejar el comando /ca..."];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="ClassLibrary.DataManager\lHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1DataManagerHandler.html",tooltip="Este handler implementa el patrón Chain of Responsability y es el encargado de manejar el comando /ve..."];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="ClassLibrary.MapsHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1MapsHandler.html",tooltip="Un \"handler\" del patrón Chain of Responsibility que implementa los comandos /ver_mapa,..."];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="ClassLibrary.MaterialTypes\lHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1MaterialTypesHandler.html",tooltip="Este handler implementa el patrón Chain of Responsability y es el encargado de manejar los comandos /..."];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="ClassLibrary.Permissions\lHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1PermissionsHandler.html",tooltip="Este handler implementa el patrón Chain of Responsability y es el encargado de manejar el comando /ha..."];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="ClassLibrary.Publication\lHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1PublicationHandler.html",tooltip="Este handler implementa el patrón Chain of Responsability y es el encargado de manejar el comando /pu..."];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="ClassLibrary.Registration\lHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1RegistrationHandler.html",tooltip="Este handler implementa el patrón Chain of Responsability y es el encargado de manejar el comando /re..."];
+  Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="ClassLibrary.SearchOffers\lHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1SearchOffersHandler.html",tooltip=" "];
+  Node1 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="ClassLibrary.WelcomeHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1WelcomeHandler.html",tooltip="Este handler implementa el patrón Chain of Responsability y es el encargado de manejar el comando /st..."];
+}

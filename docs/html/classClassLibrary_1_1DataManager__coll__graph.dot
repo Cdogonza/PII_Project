@@ -1,0 +1,22 @@
+digraph "ClassLibrary.DataManager"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{ClassLibrary.DataManager\n||+ DataManager()\l+ DataCompany()\l+ DataEntrepeneur()\l+ AddEntrepreneur()\l+ AddCompany()\l+ GetEntrepreneur()\l+ GetCompany()\l+ AddPermission()\l+ CheckPermission()\l+ GetPermissionByIndex()\land 21 more...\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="/// Esta clase es la encargada de manejar los datos de AreaOfWork(Rubros) MaterialsTypes y Permission..."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{IJsonConvertible\n||+ ConvertToJsonCompany()\l+ ConvertToJsonEntrepreneur()\l+ ConvertToJsonOffer()\l+ ConvertToJsonPermissions()\l+ ConvertToJsonMaterialTypes()\l+ ConvertToJsonAreaOfWork()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceClassLibrary_1_1IJsonConvertible.html",tooltip="Define el tipo que tienen los objetos que pueden ser serializados en y deserializados desde texto en ..."];
+  Node3 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +materials" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node3 [label="{List\< ClassLibrary.Material \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node4 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +materialsType" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node4 [label="{List\< ClassLibrary.Material\lType \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node5 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +permissions" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node5 [label="{List\< ClassLibrary.Permission \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node6 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +companies" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node6 [label="{List\< ClassLibrary.Company \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node7 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +entrepreneurs" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node7 [label="{List\< ClassLibrary.Entrepreneur \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node8 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +areaofwork" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node8 [label="{List\< ClassLibrary.AreaOf\lWork \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+}

@@ -1,0 +1,11 @@
+digraph "Tests.PerrmissionTest.Setup"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Tests.PerrmissionTest.Setup",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Crea las intancias utiilzadas en los test"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Tests.PerrmissionTest.Permission",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classTests_1_1PerrmissionTest.html#a0d36614f9d7e94255a7676321bede443",tooltip="Prueba de asignación de permisos con datamanager"];
+}

@@ -1,0 +1,11 @@
+digraph "ClassLibrary.LocationApiClient.GetDistanceAsync"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="ClassLibrary.LocationApi\lClient.GetDistanceAsync",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Obtiene la distancia entre dos coordenadas."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ClassLibrary.LocationApi\lClient.GetDistance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1LocationApiClient.html#ac52320907126d76a06a7633ca3a32a24",tooltip=" "];
+}
